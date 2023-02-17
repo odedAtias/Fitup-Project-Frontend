@@ -1,5 +1,4 @@
-// Project colors pallets\
-
+// Project colors pallets
 const Colors = {
 	Headers: {
 		primary: '#9fd3c7',
