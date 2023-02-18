@@ -1,13 +1,13 @@
 // RN core components & API imports
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from "react-native";
 
 // Login Component
 const Login = () => {
-	return (
-		<View>
-			<Text>Login</Text>
-		</View>
-	);
+  return (
+    <View>
+      <Text>Login</Text>
+    </View>
+  );
 };
 
 // Login StyleSheet
