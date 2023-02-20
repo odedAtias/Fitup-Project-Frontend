@@ -1,0 +1,40 @@
+// RN core components & API imports
+import { View, Text, TextInput, StyleSheet } from 'react-native';
+// Ionicons imports
+import { Ionicons } from '@expo/vector-icons';
+// Constants
+import Colors from '../Constants/Colors';
+
+// Input component
+const Input = ({ label, inputConfigurations, iconName, style }) => {
+	return (
+		<View style={styles.container}>
+			<View style={styles.labelContainer}>
+				<Text style={styles.label}>{label}</Text>
+				{iconName && <Ionicons name={iconName} size={30} />}
+			</View>
+			<TextInput {...inputConfigurations} style={[styles.input, style]} />
+			{/* Buttons container (sign-in & sign-up) */}
+		</View>
+	);
+};
+
+const styles = StyleSheet.create({
+	container: {
+		marginVertical: 24,
+	},
+	labelContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+	label: {
+		fontSize: 20,
+	},
+	input: {
+		borderBottomColor: Colors.Texts.primary,
+		borderBottomWidth: 1,
+		paddingVertical: 5,
+	},
+});
+
+export default Input;
