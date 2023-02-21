@@ -6,7 +6,8 @@ const Colors = {
 	},
 	Backgrounds: {
 		primary: '#fff',
-		secondary: '#e4f6f6',
+		secondary: '#e4e4dc',
+		third: '#e4deae',
 		male: '#604fdd',
 		female: '#ff78ae',
 	},

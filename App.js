@@ -2,7 +2,7 @@
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,7 +13,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from './Screens/LoginOutput/Login';
 import Signup from './Screens/Signup';
 import ForgotPassword from './Screens/ForgotPassword';
-import Categories from './Screens/TraineeScreens/Categories';
+import Categories from './Screens/TraineeScreens/CategoriesOutput/Categories';
 import FavoriteTrainers from './Screens/TraineeScreens/FavoriteTrainers';
 import RegisteredEvents from './Screens/TraineeScreens/RegisteredEvents';
 import PersonalDetails from './Screens/TraineeScreens/PersonalDetails';
@@ -34,16 +34,19 @@ const Tab = createBottomTabNavigator();
 import Colors from './Constants/Colors';
 
 // Search Events Stack Navigator
-const StackSearchEvent = () => {
+const StackSearchEvent = () => (
 	<Stack.Navigator>
-		<Stack.Screen name='Categories' component={Categories} />
+		<Stack.Screen
+			name='Categories'
+			component={Categories}
+			options={{ headerShown: false }}
+		/>
 		<Stack.Screen name='EventsList' component={EventsList} />
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
 		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
-	</Stack.Navigator>;
-};
-
+	</Stack.Navigator>
+);
 // BottomTab header component
 const BottomTabHeader = () => {
 	return (
@@ -51,7 +54,7 @@ const BottomTabHeader = () => {
 			style={{
 				height: '20%',
 				padding: '20%',
-				backgroundColor: 'red',
+				backgroundColor: Colors.Headers.primary,
 			}}>
 			<Logo imageWidth={200} imageHeight={120} />
 		</View>
@@ -61,11 +64,75 @@ const BottomTabHeader = () => {
 // Auxilliary Components of trainee bottomTabs
 const TraineeBottomTab = () => {
 	return (
-		<Tab.Navigator>
-			<Tab.Screen name='Categories' component={StackSearchEvent} />
-			<Tab.Screen name='FavoriteTrainers' component={FavoriteTrainers} />
-			<Tab.Screen name='RegisteredEvents' component={RegisteredEvents} />
-			<Tab.Screen name='PersonalDetails' component={PersonalDetails} />
+		<Tab.Navigator
+			screenOptions={{
+				tabBarStyle: { backgroundColor: Colors.Backgrounds.primary },
+			}}>
+			<Tab.Screen
+				name='StackSearchEvent'
+				component={StackSearchEvent}
+				options={{
+					header: BottomTabHeader,
+					tabBarLabel: 'Explore',
+					tabBarActiveTintColor: Colors.Texts.primary,
+					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
+					tabBarIcon: ({ size }) => (
+						<Ionicons
+							name='search-sharp'
+							size={size}
+							color={Colors.SecondaryColor}
+						/>
+					),
+				}}
+			/>
+			<Tab.Screen
+				name='FavoriteTrainers'
+				component={FavoriteTrainers}
+				options={{
+					tabBarLabel: 'Favorite Trainers',
+					tabBarActiveTintColor: Colors.Texts.primary,
+					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
+					tabBarIcon: ({ size }) => (
+						<Ionicons
+							name='star-sharp'
+							size={size}
+							color={Colors.SecondaryColor}
+						/>
+					),
+				}}
+			/>
+			<Tab.Screen
+				name='RegisteredEvents'
+				component={RegisteredEvents}
+				options={{
+					tabBarLabel: 'My Events',
+					tabBarActiveTintColor: Colors.Texts.primary,
+					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
+					tabBarIcon: ({ size }) => (
+						<Ionicons
+							name='calendar-sharp'
+							size={size}
+							color={Colors.SecondaryColor}
+						/>
+					),
+				}}
+			/>
+			<Tab.Screen
+				name='PersonalDetails'
+				component={PersonalDetails}
+				options={{
+					tabBarLabel: 'My Profile',
+					tabBarActiveTintColor: Colors.Texts.primary,
+					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
+					tabBarIcon: ({ size }) => (
+						<Ionicons
+							name='person-sharp'
+							size={size}
+							color={Colors.SecondaryColor}
+						/>
+					),
+				}}
+			/>
 		</Tab.Navigator>
 	);
 };
