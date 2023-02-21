@@ -10,7 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 //Custom Components
-import Login from './Screens/Login';
+import Login from './Screens/LoginOutput/Login';
 import Signup from './Screens/Signup';
 import ForgotPassword from './Screens/ForgotPassword';
 import Categories from './Screens/TraineeScreens/Categories';
@@ -18,8 +18,7 @@ import FavoriteTrainers from './Screens/TraineeScreens/FavoriteTrainers';
 import RegisteredEvents from './Screens/TraineeScreens/RegisteredEvents';
 import PersonalDetails from './Screens/TraineeScreens/PersonalDetails';
 
-// Constants
-import Colors from './Constants/Colors';
+
 
 // Navigators Initialize`s
 const Stack = createNativeStackNavigator();
