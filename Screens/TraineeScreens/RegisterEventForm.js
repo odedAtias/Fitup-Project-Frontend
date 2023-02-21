@@ -1,15 +1,13 @@
 // RN core components & API imports
-import { View, Text } from "react-native";
+import { View, Text } from 'react-native';
 
-{
-  /*RegisterEventForm Component */
-}
+// RegisterEventForm Component
 const RegisterEventForm = () => {
-  return (
-    <View>
-      <Text>RegisterEventForm</Text>
-    </View>
-  );
+	return (
+		<View>
+			<Text>RegisterEventForm</Text>
+		</View>
+	);
 };
 
 export default RegisterEventForm;

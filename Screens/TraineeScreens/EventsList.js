@@ -1,13 +1,13 @@
 // RN core components & API imports
 import { View, Text } from 'react-native';
 
-// EventDetails component
-const EventDetails = () => {
+// EventsList component
+const EventsList = () => {
 	return (
 		<View>
-			<Text>EventDetails</Text>
+			<Text>EventsList</Text>
 		</View>
 	);
 };
 
-export default EventDetails;
+export default EventsList;
