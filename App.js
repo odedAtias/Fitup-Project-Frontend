@@ -17,11 +17,11 @@ import Categories from './Screens/TraineeScreens/CategoriesOutput/Categories';
 import FavoriteTrainers from './Screens/TraineeScreens/FavoriteTrainers';
 import RegisteredEvents from './Screens/TraineeScreens/RegisteredEvents';
 import PersonalDetails from './Screens/TraineeScreens/PersonalDetails';
-import Logo from './Components/Logo';
 import EventsList from './Screens/TraineeScreens/EventsList';
 import EventDetails from './Screens/TraineeScreens/EventDetails';
 import RegisterEventForm from './Screens/TraineeScreens/RegisterEventForm';
 import RegistrationSucceed from './Screens/TraineeScreens/RegistrationSucceed';
+import Header from './Components/Header';
 
 // Ionicons
 import { Ionicons } from '@expo/vector-icons';
@@ -39,27 +39,22 @@ const StackSearchEvent = () => (
 		<Stack.Screen
 			name='Categories'
 			component={Categories}
-			options={{ headerShown: false }}
+			options={{
+				header: () => <Header label={'Fit\nUp'} />,
+			}}
 		/>
-		<Stack.Screen name='EventsList' component={EventsList} />
+		<Stack.Screen
+			name='EventsList'
+			component={EventsList}
+			options={{
+				headerTitleAlign: 'center',
+			}}
+		/>
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
 		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
 	</Stack.Navigator>
 );
-// BottomTab header component
-const BottomTabHeader = () => {
-	return (
-		<View
-			style={{
-				height: '20%',
-				padding: '20%',
-				backgroundColor: Colors.Headers.primary,
-			}}>
-			<Logo imageWidth={200} imageHeight={120} />
-		</View>
-	);
-};
 
 // Auxilliary Components of trainee bottomTabs
 const TraineeBottomTab = () => {
@@ -67,12 +62,15 @@ const TraineeBottomTab = () => {
 		<Tab.Navigator
 			screenOptions={{
 				tabBarStyle: { backgroundColor: Colors.Backgrounds.primary },
+				header: () => (
+					<Header bgColor={Colors.Headers.primary} label={'Fit\nUp'} />
+				),
 			}}>
 			<Tab.Screen
 				name='StackSearchEvent'
 				component={StackSearchEvent}
 				options={{
-					header: BottomTabHeader,
+					headerShown: false,
 					tabBarLabel: 'Explore',
 					tabBarActiveTintColor: Colors.Texts.primary,
 					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
