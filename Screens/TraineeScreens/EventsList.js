@@ -4,7 +4,6 @@ import { useLayoutEffect } from 'react';
 import { View, Text } from 'react-native';
 // Custom components imports
 import Header from '../../Components/Header';
-import Symbol from '../../Components/Symbol';
 // Constants
 import Colors from '../../Constants/Colors';
 
@@ -22,7 +21,18 @@ const EventsList = ({ navigation, route }) => {
 			),
 		});
 	});
-	return <Text></Text>;
+	return (
+		<View>
+			{/* Filter Nav bar */}
+			<View>
+				<Text style={{ textAlign: 'center' }}>Drop down list</Text>
+			</View>
+			{/* List of events */}
+			<View>
+				<Text>List of events (list of Pressables)</Text>
+			</View>
+		</View>
+	);
 };
 
 export default EventsList;

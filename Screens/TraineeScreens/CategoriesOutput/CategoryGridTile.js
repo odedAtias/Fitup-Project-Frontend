@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	text: {
-		fontWeight: 'bold',
 		fontSize: 24,
 		color: 'white',
+		fontFamily: 'blanka',
 	},
 	buttonPressed: {
 		opacity: 0.75,

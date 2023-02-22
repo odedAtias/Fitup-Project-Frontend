@@ -1,8 +1,13 @@
+// Hooks imports
+import { useFonts } from 'expo-font';
+// Fonts
+import Blanka from './assets/fonts/Blanka-Regular.otf';
+
 // Status Bar
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -43,13 +48,7 @@ const StackSearchEvent = () => (
 				header: () => <Header label={'Fit\nUp'} />,
 			}}
 		/>
-		<Stack.Screen
-			name='EventsList'
-			component={EventsList}
-			options={{
-				headerTitleAlign: 'center',
-			}}
-		/>
+		<Stack.Screen name='EventsList' component={EventsList} />
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
 		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
@@ -137,21 +136,29 @@ const TraineeBottomTab = () => {
 
 // App Component
 export default function App() {
-	return (
-		<View style={styles.container}>
-			<StatusBar style='auto' />
-			{/* Stack Navigation Container (Contains 4 Screens)*/}
-			<NavigationContainer>
-				<Stack.Navigator screenOptions={{ headerShown: false }}>
-					<Stack.Screen name='Login' component={Login} />
-					<Stack.Screen name='Signup' component={Signup} />
-					<Stack.Screen name='ForgotPassword' component={ForgotPassword} />
-					<Stack.Screen name='TraineeBottomTab' component={TraineeBottomTab} />
-					{/* Stack Screen of trainersBottomTabs */}
-				</Stack.Navigator>
-			</NavigationContainer>
-		</View>
-	);
+	// Header font loader
+	const [loaded] = useFonts({
+		blanka: Blanka,
+	});
+	if (loaded)
+		return (
+			<View style={styles.container}>
+				<StatusBar style='auto' />
+				{/* Stack Navigation Container (Contains 4 Screens)*/}
+				<NavigationContainer>
+					<Stack.Navigator screenOptions={{ headerShown: false }}>
+						<Stack.Screen name='Login' component={Login} />
+						<Stack.Screen name='Signup' component={Signup} />
+						<Stack.Screen name='ForgotPassword' component={ForgotPassword} />
+						<Stack.Screen
+							name='TraineeBottomTab'
+							component={TraineeBottomTab}
+						/>
+						{/* Stack Screen of trainersBottomTabs */}
+					</Stack.Navigator>
+				</NavigationContainer>
+			</View>
+		);
 }
 
 // App StyleSheet
