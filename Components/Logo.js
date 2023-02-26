@@ -15,7 +15,6 @@ const Logo = ({ imageWidth, imageHeight }) => {
 
 const styles = StyleSheet.create({
 	logoContainer: {
-		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},

@@ -6,8 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 
 // Custom components imports
-import Input from '../../Components/Input';
-import Button from '../../Components/Button';
+import LoginInput from './LoginInput';
+import Button from '../Button';
 
 // Constants
 import Colors from '../../Constants/Colors';
@@ -51,7 +51,7 @@ const LoginForm = () => {
 
 	return (
 		<>
-			<Input
+			<LoginInput
 				label='Username'
 				iconName='person-sharp'
 				inputConfigurations={{
@@ -62,7 +62,7 @@ const LoginForm = () => {
 				}}
 				style={{ textAlign: 'left', fontSize: 16 }}
 			/>
-			<Input
+			<LoginInput
 				label='Password'
 				iconName='lock-closed'
 				inputConfigurations={{

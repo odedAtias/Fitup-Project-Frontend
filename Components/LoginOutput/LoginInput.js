@@ -3,14 +3,21 @@ import { View, Text, TextInput, StyleSheet } from 'react-native';
 // Ionicons imports
 import { Ionicons } from '@expo/vector-icons';
 // Constants
-import Colors from '../Constants/Colors';
+import Colors from '../../Constants/Colors';
 
 // Input component
-const Input = ({ label, inputConfigurations, iconName, style }) => {
+const LoginInput = ({
+	label,
+	inputConfigurations,
+	iconName,
+	style,
+	labelStyle,
+	containerStyle,
+}) => {
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, containerStyle]}>
 			<View style={styles.labelContainer}>
-				<Text style={styles.label}>{label}</Text>
+				<Text style={[styles.label, labelStyle]}>{label}</Text>
 				{iconName && <Ionicons name={iconName} size={30} />}
 			</View>
 			<TextInput {...inputConfigurations} style={[styles.input, style]} />
@@ -37,4 +44,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Input;
+export default LoginInput;

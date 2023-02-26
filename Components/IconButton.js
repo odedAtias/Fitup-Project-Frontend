@@ -24,8 +24,6 @@ const IconButton = ({ icon, size, color, onPress }) => {
 const styles = StyleSheet.create({
 	buttonContaier: {
 		borderRadius: 24,
-		padding: 6,
-		marginHorizontal: 8,
 		marginVertical: 2,
 	},
 	// Style when the icon was pressed

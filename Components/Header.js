@@ -1,7 +1,5 @@
 // RN core components & API imports
 import { View, Text, StyleSheet } from 'react-native';
-// Contatns
-import Colors from '../Constants/Colors';
 
 // Header component
 const Header = ({ label, containerStyle, labelStyle }) => {
@@ -14,10 +12,9 @@ const Header = ({ label, containerStyle, labelStyle }) => {
 
 const styles = StyleSheet.create({
 	container: {
+		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		padding: '5%',
-		backgroundColor: Colors.Headers.primary,
 	},
 	label: {
 		fontFamily: 'blanka',

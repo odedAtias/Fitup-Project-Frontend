@@ -1,5 +1,6 @@
 // Hooks imports
 import { useFonts } from 'expo-font';
+
 // Fonts
 import Blanka from './assets/fonts/Blanka-Regular.otf';
 
@@ -7,7 +8,7 @@ import Blanka from './assets/fonts/Blanka-Regular.otf';
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,10 +16,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //Custom Components
-import Login from './Screens/LoginOutput/Login';
+import Login from './Screens/Login';
 import Signup from './Screens/Signup';
 import ForgotPassword from './Screens/ForgotPassword';
-import Categories from './Screens/TraineeScreens/CategoriesOutput/Categories';
+import Categories from './Screens/TraineeScreens/Categories';
 import FavoriteTrainers from './Screens/TraineeScreens/FavoriteTrainers';
 import RegisteredEvents from './Screens/TraineeScreens/RegisteredEvents';
 import PersonalDetails from './Screens/TraineeScreens/PersonalDetails';
@@ -27,6 +28,7 @@ import EventDetails from './Screens/TraineeScreens/EventDetails';
 import RegisterEventForm from './Screens/TraineeScreens/RegisterEventForm';
 import RegistrationSucceed from './Screens/TraineeScreens/RegistrationSucceed';
 import Header from './Components/Header';
+import IconButton from './Components/IconButton';
 
 // Ionicons
 import { Ionicons } from '@expo/vector-icons';
@@ -39,13 +41,47 @@ const Tab = createBottomTabNavigator();
 import Colors from './Constants/Colors';
 
 // Search Events Stack Navigator
-const StackSearchEvent = () => (
-	<Stack.Navigator>
+const StackSearchEvent = ({ navigation }) => (
+	<Stack.Navigator
+		screenOptions={{
+			headerTitleAlign: 'center',
+			headerTitleStyle: {
+				color: 'white',
+				fontFamily: 'blanka',
+				fontSize: 60,
+			},
+			headerStyle: {
+				backgroundColor: Colors.Headers.primary,
+			},
+			headerLeft: () => (
+				<View style={{ paddingVertical: 35 }}>
+					<IconButton
+						icon='arrow-back-sharp'
+						size={35}
+						color='white'
+						onPress={() => navigation.goBack()}
+					/>
+				</View>
+			),
+		}}>
 		<Stack.Screen
 			name='Categories'
 			component={Categories}
 			options={{
-				header: () => <Header label={'Fit\nUp'} />,
+				header: () => (
+					<Header
+						label={'Fit\nUp'}
+						containerStyle={{
+							backgroundColor: Colors.Headers.primary,
+							paddingTop: '10%',
+							paddingBottom: '5%',
+						}}
+					/>
+				),
+				headerTitleAlign: 'center',
+				headerStyle: {
+					backgroundColor: Colors.Headers.primary,
+				},
 			}}
 		/>
 		<Stack.Screen name='EventsList' component={EventsList} />
@@ -60,9 +96,15 @@ const TraineeBottomTab = () => {
 	return (
 		<Tab.Navigator
 			screenOptions={{
-				tabBarStyle: { backgroundColor: Colors.Backgrounds.primary },
 				header: () => (
-					<Header bgColor={Colors.Headers.primary} label={'Fit\nUp'} />
+					<Header
+						label={'Fit\nUp'}
+						containerStyle={{
+							backgroundColor: Colors.Headers.primary,
+							paddingTop: '10%',
+							paddingBottom: '5%',
+						}}
+					/>
 				),
 			}}>
 			<Tab.Screen
@@ -146,13 +188,39 @@ export default function App() {
 				<StatusBar style='auto' />
 				{/* Stack Navigation Container (Contains 4 Screens)*/}
 				<NavigationContainer>
-					<Stack.Navigator screenOptions={{ headerShown: false }}>
-						<Stack.Screen name='Login' component={Login} />
+					<Stack.Navigator
+						mode='modal'
+						screenOptions={{
+							headerTitle: 'FitUp',
+							headerTitleAlign: 'center',
+							headerTitleStyle: {
+								fontFamily: 'blanka',
+								fontSize: 48,
+							},
+							headerStyle: {
+								backgroundColor: Colors.Backgrounds.secondary,
+							},
+							headerShadowVisible: false,
+							contentStyle: {
+								backgroundColor: Colors.Backgrounds.secondary,
+							},
+						}}>
+						<Stack.Screen
+							name='Login'
+							component={Login}
+							options={{ headerShown: false }}
+						/>
 						<Stack.Screen name='Signup' component={Signup} />
-						<Stack.Screen name='ForgotPassword' component={ForgotPassword} />
 						<Stack.Screen
 							name='TraineeBottomTab'
 							component={TraineeBottomTab}
+							options={{
+								headerShown: false,
+								headerStyle: {
+									backgroundColor: Colors.Backgrounds.third,
+									height: 300,
+								},
+							}}
 						/>
 						{/* Stack Screen of trainersBottomTabs */}
 					</Stack.Navigator>

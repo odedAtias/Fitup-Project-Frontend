@@ -1,10 +1,10 @@
 // RN core components & API imports
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 // Custom components imports
-import Logo from '../../Components/Logo';
-import LoginForm from './LoginForm';
+import LoginForm from '../Components/LoginOutput/LoginForm';
+import Logo from '../Components/Logo';
 // Constants
-import Colors from '../../Constants/Colors';
+import Colors from '../Constants/Colors';
 
 // Login Component
 const Login = ({ navigation }) => {
