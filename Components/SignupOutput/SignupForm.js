@@ -10,6 +10,7 @@ import Colors from '../../Constants/Colors';
 
 // Custom components imports
 import LoginInput from '../LoginOutput/LoginInput';
+import SignupInput from './SignupInput';
 import Button from '../Button';
 
 // SignupForm Component
@@ -57,7 +58,7 @@ const SignupForm = () => {
 	};
 	return (
 		<View style={styles.container}>
-			<LoginInput
+			<SignupInput
 				label='First Name'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'firstName'),
@@ -65,11 +66,8 @@ const SignupForm = () => {
 					autoCorrect: false,
 					value: inputs.firstName.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
-				labelStyle={{ fontSize: 18 }}
-				containerStyle={{ marginVertical: '5%' }}
 			/>
-			<LoginInput
+			<SignupInput
 				label='Last Name'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'lastName'),
@@ -77,11 +75,8 @@ const SignupForm = () => {
 					autoCorrect: false,
 					value: inputs.lastName.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
-				labelStyle={{ fontSize: 18 }}
-				containerStyle={{ marginVertical: '5%' }}
 			/>
-			<LoginInput
+			<SignupInput
 				label='Email'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'email'),
@@ -89,11 +84,8 @@ const SignupForm = () => {
 					autoCorrect: false,
 					value: inputs.email.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
-				labelStyle={{ fontSize: 18 }}
-				containerStyle={{ marginVertical: '5%' }}
 			/>
-			<LoginInput
+			<SignupInput
 				label='Password'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'password'),
@@ -102,11 +94,8 @@ const SignupForm = () => {
 					secureTextEntry: true,
 					value: inputs.email.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
-				labelStyle={{ fontSize: 18 }}
-				containerStyle={{ marginVertical: '5%' }}
 			/>
-			<LoginInput
+			<SignupInput
 				label='Confirm Password'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'confirmPassword'),
@@ -115,11 +104,8 @@ const SignupForm = () => {
 					secureTextEntry: true,
 					value: inputs.email.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
-				labelStyle={{ fontSize: 18 }}
-				containerStyle={{ marginVertical: '5%' }}
 			/>
-			<LoginInput
+			<SignupInput
 				label='Trainee / Trainer'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'confirmPassword'),
@@ -128,9 +114,6 @@ const SignupForm = () => {
 					secureTextEntry: true,
 					value: inputs.userType.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
-				labelStyle={{ fontSize: 18 }}
-				containerStyle={{ marginVertical: '5%' }}
 			/>
 			<View style={{ justifyContent: 'center', alignItems: 'center' }}>
 				<Button

@@ -2,7 +2,6 @@
 import { View, StyleSheet } from 'react-native';
 // Custom components import
 import SignupForm from '../Components/SignupOutput/SignupForm';
-
 // SignUp Component
 const Signup = ({ navigation }) => {
 	return (
