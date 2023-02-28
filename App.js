@@ -173,9 +173,9 @@ export default function App() {
 						screenOptions={{
 							headerTitle: () => <Header label={'Fit\nUp'} />,
 							headerTitleAlign: 'center',
-							headerStyle: { backgroundColor: 'white' },
+							headerStyle: { backgroundColor: Colors.Backgrounds.primary },
 							headerShadowVisible: false,
-							contentStyle: { backgroundColor: 'white' },
+							contentStyle: { backgroundColor: Colors.Backgrounds.primary },
 						}}>
 						<Stack.Screen
 							name='Login'
