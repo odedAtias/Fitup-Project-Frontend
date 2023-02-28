@@ -8,7 +8,7 @@ import Blanka from './assets/fonts/Blanka-Regular.otf';
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, SafeAreaView, Text } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -42,48 +42,8 @@ import Colors from './Constants/Colors';
 
 // Search Events Stack Navigator
 const StackSearchEvent = ({ navigation }) => (
-	<Stack.Navigator
-		screenOptions={{
-			headerTitleAlign: 'center',
-			headerTitleStyle: {
-				color: 'white',
-				fontFamily: 'blanka',
-				fontSize: 60,
-			},
-			headerStyle: {
-				backgroundColor: Colors.Headers.primary,
-			},
-			headerLeft: () => (
-				<View style={{ paddingVertical: 35 }}>
-					<IconButton
-						icon='arrow-back-sharp'
-						size={35}
-						color='white'
-						onPress={() => navigation.goBack()}
-					/>
-				</View>
-			),
-		}}>
-		<Stack.Screen
-			name='Categories'
-			component={Categories}
-			options={{
-				header: () => (
-					<Header
-						label={'Fit\nUp'}
-						containerStyle={{
-							backgroundColor: Colors.Headers.primary,
-							paddingTop: '10%',
-							paddingBottom: '5%',
-						}}
-					/>
-				),
-				headerTitleAlign: 'center',
-				headerStyle: {
-					backgroundColor: Colors.Headers.primary,
-				},
-			}}
-		/>
+	<Stack.Navigator>
+		<Stack.Screen name='Categories' component={Categories} />
 		<Stack.Screen name='EventsList' component={EventsList} />
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
@@ -100,9 +60,8 @@ const TraineeBottomTab = () => {
 					<Header
 						label={'Fit\nUp'}
 						containerStyle={{
+							paddingVertical: '8%',
 							backgroundColor: Colors.Headers.primary,
-							paddingTop: '10%',
-							paddingBottom: '5%',
 						}}
 					/>
 				),
@@ -113,14 +72,8 @@ const TraineeBottomTab = () => {
 				options={{
 					headerShown: false,
 					tabBarLabel: 'Explore',
-					tabBarActiveTintColor: Colors.Texts.primary,
-					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
 					tabBarIcon: ({ size }) => (
-						<Ionicons
-							name='search-sharp'
-							size={size}
-							color={Colors.SecondaryColor}
-						/>
+						<Ionicons name='search-sharp' size={size} />
 					),
 				}}
 			/>
@@ -129,15 +82,7 @@ const TraineeBottomTab = () => {
 				component={FavoriteTrainers}
 				options={{
 					tabBarLabel: 'Favorite Trainers',
-					tabBarActiveTintColor: Colors.Texts.primary,
-					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
-					tabBarIcon: ({ size }) => (
-						<Ionicons
-							name='star-sharp'
-							size={size}
-							color={Colors.SecondaryColor}
-						/>
-					),
+					tabBarIcon: ({ size }) => <Ionicons name='star-sharp' size={size} />,
 				}}
 			/>
 			<Tab.Screen
@@ -145,14 +90,8 @@ const TraineeBottomTab = () => {
 				component={RegisteredEvents}
 				options={{
 					tabBarLabel: 'My Events',
-					tabBarActiveTintColor: Colors.Texts.primary,
-					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
 					tabBarIcon: ({ size }) => (
-						<Ionicons
-							name='calendar-sharp'
-							size={size}
-							color={Colors.SecondaryColor}
-						/>
+						<Ionicons name='calendar-sharp' size={size} />
 					),
 				}}
 			/>
@@ -161,14 +100,8 @@ const TraineeBottomTab = () => {
 				component={PersonalDetails}
 				options={{
 					tabBarLabel: 'My Profile',
-					tabBarActiveTintColor: Colors.Texts.primary,
-					tabBarActiveBackgroundColor: Colors.Backgrounds.secondary,
 					tabBarIcon: ({ size }) => (
-						<Ionicons
-							name='person-sharp'
-							size={size}
-							color={Colors.SecondaryColor}
-						/>
+						<Ionicons name='person-sharp' size={size} />
 					),
 				}}
 			/>
@@ -184,26 +117,23 @@ export default function App() {
 	});
 	if (loaded)
 		return (
-			<View style={styles.container}>
-				<StatusBar style='auto' />
+			<SafeAreaView style={styles.container}>
+				<StatusBar style='auto' translucent={true} />
 				{/* Stack Navigation Container (Contains 4 Screens)*/}
 				<NavigationContainer>
 					<Stack.Navigator
 						mode='modal'
 						screenOptions={{
-							headerTitle: 'FitUp',
+							headerTitle: () => (
+								<Header
+									label={'Fit\nUp'}
+									containerStyle={{ paddingVertical: 10 }}
+								/>
+							),
 							headerTitleAlign: 'center',
-							headerTitleStyle: {
-								fontFamily: 'blanka',
-								fontSize: 48,
-							},
-							headerStyle: {
-								backgroundColor: Colors.Backgrounds.secondary,
-							},
+							headerStyle: { backgroundColor: Colors.Backgrounds.secondary },
 							headerShadowVisible: false,
-							contentStyle: {
-								backgroundColor: Colors.Backgrounds.secondary,
-							},
+							contentStyle: { backgroundColor: Colors.Backgrounds.secondary },
 						}}>
 						<Stack.Screen
 							name='Login'
@@ -211,21 +141,16 @@ export default function App() {
 							options={{ headerShown: false }}
 						/>
 						<Stack.Screen name='Signup' component={Signup} />
+						<Stack.Screen name='ForgotPassword' component={ForgotPassword} />
 						<Stack.Screen
 							name='TraineeBottomTab'
 							component={TraineeBottomTab}
-							options={{
-								headerShown: false,
-								headerStyle: {
-									backgroundColor: Colors.Backgrounds.third,
-									height: 300,
-								},
-							}}
+							options={{ headerShown: false }}
 						/>
 						{/* Stack Screen of trainersBottomTabs */}
 					</Stack.Navigator>
 				</NavigationContainer>
-			</View>
+			</SafeAreaView>
 		);
 }
 

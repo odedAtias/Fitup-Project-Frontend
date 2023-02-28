@@ -38,16 +38,16 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		marginHorizontal: 24,
-		marginTop: '20%',
+		marginTop: '10%',
 	},
 
 	forgotPasswordOuterContainer: {
-		marginTop: 15,
+		marginTop: 20,
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
 	forgotPasswordText: {
-		fontSize: 16,
+		fontSize: 18,
 	},
 	forgotPasswordLink: {
 		marginLeft: 3,

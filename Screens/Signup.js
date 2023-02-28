@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 // Custom components import
 import SignupForm from '../Components/SignupOutput/SignupForm';
 // SignUp Component
-const Signup = ({ navigation }) => {
+const Signup = () => {
 	return (
 		<View style={styles.container}>
 			<SignupForm />
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		borderTopLeftRadius: 20,
 		borderBottomRightRadius: 20,
-		paddingVertical: '5%',
+		paddingVertical: '10%',
 	},
 });
 

@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
 		borderBottomColor: Colors.Texts.primary,
 		borderBottomWidth: 1,
 		paddingVertical: 5,
+		fontSize: 30,
 	},
 });
 

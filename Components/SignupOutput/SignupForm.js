@@ -99,7 +99,7 @@ const SignupForm = () => {
 				label='Confirm Password'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'confirmPassword'),
-					placeholder: 'Enter your email',
+					placeholder: 'Enter your password again',
 					autoCorrect: false,
 					secureTextEntry: true,
 					value: inputs.email.value,

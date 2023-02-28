@@ -1,9 +1,6 @@
 // RN core components & API imports
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
-// Ionicons imports
-import { Ionicons } from '@expo/vector-icons';
-
 // Constants
 import Colors from '../../Constants/Colors';
 
