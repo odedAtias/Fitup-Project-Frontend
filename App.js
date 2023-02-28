@@ -82,9 +82,10 @@ const TraineeBottomTab = () => {
 				options={{
 					headerShown: false,
 					tabBarLabel: 'Explore',
-					tabBarIcon: ({ size }) => (
-						<Ionicons name='search-sharp' size={size} />
-					),
+					tabBarIcon: ({ focused, size, color }) => {
+						let iconName = focused ? 'search' : 'search-outline';
+						return <Ionicons name={iconName} size={size} color={color} />;
+					},
 				}}
 			/>
 			<Tab.Screen
@@ -92,7 +93,10 @@ const TraineeBottomTab = () => {
 				component={FavoriteTrainers}
 				options={{
 					tabBarLabel: 'Favorite Trainers',
-					tabBarIcon: ({ size }) => <Ionicons name='star-sharp' size={size} />,
+					tabBarIcon: ({ focused, size, color }) => {
+						let iconName = focused ? 'bookmarks' : 'bookmarks-outline';
+						return <Ionicons name={iconName} size={size} color={color} />;
+					},
 				}}
 			/>
 			<Tab.Screen
@@ -100,9 +104,10 @@ const TraineeBottomTab = () => {
 				component={RegisteredEvents}
 				options={{
 					tabBarLabel: 'My Events',
-					tabBarIcon: ({ size }) => (
-						<Ionicons name='calendar-sharp' size={size} />
-					),
+					tabBarIcon: ({ focused, size, color }) => {
+						let iconName = focused ? 'calendar' : 'calendar-outline';
+						return <Ionicons name={iconName} size={size} color={color} />;
+					},
 				}}
 			/>
 			<Tab.Screen
@@ -110,9 +115,10 @@ const TraineeBottomTab = () => {
 				component={PersonalDetails}
 				options={{
 					tabBarLabel: 'My Profile',
-					tabBarIcon: ({ size }) => (
-						<Ionicons name='person-sharp' size={size} />
-					),
+					tabBarIcon: ({ focused, size, color }) => {
+						let iconName = focused ? 'person' : 'person-outline';
+						return <Ionicons name={iconName} size={size} color={color} />;
+					},
 				}}
 			/>
 		</Tab.Navigator>
