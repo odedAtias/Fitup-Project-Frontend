@@ -8,7 +8,7 @@ import Blanka from './assets/fonts/Blanka-Regular.otf';
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -42,9 +42,18 @@ import Colors from './Constants/Colors';
 
 // Search Events Stack Navigator
 const StackSearchEvent = ({ navigation }) => (
-	<Stack.Navigator>
-		<Stack.Screen name='Categories' component={Categories} />
-		<Stack.Screen name='EventsList' component={EventsList} />
+	<Stack.Navigator
+		mode='modal'
+		screenOptions={{
+			headerTitle: () => (
+				<Header label={'Fit\nUp'} containerStyle={{ paddingBottom: 10 }} />
+			),
+			headerTitleAlign: 'center',
+			headerStyle: { backgroundColor: Colors.Headers.primary },
+			headerShadowVisible: false,
+		}}>
+		<Stack.Screen name='Categories' component={Categories} options={{}} />
+		<Stack.Screen name='EventsList' component={EventsList} options={{}} />
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
 		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
@@ -58,10 +67,11 @@ const TraineeBottomTab = () => {
 			screenOptions={{
 				header: () => (
 					<Header
-						label={'Fit\nUp'}
+						label={'Fit\nup'}
 						containerStyle={{
-							paddingVertical: '8%',
 							backgroundColor: Colors.Headers.primary,
+							paddingBottom: 10,
+							paddingTop: 50,
 						}}
 					/>
 				),
@@ -125,10 +135,7 @@ export default function App() {
 						mode='modal'
 						screenOptions={{
 							headerTitle: () => (
-								<Header
-									label={'Fit\nUp'}
-									containerStyle={{ paddingVertical: 10 }}
-								/>
+								<Header label={'Fit\nUp'} containerStyle={{}} />
 							),
 							headerTitleAlign: 'center',
 							headerStyle: { backgroundColor: Colors.Backgrounds.secondary },

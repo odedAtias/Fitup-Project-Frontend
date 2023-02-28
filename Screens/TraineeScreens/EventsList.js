@@ -8,9 +8,7 @@ import { View, Text } from 'react-native';
 const EventsList = ({ navigation, route }) => {
 	// Loading the dynamic screen options
 	useLayoutEffect(() => {
-		navigation.setOptions({
-			headerTitle: route.params.categoryName,
-		});
+		navigation.setOptions({});
 	});
 	return (
 		<View>

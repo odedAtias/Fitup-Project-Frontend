@@ -12,13 +12,11 @@ const Header = ({ label, containerStyle, labelStyle }) => {
 
 const styles = StyleSheet.create({
 	container: {
-		flexDirection: 'row',
-		alignItems: 'center',
 		justifyContent: 'center',
 	},
 	label: {
 		fontFamily: 'blanka',
-		fontSize: 60,
+		fontSize: 50,
 		textAlign: 'center',
 	},
 });
