@@ -13,6 +13,7 @@ const Header = ({ label, containerStyle, labelStyle }) => {
 const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	label: {
 		fontFamily: 'blanka',

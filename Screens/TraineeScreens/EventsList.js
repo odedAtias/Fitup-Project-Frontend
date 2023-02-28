@@ -3,12 +3,22 @@ import { useLayoutEffect } from 'react';
 // RN core components & API imports
 import { View, Text } from 'react-native';
 // Custom components imports
+import Header from '../../Components/Header';
 
 // EventsList component
 const EventsList = ({ navigation, route }) => {
 	// Loading the dynamic screen options
 	useLayoutEffect(() => {
-		navigation.setOptions({});
+		navigation.setOptions({
+			headerTitle: () => (
+				<Header
+					label={route.params.categoryName}
+					containerStyle={{ paddingVertical: 30 }}
+					labelStyle={{ color: 'white', fontSize: 40 }}
+				/>
+			),
+			headerTintColor: 'white',
+		});
 	});
 	return (
 		<View>
