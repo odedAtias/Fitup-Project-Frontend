@@ -73,13 +73,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingVertical: 24,
-	},
-	inputContainer: {
-		padding: 24,
-	},
-	inputText: {
-		borderBottomColor: '#000',
-		borderBottomWidth: 1,
+		backgroundColor: 'white',
 	},
 });
 

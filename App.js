@@ -75,16 +75,33 @@ const TraineeBottomTab = () => {
 						}}
 					/>
 				),
+				tabBarStyle: {
+					backgroundColor: Colors.Headers.primary,
+					position: 'absolute',
+					bottom: 10,
+					left: 20,
+					right: 20,
+					borderRadius: 15,
+					elevation: 0,
+				},
+				tabBarShowLabel: false,
+				tabBarActiveTintColor: Colors.Texts.primary,
+				tabBarInactiveTintColor: Colors.Texts.secondary,
 			}}>
 			<Tab.Screen
 				name='StackSearchEvent'
 				component={StackSearchEvent}
 				options={{
 					headerShown: false,
-					tabBarLabel: 'Explore',
 					tabBarIcon: ({ focused, size, color }) => {
 						let iconName = focused ? 'search' : 'search-outline';
-						return <Ionicons name={iconName} size={size} color={color} />;
+						return (
+							<Ionicons
+								name={iconName}
+								size={focused ? 30 : 25}
+								color={color}
+							/>
+						);
 					},
 				}}
 			/>
@@ -92,10 +109,15 @@ const TraineeBottomTab = () => {
 				name='FavoriteTrainers'
 				component={FavoriteTrainers}
 				options={{
-					tabBarLabel: 'Favorite Trainers',
 					tabBarIcon: ({ focused, size, color }) => {
 						let iconName = focused ? 'bookmarks' : 'bookmarks-outline';
-						return <Ionicons name={iconName} size={size} color={color} />;
+						return (
+							<Ionicons
+								name={iconName}
+								size={focused ? 30 : 25}
+								color={color}
+							/>
+						);
 					},
 				}}
 			/>
@@ -103,10 +125,15 @@ const TraineeBottomTab = () => {
 				name='RegisteredEvents'
 				component={RegisteredEvents}
 				options={{
-					tabBarLabel: 'My Events',
 					tabBarIcon: ({ focused, size, color }) => {
 						let iconName = focused ? 'calendar' : 'calendar-outline';
-						return <Ionicons name={iconName} size={size} color={color} />;
+						return (
+							<Ionicons
+								name={iconName}
+								size={focused ? 30 : 25}
+								color={color}
+							/>
+						);
 					},
 				}}
 			/>
@@ -114,10 +141,15 @@ const TraineeBottomTab = () => {
 				name='PersonalDetails'
 				component={PersonalDetails}
 				options={{
-					tabBarLabel: 'My Profile',
 					tabBarIcon: ({ focused, size, color }) => {
 						let iconName = focused ? 'person' : 'person-outline';
-						return <Ionicons name={iconName} size={size} color={color} />;
+						return (
+							<Ionicons
+								name={iconName}
+								size={focused ? 30 : 25}
+								color={color}
+							/>
+						);
 					},
 				}}
 			/>

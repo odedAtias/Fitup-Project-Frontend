@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		margin: 16,
 		marginTop: 0,
-		height: 150,
+		height: 140,
 		width: '100%',
 		// Shadow for android
 		elevation: 8,
