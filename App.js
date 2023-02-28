@@ -8,7 +8,7 @@ import Blanka from './assets/fonts/Blanka-Regular.otf';
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, SafeAreaView, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -28,7 +28,6 @@ import EventDetails from './Screens/TraineeScreens/EventDetails';
 import RegisterEventForm from './Screens/TraineeScreens/RegisterEventForm';
 import RegistrationSucceed from './Screens/TraineeScreens/RegistrationSucceed';
 import Header from './Components/Header';
-import IconButton from './Components/IconButton';
 
 // Ionicons
 import { Ionicons } from '@expo/vector-icons';
@@ -41,7 +40,7 @@ const Tab = createBottomTabNavigator();
 import Colors from './Constants/Colors';
 
 // Search Events Stack Navigator
-const StackSearchEvent = ({ navigation }) => (
+const StackSearchEvent = () => (
 	<Stack.Navigator
 		mode='modal'
 		screenOptions={{
@@ -85,8 +84,8 @@ const TraineeBottomTab = () => {
 					elevation: 0,
 				},
 				tabBarShowLabel: false,
-				tabBarActiveTintColor: Colors.Texts.primary,
-				tabBarInactiveTintColor: Colors.Texts.secondary,
+				tabBarActiveTintColor: Colors.Backgrounds.third,
+				tabBarInactiveTintColor: Colors.Backgrounds.secondary,
 			}}>
 			<Tab.Screen
 				name='StackSearchEvent'
@@ -98,7 +97,7 @@ const TraineeBottomTab = () => {
 						return (
 							<Ionicons
 								name={iconName}
-								size={focused ? 30 : 25}
+								size={focused ? 35 : 25}
 								color={color}
 							/>
 						);
@@ -114,7 +113,7 @@ const TraineeBottomTab = () => {
 						return (
 							<Ionicons
 								name={iconName}
-								size={focused ? 30 : 25}
+								size={focused ? 35 : 25}
 								color={color}
 							/>
 						);
@@ -130,7 +129,7 @@ const TraineeBottomTab = () => {
 						return (
 							<Ionicons
 								name={iconName}
-								size={focused ? 30 : 25}
+								size={focused ? 35 : 25}
 								color={color}
 							/>
 						);
@@ -146,7 +145,7 @@ const TraineeBottomTab = () => {
 						return (
 							<Ionicons
 								name={iconName}
-								size={focused ? 30 : 25}
+								size={focused ? 35 : 25}
 								color={color}
 							/>
 						);
@@ -172,13 +171,11 @@ export default function App() {
 					<Stack.Navigator
 						mode='modal'
 						screenOptions={{
-							headerTitle: () => (
-								<Header label={'Fit\nUp'} containerStyle={{}} />
-							),
+							headerTitle: () => <Header label={'Fit\nUp'} />,
 							headerTitleAlign: 'center',
-							headerStyle: { backgroundColor: Colors.Backgrounds.secondary },
+							headerStyle: { backgroundColor: 'white' },
 							headerShadowVisible: false,
-							contentStyle: { backgroundColor: Colors.Backgrounds.secondary },
+							contentStyle: { backgroundColor: 'white' },
 						}}>
 						<Stack.Screen
 							name='Login'

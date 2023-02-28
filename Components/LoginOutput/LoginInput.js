@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
 		paddingVertical: 5,
 		fontSize: 30,
 	},
+	font: {
+		fontFamily: 'montserrat',
+	},
 });
 
 export default LoginInput;

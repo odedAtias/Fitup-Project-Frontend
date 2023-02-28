@@ -9,7 +9,6 @@ import { View, StyleSheet } from 'react-native';
 import Colors from '../../Constants/Colors';
 
 // Custom components imports
-import LoginInput from '../LoginOutput/LoginInput';
 import SignupInput from './SignupInput';
 import Button from '../Button';
 
@@ -62,7 +61,7 @@ const SignupForm = () => {
 				label='First Name'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'firstName'),
-					placeholder: 'Enter your first name',
+
 					autoCorrect: false,
 					value: inputs.firstName.value,
 				}}
@@ -71,7 +70,6 @@ const SignupForm = () => {
 				label='Last Name'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'lastName'),
-					placeholder: 'Enter your last name',
 					autoCorrect: false,
 					value: inputs.lastName.value,
 				}}
@@ -80,7 +78,6 @@ const SignupForm = () => {
 				label='Email'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'email'),
-					placeholder: 'Enter your email',
 					autoCorrect: false,
 					value: inputs.email.value,
 				}}
@@ -89,27 +86,24 @@ const SignupForm = () => {
 				label='Password'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'password'),
-					placeholder: 'Enter your email',
 					autoCorrect: false,
 					secureTextEntry: true,
-					value: inputs.email.value,
+					value: inputs.password.value,
 				}}
 			/>
 			<SignupInput
 				label='Confirm Password'
 				inputConfigurations={{
 					onChangeText: handleInputChange.bind(this, 'confirmPassword'),
-					placeholder: 'Enter your password again',
 					autoCorrect: false,
 					secureTextEntry: true,
-					value: inputs.email.value,
+					value: inputs.confirmPassword.value,
 				}}
 			/>
 			<SignupInput
 				label='Trainee / Trainer'
 				inputConfigurations={{
-					onChangeText: handleInputChange.bind(this, 'confirmPassword'),
-					placeholder: 'Enter your type',
+					onChangeText: handleInputChange.bind(this, 'userType'),
 					autoCorrect: false,
 					secureTextEntry: true,
 					value: inputs.userType.value,
@@ -122,7 +116,7 @@ const SignupForm = () => {
 						console.log('sign-up handler');
 						navigation.navigate('Login');
 					}}>
-					Confirm
+					Register now
 				</Button>
 			</View>
 		</View>
@@ -134,15 +128,7 @@ const handleSubmit = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		justifyContent: 'center',
-
-		flex: 1,
-		backgroundColor: 'white',
-		marginHorizontal: '5%',
-		borderTopLeftRadius: 20,
-		borderBottomRightRadius: 20,
 		paddingHorizontal: '5%',
-		overflow: 'hidden',
 	},
 });
 

@@ -10,10 +10,12 @@ const Colors = {
 		third: '#e4deae',
 		male: '#604fdd',
 		female: '#ff78ae',
+		input: '#D9E8FD',
 	},
 	Buttons: {
 		primary: '#79AD94',
 		secondary: '#010101',
+		third: '#C7AD98',
 	},
 	Links: {
 		primary: '#2657c1',

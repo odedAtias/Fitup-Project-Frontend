@@ -18,7 +18,7 @@ const Login = ({ navigation }) => {
 			<LoginForm />
 			{/* Forgot Password link */}
 			<View style={styles.forgotPasswordOuterContainer}>
-				<Text style={styles.forgotPasswordText}>Forgot password ?</Text>
+				<Text style={[styles.forgotPasswordText]}>Forgot password ?</Text>
 				<Pressable
 					onPress={() => {
 						console.log('forgot password Pressed ...');

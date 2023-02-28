@@ -16,9 +16,7 @@ const Signup = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		borderTopLeftRadius: 20,
-		borderBottomRightRadius: 20,
-		paddingVertical: '10%',
+		padding: 10,
 	},
 });
 

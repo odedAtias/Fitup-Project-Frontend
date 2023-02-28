@@ -17,17 +17,19 @@ const SignupInput = ({ label, inputConfigurations }) => {
 // SignupInput StyleSheet
 const styles = StyleSheet.create({
 	container: {
-		marginVertical: '5%',
+		marginBottom: '5%',
 	},
+
 	label: {
 		fontSize: 18,
+		marginBottom: 5,
 	},
 	input: {
 		textAlign: 'left',
+		padding: '2%',
 		fontSize: 16,
-		borderBottomColor: Colors.Texts.primary,
-		borderBottomWidth: 1,
-		paddingVertical: 5,
+		backgroundColor: Colors.Backgrounds.input,
+		width: '100%',
 	},
 });
 
