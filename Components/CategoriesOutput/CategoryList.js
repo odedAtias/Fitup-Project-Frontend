@@ -1,13 +1,13 @@
 // Hooks imports
 import { useNavigation } from '@react-navigation/native';
-// RN core components
+// RN core components & API imports
 import { FlatList, StyleSheet, View } from 'react-native';
 // Custom components imports
 import CategoryGridTile from './CategoryGridTile';
 
 // category press handler function
 const handlePress = (item, navigation) => {
-	navigation.navigate('EventsList', {
+	navigation.navigate('Events', {
 		categoryId: item.id,
 		categoryName: item.name,
 	});

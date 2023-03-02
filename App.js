@@ -23,7 +23,7 @@ import Categories from './Screens/TraineeScreens/Categories';
 import FavoriteTrainers from './Screens/TraineeScreens/FavoriteTrainers';
 import RegisteredEvents from './Screens/TraineeScreens/RegisteredEvents';
 import PersonalDetails from './Screens/TraineeScreens/PersonalDetails';
-import EventsList from './Screens/TraineeScreens/EventsList';
+import Events from './Screens/TraineeScreens/Events';
 import EventDetails from './Screens/TraineeScreens/EventDetails';
 import RegisterEventForm from './Screens/TraineeScreens/RegisterEventForm';
 import RegistrationSucceed from './Screens/TraineeScreens/RegistrationSucceed';
@@ -51,8 +51,8 @@ const StackSearchEvent = () => (
 			headerStyle: { backgroundColor: Colors.Headers.primary },
 			headerShadowVisible: false,
 		}}>
-		<Stack.Screen name='Categories' component={Categories} options={{}} />
-		<Stack.Screen name='EventsList' component={EventsList} options={{}} />
+		<Stack.Screen name='Categories' component={Categories} />
+		<Stack.Screen name='Events' component={Events} />
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
 		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
@@ -92,7 +92,7 @@ const TraineeBottomTab = () => {
 				component={StackSearchEvent}
 				options={{
 					headerShown: false,
-					tabBarIcon: ({ focused, size, color }) => {
+					tabBarIcon: ({ focused, color }) => {
 						let iconName = focused ? 'search' : 'search-outline';
 						return (
 							<Ionicons
@@ -108,7 +108,7 @@ const TraineeBottomTab = () => {
 				name='FavoriteTrainers'
 				component={FavoriteTrainers}
 				options={{
-					tabBarIcon: ({ focused, size, color }) => {
+					tabBarIcon: ({ focused, color }) => {
 						let iconName = focused ? 'bookmarks' : 'bookmarks-outline';
 						return (
 							<Ionicons
@@ -124,7 +124,7 @@ const TraineeBottomTab = () => {
 				name='RegisteredEvents'
 				component={RegisteredEvents}
 				options={{
-					tabBarIcon: ({ focused, size, color }) => {
+					tabBarIcon: ({ focused, color }) => {
 						let iconName = focused ? 'calendar' : 'calendar-outline';
 						return (
 							<Ionicons
@@ -140,7 +140,7 @@ const TraineeBottomTab = () => {
 				name='PersonalDetails'
 				component={PersonalDetails}
 				options={{
-					tabBarIcon: ({ focused, size, color }) => {
+					tabBarIcon: ({ focused, color }) => {
 						let iconName = focused ? 'person' : 'person-outline';
 						return (
 							<Ionicons
