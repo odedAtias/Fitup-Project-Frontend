@@ -59,7 +59,7 @@ const SignupForm = () => {
 	};
 	return (
 		<ScrollView style={styles.screen}>
-			<KeyboardAvoidingView stlye={styles.screen} behavior='padding'>
+			<KeyboardAvoidingView stlye={styles.screen}>
 				<View style={styles.container}>
 					<SignupInput
 						label='First Name'

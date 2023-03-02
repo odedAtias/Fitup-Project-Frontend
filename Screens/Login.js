@@ -1,5 +1,12 @@
 // RN core components & API imports
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import {
+	View,
+	Text,
+	StyleSheet,
+	Pressable,
+	ScrollView,
+	KeyboardAvoidingView,
+} from 'react-native';
 // Custom components imports
 import LoginForm from '../Components/LoginOutput/LoginForm';
 import Logo from '../Components/Logo';
@@ -9,27 +16,32 @@ import Colors from '../Constants/Colors';
 // Login Component
 const Login = ({ navigation }) => {
 	return (
-		<View style={styles.container}>
-			{/* Logo */}
-			<View style={styles.logoContainer}>
-				<Logo imageWidth={260} imageHeight={220} />
-			</View>
-			{/* Login form  */}
-			<LoginForm />
-			{/* Forgot Password link */}
-			<View style={styles.forgotPasswordOuterContainer}>
-				<Text style={[styles.forgotPasswordText]}>Forgot password ?</Text>
-				<Pressable
-					onPress={() => {
-						console.log('forgot password Pressed ...');
-						navigation.navigate('ForgotPassword');
-					}}>
-					<Text style={[styles.forgotPasswordText, styles.forgotPasswordLink]}>
-						click here
-					</Text>
-				</Pressable>
-			</View>
-		</View>
+		<ScrollView style={styles.screen}>
+			<KeyboardAvoidingView style={styles.screen}>
+				<View style={styles.container}>
+					{/* Logo */}
+					<View style={styles.logoContainer}>
+						<Logo imageWidth={260} imageHeight={220} />
+					</View>
+					{/* Login form  */}
+					<LoginForm />
+					{/* Forgot Password link */}
+					<View style={styles.forgotPasswordOuterContainer}>
+						<Text style={[styles.forgotPasswordText]}>Forgot password ?</Text>
+						<Pressable
+							onPress={() => {
+								console.log('forgot password Pressed ...');
+								navigation.navigate('ForgotPassword');
+							}}>
+							<Text
+								style={[styles.forgotPasswordText, styles.forgotPasswordLink]}>
+								click here
+							</Text>
+						</Pressable>
+					</View>
+				</View>
+			</KeyboardAvoidingView>
+		</ScrollView>
 	);
 };
 
@@ -56,6 +68,9 @@ const styles = StyleSheet.create({
 	logoContainer: {
 		height: '20%',
 		marginBottom: '5%',
+	},
+	screen: {
+		flex: 1,
 	},
 });
 
