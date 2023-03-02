@@ -4,30 +4,33 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 //  PrimaryButton component
 const Button = ({ children, style, onPress }) => {
 	return (
-		<View style={[styles.buttonOuterContainer, { ...style }]}>
-			<Pressable style={styles.buttonInnerContainer} onPress={onPress}>
-				<Text style={styles.textColor}>{children}</Text>
-			</Pressable>
-		</View>
+		<Pressable
+			style={({ pressed }) => [
+				styles.button,
+				{ ...style },
+				pressed && styles.pressed,
+			]}
+			onPress={onPress}>
+			<Text style={styles.textColor}>{children}</Text>
+		</Pressable>
 	);
 };
 
 //  Button styleSheet
 const styles = StyleSheet.create({
-	buttonOuterContainer: {
+	button: {
+		alignItems: 'center',
+		paddingVertical: 15,
 		borderRadius: 25,
 		margin: 10,
 		overflow: 'hidden',
 		width: '60%',
 	},
-
-	buttonInnerContainer: {
-		alignItems: 'center',
-		paddingVertical: 15,
-	},
-
 	textColor: {
 		color: 'white',
+	},
+	pressed: {
+		opacity: 0.75,
 	},
 });
 
