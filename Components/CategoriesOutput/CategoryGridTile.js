@@ -33,14 +33,6 @@ const styles = StyleSheet.create({
 		marginTop: 0,
 		height: 140,
 		width: '100%',
-		// Shadow for android
-		elevation: 8,
-		// Shadow for ios
-		backgroundColor: 'white',
-		shadowColor: 'black',
-		shadowOpacity: 0.25,
-		shadowOffset: { width: 0, height: 2 },
-		shadowRadius: 8,
 	},
 	innerContainer: {
 		flex: 1,

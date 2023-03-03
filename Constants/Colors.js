@@ -2,7 +2,7 @@
 const Colors = {
 	Headers: {
 		primary: '#79AD94',
-		secondary: '#f4f4f4',
+		secondary: '#fff',
 	},
 	Backgrounds: {
 		primary: '#fff',

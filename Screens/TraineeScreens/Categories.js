@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		paddingVertical: 24,
+		paddingVertical: 20,
 		backgroundColor: 'white',
 	},
 });

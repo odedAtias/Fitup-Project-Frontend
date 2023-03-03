@@ -8,7 +8,7 @@ import Blanka from './assets/fonts/Blanka-Regular.otf';
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, Text } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -38,18 +38,25 @@ const Tab = createBottomTabNavigator();
 
 // Constants
 import Colors from './Constants/Colors';
+import { Platform } from 'react-native';
 
 // Search Events Stack Navigator
 const StackSearchEvent = () => (
 	<Stack.Navigator
 		mode='modal'
 		screenOptions={{
-			headerTitle: () => (
-				<Header label={'Fit\nUp'} containerStyle={{ paddingBottom: 10 }} />
-			),
-			headerTitleAlign: 'center',
-			headerStyle: { backgroundColor: Colors.Headers.primary },
-			headerShadowVisible: false,
+			header: ({ navigation }) => {
+				return (
+					<Header
+						label={'Fit\nUp'}
+						containerStyle={{
+							backgroundColor: Colors.Headers.primary,
+							padding: 10,
+						}}
+						onPress={() => navigation.goBack()}
+					/>
+				);
+			},
 		}}>
 		<Stack.Screen name='Categories' component={Categories} />
 		<Stack.Screen name='Events' component={Events} />
@@ -70,7 +77,7 @@ const TraineeBottomTab = () => {
 						containerStyle={{
 							backgroundColor: Colors.Headers.primary,
 							paddingBottom: 10,
-							paddingTop: 50,
+							paddingTop: Platform.OS === 'ios' ? 10 : 50,
 						}}
 					/>
 				),
@@ -165,29 +172,42 @@ export default function App() {
 	if (loaded)
 		return (
 			<SafeAreaView style={styles.container}>
-				<StatusBar style='auto' translucent={true} />
+				<StatusBar style='auto' />
 				{/* Stack Navigation Container (Contains 4 Screens)*/}
 				<NavigationContainer>
 					<Stack.Navigator
-						mode='modal'
 						screenOptions={{
-							headerTitle: () => <Header label={'Fit\nUp'} />,
-							headerTitleAlign: 'center',
-							headerStyle: { backgroundColor: Colors.Backgrounds.primary },
-							headerShadowVisible: false,
-							contentStyle: { backgroundColor: Colors.Backgrounds.primary },
+							header: ({ navigation }) => {
+								return (
+									<Header
+										label={'Fit\nUp'}
+										containerStyle={{
+											backgroundColor: Colors.Headers.secondary,
+											padding: 10,
+										}}
+										onPress={() => navigation.goBack()}
+									/>
+								);
+							},
+							contentStyle: {
+								backgroundColor: Colors.Backgrounds.primary,
+							},
 						}}>
 						<Stack.Screen
 							name='Login'
 							component={Login}
-							options={{ headerShown: false }}
+							options={{ headerShown: false, presentation: 'modal' }}
 						/>
 						<Stack.Screen name='Signup' component={Signup} />
-						<Stack.Screen name='ForgotPassword' component={ForgotPassword} />
+						<Stack.Screen
+							name='ForgotPassword'
+							component={ForgotPassword}
+							options={{ presentation: 'modal' }}
+						/>
 						<Stack.Screen
 							name='TraineeBottomTab'
 							component={TraineeBottomTab}
-							options={{ headerShown: false }}
+							options={{ headerShown: false, presentation: 'containedModal' }}
 						/>
 						{/* Stack Screen of trainersBottomTabs */}
 					</Stack.Navigator>

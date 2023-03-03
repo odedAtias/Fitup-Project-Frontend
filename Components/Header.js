@@ -1,24 +1,41 @@
 // RN core components & API imports
 import { View, Text, StyleSheet } from 'react-native';
 
+import IconButton from './IconButton';
+
 // Header component
-const Header = ({ label, containerStyle, labelStyle }) => {
+const Header = ({ label, containerStyle, labelStyle, onPress }) => {
 	return (
 		<View style={[styles.container, containerStyle]}>
-			<Text style={[styles.label, labelStyle]}>{label}</Text>
+			{/* BackButton container */}
+			<View style={styles.flex}>
+				{onPress && (
+					<IconButton icon='arrow-back-outline' size={30} onPress={onPress} />
+				)}
+			</View>
+			{/* label container*/}
+			<View>
+				<Text style={[styles.label, labelStyle]}>{label}</Text>
+			</View>
+			{/* Auxilliary view */}
+			<View style={styles.flex}></View>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
-		justifyContent: 'center',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
 		alignItems: 'center',
 	},
 	label: {
 		fontFamily: 'blanka',
 		fontSize: 50,
 		textAlign: 'center',
+	},
+	flex: {
+		width: 50,
 	},
 });
 
