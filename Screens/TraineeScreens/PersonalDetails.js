@@ -3,22 +3,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 // PersonalDetails Component
-const PersonalDetails = (props) => {
-  const EVENTS = [
-    {
-      id: "event1",
-      category: "Spining",
-      trainerName: "Max shultz",
-      date: "14/12/23",
-      hour: "17:00 pm",
-      address: "Hatnofa 18 st",
-      city: "Jerusalem",
-      numOfTrainees: 13,
-      maxNumOfTrainees: 15,
-      imageUrl: require("../../Images/Trainers/trainer1.png"),
-    },
-  ];
-
+const PersonalDetails = () => {
   return (
     <View style={styles.container}>
       <View style={styles.avatarContainer}>
