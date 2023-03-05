@@ -24,6 +24,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 17,
 			maxNumOfTrainees: 20,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e2',
@@ -36,6 +38,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e3',
@@ -48,6 +52,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e4',
@@ -60,6 +66,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e5',
@@ -72,6 +80,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e6',
@@ -84,6 +94,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e7',
@@ -96,6 +108,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e8',
@@ -108,6 +122,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e9',
@@ -120,6 +136,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e10',
@@ -132,6 +150,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e11',
@@ -144,6 +164,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e12',
@@ -156,6 +178,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e13',
@@ -168,6 +192,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e14',
@@ -180,6 +206,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e15',
@@ -192,6 +220,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e16',
@@ -204,6 +234,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e17',
@@ -216,6 +248,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e18',
@@ -228,6 +262,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e19',
@@ -240,6 +276,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e20',
@@ -252,6 +290,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e21',
@@ -264,6 +304,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 		{
 			id: 'e22',
@@ -276,6 +318,8 @@ const Events = ({ navigation, route }) => {
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
+			description:
+				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises. Training events may vary in length and format, and offer benefits such as increased confidence, improved job performance, and networking opportunities.',
 		},
 	];
 

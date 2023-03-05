@@ -56,6 +56,9 @@ const StackSearchEvent = () => (
 					/>
 				);
 			},
+			contentStyle: {
+				backgroundColor: 'white',
+			},
 		}}>
 		<Stack.Screen
 			name='Categories'

@@ -5,38 +5,24 @@ import { View, Text, StyleSheet } from 'react-native';
 import { displayAddrress } from '../../utils/address';
 import { displayFullDate } from '../../utils/Date';
 import { displayParticipants } from '../../utils/participants';
-
-// Constants
-import Colors from '../../Constants/Colors';
+import { statusColor } from '../../utils/participants';
 
 // EventItemDetails component
-const EventItemDetails = ({
-	trainerName,
-	date,
-	hour,
-	address,
-	city,
-	numOfTrainees,
-	maxNumOfTrainees,
-}) => {
-	const registrationStatus = numOfTrainees / maxNumOfTrainees;
-	const registrationStatusStyle = {
-		color:
-			registrationStatus < 0.5
-				? Colors.Texts.available
-				: registrationStatus < 0.75
-				? Colors.Texts.intermediate
-				: Colors.Texts.almostFull,
-	};
+const EventItemDetails = details => {
 	return (
 		<View>
-			<Text style={styles.headingText}>{trainerName}</Text>
+			<Text style={styles.headingText}>{details.trainerName}</Text>
 			<Text style={[styles.littleBold, styles.spacing]}>
-				{displayAddrress(address, city)}
+				{displayAddrress(details.address, details.city)}
 			</Text>
-			<Text style={styles.spacing}>{displayFullDate(date, hour)}</Text>
-			<Text style={registrationStatusStyle}>
-				{displayParticipants(numOfTrainees, maxNumOfTrainees)}
+			<Text style={styles.spacing}>
+				{displayFullDate(details.date, details.hour)}
+			</Text>
+			<Text
+				style={{
+					color: statusColor(details.numOfTrainees, details.maxNumOfTrainees),
+				}}>
+				{displayParticipants(details.numOfTrainees, details.maxNumOfTrainees)}
 			</Text>
 		</View>
 	);
