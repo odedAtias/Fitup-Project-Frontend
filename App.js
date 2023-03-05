@@ -95,6 +95,7 @@ const TraineeBottomTab = () => {
 						}}
 					/>
 				),
+
 				tabBarStyle: {
 					backgroundColor: Colors.Headers.primary,
 					position: 'absolute',
@@ -186,7 +187,7 @@ export default function App() {
 	if (loaded)
 		return (
 			<SafeAreaView style={styles.container}>
-				<StatusBar style='auto' />
+				<StatusBar style='dark' />
 				{/* Stack Navigation Container (Contains 4 Screens)*/}
 				<NavigationContainer>
 					<Stack.Navigator
@@ -202,6 +203,9 @@ export default function App() {
 										onPress={() => navigation.goBack()}
 									/>
 								);
+							},
+							contentStyle: {
+								backgroundColor: Colors.Backgrounds.primary,
 							},
 						}}>
 						<Stack.Screen

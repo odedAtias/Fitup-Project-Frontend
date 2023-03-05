@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
 		margin: 20,
 	},
 	TextContainer: {
-		fontSize: '20',
+		fontSize: 20,
 	},
 	TextInputStyle: {
 		backgroundColor: '#79AD94',
 	},
 	ButtonStyle: {
-		fontSize: '20,',
+		fontSize: 20,
 	},
 	PressableContainer: {
 		marginHorizontal: 10,

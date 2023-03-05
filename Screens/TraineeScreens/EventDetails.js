@@ -2,7 +2,8 @@
 import { View, Text } from 'react-native';
 
 // EventDetails component
-const EventDetails = () => {
+const EventDetails = ({ navigation, route: { params } }) => {
+	console.log(params);
 	return (
 		<View>
 			<Text>EventDetails</Text>

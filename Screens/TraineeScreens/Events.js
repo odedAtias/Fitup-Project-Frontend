@@ -278,6 +278,7 @@ const Events = ({ navigation, route }) => {
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 		},
 	];
+
 	// Loading the dynamic screen options
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -288,6 +289,7 @@ const Events = ({ navigation, route }) => {
 						backgroundColor: Colors.Headers.primary,
 						paddingTop: Platform.OS === 'android' ? '15%' : '7%',
 						paddingBottom: Platform.OS === 'android' ? '10%' : '7%',
+						paddingHorizontal: 10,
 					}}
 					labelStyle={{
 						fontSize: 40,
