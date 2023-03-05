@@ -5,7 +5,7 @@ const Colors = {
 		secondary: '#fff',
 	},
 	Backgrounds: {
-		primary: '#fff',
+		primary: 'white',
 		secondary: '#e4e4dc',
 		third: '#e4deae',
 		male: '#604fdd',
@@ -16,6 +16,7 @@ const Colors = {
 		primary: '#79AD94',
 		secondary: '#010101',
 		third: '#C7AD98',
+		lightGray: '#E8E9EB',
 	},
 	Links: {
 		primary: '#2657c1',
@@ -23,6 +24,9 @@ const Colors = {
 	Texts: {
 		primary: '#010101',
 		secondary: '#f4f4f4',
+		available: '#00FF73',
+		intermediate: '#FFE300',
+		almostFull: '#FF0000',
 	},
 };
 

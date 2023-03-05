@@ -4,13 +4,18 @@ import { View, Text, StyleSheet } from 'react-native';
 import IconButton from './IconButton';
 
 // Header component
-const Header = ({ label, containerStyle, labelStyle, onPress }) => {
+const Header = ({ label, containerStyle, labelStyle, onPress, iconColor }) => {
 	return (
 		<View style={[styles.container, containerStyle]}>
 			{/* BackButton container */}
 			<View style={styles.flex}>
 				{onPress && (
-					<IconButton icon='arrow-back-outline' size={30} onPress={onPress} />
+					<IconButton
+						icon='arrow-back-outline'
+						size={30}
+						onPress={onPress}
+						color={iconColor}
+					/>
 				)}
 			</View>
 			{/* label container*/}

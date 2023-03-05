@@ -1,7 +1,7 @@
 // RN core components & API imports
 import { FlatList, StyleSheet, View } from 'react-native';
 // Custom components imports
-import Event from './Event';
+import EventItem from './EventItem';
 // EventsList component
 const EventsList = ({ events }) => {
 	return (
@@ -9,7 +9,7 @@ const EventsList = ({ events }) => {
 			<FlatList
 				data={events}
 				keyExtractor={item => item.id}
-				renderItem={itemData => <Event event={{ ...itemData.item }} />}
+				renderItem={itemData => <EventItem event={{ ...itemData.item }} />}
 			/>
 		</View>
 	);

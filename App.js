@@ -1,14 +1,14 @@
 // Hooks imports
 import { useFonts } from 'expo-font';
 
-// Fonts
+// Fonts imports
 import Blanka from './assets/fonts/Blanka-Regular.otf';
 
 // Status Bar
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, Platform } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -38,7 +38,6 @@ const Tab = createBottomTabNavigator();
 
 // Constants
 import Colors from './Constants/Colors';
-import { Platform } from 'react-native';
 
 // Search Events Stack Navigator
 const StackSearchEvent = () => (
@@ -58,7 +57,23 @@ const StackSearchEvent = () => (
 				);
 			},
 		}}>
-		<Stack.Screen name='Categories' component={Categories} />
+		<Stack.Screen
+			name='Categories'
+			component={Categories}
+			options={{
+				header: () => {
+					return (
+						<Header
+							label={'Fit\nUp'}
+							containerStyle={{
+								backgroundColor: Colors.Headers.primary,
+								padding: Platform.OS === 'ios' ? 10 : 20,
+							}}
+						/>
+					);
+				},
+			}}
+		/>
 		<Stack.Screen name='Events' component={Events} />
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
@@ -76,7 +91,6 @@ const TraineeBottomTab = () => {
 						label={'Fit\nup'}
 						containerStyle={{
 							backgroundColor: Colors.Headers.primary,
-							paddingBottom: 10,
 							padding: Platform.OS === 'ios' ? 10 : 20,
 						}}
 					/>
@@ -188,9 +202,6 @@ export default function App() {
 										onPress={() => navigation.goBack()}
 									/>
 								);
-							},
-							contentStyle: {
-								backgroundColor: Colors.Backgrounds.primary,
 							},
 						}}>
 						<Stack.Screen

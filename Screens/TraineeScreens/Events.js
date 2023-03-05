@@ -1,10 +1,12 @@
 // Hooks components
 import { useLayoutEffect } from 'react';
 // RN core components & API imports
-import { View } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 // Custom components imports
 import Header from '../../Components/Header';
 import EventsList from '../../Components/EventsOutput/EventsList';
+// Constants
+import Colors from '../../Constants/Colors';
 
 // EventsList component
 const Events = ({ navigation, route }) => {
@@ -16,8 +18,8 @@ const Events = ({ navigation, route }) => {
 			category: 'Zumba',
 			trainerName: 'Dan cohen',
 			date: '19/02/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18',
 			city: 'Jerusalem',
 			numOfTrainees: 17,
 			maxNumOfTrainees: 20,
@@ -28,8 +30,8 @@ const Events = ({ navigation, route }) => {
 			category: 'TRX',
 			trainerName: 'Dan cohen',
 			date: '20/05/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -40,8 +42,8 @@ const Events = ({ navigation, route }) => {
 			category: 'Yoga',
 			trainerName: 'Max shultz',
 			date: '19/05/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -52,8 +54,8 @@ const Events = ({ navigation, route }) => {
 			category: 'TRX',
 			trainerName: 'Max shultz',
 			date: '11/07/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -64,8 +66,8 @@ const Events = ({ navigation, route }) => {
 			category: 'TRX',
 			trainerName: 'Dan cohen',
 			date: '10/10/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -76,8 +78,8 @@ const Events = ({ navigation, route }) => {
 			category: 'TRX',
 			trainerName: 'Max shultz',
 			date: '15/06/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -88,8 +90,8 @@ const Events = ({ navigation, route }) => {
 			category: 'Yoga',
 			trainerName: 'Dan cohen',
 			date: '19/09/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -100,8 +102,8 @@ const Events = ({ navigation, route }) => {
 			category: 'TRX',
 			trainerName: 'Max shultz',
 			date: '06/02/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -112,8 +114,8 @@ const Events = ({ navigation, route }) => {
 			category: 'TRX',
 			trainerName: 'Max shultz',
 			date: '07/01/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -124,8 +126,8 @@ const Events = ({ navigation, route }) => {
 			category: 'Strengh',
 			trainerName: 'Dan cohen',
 			date: '19/11/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -136,8 +138,8 @@ const Events = ({ navigation, route }) => {
 			category: 'Spining',
 			trainerName: 'Max shultz',
 			date: '14/12/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -148,8 +150,128 @@ const Events = ({ navigation, route }) => {
 			category: 'Dumbels',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
-			hour: '17:00 pm',
-			address: 'Hatnofa 18 st',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e13',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e14',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e15',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e16',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e17',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e18',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e19',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e20',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e21',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
+			city: 'Jerusalem',
+			numOfTrainees: 13,
+			maxNumOfTrainees: 15,
+			imageUrl: require('../../Images/Trainers/trainer2.png'),
+		},
+		{
+			id: 'e22',
+			category: 'Dumbels',
+			trainerName: 'Dan cohen',
+			date: '23/10/23',
+			hour: '17:00',
+			address: 'Hatnofa 18 ',
 			city: 'Jerusalem',
 			numOfTrainees: 13,
 			maxNumOfTrainees: 15,
@@ -159,23 +281,37 @@ const Events = ({ navigation, route }) => {
 	// Loading the dynamic screen options
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			headerTitle: () => (
+			header: () => (
 				<Header
 					label={route.params.categoryName}
-					containerStyle={{ paddingVertical: 30 }}
-					labelStyle={{ color: 'white', fontSize: 40 }}
+					containerStyle={{
+						backgroundColor: Colors.Headers.primary,
+						paddingTop: Platform.OS === 'android' ? '15%' : '7%',
+						paddingBottom: Platform.OS === 'android' ? '10%' : '7%',
+					}}
+					labelStyle={{
+						fontSize: 40,
+						color: Colors.Texts.secondary,
+					}}
+					onPress={() => navigation.goBack()}
+					iconColor={Colors.Texts.secondary}
 				/>
 			),
-			headerTintColor: 'white',
 		});
 	});
 	return (
-		<View>
+		<View style={styles.container}>
 			<EventsList
 				events={EVENTS.filter(e => e.category === route.params.categoryName)}
 			/>
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	container: {
+		paddingBottom: '12%',
+	},
+});
 
 export default Events;
