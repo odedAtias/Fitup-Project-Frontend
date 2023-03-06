@@ -26,32 +26,34 @@ const EventDetailsCard = cardDetails => {
 				<Text style={styles.spacing}>
 					{displayFullDate(cardDetails.date, cardDetails.hour)}
 				</Text>
-				<Text
-					style={{
-						color: statusColor(
+				<View>
+					{/* Number of participants */}
+					<Text
+						style={{
+							color: statusColor(
+								cardDetails.numOfTrainees,
+								cardDetails.maxNumOfTrainees
+							),
+						}}>
+						{displayParticipants(
 							cardDetails.numOfTrainees,
 							cardDetails.maxNumOfTrainees
-						),
-					}}>
-					{displayParticipants(
-						cardDetails.numOfTrainees,
-						cardDetails.maxNumOfTrainees
-					)}
-				</Text>
+						)}
+					</Text>
+				</View>
 			</View>
 		</View>
 	);
 };
+
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		backgroundColor: Colors.Buttons.lightGray,
 		borderRadius: 10,
 		padding: 10,
-		// Adjust by the platforms
-		marginHorizontal: 15,
-		marginVertical: 10,
+		// Adjust by the platforms !!!!!
+		marginTop: 10,
 		// Shadow for android
 		elevation: 8,
 		// Shadow for ios

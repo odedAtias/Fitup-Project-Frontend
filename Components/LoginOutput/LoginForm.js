@@ -46,7 +46,13 @@ const LoginForm = () => {
 		console.log(
 			`username : ${inputs.username.value}, password : ${inputs.password.value}`
 		);
-		navigation.navigate('TraineeBottomTab');
+		let isTrainer = false;
+		if (isTrainer) {
+			// Go to trainer application
+		} else {
+			// Go to trainee application
+			navigation.navigate('TraineeBottomTab');
+		}
 	};
 
 	return (

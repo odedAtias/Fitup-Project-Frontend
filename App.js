@@ -222,12 +222,13 @@ export default function App() {
 							component={ForgotPassword}
 							options={{ presentation: 'modal' }}
 						/>
+						{/* The gate to the trainee app */}
 						<Stack.Screen
 							name='TraineeBottomTab'
 							component={TraineeBottomTab}
 							options={{ headerShown: false, presentation: 'containedModal' }}
 						/>
-						{/* Stack Screen of trainersBottomTabs */}
+						{/* The gate to the trainer app */}
 					</Stack.Navigator>
 				</NavigationContainer>
 			</SafeAreaView>

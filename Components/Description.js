@@ -1,38 +1,41 @@
 // RN core components & API imports
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, StyleSheet } from 'react-native';
 // Constants
 import Colors from '../Constants/Colors';
 
 const Description = ({ description }) => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.description}>Description</Text>
-			<View style={styles.descriptionContainer}>
-				<Text style={styles.descriptionText}>{description}</Text>
+			<Text style={styles.headingText}>Description</Text>
+			<View style={styles.scrollContainer}>
+				<ScrollView contentContainerStyle={styles.ScrollContent}>
+					<Text style={styles.text}>{description}</Text>
+				</ScrollView>
 			</View>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
-	description: {
-		fontWeight: 'bold',
-		fontSize: 30,
-		marginBottom: '5%',
-	},
 	container: {
-		marginTop: '3%',
-		paddingHorizontal: '5%',
+		marginTop: '2%',
 	},
-	descriptionContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: Colors.Backgrounds.male,
-		paddingVertical: 20,
-		paddingHorizontal: 15,
-		borderRadius: 15,
+	headingText: {
+		fontWeight: 'bold',
+		fontSize: 25,
+		marginBottom: '2%',
 	},
-	descriptionText: { color: 'white', fontSize: 15 },
+	scrollContainer: {
+		padding: '5%',
+		backgroundColor: Colors.Headers.primary,
+		maxHeight: 130,
+		borderRadius: 10,
+	},
+	scrollContent: {
+		color: 'white',
+		fontSize: 16,
+	},
+	text: { color: 'white', fontSize: 15 },
 });
 
 export default Description;

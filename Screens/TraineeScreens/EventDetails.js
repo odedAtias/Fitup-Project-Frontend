@@ -1,11 +1,12 @@
 // Hooks imports
 import { useLayoutEffect } from 'react';
 // RN core components & API imports
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 // Custom components imports
 import Header from '../../Components/Header';
 import EventDetailsCard from '../../Components/EventsDetailsOutput/EventDetailsCard';
 import Description from '../../Components/Description';
+import EventParticipants from './../../Components/EventsDetailsOutput/EventParticipants';
 import Button from '../../Components/Button';
 // Constatns
 import Colors from '../../Constants/Colors';
@@ -21,8 +22,8 @@ const EventDetails = ({ navigation, route }) => {
 					label={'Fit\nUp'}
 					containerStyle={{
 						backgroundColor: Colors.Headers.secondary,
-						padding: Platform.OS === 'ios' ? 10 : 30,
-						paddingHorizontal: 10,
+						padding: Platform.OS === 'ios' ? 10 : 20,
+						paddingTop: 30,
 					}}
 					labelStyle={{
 						fontSize: 50,
@@ -37,10 +38,13 @@ const EventDetails = ({ navigation, route }) => {
 		<View style={styles.container}>
 			<EventDetailsCard {...cardDetails} />
 			<Description description={description} />
-			<View style={{ alignItems: 'center', marginTop: '5%' }}>
+			<EventParticipants />
+			<View style={{ alignItems: 'center', marginTop: 10 }}>
 				<Button
 					style={{
 						backgroundColor: Colors.Buttons.secondary,
+						width: '35%',
+						borderRadius: 10,
 					}}>
 					Register now
 				</Button>
@@ -52,6 +56,7 @@ const EventDetails = ({ navigation, route }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		paddingHorizontal: 15,
 	},
 });
 
