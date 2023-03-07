@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 	},
 	scrollContainer: {
 		padding: '5%',
-		backgroundColor: Colors.Headers.primary,
+		backgroundColor: Colors.Backgrounds.male,
 		maxHeight: 130,
 		borderRadius: 10,
 	},

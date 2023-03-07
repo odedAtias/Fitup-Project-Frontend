@@ -23,7 +23,7 @@ const EventDetails = ({ navigation, route }) => {
 					containerStyle={{
 						backgroundColor: Colors.Headers.secondary,
 						padding: Platform.OS === 'ios' ? 10 : 20,
-						paddingTop: 30,
+						paddingTop: Platform.OS === 'ios' ? 10 : 30,
 					}}
 					labelStyle={{
 						fontSize: 50,
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingHorizontal: 15,
+		paddingVertical: Platform.OS === 'ios' ? 30 : 0,
 	},
 });
 
