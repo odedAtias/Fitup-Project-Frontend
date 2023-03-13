@@ -1,7 +1,7 @@
 // RN core components & API imports
 import { Pressable, StyleSheet } from 'react-native';
 // Custom components imports
-import EventItemImage from './EventItemImage';
+import TrainerImage from './TrainerImage';
 import EventItemDetails from './EventItemDetails';
 // Constants
 import Colors from '../../Constants/Colors';
@@ -13,7 +13,7 @@ const EventItem = ({ event, onPress }) => {
 		// Main container
 		<Pressable style={styles.container} onPress={onPress}>
 			{/* Events trainer image container */}
-			<EventItemImage imageUrl={imageUrl} />
+			<TrainerImage imageUrl={imageUrl} />
 			{/* Events details container */}
 			<EventItemDetails {...eventDetails} />
 		</Pressable>

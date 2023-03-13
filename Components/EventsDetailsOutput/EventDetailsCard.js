@@ -3,7 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 // RN core components & API imports
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 // Custom component imports
-import EventItemImage from '../EventsOutput/EventItemImage';
+import EventItemImage from '../EventsOutput/TrainerImage';
+import Link from '../Link';
 // Constatns
 import Colors from '../../Constants/Colors';
 // Utills
@@ -23,9 +24,9 @@ const EventDetailsCard = cardDetails => {
 			{/* Events trainer image container */}
 			<Pressable onPress={handleVisitProfile}>
 				<EventItemImage imageUrl={cardDetails.imageUrl} />
-				<Text style={{ textAlign: 'center', color: Colors.Links.primary }}>
-					Visit profile
-				</Text>
+				<Link onPress={handleVisitProfile} style={{ textAlign: 'center' }}>
+					Visit Profile
+				</Link>
 			</Pressable>
 			{/* Main details */}
 			<View>

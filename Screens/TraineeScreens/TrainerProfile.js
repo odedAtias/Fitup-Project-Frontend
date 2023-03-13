@@ -1,27 +1,31 @@
 // Hooks imports
 import { useContext } from 'react';
 // RN Core components
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 // Context imports
 import { Context } from './../../store/Context';
 
-const TrainerProfile = ({ navigation, route }) => {
+const TrainerProfile = ({ route }) => {
 	const context = useContext(Context);
 	// Http request to get the trainer details ...
 	const TRAINER = {
 		id: route.params.trainerId,
-		name: 'Dan Cohen',
+		name: 'Max Shultz',
 		events: context.events.filter(e => e.trainerId === route.params.trainerId),
-		imageUrl: context.events.find(e => e.trainerId === route.params.trainerId)
-			.imageUrl,
+		imageUrl: 31,
+		email: 'MaxShultz@gmail.com',
+		description:
+			'I have been a kickboxing coach for over 15 years, experienced in training all populations of all ages. I am passionate about seeing people who undergo change following my training.',
+		city: 'Jerusalem',
+		country: 'Israel',
 	};
-
-	// Http request to Trainers Database
 	return (
-		<View>
+		<View style={styles.container}>
 			<Text>TrainerProfile</Text>
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({});
 
 export default TrainerProfile;
