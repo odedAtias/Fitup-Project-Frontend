@@ -2,6 +2,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 // Custom components imports
 import ParticipantsList from './ParticipantsList';
+import Title from '../Title';
 
 // EventParticipants component
 const EventParticipants = () => {
@@ -74,7 +75,7 @@ const EventParticipants = () => {
 	];
 	return (
 		<View style={styles.container}>
-			<Text style={styles.headingText}>Participants</Text>
+			<Title>Participants</Title>
 			<ParticipantsList participants={PARTICIPANTS} />
 		</View>
 	);
@@ -83,11 +84,6 @@ const EventParticipants = () => {
 const styles = StyleSheet.create({
 	container: {
 		marginTop: '3%',
-	},
-	headingText: {
-		fontWeight: 'bold',
-		fontSize: 25,
-		marginBottom: 10,
 	},
 });
 

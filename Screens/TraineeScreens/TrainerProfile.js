@@ -1,10 +1,13 @@
 // Hooks imports
 import { useContext } from 'react';
+
 // RN Core components
 import { View, Text, StyleSheet } from 'react-native';
+
 // Context imports
 import { Context } from './../../store/Context';
 
+// TrainerProfile component
 const TrainerProfile = ({ route }) => {
 	const context = useContext(Context);
 	// Http request to get the trainer details ...
