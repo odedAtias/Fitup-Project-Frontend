@@ -28,9 +28,13 @@ import EventDetails from './Screens/TraineeScreens/EventDetails';
 import RegisterEventForm from './Screens/TraineeScreens/RegisterEventForm';
 import RegistrationSucceed from './Screens/TraineeScreens/RegistrationSucceed';
 import Header from './Components/Header';
+import TrainerProfile from './Screens/TraineeScreens/TrainerProfile';
 
 // Ionicons
 import { Ionicons } from '@expo/vector-icons';
+
+// Context providers
+import ContextProvider from './store/Context';
 
 // Navigators Initialize`s
 const Stack = createNativeStackNavigator();
@@ -44,18 +48,21 @@ const StackSearchEvent = () => (
 	<Stack.Navigator
 		mode='modal'
 		screenOptions={{
-			header: ({ navigation }) => {
-				return (
-					<Header
-						label={'Fit\nUp'}
-						containerStyle={{
-							backgroundColor: Colors.Headers.primary,
-							padding: Platform.OS === 'ios' ? 10 : 20,
-						}}
-						onPress={() => navigation.goBack()}
-					/>
-				);
-			},
+			header: ({ navigation }) => (
+				<Header
+					label={'Fit\nUp'}
+					containerStyle={{
+						backgroundColor: Colors.Headers.secondary,
+						padding: Platform.OS === 'ios' ? 10 : 20,
+						paddingTop: Platform.OS === 'ios' ? 10 : 30,
+					}}
+					labelStyle={{
+						fontSize: 50,
+						color: Colors.Texts.primary,
+					}}
+					onBack={() => navigation.goBack()}
+				/>
+			),
 			contentStyle: {
 				backgroundColor: 'white',
 			},
@@ -81,6 +88,7 @@ const StackSearchEvent = () => (
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEventForm' component={RegisterEventForm} />
 		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
+		<Stack.Screen name='TrainerProfile' component={TrainerProfile} />
 	</Stack.Navigator>
 );
 
@@ -191,46 +199,49 @@ export default function App() {
 		return (
 			<SafeAreaView style={styles.container}>
 				<StatusBar style='dark' />
-				{/* Stack Navigation Container (Contains 4 Screens)*/}
-				<NavigationContainer>
-					<Stack.Navigator
-						screenOptions={{
-							header: ({ navigation }) => {
-								return (
-									<Header
-										label={'Fit\nUp'}
-										containerStyle={{
-											backgroundColor: Colors.Headers.secondary,
-											padding: Platform.OS === 'ios' ? 10 : 30,
-										}}
-										onPress={() => navigation.goBack()}
-									/>
-								);
-							},
-							contentStyle: {
-								backgroundColor: Colors.Backgrounds.primary,
-							},
-						}}>
-						<Stack.Screen
-							name='Login'
-							component={Login}
-							options={{ headerShown: false, presentation: 'modal' }}
-						/>
-						<Stack.Screen name='Signup' component={Signup} />
-						<Stack.Screen
-							name='ForgotPassword'
-							component={ForgotPassword}
-							options={{ presentation: 'modal' }}
-						/>
-						{/* The gate to the trainee app */}
-						<Stack.Screen
-							name='TraineeBottomTab'
-							component={TraineeBottomTab}
-							options={{ headerShown: false, presentation: 'containedModal' }}
-						/>
-						{/* The gate to the trainer app */}
-					</Stack.Navigator>
-				</NavigationContainer>
+				{/* Our contextProvider */}
+				<ContextProvider>
+					{/* Stack Navigation Container (Contains 4 Screens)*/}
+					<NavigationContainer>
+						<Stack.Navigator
+							screenOptions={{
+								header: ({ navigation }) => {
+									return (
+										<Header
+											label={'Fit\nUp'}
+											containerStyle={{
+												backgroundColor: Colors.Headers.secondary,
+												padding: Platform.OS === 'ios' ? 10 : 30,
+											}}
+											onPress={() => navigation.goBack()}
+										/>
+									);
+								},
+								contentStyle: {
+									backgroundColor: Colors.Backgrounds.primary,
+								},
+							}}>
+							<Stack.Screen
+								name='Login'
+								component={Login}
+								options={{ headerShown: false, presentation: 'modal' }}
+							/>
+							<Stack.Screen name='Signup' component={Signup} />
+							<Stack.Screen
+								name='ForgotPassword'
+								component={ForgotPassword}
+								options={{ presentation: 'modal' }}
+							/>
+							{/* The gate to the trainee app */}
+							<Stack.Screen
+								name='TraineeBottomTab'
+								component={TraineeBottomTab}
+								options={{ headerShown: false, presentation: 'containedModal' }}
+							/>
+							{/* The gate to the trainer app */}
+						</Stack.Navigator>
+					</NavigationContainer>
+				</ContextProvider>
 			</SafeAreaView>
 		);
 }

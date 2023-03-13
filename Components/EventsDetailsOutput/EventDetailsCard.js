@@ -1,5 +1,7 @@
+// Hooks imports
+import { useNavigation } from '@react-navigation/native';
 // RN core components & API imports
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 // Custom component imports
 import EventItemImage from '../EventsOutput/EventItemImage';
 // Constatns
@@ -10,10 +12,21 @@ import { displayFullDate } from '../../utils/Date';
 import { displayParticipants, statusColor } from '../../utils/participants';
 
 const EventDetailsCard = cardDetails => {
+	// Navigation
+	const navigation = useNavigation();
+	// EventDetailsCard handlers
+	const handleVisitProfile = () => {
+		navigation.navigate('TrainerProfile', { trainerId: cardDetails.trainerId });
+	};
 	return (
 		<View style={styles.container}>
 			{/* Events trainer image container */}
-			<EventItemImage imageUrl={cardDetails.imageUrl} />
+			<Pressable onPress={handleVisitProfile}>
+				<EventItemImage imageUrl={cardDetails.imageUrl} />
+				<Text style={{ textAlign: 'center', color: Colors.Links.primary }}>
+					Visit profile
+				</Text>
+			</Pressable>
 			{/* Main details */}
 			<View>
 				<Text style={styles.headingText}>{cardDetails.category} training</Text>

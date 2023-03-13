@@ -1,5 +1,7 @@
 // Hooks components
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useContext, useEffect, useState } from 'react';
+// Contexts imports
+import { Context } from '../../store/Context';
 // RN core components & API imports
 import { View, StyleSheet, Platform } from 'react-native';
 // Custom components imports
@@ -16,6 +18,7 @@ const Events = ({ navigation, route }) => {
 		{
 			id: 'e1',
 			category: 'Zumba',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '19/02/23',
 			hour: '17:00',
@@ -25,11 +28,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 20,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. ',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e2',
 			category: 'TRX',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '20/05/23',
 			hour: '17:00',
@@ -39,11 +43,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e3',
 			category: 'Yoga',
+			trainerId: 't2',
 			trainerName: 'Max shultz',
 			date: '19/05/23',
 			hour: '17:00',
@@ -53,11 +58,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e4',
 			category: 'TRX',
+			trainerId: 't2',
 			trainerName: 'Max shultz',
 			date: '11/07/23',
 			hour: '17:00',
@@ -67,11 +73,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e5',
 			category: 'TRX',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '10/10/23',
 			hour: '17:00',
@@ -81,11 +88,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e6',
 			category: 'TRX',
+			trainerId: 't2',
 			trainerName: 'Max shultz',
 			date: '15/06/23',
 			hour: '17:00',
@@ -95,11 +103,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e7',
 			category: 'Yoga',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '19/09/23',
 			hour: '17:00',
@@ -109,11 +118,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e8',
 			category: 'TRX',
+			trainerId: 't2',
 			trainerName: 'Max shultz',
 			date: '06/02/23',
 			hour: '17:00',
@@ -123,11 +133,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e9',
 			category: 'TRX',
+			trainerId: 't2',
 			trainerName: 'Max shultz',
 			date: '07/01/23',
 			hour: '17:00',
@@ -137,11 +148,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e10',
 			category: 'Strengh',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '19/11/23',
 			hour: '17:00',
@@ -151,11 +163,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e11',
 			category: 'Spining',
+			trainerId: 't2',
 			trainerName: 'Max shultz',
 			date: '14/12/23',
 			hour: '17:00',
@@ -165,11 +178,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer1.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e12',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -179,11 +193,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e13',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -193,11 +208,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e14',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -207,11 +223,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e15',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -221,11 +238,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e16',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -235,11 +253,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e17',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -249,11 +268,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e18',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -263,11 +283,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e19',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -277,11 +298,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e20',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -291,11 +313,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e21',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -305,11 +328,12 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 		{
 			id: 'e22',
 			category: 'Dumbels',
+			trainerId: 't1',
 			trainerName: 'Dan cohen',
 			date: '23/10/23',
 			hour: '17:00',
@@ -319,9 +343,13 @@ const Events = ({ navigation, route }) => {
 			maxNumOfTrainees: 15,
 			imageUrl: require('../../Images/Trainers/trainer2.png'),
 			description:
-				'A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.A training event is a focused and interactive learning experience led by a subject matter expert. It aims to improve participants skills, knowledge, and performance through structured content delivery, hands-on activities, and practical exercises.',
+				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 	];
+	// loading indicator
+	const [isFetching, setIsFetching] = useState(true);
+	// Context initialize
+	const context = useContext(Context);
 
 	// Loading the dynamic screen options
 	useLayoutEffect(() => {
@@ -339,19 +367,32 @@ const Events = ({ navigation, route }) => {
 						fontSize: 40,
 						color: Colors.Texts.secondary,
 					}}
-					onPress={() => navigation.goBack()}
+					onBack={() => navigation.goBack()}
 					iconColor={Colors.Texts.secondary}
 				/>
 			),
 		});
 	});
-	return (
-		<View style={styles.container}>
-			<EventsList
-				events={EVENTS.filter(e => e.category === route.params.categoryName)}
-			/>
-		</View>
-	);
+	// Loading the Events to our store
+	useEffect(() => {
+		setIsFetching(true);
+		// Http request to the backend ...
+		// const events = await fetchEvent();
+		context.setEvents(EVENTS);
+		setIsFetching(false);
+	}, []);
+
+	if (!isFetching) {
+		return (
+			<View style={styles.container}>
+				<EventsList
+					events={context.events.filter(
+						e => e.category === route.params.categoryName
+					)}
+				/>
+			</View>
+		);
+	}
 };
 
 const styles = StyleSheet.create({
