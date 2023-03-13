@@ -7,14 +7,18 @@ import { displayFullDate } from '../../utils/Date';
 import { displayParticipants } from '../../utils/participants';
 import { statusColor } from '../../utils/participants';
 
+// Custom components imports
+import HeadingText from '../HeadingText';
+import SubHeadingText from '../SubHeadingText';
+
 // EventItemDetails component
 const EventItemDetails = details => {
 	return (
 		<View>
-			<Text style={styles.headingText}>{details.trainerName}</Text>
-			<Text style={[styles.littleBold, styles.spacing]}>
+			<HeadingText>{details.trainerName}</HeadingText>
+			<SubHeadingText>
 				{displayAddrress(details.address, details.city)}
-			</Text>
+			</SubHeadingText>
 			<Text style={styles.spacing}>
 				{displayFullDate(details.date, details.hour)}
 			</Text>
@@ -29,14 +33,6 @@ const EventItemDetails = details => {
 };
 
 const styles = StyleSheet.create({
-	headingText: {
-		fontSize: 20,
-		fontWeight: 'bold',
-		marginBottom: 2,
-	},
-	littleBold: {
-		fontWeight: '500',
-	},
 	spacing: {
 		marginBottom: 3,
 	},

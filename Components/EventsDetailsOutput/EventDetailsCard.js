@@ -5,6 +5,8 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 // Custom component imports
 import EventItemImage from '../EventsOutput/TrainerImage';
 import Link from '../Link';
+import HeadingText from '../HeadingText';
+import SubHeadingText from '../SubHeadingText';
 // Constatns
 import Colors from '../../Constants/Colors';
 // Utills
@@ -30,10 +32,8 @@ const EventDetailsCard = cardDetails => {
 			</Pressable>
 			{/* Main details */}
 			<View>
-				<Text style={styles.headingText}>{cardDetails.category} training</Text>
-				<Text style={[styles.littleBold, styles.subHeadingText]}>
-					{cardDetails.trainerName}
-				</Text>
+				<HeadingText>{cardDetails.category} Training</HeadingText>
+				<SubHeadingText>{cardDetails.trainerName}</SubHeadingText>
 				<Text style={styles.spacing}>
 					{displayAddrress(cardDetails.address, cardDetails.city)}
 				</Text>
@@ -76,18 +76,6 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowOffset: { width: 0, height: 2 },
 		shadowRadius: 8,
-	},
-	headingText: {
-		fontSize: 22,
-		fontWeight: 'bold',
-		marginBottom: 2,
-	},
-	subHeadingText: {
-		fontSize: 18,
-		fontWeight: '500',
-	},
-	littleBold: {
-		fontWeight: '500',
 	},
 	spacing: {
 		marginBottom: 3,
