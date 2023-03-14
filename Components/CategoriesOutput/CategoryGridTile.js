@@ -7,12 +7,12 @@ import {
 	StyleSheet,
 } from 'react-native';
 
-// Category component
-const CategoryGridTile = ({ categoryName, categoryImageUrl, handlePress }) => {
+// CategoryGridTile component
+const CategoryGridTile = ({ categoryName, categoryImageUrl, onPress }) => {
 	return (
 		<View style={styles.container}>
 			<Pressable
-				onPress={handlePress}
+				onPress={onPress}
 				style={({ pressed }) => [
 					styles.innerContainer,
 					pressed && styles.buttonPressed,
@@ -26,6 +26,7 @@ const CategoryGridTile = ({ categoryName, categoryImageUrl, handlePress }) => {
 	);
 };
 
+// CategoryGridTile StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
