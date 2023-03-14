@@ -1,26 +1,33 @@
 // Hooks imports
 import { useNavigation } from '@react-navigation/native';
+
 // RN core components & API imports
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-// Custom component imports
+
+// Custom components imports
 import EventItemImage from '../EventsOutput/TrainerImage';
 import Link from '../Link';
 import HeadingText from '../HeadingText';
 import SubHeadingText from '../SubHeadingText';
+
 // Constatns
 import Colors from '../../Constants/Colors';
-// Utills
+
+// Utils functions imports
 import { displayAddrress } from '../../utils/address';
 import { displayFullDate } from '../../utils/Date';
 import { displayParticipants, statusColor } from '../../utils/participants';
 
+// EventDetailsCard component
 const EventDetailsCard = cardDetails => {
 	// Navigation initialize
 	const navigation = useNavigation();
+
 	// EventDetailsCard handlers
 	const handleVisitProfile = () => {
 		navigation.navigate('TrainerProfile', { trainerId: cardDetails.trainerId });
 	};
+
 	return (
 		<View style={styles.container}>
 			{/* Events trainer image container */}
@@ -60,6 +67,7 @@ const EventDetailsCard = cardDetails => {
 	);
 };
 
+// EventDetailsCard StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',

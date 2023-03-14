@@ -2,15 +2,14 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 // ParticipantItem component
-const ParticipantItem = ({ participant }) => {
-	return (
-		<View style={styles.container}>
-			<Image source={participant.imageUrl} style={styles.participantImage} />
-			<Text style={styles.participantName}>{participant.firstName}</Text>
-		</View>
-	);
-};
+const ParticipantItem = ({ participant }) => (
+	<View style={styles.container}>
+		<Image source={participant.imageUrl} style={styles.participantImage} />
+		<Text style={styles.participantName}>{participant.firstName}</Text>
+	</View>
+);
 
+// ParticipantItem StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		marginTop: 5,
@@ -19,16 +18,15 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		maxWidth: 80,
 	},
-	participantName: {
-		// Adjust by platforms
-		marginTop: 5,
-		fontWeight: '500',
-		fontSize: 14,
-	},
 	participantImage: {
 		height: 80,
 		width: 80,
 		borderRadius: 70,
+	},
+	participantName: {
+		marginTop: 5,
+		fontWeight: '500',
+		fontSize: 14,
 	},
 });
 

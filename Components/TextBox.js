@@ -10,10 +10,11 @@ const TextBox = ({ children, bgColor, txtColor }) => (
 	</View>
 );
 
+// TextBox StyleSheet
 const styles = StyleSheet.create({
 	scrollContainer: {
 		padding: '5%',
-		maxHeight: 130,
+		maxHeight: 150,
 		borderRadius: 10,
 	},
 	text: {

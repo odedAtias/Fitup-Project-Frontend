@@ -1,5 +1,6 @@
 // RN core components & API imports
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+
 // Custom components imports
 import ParticipantsList from './ParticipantsList';
 import Title from '../Title';
@@ -81,6 +82,7 @@ const EventParticipants = () => {
 	);
 };
 
+// EventParticipants Stylesheet
 const styles = StyleSheet.create({
 	container: {
 		marginTop: '3%',
