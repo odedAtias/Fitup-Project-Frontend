@@ -15,7 +15,7 @@ import { displayFullDate } from '../../utils/Date';
 import { displayParticipants, statusColor } from '../../utils/participants';
 
 const EventDetailsCard = cardDetails => {
-	// Navigation
+	// Navigation initialize
 	const navigation = useNavigation();
 	// EventDetailsCard handlers
 	const handleVisitProfile = () => {
@@ -24,11 +24,11 @@ const EventDetailsCard = cardDetails => {
 	return (
 		<View style={styles.container}>
 			{/* Events trainer image container */}
-			<Pressable onPress={handleVisitProfile}>
+			<Pressable
+				onPress={handleVisitProfile}
+				style={styles.visitProfileContainer}>
 				<EventItemImage imageUrl={cardDetails.imageUrl} />
-				<Link onPress={handleVisitProfile} style={{ textAlign: 'center' }}>
-					Visit Profile
-				</Link>
+				<Link onPress={handleVisitProfile}>Visit Profile</Link>
 			</Pressable>
 			{/* Main details */}
 			<View>
@@ -76,6 +76,10 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowOffset: { width: 0, height: 2 },
 		shadowRadius: 8,
+	},
+	visitProfileContainer: {
+		alignItems: 'center',
+		marginRight: 2,
 	},
 	spacing: {
 		marginBottom: 3,

@@ -1,16 +1,17 @@
 // RN core components & API imports
 import { Pressable, StyleSheet } from 'react-native';
+
 // Custom components imports
 import TrainerImage from './TrainerImage';
 import EventItemDetails from './EventItemDetails';
+
 // Constants
 import Colors from '../../Constants/Colors';
 
-// Event component
+// EventItem component
 const EventItem = ({ event, onPress }) => {
 	const { id, category, imageUrl, ...eventDetails } = event;
 	return (
-		// Main container
 		<Pressable style={styles.container} onPress={onPress}>
 			{/* Events trainer image container */}
 			<TrainerImage imageUrl={imageUrl} />
@@ -20,6 +21,7 @@ const EventItem = ({ event, onPress }) => {
 	);
 };
 
+// EventItem StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
 		elevation: 8,
 		// Shadow for ios
 		backgroundColor: 'white',
-		shadowColor: 'black',
+		shadowColor: Colors.Backgrounds.male,
 		shadowOpacity: 0.25,
 		shadowOffset: { width: 0, height: 2 },
 		shadowRadius: 8,
