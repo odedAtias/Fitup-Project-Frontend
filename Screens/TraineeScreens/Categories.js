@@ -1,10 +1,10 @@
 // RN core components & API imports
 import { View, StyleSheet } from 'react-native';
 
-// Custom component imports
+// Custom components imports
 import CategoryList from '../../Components/CategoriesOutput/CategoryList';
 
-// Const dummy date of categories
+// Our categories
 const CATEGORIES = [
 	{
 		id: 'c1',
@@ -59,14 +59,13 @@ const CATEGORIES = [
 ];
 
 // Categories component
-const Categories = () => {
-	return (
-		<View style={styles.container}>
-			<CategoryList categories={CATEGORIES} />
-		</View>
-	);
-};
+const Categories = () => (
+	<View style={styles.container}>
+		<CategoryList categories={CATEGORIES} />
+	</View>
+);
 
+// Categories styleSheet
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
