@@ -3,15 +3,14 @@ import {
 	View,
 	Text,
 	StyleSheet,
-	Pressable,
 	ScrollView,
 	KeyboardAvoidingView,
 } from 'react-native';
+
 // Custom components imports
 import LoginForm from '../Components/LoginOutput/LoginForm';
 import Logo from '../Components/Logo';
-// Constants
-import Colors from '../Constants/Colors';
+import Link from '../Components/Link';
 
 // Login Component
 const Login = ({ navigation }) => {
@@ -26,18 +25,16 @@ const Login = ({ navigation }) => {
 					{/* Login form  */}
 					<LoginForm />
 					{/* Forgot Password link */}
-					<View style={styles.forgotPasswordOuterContainer}>
+					<View style={styles.forgotPasswordContainer}>
 						<Text style={[styles.forgotPasswordText]}>Forgot password ?</Text>
-						<Pressable
+						<Link
 							onPress={() => {
 								console.log('forgot password Pressed ...');
 								navigation.navigate('ForgotPassword');
-							}}>
-							<Text
-								style={[styles.forgotPasswordText, styles.forgotPasswordLink]}>
-								click here
-							</Text>
-						</Pressable>
+							}}
+							style={{ fontSize: 18 }}>
+							Click here
+						</Link>
 					</View>
 				</View>
 			</KeyboardAvoidingView>
@@ -52,18 +49,14 @@ const styles = StyleSheet.create({
 		marginHorizontal: 24,
 		marginTop: '10%',
 	},
-
-	forgotPasswordOuterContainer: {
+	forgotPasswordContainer: {
 		marginTop: 20,
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
 	forgotPasswordText: {
 		fontSize: 18,
-	},
-	forgotPasswordLink: {
-		marginLeft: 3,
-		color: Colors.Links.primary,
+		marginRight: 3,
 	},
 	logoContainer: {
 		height: '20%',

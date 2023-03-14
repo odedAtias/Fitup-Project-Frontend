@@ -1,17 +1,17 @@
-//  RN Core components & API imports
+// RN Core components & API imports
 import { StyleSheet, Text, Pressable } from 'react-native';
-// constants
+
+// Constants
 import Colors from './../Constants/Colors';
 
 // Link component
 const Link = ({ children, onPress, style }) => (
-	<Pressable onPress={onPress} style={style.container}>
+	<Pressable onPress={onPress}>
 		<Text style={[styles.text, style]}>{children}</Text>
 	</Pressable>
 );
 
-export default Link;
-
+// Link StyleSheet
 const styles = StyleSheet.create({
 	text: {
 		fontSize: 15,
@@ -19,3 +19,5 @@ const styles = StyleSheet.create({
 		fontWeight: '400',
 	},
 });
+
+export default Link;
