@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
 	},
 	label: {
 		fontSize: 20,
+		fontFamily: 'rubik',
+		fontWeight: '600',
 	},
 	input: {
 		borderBottomColor: Colors.Texts.primary,

@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
 		elevation: 8,
 		// Shadow for ios
 		backgroundColor: 'white',
-		shadowColor: Colors.Backgrounds.male,
+		shadowColor: Colors.Shadows.primary,
 		shadowOpacity: 0.25,
-		shadowOffset: { width: 0, height: 2 },
+		shadowOffset: { width: 4, height: 2 },
 		shadowRadius: 8,
 	},
 });

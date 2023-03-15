@@ -1,25 +1,24 @@
 // RN core components & API imports
 import { View, StyleSheet } from 'react-native';
 
-// Constants
-import Colors from '../Constants/Colors';
-
 // Custom components imports
-import Title from './Title';
-import TextBox from './TextBox';
+import Title from '../Title';
+import TextBox from '../TextBox';
 
-// Description component
-const Description = ({ description }) => (
+// Constants
+import Colors from '../../Constants/Colors';
+
+// EventDetailsDescription component
+const EventDetailsDescription = ({ description }) => (
 	<View style={styles.container}>
 		<Title>Description</Title>
-		<TextBox
-			bgColor={Colors.Backgrounds.male}
-			txtColor={Colors.Texts.secondary}>
+		<TextBox bgColor={Colors.Backgrounds.third} txtColor={Colors.Texts.primary}>
 			{description}
 		</TextBox>
 	</View>
 );
 
+// EventDetailsDescription
 const styles = StyleSheet.create({
 	container: {
 		marginTop: '2%',
@@ -33,4 +32,4 @@ const styles = StyleSheet.create({
 	text: { color: 'white', fontSize: 15 },
 });
 
-export default Description;
+export default EventDetailsDescription;

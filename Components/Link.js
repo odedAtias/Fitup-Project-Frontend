@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
 		fontSize: 15,
 		color: Colors.Links.primary,
 		fontWeight: '400',
+		fontFamily: 'rubik',
 	},
 });
 

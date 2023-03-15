@@ -26,13 +26,15 @@ const Login = ({ navigation }) => {
 					<LoginForm />
 					{/* Forgot Password link */}
 					<View style={styles.forgotPasswordContainer}>
-						<Text style={[styles.forgotPasswordText]}>Forgot password ?</Text>
+						<Text style={[styles.forgotPasswordText, styles.text]}>
+							Forgot password ?
+						</Text>
 						<Link
 							onPress={() => {
 								console.log('forgot password Pressed ...');
 								navigation.navigate('ForgotPassword');
 							}}
-							style={{ fontSize: 18 }}>
+							style={{ fontSize: 20 }}>
 							Click here
 						</Link>
 					</View>
@@ -44,6 +46,9 @@ const Login = ({ navigation }) => {
 
 // Login StyleSheet
 const styles = StyleSheet.create({
+	text: {
+		fontFamily: 'rubik',
+	},
 	container: {
 		flex: 1,
 		marginHorizontal: 24,

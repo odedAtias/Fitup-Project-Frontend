@@ -1,22 +1,20 @@
 //  RN Core components & API imports
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Text, Pressable, StyleSheet } from 'react-native';
 
-//  PrimaryButton component
-const Button = ({ children, style, onPress }) => {
-	return (
-		<Pressable
-			style={({ pressed }) => [
-				styles.button,
-				{ ...style },
-				pressed && styles.pressed,
-			]}
-			onPress={onPress}>
-			<Text style={styles.textColor}>{children}</Text>
-		</Pressable>
-	);
-};
+//  Button component
+const Button = ({ children, style, onPress }) => (
+	<Pressable
+		style={({ pressed }) => [
+			styles.button,
+			{ ...style },
+			pressed && styles.pressed,
+		]}
+		onPress={onPress}>
+		<Text style={styles.text}>{children}</Text>
+	</Pressable>
+);
 
-//  Button styleSheet
+//  Button StyleSheet
 const styles = StyleSheet.create({
 	button: {
 		alignItems: 'center',
@@ -26,8 +24,10 @@ const styles = StyleSheet.create({
 		overflow: 'hidden',
 		width: '60%',
 	},
-	textColor: {
+	text: {
+		fontFamily: 'rubik',
 		color: 'white',
+		fontSize: 15,
 	},
 	pressed: {
 		opacity: 0.75,

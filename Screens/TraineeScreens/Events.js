@@ -1,20 +1,23 @@
 // Hooks components
 import { useLayoutEffect, useContext, useEffect, useState } from 'react';
+
 // Contexts imports
 import { Context } from '../../store/Context';
+
 // RN core components & API imports
 import { View, StyleSheet, Platform } from 'react-native';
+
 // Custom components imports
 import Header from '../../Components/Header';
 import EventsList from '../../Components/EventsOutput/EventsList';
+
 // Constants
 import Colors from '../../Constants/Colors';
 
-// EventsList component
+// Events component
 const Events = ({ navigation, route }) => {
 	// Dummy Events
 	const EVENTS = [
-		// Todo - instead put the trainer name in string we need to get the trainer name from the object trainer
 		{
 			id: 'e1',
 			category: 'Zumba',
@@ -346,12 +349,14 @@ const Events = ({ navigation, route }) => {
 				'The "dumbbells" event is a weightlifting competition that involves lifting dumbbells of varying weights with one hand at a time. Competitors typically perform a set number of repetitions for each weight, with the winner being the person who completes the most repetitions or lifts the heaviest weight. The dumbbells themselves consist of a handle and two weights that can be adjusted or replaced to change the overall weight. The dumbbells event is often included in strongman competitions and has also been featured in the Olympics as part of the weightlifting program.',
 		},
 	];
+
 	// loading indicator
 	const [isFetching, setIsFetching] = useState(true);
+
 	// Context initialize
 	const context = useContext(Context);
 
-	// Loading the dynamic screen options
+	// Loading dynamically the screen options
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			header: () => (
@@ -367,12 +372,13 @@ const Events = ({ navigation, route }) => {
 						fontSize: 40,
 						color: Colors.Texts.secondary,
 					}}
-					onBack={() => navigation.goBack()}
-					iconColor={Colors.Texts.secondary}
+					onPressLeft={() => navigation.goBack()}
+					iconsColor={Colors.Texts.secondary}
 				/>
 			),
 		});
 	});
+
 	// Loading the Events to our store
 	useEffect(() => {
 		setIsFetching(true);
@@ -395,6 +401,7 @@ const Events = ({ navigation, route }) => {
 	}
 };
 
+// Events StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		paddingBottom: '12%',

@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
 		// Adjust by the platforms !!!!!
 		marginTop: 10,
 		// Shadow for android
-		elevation: 8,
+		elevation: 15,
 		// Shadow for ios
 		backgroundColor: 'white',
-		shadowColor: Colors.Backgrounds.male,
+		shadowColor: Colors.Shadows.primary,
 		shadowOpacity: 0.25,
-		shadowOffset: { width: 0, height: 2 },
+		shadowOffset: { width: 10, height: 5 },
 		shadowRadius: 8,
 	},
 	visitProfileContainer: {

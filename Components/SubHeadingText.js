@@ -1,5 +1,7 @@
+// RN core components & API imports
 import { StyleSheet, Text, View } from 'react-native';
 
+// SubHeadingText component
 const SubHeadingText = ({ children }) => {
 	return (
 		<View style={styles.container}>
@@ -8,8 +10,7 @@ const SubHeadingText = ({ children }) => {
 	);
 };
 
-export default SubHeadingText;
-
+// SubHeadingText StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		marginBottom: 2,
@@ -17,5 +18,8 @@ const styles = StyleSheet.create({
 	subHeadingText: {
 		fontSize: 16,
 		fontWeight: '500',
+		fontFamily: 'rubik',
 	},
 });
+
+export default SubHeadingText;

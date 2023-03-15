@@ -1,5 +1,5 @@
 // RN core components & API imports
-import { Pressable, View, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 // Ionicons
 import { Ionicons } from '@expo/vector-icons';
 
@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 const IconButton = ({ icon, size, color, onPress }) => {
 	// IconButton component
 	return (
-		<Pressable onPress={onPress}>
+		<Pressable onPress={onPress} style={styles.container}>
 			{/* We create this view for style reasons */}
 			<Ionicons
 				name={icon}
@@ -19,5 +19,14 @@ const IconButton = ({ icon, size, color, onPress }) => {
 		</Pressable>
 	);
 };
+
+// IconButton StyleSheet
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+});
 
 export default IconButton;

@@ -1,20 +1,28 @@
 // RN core components & API imports
 import { View, Text, StyleSheet } from 'react-native';
 
+// Custom components imports
 import IconButton from './IconButton';
 
 // Header component
-const Header = ({ label, containerStyle, labelStyle, onBack, iconColor }) => {
+const Header = ({
+	label,
+	containerStyle,
+	labelStyle,
+	iconsColor,
+	onPressLeft,
+	rightButton,
+}) => {
 	return (
 		<View style={[styles.container, containerStyle]}>
 			{/* BackButton container */}
 			<View style={styles.flex}>
-				{onBack && (
+				{onPressLeft && (
 					<IconButton
 						icon='arrow-back-outline'
 						size={30}
-						onPress={onBack}
-						color={iconColor}
+						onPress={onPressLeft}
+						color={iconsColor}
 					/>
 				)}
 			</View>
@@ -22,8 +30,8 @@ const Header = ({ label, containerStyle, labelStyle, onBack, iconColor }) => {
 			<View>
 				<Text style={[styles.label, labelStyle]}>{label}</Text>
 			</View>
-			{/* Auxilliary view */}
-			<View style={styles.flex}></View>
+			{/* Optional RightButton container */}
+			<View style={styles.flex}>{rightButton}</View>
 		</View>
 	);
 };
@@ -36,11 +44,12 @@ const styles = StyleSheet.create({
 	},
 	label: {
 		fontFamily: 'blanka',
-		fontSize: 50,
+		fontSize: 45,
 		textAlign: 'center',
 	},
 	flex: {
-		width: 50,
+		width: '25%',
+		alignItems: 'flex-start',
 	},
 });
 

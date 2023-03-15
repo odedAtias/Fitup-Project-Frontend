@@ -3,6 +3,7 @@ import { useFonts } from 'expo-font';
 
 // Fonts imports
 import Blanka from './assets/fonts/Blanka-Regular.otf';
+import Rubik from './assets/fonts/Rubik-VariableFont_wght.ttf';
 
 // Status Bar
 import { StatusBar } from 'expo-status-bar';
@@ -53,14 +54,14 @@ const StackSearchEvent = () => (
 					label={'Fit\nUp'}
 					containerStyle={{
 						backgroundColor: Colors.Headers.secondary,
-						padding: Platform.OS === 'ios' ? 10 : 20,
+						padding: Platform.OS === 'ios' ? 10 : 10,
 						paddingTop: Platform.OS === 'ios' ? 10 : 30,
 					}}
 					labelStyle={{
 						fontSize: 50,
 						color: Colors.Texts.primary,
 					}}
-					onBack={() => navigation.goBack()}
+					onPressLeft={() => navigation.goBack()}
 				/>
 			),
 			contentStyle: {
@@ -117,8 +118,8 @@ const TraineeBottomTab = () => {
 					elevation: 0,
 				},
 				tabBarShowLabel: false,
-				tabBarActiveTintColor: Colors.Backgrounds.third,
-				tabBarInactiveTintColor: Colors.Backgrounds.secondary,
+				tabBarActiveTintColor: Colors.Texts.third,
+				tabBarInactiveTintColor: Colors.Texts.secondary,
 			}}>
 			<Tab.Screen
 				name='StackSearchEvent'
@@ -194,6 +195,7 @@ export default function App() {
 	// Header font loader
 	const [loaded] = useFonts({
 		blanka: Blanka,
+		rubik: Rubik,
 	});
 	if (loaded)
 		return (

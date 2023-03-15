@@ -1,11 +1,14 @@
 // RN core components & API imports
 import { StyleSheet, Text, View } from 'react-native';
 
+// Custom component imports
+import RubikText from './RubikText';
+
 // HeadingText component
 const HeadingText = ({ children }) => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.headingText}>{children}</Text>
+			<RubikText style={styles.headingText}>{children}</RubikText>
 		</View>
 	);
 };
@@ -19,5 +22,6 @@ const styles = StyleSheet.create({
 	headingText: {
 		fontSize: 22,
 		fontWeight: 'bold',
+		fontFamily: 'rubik',
 	},
 });
