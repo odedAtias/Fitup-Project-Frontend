@@ -18,13 +18,16 @@ const EventItemDetails = details => (
 		<SubHeadingText>
 			{displayAddrress(details.address, details.city)}
 		</SubHeadingText>
-		<Text style={styles.spacing}>
+		<Text style={[styles.spacing, styles.font]}>
 			{displayFullDate(details.date, details.hour)}
 		</Text>
 		<Text
-			style={{
-				color: statusColor(details.numOfTrainees, details.maxNumOfTrainees),
-			}}>
+			style={[
+				{
+					color: statusColor(details.numOfTrainees, details.maxNumOfTrainees),
+				},
+				styles.font,
+			]}>
 			{displayParticipants(details.numOfTrainees, details.maxNumOfTrainees)}
 		</Text>
 	</View>
@@ -34,6 +37,9 @@ const EventItemDetails = details => (
 const styles = StyleSheet.create({
 	spacing: {
 		marginBottom: 3,
+	},
+	font: {
+		fontFamily: 'rubik',
 	},
 });
 

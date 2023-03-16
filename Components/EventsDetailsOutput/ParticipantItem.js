@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
 	},
 	participantName: {
 		marginTop: 5,
-		fontWeight: '500',
+		fontWeight: '600',
 		fontSize: 14,
+		fontFamily: 'rubik',
 	},
 });
 

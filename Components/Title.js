@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
 	title: {
 		fontWeight: 'bold',
 		fontSize: 25,
+		fontFamily: 'rubik',
 	},
 });
 export default Title;

@@ -41,21 +41,24 @@ const EventDetailsCard = cardDetails => {
 			<View>
 				<HeadingText>{cardDetails.category} Training</HeadingText>
 				<SubHeadingText>{cardDetails.trainerName}</SubHeadingText>
-				<Text style={styles.spacing}>
+				<Text style={[styles.spacing, styles.font]}>
 					{displayAddrress(cardDetails.address, cardDetails.city)}
 				</Text>
-				<Text style={styles.spacing}>
+				<Text style={[styles.spacing, styles.font]}>
 					{displayFullDate(cardDetails.date, cardDetails.hour)}
 				</Text>
 				<View>
 					{/* Number of participants */}
 					<Text
-						style={{
-							color: statusColor(
-								cardDetails.numOfTrainees,
-								cardDetails.maxNumOfTrainees
-							),
-						}}>
+						style={[
+							{
+								color: statusColor(
+									cardDetails.numOfTrainees,
+									cardDetails.maxNumOfTrainees
+								),
+							},
+							styles.font,
+						]}>
 						{displayParticipants(
 							cardDetails.numOfTrainees,
 							cardDetails.maxNumOfTrainees
@@ -91,6 +94,9 @@ const styles = StyleSheet.create({
 	},
 	spacing: {
 		marginBottom: 3,
+	},
+	font: {
+		fontFamily: 'rubik',
 	},
 });
 
