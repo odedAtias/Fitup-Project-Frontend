@@ -11,6 +11,7 @@ const Header = ({
 	labelStyle,
 	iconsColor,
 	onPressLeft,
+	onPressRight,
 	rightButton,
 }) => {
 	return (
@@ -31,7 +32,16 @@ const Header = ({
 				<Text style={[styles.label, labelStyle]}>{label}</Text>
 			</View>
 			{/* Optional RightButton container */}
-			<View style={styles.flex}>{rightButton}</View>
+			<View style={styles.flex}>
+				{onPressRight && (
+					<IconButton
+						icon={rightButton}
+						size={30}
+						onPress={onPressLeft}
+						color={iconsColor}
+					/>
+				)}
+			</View>
 		</View>
 	);
 };
@@ -49,7 +59,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	flex: {
-		width: '25%',
+		width: '10%',
 		alignItems: 'flex-start',
 	},
 });

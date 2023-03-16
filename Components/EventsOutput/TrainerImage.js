@@ -4,8 +4,8 @@ import { View, StyleSheet, Image } from 'react-native';
 // TrainerImage component
 const TrainerImage = ({ imageUrl, style }) => (
 	<View style={styles.container}>
-		<View style={styles.imageContainer}>
-			<Image source={imageUrl} style={[styles.image, style]} />
+		<View style={[styles.imageContainer, style]}>
+			<Image source={imageUrl} style={styles.image} />
 		</View>
 	</View>
 );

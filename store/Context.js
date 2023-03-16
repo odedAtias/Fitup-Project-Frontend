@@ -7,6 +7,7 @@ export const Context = createContext({
 	trainees: [],
 	events: [],
 	favoriteTrainers: [],
+	categories: [],
 	// Trainees handler functions
 	setEvents: () => {},
 	registerEvent: eventId => {},
@@ -20,6 +21,8 @@ const reducer = (state, action) => {
 			return { ...state, events: action.payload };
 		case 'SetFavoriteTrainers':
 			return { ...state, favoriteTrainers: action.payload };
+		case 'SetCategories':
+			return { ...state, categories: action.payload };
 		default:
 			return state;
 	}
@@ -35,12 +38,17 @@ const ContextProvider = ({ children }) => {
 	const setFavoriteTrainers = favoriteTrainers =>
 		dispatch({ type: 'SetFavoriteTrainers', payload: favoriteTrainers });
 
+	const setCategories = categories =>
+		dispatch({ type: 'SetCategories', payload: categories });
+
 	const value = {
 		// Trainee values
 		events: state.events,
 		setEvents: setEvents,
 		favoriteTrainers: state.favoriteTrainers,
 		setFavoriteTrainers: setFavoriteTrainers,
+		categories: state.categories,
+		setCategories: setCategories,
 	};
 	return <Context.Provider value={value}>{children}</Context.Provider>;
 };

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		margin: 16,
 		marginTop: 0,
-		height: 140,
+		height: 150,
 		width: '100%',
 	},
 	innerContainer: {

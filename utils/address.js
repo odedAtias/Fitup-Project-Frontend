@@ -1,1 +1,2 @@
-export const displayAddrress = (address, city) => `${address} st, ${city}`;
+export const displayAddrress = (address, city) =>
+	`${address} st ${city ? ', ' + city : ''}`;
