@@ -1,20 +1,14 @@
 // RN core components & API imports
 import { StyleSheet, Text, View } from 'react-native';
 
-// Custom component imports
-import RubikText from './RubikText';
-
 // HeadingText component
-const HeadingText = ({ children }) => {
-	return (
-		<View style={styles.container}>
-			<RubikText style={styles.headingText}>{children}</RubikText>
-		</View>
-	);
-};
+const HeadingText = ({ children }) => (
+	<View style={styles.container}>
+		<Text style={styles.headingText}>{children}</Text>
+	</View>
+);
 
-export default HeadingText;
-
+// HeadingText StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		marginBottom: 2,
@@ -25,3 +19,5 @@ const styles = StyleSheet.create({
 		fontFamily: 'rubik',
 	},
 });
+
+export default HeadingText;
