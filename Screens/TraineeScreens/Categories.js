@@ -59,11 +59,13 @@ const CATEGORIES = [
 ];
 
 // Categories component
-const Categories = () => (
-	<View style={styles.container}>
-		<CategoryList categories={CATEGORIES} />
-	</View>
-);
+const Categories = () => {
+	return (
+		<View style={styles.container}>
+			<CategoryList categories={CATEGORIES} />
+		</View>
+	);
+};
 
 // Categories styleSheet
 const styles = StyleSheet.create({

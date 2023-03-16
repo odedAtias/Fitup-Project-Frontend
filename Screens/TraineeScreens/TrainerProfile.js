@@ -9,12 +9,15 @@ import { Context } from './../../store/Context';
 
 // TrainerProfile component
 const TrainerProfile = ({ route }) => {
+	// Initialize our context
 	const context = useContext(Context);
+	// accesing trainer id
+	const trainerId = route.params.trainerId;
 	// Http request to get the trainer details ...
 	const TRAINER = {
-		id: route.params.trainerId,
-		name: 'Max Shultz',
-		events: context.events.filter(e => e.trainerId === route.params.trainerId),
+		id: trainerId,
+		name: context.events.find(e => e.trainerId === trainerId).trainerName,
+		events: context.events.filter(e => e.trainerId === trainerId),
 		imageUrl: 31,
 		email: 'MaxShultz@gmail.com',
 		description:
