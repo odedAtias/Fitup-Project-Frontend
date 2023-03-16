@@ -2,13 +2,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 
 // Title component
-const Title = ({ children }) => {
-	return (
-		<View style={styles.contaner}>
-			<Text style={styles.title}>{children}</Text>
-		</View>
-	);
-};
+const Title = ({ children }) => (
+	<View style={styles.contaner}>
+		<Text style={styles.title}>{children}</Text>
+	</View>
+);
 
 const styles = StyleSheet.create({
 	contaner: {
