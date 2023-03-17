@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
 	},
 	logoContainer: {
 		height: '20%',
-		marginBottom: '5%',
+		marginBottom: '10%',
 	},
 	screen: {
 		flex: 1,

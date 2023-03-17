@@ -5,16 +5,19 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import Title from '../Title';
 import EventCard from './EventCard';
 
+// utils
+import { sortedEventsByDate } from '../../utils/Date';
+
 // MyUpcomingEvents component
 const MyUpcomingEvents = ({ events }) => {
 	// need to sort the cards by the nearest date
-	
+	const sortedEvents = sortedEventsByDate(events);
 	return (
 		<View>
 			<Title>My upcoming events</Title>
 			<View stlye={styles.container}>
 				<FlatList
-					data={events}
+					data={sortedEvents}
 					horizontal
 					showsHorizontalScrollIndicator={false}
 					renderItem={itemData => <EventCard event={{ ...itemData.item }} />}

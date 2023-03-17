@@ -53,7 +53,7 @@ const TrainerProfile = ({ route, navigation }) => {
 					containerStyle={{
 						backgroundColor: Colors.Headers.secondary,
 						paddingHorizontal: '5%',
-						paddingTop: '10%',
+						paddingTop: '8%',
 					}}
 					onPressLeft={() => navigation.goBack()}
 					rightButton='bookmark-outline'
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
 	},
 	trainerHeaderContainer: {
 		alignItems: 'center',
-		marginBottom: '5%',
+		marginBottom: 5,
 	},
 	font: {
 		fontFamily: 'rubik',
