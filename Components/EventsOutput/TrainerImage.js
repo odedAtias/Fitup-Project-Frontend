@@ -5,7 +5,7 @@ import { View, StyleSheet, Image } from 'react-native';
 const TrainerImage = ({ imageUrl, style }) => (
 	<View style={styles.container}>
 		<View style={[styles.imageContainer, style]}>
-			<Image source={imageUrl} style={styles.image} />
+			<Image source={{ uri: imageUrl }} style={styles.image} />
 		</View>
 	</View>
 );

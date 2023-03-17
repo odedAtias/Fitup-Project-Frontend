@@ -5,7 +5,7 @@ import { useLayoutEffect, useContext, useEffect, useState } from 'react';
 import { Context } from '../../store/Context';
 
 // RN core components & API imports
-import { View, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet, Platform, Text } from 'react-native';
 
 // Custom components imports
 import Header from '../../Components/Header';
@@ -13,6 +13,9 @@ import EventsList from '../../Components/EventsOutput/EventsList';
 
 // Constants
 import Colors from '../../Constants/Colors';
+
+// Utils
+import { fetchEvents } from '../../utils/http';
 
 // Events component
 const Events = ({ navigation, route }) => {
@@ -381,11 +384,17 @@ const Events = ({ navigation, route }) => {
 
 	// Loading the Events to our store
 	useEffect(() => {
-		setIsFetching(true);
-		// Http request to the backend ...
-		// const events = await fetchEvent();
-		context.setEvents(EVENTS);
-		setIsFetching(false);
+		async function getEvents() {
+			setIsFetching(true);
+			try {
+				const events = await fetchEvents();
+				context.setEvents(events.data);
+			} catch (error) {
+				console.log(error.message);
+			}
+			setIsFetching(false);
+		}
+		getEvents();
 	}, []);
 
 	if (!isFetching) {
