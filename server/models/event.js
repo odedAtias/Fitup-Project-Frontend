@@ -52,7 +52,7 @@ const validateEvent = event => {
 	const schema = Joi.object({
 		name: Joi.string().min(3).required(),
 		date: Joi.string().length(10).required(),
-		hour: Joi.string().length(4).required(),
+		hour: Joi.string().length(5).required(),
 		address: Joi.string().required(),
 		city: Joi.string().required(),
 		participants: Joi.array(),
