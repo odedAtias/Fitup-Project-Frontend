@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
 // Default image URL
 const DEFAULT_IMAGE_URL =
-	'https://static-cdn.jtvnw.net/user-default-pictures-uv/dbdc9198-def8-11e9-8681-784f43822e80-profile_image-600x600.png';
+	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTECb7TBZ1o0RLkM-VV-41JPLLMwKwPRgACKvj89wueS9AqoK-mieFUvl1whh1G7ODWQ&usqp=CAU';
 
 // TrainerImage component
 const TrainerImage = ({ imageUrl, style }) => {
@@ -17,7 +17,9 @@ const TrainerImage = ({ imageUrl, style }) => {
 		<View style={styles.container}>
 			<View style={[styles.imageContainer, style]}>
 				<Image
-					source={{ uri: imageError ? DEFAULT_IMAGE_URL : imageUrl }}
+					source={{
+						uri: imageUrl && !imageError ? imageUrl : DEFAULT_IMAGE_URL,
+					}}
 					style={styles.image}
 					onError={handleImageError}
 				/>
