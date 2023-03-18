@@ -1,3 +1,6 @@
+// Hooks imports
+import { useState } from 'react';
+
 // RN core components & API imports
 import {
 	View,
@@ -5,10 +8,23 @@ import {
 	ImageBackground,
 	Text,
 	StyleSheet,
+	ActivityIndicator,
 } from 'react-native';
 
 // CategoryGridTile component
+// CategoryGridTile component
 const CategoryGridTile = ({ categoryName, categoryImageUrl, onPress }) => {
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [error, setError] = useState(false);
+
+	const handleImageLoad = () => {
+		setIsLoaded(true);
+	};
+
+	const handleImageError = () => {
+		setError(true);
+	};
+
 	return (
 		<View style={styles.container}>
 			<Pressable
@@ -17,16 +33,29 @@ const CategoryGridTile = ({ categoryName, categoryImageUrl, onPress }) => {
 					styles.innerContainer,
 					pressed && styles.buttonPressed,
 				]}>
-				{/* Category item image */}
-				<ImageBackground source={categoryImageUrl} style={styles.image}>
-					<Text style={styles.text}>{categoryName}</Text>
-				</ImageBackground>
+				{error ? (
+					<View style={styles.imageError}>
+						<Text style={styles.text}>{categoryName}</Text>
+					</View>
+				) : (
+					<ImageBackground
+						source={{ uri: categoryImageUrl }}
+						onLoad={handleImageLoad}
+						onError={handleImageError}
+						style={styles.image}>
+						{!isLoaded && (
+							<View style={styles.imagePlaceholder}>
+								<ActivityIndicator size='large' color='white' />
+							</View>
+						)}
+						<Text style={styles.text}>{categoryName}</Text>
+					</ImageBackground>
+				)}
 			</Pressable>
 		</View>
 	);
 };
 
-// CategoryGridTile StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -42,6 +71,17 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	imagePlaceholder: {
+		...StyleSheet.absoluteFillObject,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	imageError: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: '#f0f0f0',
 	},
 	text: {
 		fontSize: 24,

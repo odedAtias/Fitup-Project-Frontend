@@ -10,6 +10,7 @@ export const Context = createContext({
 	categories: [],
 	// Trainees handler functions
 	setEvents: () => {},
+	setCategories: () => {},
 	registerEvent: eventId => {},
 	cancelRegisterEvent: eventId => {},
 	addFavoriteTrainer: trainerId => {},

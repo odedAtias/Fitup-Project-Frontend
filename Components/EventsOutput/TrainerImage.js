@@ -1,14 +1,30 @@
-// RN core components & API imports
+import React, { useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
+// Default image URL
+const DEFAULT_IMAGE_URL =
+	'https://static-cdn.jtvnw.net/user-default-pictures-uv/dbdc9198-def8-11e9-8681-784f43822e80-profile_image-600x600.png';
+
 // TrainerImage component
-const TrainerImage = ({ imageUrl, style }) => (
-	<View style={styles.container}>
-		<View style={[styles.imageContainer, style]}>
-			<Image source={{ uri: imageUrl }} style={styles.image} />
+const TrainerImage = ({ imageUrl, style }) => {
+	const [imageError, setImageError] = useState(false);
+
+	const handleImageError = () => {
+		setImageError(true);
+	};
+
+	return (
+		<View style={styles.container}>
+			<View style={[styles.imageContainer, style]}>
+				<Image
+					source={{ uri: imageError ? DEFAULT_IMAGE_URL : imageUrl }}
+					style={styles.image}
+					onError={handleImageError}
+				/>
+			</View>
 		</View>
-	</View>
-);
+	);
+};
 
 // TrainerImage StyleSheet
 const styles = StyleSheet.create({

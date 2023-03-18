@@ -8,7 +8,7 @@ const BACKEND_URL =
 		? 'http://10.0.2.2:3000/api'
 		: 'http://localhost:3000/api';
 
-export const fetchEvents = async () => {
-	const response = await axios.get(`${BACKEND_URL}/events`);
+export const fetchData = async path => {
+	const response = await axios.get(`${BACKEND_URL}/${path}`);
 	return response;
 };
