@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 
 // CategoryGridTile component
-// CategoryGridTile component
 const CategoryGridTile = ({ categoryName, categoryImageUrl, onPress }) => {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [error, setError] = useState(false);

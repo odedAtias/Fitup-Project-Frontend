@@ -5,16 +5,26 @@ const mongoose = require('mongoose');
 const Trainer = mongoose.model(
 	'Trainer',
 	new mongoose.Schema({
-		name: {
+		firstName: {
 			type: String,
 			required: true,
 		},
-		description: {
+		lastName: {
 			type: String,
 			required: true,
 		},
+		email: {
+			type: String,
+			required: true,
+		},
+		rating: {
+			type: Number,
+			default: 3,
+		},
+		description: String,
 		events: {
 			type: [mongoose.Schema.Types.ObjectId],
+			default: [],
 			ref: 'Event',
 		},
 	})
@@ -22,9 +32,13 @@ const Trainer = mongoose.model(
 
 const validateTrainer = trainer => {
 	const schema = Joi.object({
-		name: Joi.string().min(1).required(),
-		description: Joi.string().min(10).max(90).required(),
-		events: Joi.array(),
+		firstName: Joi.string().min(1).required(),
+		lastName: Joi.string().min(2).required(),
+		email: Joi.string().email({ minDomainSegments: 2 }).required(),
+		rating: Joi.number().default(3),
+		description: Joi.string().min(10).max(90),
+		events: Joi.array().default([]),
+		// feedbacks: Joi.array().default([]),
 	});
 	return schema.validate(trainer);
 };
