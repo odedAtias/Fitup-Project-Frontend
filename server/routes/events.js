@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 // Read Methods
 
 router.get('/', async (req, res) => {
-	const events = await Event.find().populate('trainer', '_id name');
+	const events = await Event.find().populate('trainer', '_id firstName lastName');
 	res.send(events);
 });
 

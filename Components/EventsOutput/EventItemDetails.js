@@ -16,7 +16,7 @@ const EventItemDetails = details => {
 	const numOfTrainees = details.participants.length;
 	return (
 		<View>
-			<HeadingText>{details.trainer.name}</HeadingText>
+			<HeadingText>{`${details.trainer.firstName}  ${details.trainer.lastName}`}</HeadingText>
 			<SubHeadingText>
 				{displayAddrress(details.address, details.city)}
 			</SubHeadingText>

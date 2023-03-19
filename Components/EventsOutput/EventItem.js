@@ -11,6 +11,7 @@ import Colors from '../../Constants/Colors';
 // EventItem component
 const EventItem = ({ event, onPress }) => {
 	const { _id, category, imageUrl, ...eventDetails } = event;
+	console.log(event);
 	return (
 		<Pressable style={styles.container} onPress={onPress}>
 			{/* Events trainer image container */}

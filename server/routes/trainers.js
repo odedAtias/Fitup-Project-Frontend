@@ -8,7 +8,6 @@ const { Trainer, validate } = require('../models/trainer');
 // Create Methods
 router.post('/', async (req, res) => {
 	const trainerData = req.body;
-	console.log(trainerData);
 	// Case 400 checking
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
