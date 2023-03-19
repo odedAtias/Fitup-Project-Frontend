@@ -1,14 +1,14 @@
 // Hooks imports
-import { useContext, useLayoutEffect } from 'react';
+import { useContext, useLayoutEffect, useEffect, useState } from 'react';
 
 // RN core components & API imports
 import { View, Text, StyleSheet, Linking } from 'react-native';
 
 // Custom components imports
 import Header from '../../Components/Header';
-import TrainerImage from '../../Components/EventsOutput/TrainerImage';
+// import TrainerImage from '../../Components/EventsOutput/TrainerImage';
 import Title from './../../Components/Title';
-import Link from '../../Components/Link';
+// import Link from '../../Components/Link';
 import Aboutme from '../../Components/TrainerProfileOutput/Aboutme';
 
 // Context imports
@@ -16,10 +16,16 @@ import { Context } from './../../store/Context';
 
 // Constants
 import Colors from '../../Constants/Colors';
-import MyUpcomingEvents from '../../Components/TrainerProfileOutput/MyUpcomingEvents';
+// import MyUpcomingEvents from '../../Components/TrainerProfileOutput/MyUpcomingEvents';
+
+// Utils
+import { fetchData } from '../../utils/http';
 
 // TrainerProfile component
 const TrainerProfile = ({ route, navigation }) => {
+	// Loading indicator state
+	const [isFetching, setIsFetching] = useState(false);
+
 	// Initialize our context
 	const context = useContext(Context);
 
@@ -27,23 +33,19 @@ const TrainerProfile = ({ route, navigation }) => {
 	const trainerId = route.params.trainerId;
 
 	// Http request to get the trainer details ...
-	const TRAINER = {
-		id: trainerId,
-		name: context.events.find(e => e.trainerId === trainerId).trainerName,
-		events: context.events.filter(e => e.trainerId === trainerId),
-		imageUrl: context.events.find(e => e.trainerId === trainerId).imageUrl,
-		email: 'MaxShultz@gmail.com',
-		description:
-			'I have been a kickboxing coach for over 15 years, experienced in training all populations of all ages. I am passionate about seeing people who undergo change following my training.',
-		city: 'Jerusalem',
-		country: 'Israel',
-		ratingAvg: 4.2,
-	};
-
-	// handle contact me
-	const handleSendEmail = () => {
-		Linking.openURL(`mailto:${TRAINER.email}`);
-	};
+	useEffect(() => {
+		async function getTrainer() {
+			setIsFetching(true);
+			try {
+				const response = await fetchData(`trainers/${trainerId}`);
+				context.setTrainer(response.data);
+			} catch (error) {
+				console.log(error.message);
+			}
+			setIsFetching(false);
+		}
+		getTrainer();
+	}, []);
 
 	// Loading dynamically the screen options
 	useLayoutEffect(() => {
@@ -63,35 +65,9 @@ const TrainerProfile = ({ route, navigation }) => {
 		});
 	});
 
-	return (
-		<View style={styles.container}>
-			<View style={styles.trainerHeaderContainer}>
-				<TrainerImage
-					imageUrl={TRAINER.imageUrl}
-					style={{
-						width: 130,
-						height: 130,
-						borderRadius: 100,
-					}}
-				/>
-				<Title>{TRAINER.name}</Title>
-				<Text style={[styles.font, styles.rating]}>
-					Rating average : {TRAINER.ratingAvg}
-				</Text>
-				<Link
-					icon={{
-						name: 'chatbox-outline',
-						color: Colors.Links.primary,
-						size: 20,
-					}}
-					onPress={handleSendEmail}>
-					Contact Me
-				</Link>
-			</View>
-			<Aboutme description={TRAINER.description} />
-			<MyUpcomingEvents events={TRAINER.events} />
-		</View>
-	);
+	if (!isFetching && context.trainer) {
+		return <Text>TrainerProfile</Text>;
+	}
 };
 
 // TrainerProfile StyleSheet

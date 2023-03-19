@@ -25,7 +25,9 @@ const EventDetailsCard = cardDetails => {
 
 	// EventDetailsCard handlers
 	const handleVisitProfile = () => {
-		navigation.navigate('TrainerProfile', { trainerId: cardDetails.trainerId });
+		navigation.navigate('TrainerProfile', {
+			trainerId: cardDetails.trainer._id,
+		});
 	};
 
 	return (
@@ -40,7 +42,7 @@ const EventDetailsCard = cardDetails => {
 			{/* Main details */}
 			<View>
 				<HeadingText>{cardDetails.category} Training</HeadingText>
-				<SubHeadingText>{cardDetails.trainerName}</SubHeadingText>
+				<SubHeadingText>{cardDetails.trainer.name}</SubHeadingText>
 				<Text style={[styles.spacing, styles.font]}>
 					{displayAddrress(cardDetails.address, cardDetails.city)}
 				</Text>
@@ -53,15 +55,15 @@ const EventDetailsCard = cardDetails => {
 						style={[
 							{
 								color: statusColor(
-									cardDetails.numOfTrainees,
-									cardDetails.maxNumOfTrainees
+									cardDetails.participants.length,
+									cardDetails.maxParticipants
 								),
 							},
 							styles.font,
 						]}>
 						{displayParticipants(
-							cardDetails.numOfTrainees,
-							cardDetails.maxNumOfTrainees
+							cardDetails.participants.length,
+							cardDetails.maxParticipants
 						)}
 					</Text>
 				</View>

@@ -20,7 +20,7 @@ const EventsList = ({ events }) => {
 	return (
 		<FlatList
 			data={events}
-			keyExtractor={item => item.id}
+			keyExtractor={item => item._id}
 			renderItem={itemData => (
 				<EventItem
 					event={{ ...itemData.item }}

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // Custom routes imports
 const events = require('./routes/events');
 const categories = require('./routes/categories');
+const trainers = require('./routes/trainers');
 
 // App initializing
 const app = express();
@@ -19,6 +20,7 @@ mongoose
 app.use(express.json());
 app.use('/api/events', events);
 app.use('/api/categories', categories);
+app.use('/api/trainers', trainers);
 
 // Port initialize
 const port = process.env.PORT || 3000;

@@ -3,7 +3,7 @@ import { createContext, useReducer } from 'react';
 // The shared state schema
 export const Context = createContext({
 	users: [],
-	trainers: [],
+	trainer: {},
 	trainees: [],
 	events: [],
 	favoriteTrainers: [],
@@ -14,6 +14,7 @@ export const Context = createContext({
 	registerEvent: eventId => {},
 	cancelRegisterEvent: eventId => {},
 	addFavoriteTrainer: trainerId => {},
+	setTrainer: trainer => {},
 });
 
 const reducer = (state, action) => {
@@ -24,6 +25,8 @@ const reducer = (state, action) => {
 			return { ...state, favoriteTrainers: action.payload };
 		case 'SetCategories':
 			return { ...state, categories: action.payload };
+		case 'SetTrainer':
+			return { ...state, trainer: action.payload };
 		default:
 			return state;
 	}
@@ -42,6 +45,9 @@ const ContextProvider = ({ children }) => {
 	const setCategories = categories =>
 		dispatch({ type: 'SetCategories', payload: categories });
 
+	const setTrainer = trainer =>
+		dispatch({ type: 'SetTrainer', payload: trainer });
+
 	const value = {
 		// Trainee values
 		events: state.events,
@@ -50,6 +56,8 @@ const ContextProvider = ({ children }) => {
 		setFavoriteTrainers: setFavoriteTrainers,
 		categories: state.categories,
 		setCategories: setCategories,
+		trainer: state.trainer,
+		setTrainer: setTrainer,
 	};
 	return <Context.Provider value={value}>{children}</Context.Provider>;
 };

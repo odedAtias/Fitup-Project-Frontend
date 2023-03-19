@@ -12,26 +12,29 @@ import { displayParticipants } from '../../utils/participants';
 import { statusColor } from '../../utils/participants';
 
 // EventItemDetails component
-const EventItemDetails = details => (
-	<View>
-		<HeadingText>{details.trainerName}</HeadingText>
-		<SubHeadingText>
-			{displayAddrress(details.address, details.city)}
-		</SubHeadingText>
-		<Text style={[styles.spacing, styles.font]}>
-			{displayFullDate(details.date, details.hour)}
-		</Text>
-		<Text
-			style={[
-				{
-					color: statusColor(details.numOfTrainees, details.maxNumOfTrainees),
-				},
-				styles.font,
-			]}>
-			{displayParticipants(details.numOfTrainees, details.maxNumOfTrainees)}
-		</Text>
-	</View>
-);
+const EventItemDetails = details => {
+	const numOfTrainees = details.participants.length;
+	return (
+		<View>
+			<HeadingText>{details.trainer.name}</HeadingText>
+			<SubHeadingText>
+				{displayAddrress(details.address, details.city)}
+			</SubHeadingText>
+			<Text style={[styles.spacing, styles.font]}>
+				{displayFullDate(details.date, details.hour)}
+			</Text>
+			<Text
+				style={[
+					{
+						color: statusColor(numOfTrainees, details.maxParticipants),
+					},
+					styles.font,
+				]}>
+				{displayParticipants(numOfTrainees, details.maxParticipants)}
+			</Text>
+		</View>
+	);
+};
 
 // EventItemDetails StyleSheet
 const styles = StyleSheet.create({

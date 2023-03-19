@@ -9,7 +9,7 @@ const Event = mongoose.model(
 			type: String,
 			required: true,
 		},
-		trainerId: {
+		trainer: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Trainer',
 			required: true,
@@ -50,7 +50,8 @@ const Event = mongoose.model(
 
 const validateEvent = event => {
 	const schema = Joi.object({
-		name: Joi.string().min(3).required(),
+		category: Joi.string().min(3).required(),
+		trainer: Joi.string().required(),
 		date: Joi.string().length(10).required(),
 		hour: Joi.string().length(5).required(),
 		address: Joi.string().required(),
