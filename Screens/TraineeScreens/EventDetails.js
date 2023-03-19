@@ -13,7 +13,7 @@ import Link from '../../Components/Link';
 // EventDetails component
 const EventDetails = ({ navigation, route }) => {
 	// destructuring the relevant properties form params
-	const { description, id, ...cardDetails } = route.params;
+	const { description, _id, ...cardDetails } = route.params;
 	return (
 		<View style={styles.container}>
 			<EventDetailsCard {...cardDetails} />
@@ -30,7 +30,7 @@ const EventDetails = ({ navigation, route }) => {
 						textAlign: 'center',
 						borderBottomColor: Colors.Links.primary,
 						borderBottomWidth: 1,
-						width: '45%',
+						width: '40%',
 					}}
 					onPress={() => navigation.navigate('RegisterEventForm')}>
 					Register now
@@ -49,5 +49,3 @@ const styles = StyleSheet.create({
 });
 
 export default EventDetails;
-
-//Don't miss out this opportunity - Register now !

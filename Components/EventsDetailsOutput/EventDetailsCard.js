@@ -8,19 +8,18 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import EventItemImage from '../EventsOutput/TrainerImage';
 import Link from '../Link';
 import HeadingText from '../HeadingText';
-import SubHeadingText from '../SubHeadingText';
 
 // Constatns
 import Colors from '../../Constants/Colors';
 
 // Utils functions imports
-import { displayAddrress } from '../../utils/address';
-import { displayFullDate } from '../../utils/Date';
-import { displayParticipants, statusColor } from '../../utils/participants';
+import { displayAddrress } from './../../utils/address';
+import { displayFullDate } from './../../utils/Date';
+import { displayParticipants } from './../../utils/participants';
+import { statusColor } from './../../utils/participants';
 
 // EventDetailsCard component
 const EventDetailsCard = cardDetails => {
-	// Navigation initialize
 	const navigation = useNavigation();
 
 	// EventDetailsCard handlers
@@ -39,10 +38,13 @@ const EventDetailsCard = cardDetails => {
 				<EventItemImage imageUrl={cardDetails.imageUrl} />
 				<Link onPress={handleVisitProfile}>Visit Profile</Link>
 			</Pressable>
+
 			{/* Main details */}
 			<View>
 				<HeadingText>{cardDetails.category} Training</HeadingText>
-				<SubHeadingText>{cardDetails.trainer.name}</SubHeadingText>
+				<Text style={styles.name}>
+					{`${cardDetails.trainer.firstName} ${cardDetails.trainer.lastName}`}
+				</Text>
 				<Text style={[styles.spacing, styles.font]}>
 					{displayAddrress(cardDetails.address, cardDetails.city)}
 				</Text>
@@ -99,6 +101,11 @@ const styles = StyleSheet.create({
 	},
 	font: {
 		fontFamily: 'rubik',
+	},
+	name: {
+		fontSize: 16,
+		fontWeight: 'bold',
+		marginBottom: 5,
 	},
 });
 

@@ -21,7 +21,7 @@ const MyUpcomingEvents = ({ events }) => {
 					horizontal
 					showsHorizontalScrollIndicator={false}
 					renderItem={itemData => <EventCard event={{ ...itemData.item }} />}
-					keyExtractor={item => item.id}
+					keyExtractor={item => item._id}
 				/>
 			</View>
 		</View>
