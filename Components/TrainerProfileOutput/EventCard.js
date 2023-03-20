@@ -1,5 +1,3 @@
-// Hooks import
-
 // RN core components & API imports
 import {
 	View,
@@ -9,19 +7,16 @@ import {
 	Text,
 } from 'react-native';
 
-// Context
-import { Context } from '../../store/Context';
-import { useContext } from 'react';
+// Constants
+import { CATEGORIES } from '../../Constants/Categories';
 
 // EventCard component
 const EventCard = ({ event, onPress }) => {
 	// destructuring the relevant props
-	const { category, date, hour, city, numOfTrainees, maxNumOfTrainees, id } =
-		event;
+	const { category, date, hour, city, participants, maxParticipants } = event;
 
-	// Find the categoryImage
-	const context = useContext(Context);
-	const imageUrl = context.categories.find(c => c.name === category).imageUrl;
+	// find the relevant imageUrl
+	const imageUrl = CATEGORIES.find(c => c.name === category).imageUrl;
 
 	return (
 		<View style={styles.container}>
@@ -35,9 +30,9 @@ const EventCard = ({ event, onPress }) => {
 					<View style={styles.flexRow}>
 						<Text style={styles.text}>{hour}</Text>
 						<Text style={styles.text}>
-							{maxNumOfTrainees - numOfTrainees === 0
+							{maxParticipants - participants.length === 0
 								? 'Sold out'
-								: maxNumOfTrainees - numOfTrainees + ' avaiable places'}
+								: maxParticipants - participants.length + ' avaiable places'}
 						</Text>
 					</View>
 				</ImageBackground>

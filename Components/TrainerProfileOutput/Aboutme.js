@@ -1,5 +1,5 @@
 // RN core components & API imports
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 // Custom components imports
 import Title from '../Title';

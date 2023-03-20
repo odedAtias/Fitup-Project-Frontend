@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 	const trainer = await Trainer.findById(req.params.id).populate({
 		path: 'events',
-		select: '_id category date hour city address',
+		select: '_id category date hour city address participants maxParticipants',
 	});
 	if (!trainer)
 		return res.status(404).send('The trainer with the given ID was not found.');

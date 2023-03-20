@@ -81,6 +81,7 @@ const TrainerProfile = ({ route, navigation }) => {
 
 	if (!isFetching && context.trainer) {
 		let trainer = context.trainer;
+		console.log(context.trainer);
 		return (
 			<View style={styles.container}>
 				<View style={styles.trainerHeaderContainer}>
@@ -111,7 +112,7 @@ const TrainerProfile = ({ route, navigation }) => {
 			</View>
 		);
 	} else {
-		return <Text>Loadin trainer profile ...</Text>;
+		return <Text>Loading trainer profile ...</Text>;
 	}
 };
 
