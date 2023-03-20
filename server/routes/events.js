@@ -32,9 +32,11 @@ router.post('/', async (req, res) => {
 });
 
 // Read Methods
-
 router.get('/', async (req, res) => {
-	const events = await Event.find().populate('trainer', '_id firstName lastName');
+	const events = await Event.find().populate(
+		'trainer',
+		'_id firstName lastName'
+	);
 	res.send(events);
 });
 
@@ -46,7 +48,6 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update Methods
-
 router.put('/:id', async (req, res) => {
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
@@ -74,7 +75,6 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete Methods
-
 router.delete('/:id', async (req, res) => {
 	const event = await Event.findByIdAndRemove(req.params.id);
 	if (!event)

@@ -38,10 +38,11 @@ const CategoryGridTile = ({ categoryName, categoryImageUrl, onPress }) => {
 					</View>
 				) : (
 					<ImageBackground
-						source={{ uri: categoryImageUrl }}
+						source={categoryImageUrl}
 						onLoad={handleImageLoad}
 						onError={handleImageError}
-						style={styles.image}>
+						style={styles.image}
+						resizeMode='cover'>
 						{!isLoaded && (
 							<View style={styles.imagePlaceholder}>
 								<ActivityIndicator size='large' color='white' />
