@@ -35,7 +35,8 @@ const reducer = (state, action) => {
 const UserContextProvider = ({ children }) => {
 	// reducer initialize
 	const [state, dispatch] = useReducer(reducer, {});
-	// user handlers
+	
+	// store handlers
 	const setEmail = email => dispatch({ type: 'SET_EMAIL', payload: email });
 
 	const setFirstName = firstName =>
