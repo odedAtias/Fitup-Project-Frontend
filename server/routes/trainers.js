@@ -11,7 +11,6 @@ router.post('/', async (req, res) => {
 	// Case 400 checking
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
-
 	let trainer = new Trainer(trainerData);
 	trainer = await trainer.save();
 	res.send(trainer);
