@@ -36,6 +36,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 // Context providers
 import ContextProvider from './store/Context';
+import UserContextProvider from './store/UserContext';
 
 // Navigators Initialize`s
 const Stack = createNativeStackNavigator();
@@ -202,6 +203,7 @@ export default function App() {
 			<SafeAreaView style={styles.container}>
 				<StatusBar style='dark' />
 				{/* Our contextProvider */}
+				<UserContextProvider>
 				<ContextProvider>
 					{/* Stack Navigation Container (Contains 4 Screens)*/}
 					<NavigationContainer>
