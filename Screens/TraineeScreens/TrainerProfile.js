@@ -51,7 +51,7 @@ const TrainerProfile = ({ route, navigation }) => {
 					...response.data,
 					imageUrl: !response.data.imageUrl
 						? DEFAULT_IMAGE_URL
-						: response.data.imageUrl,
+						: response.data.user.imageUrl,
 				});
 			} catch (error) {
 				console.log(error.message);

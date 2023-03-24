@@ -43,7 +43,7 @@ const EventDetailsCard = cardDetails => {
 			<View>
 				<HeadingText>{cardDetails.category} Training</HeadingText>
 				<Text style={styles.name}>
-					{`${cardDetails.trainer.firstName} ${cardDetails.trainer.lastName}`}
+					{`${cardDetails.trainer.user.firstName} ${cardDetails.trainer.user.lastName}`}
 				</Text>
 				<Text style={[styles.spacing, styles.font]}>
 					{displayAddrress(cardDetails.address, cardDetails.city)}
