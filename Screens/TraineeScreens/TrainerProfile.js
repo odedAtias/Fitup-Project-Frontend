@@ -13,7 +13,7 @@ import Aboutme from '../../Components/TrainerProfileOutput/Aboutme';
 import MyUpcomingEvents from '../../Components/TrainerProfileOutput/MyUpcomingEvents';
 
 // Context imports
-import { Context } from './../../store/Context';
+import { TraineeContext } from '../../store/TraineeContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
@@ -31,7 +31,7 @@ const TrainerProfile = ({ route, navigation }) => {
 	const [isFetching, setIsFetching] = useState(false);
 
 	// Initialize our context
-	const context = useContext(Context);
+	const context = useContext(TraineeContext);
 
 	// accesing trainer id
 	const trainerId = route.params.trainerId;

@@ -1,5 +1,5 @@
 // RN core components & API imports
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import EventsList from '../../Components/EventsOutput/EventsList';
 
