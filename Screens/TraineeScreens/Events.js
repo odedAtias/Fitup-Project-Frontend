@@ -2,10 +2,10 @@
 import { useLayoutEffect, useContext, useEffect, useState } from 'react';
 
 // Contexts imports
-import { Context } from '../../store/Context';
+import { TraineeContext } from '../../store/TraineeContext';
 
 // RN core components & API imports
-import { View, StyleSheet, Platform, Text } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 
 // Custom components imports
 import Header from '../../Components/Header';
@@ -23,7 +23,7 @@ const Events = ({ navigation, route }) => {
 	const [isFetching, setIsFetching] = useState(true);
 
 	// Context initialize
-	const context = useContext(Context);
+	const context = useContext(TraineeContext);
 
 	// Loading dynamically the screen options
 	useLayoutEffect(() => {
