@@ -20,6 +20,7 @@ const EventItemDetails = ({
 	hour,
 	participants,
 	maxParticipants,
+	price,
 }) => {
 	const numOfTrainees = participants.length;
 	const participantColor = statusColor(numOfTrainees, maxParticipants);
@@ -30,6 +31,7 @@ const EventItemDetails = ({
 			<Text style={[styles.spacing, styles.font]}>
 				{displayFullDate(date, hour)}
 			</Text>
+			<Text style={[styles.spacing, styles.font]}>Price: {price}₪</Text>
 			<Text style={[{ color: participantColor }, styles.font]}>
 				{displayParticipants(numOfTrainees, maxParticipants)}
 			</Text>

@@ -49,6 +49,9 @@ const EventDetailsCard = cardDetails => {
 					{displayAddrress(cardDetails.address, cardDetails.city)}
 				</Text>
 				<Text style={[styles.spacing, styles.font]}>
+					Price: {cardDetails.price}₪
+				</Text>
+				<Text style={[styles.spacing, styles.font]}>
 					{displayFullDate(cardDetails.date, cardDetails.hour)}
 				</Text>
 				<View>
