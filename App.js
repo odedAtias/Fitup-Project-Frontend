@@ -35,8 +35,7 @@ import TrainerProfile from './Screens/TraineeScreens/TrainerProfile';
 import { Ionicons } from '@expo/vector-icons';
 
 // Context providers
-import ContextProvider from './store/Context';
-import UserContextProvider from './store/UserContext';
+import TraineeContextProvider from './store/TraineeContext';
 
 // Navigators Initialize`s
 const Stack = createNativeStackNavigator();
@@ -203,53 +202,51 @@ export default function App() {
 			<SafeAreaView style={styles.container}>
 				<StatusBar style='dark' />
 				{/* Our contextProvider */}
-				<UserContextProvider>
-					<ContextProvider>
-						{/* Stack Navigation Container (Contains 4 Screens)*/}
-						<NavigationContainer>
-							<Stack.Navigator
-								screenOptions={{
-									header: ({ navigation }) => {
-										return (
-											<Header
-												label={'Fit\nUp'}
-												containerStyle={{
-													backgroundColor: Colors.Headers.secondary,
-													padding: Platform.OS === 'ios' ? 10 : 30,
-												}}
-												onPress={() => navigation.goBack()}
-											/>
-										);
-									},
-									contentStyle: {
-										backgroundColor: Colors.Backgrounds.primary,
-									},
-								}}>
-								<Stack.Screen
-									name='Login'
-									component={Login}
-									options={{ headerShown: false, presentation: 'modal' }}
-								/>
-								<Stack.Screen name='Signup' component={Signup} />
-								<Stack.Screen
-									name='ForgotPassword'
-									component={ForgotPassword}
-									options={{ presentation: 'modal' }}
-								/>
-								{/* The gate to the trainee app */}
-								<Stack.Screen
-									name='TraineeBottomTab'
-									component={TraineeBottomTab}
-									options={{
-										headerShown: false,
-										presentation: 'containedModal',
-									}}
-								/>
-								{/* The gate to the trainer app */}
-							</Stack.Navigator>
-						</NavigationContainer>
-					</ContextProvider>
-				</UserContextProvider>
+				<TraineeContextProvider>
+					{/* Stack Navigation Container (Contains 4 Screens)*/}
+					<NavigationContainer>
+						<Stack.Navigator
+							screenOptions={{
+								header: ({ navigation }) => {
+									return (
+										<Header
+											label={'Fit\nUp'}
+											containerStyle={{
+												backgroundColor: Colors.Headers.secondary,
+												padding: Platform.OS === 'ios' ? 10 : 30,
+											}}
+											onPress={() => navigation.goBack()}
+										/>
+									);
+								},
+								contentStyle: {
+									backgroundColor: Colors.Backgrounds.primary,
+								},
+							}}>
+							<Stack.Screen
+								name='Login'
+								component={Login}
+								options={{ headerShown: false, presentation: 'modal' }}
+							/>
+							<Stack.Screen name='Signup' component={Signup} />
+							<Stack.Screen
+								name='ForgotPassword'
+								component={ForgotPassword}
+								options={{ presentation: 'modal' }}
+							/>
+							{/* The gate to the trainee app */}
+							<Stack.Screen
+								name='TraineeBottomTab'
+								component={TraineeBottomTab}
+								options={{
+									headerShown: false,
+									presentation: 'containedModal',
+								}}
+							/>
+							{/* The gate to the trainer app */}
+						</Stack.Navigator>
+					</NavigationContainer>
+				</TraineeContextProvider>
 			</SafeAreaView>
 		);
 }

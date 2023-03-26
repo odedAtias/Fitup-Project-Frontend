@@ -25,7 +25,7 @@ const EventItemDetails = ({
 	const participantColor = statusColor(numOfTrainees, maxParticipants);
 	return (
 		<View>
-			<HeadingText>{`${trainer.user.firstName} ${trainer.user.lastName}`}</HeadingText>
+			<HeadingText>{`${trainer.firstName} ${trainer.lastName}`}</HeadingText>
 			<SubHeadingText>{displayAddrress(address, city)}</SubHeadingText>
 			<Text style={[styles.spacing, styles.font]}>
 				{displayFullDate(date, hour)}

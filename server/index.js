@@ -12,7 +12,7 @@ const app = express();
 // Connecting to the db
 mongoose
 	.connect(
-		'mongodb+srv://odedAt:MmIYSyz0bGJmxTfe@cluster0.qmie9vh.mongodb.net/FitUp?retryWrites=true&w=majority'
+		'mongodb+srv://odedAt:MmIYSyz0bGJmxTfe@cluster0.qmie9vh.mongodb.net/test?retryWrites=true&w=majority'
 	)
 	.then(() => console.log('Connected to FitUp DB ...'))
 	.catch(() => console.error('Could not connect to FitUp DB ...'));
