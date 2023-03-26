@@ -7,6 +7,8 @@ const Event = mongoose.model(
   new mongoose.Schema({
     category: {
       type: String,
+      min: 3,
+      max: 12,
       required: true,
     },
     trainer: {
@@ -16,6 +18,7 @@ const Event = mongoose.model(
     },
     date: {
       type: String,
+      length: 10,
       required: true,
     },
     hour: {
@@ -24,11 +27,15 @@ const Event = mongoose.model(
     },
     address: {
       type: String,
+      min: 2,
+      max: 45,
       required: true,
     },
     city: {
       type: String,
       required: true,
+      min: 2,
+      max: 25,
     },
     participants: {
       type: [mongoose.Schema.Types.ObjectId],
@@ -41,14 +48,14 @@ const Event = mongoose.model(
     },
     price: {
       type: Number,
-      required: true,
       min: 0,
+      required: true,
     },
     description: {
       type: String,
-      required: true,
       minlength: 10,
       maxlength: 50,
+      required: true,
     },
   })
 );
@@ -57,6 +64,7 @@ const validateEvent = (event) => {
   const schema = Joi.object({
     category: Joi.string()
       .min(3)
+      .max(12)
       .required(),
     trainer: Joi.string().required(),
     date: Joi.string()
@@ -65,12 +73,22 @@ const validateEvent = (event) => {
     hour: Joi.string()
       .length(5)
       .required(),
-    address: Joi.string().required(),
-    city: Joi.string().required(),
+    address: Joi.string()
+      .min(2)
+      .max(45)
+      .required(),
+    city: Joi.string()
+      .min(2)
+      .max(45)
+      .required(),
     maxParticipants: Joi.number().required(),
+    participants: Joi.array().default([]),
     description: Joi.string()
       .min(10)
       .max(50)
+      .required(),
+    price: Joi.number()
+      .min(0)
       .required(),
   });
   return schema.validate(event);

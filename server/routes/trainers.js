@@ -34,17 +34,9 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const trainer = await Trainer.findByIdAndUpdate(
-    req.params.id,
-    {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      description: req.body.description,
-    },
-    {
-      new: true,
-    }
-  );
+  const trainer = await Trainer.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
   if (!trainer)
     return res.status(404).send("The event with the given ID was not found.");
   res.send(trainer);

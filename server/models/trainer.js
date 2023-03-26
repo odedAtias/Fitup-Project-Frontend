@@ -1,5 +1,6 @@
 // Modules imports
 const mongoose = require("mongoose");
+const Joi = require("joi");
 
 const Trainer = mongoose.model(
   "Trainer",
@@ -25,9 +26,10 @@ const Trainer = mongoose.model(
       default: [],
       ref: "Event",
     },
-    // TrainerImg: { --> url link to image
-    //   type: String,
-    // },
+    img: {
+      type: String,
+      default: "",
+    },
   })
 );
 const validateTrainer = (trainer) => {
@@ -41,16 +43,13 @@ const validateTrainer = (trainer) => {
     email: Joi.string()
       .email({ minDomainSegments: 2 })
       .required(),
-    password: Joi.string()
-      .min(6)
-      .max(13)
-      .required(),
     events: Joi.array().default([]),
     description: Joi.string()
       .min(10)
       .max(50),
+    img: Joi.string().min(0),
   });
-  return schema.validateTrainer(trainer);
+  return schema.validate(trainer);
 };
 
 exports.validate = validateTrainer;
