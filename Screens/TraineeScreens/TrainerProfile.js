@@ -13,11 +13,7 @@ import Aboutme from "../../Components/TrainerProfileOutput/Aboutme";
 import MyUpcomingEvents from "../../Components/TrainerProfileOutput/MyUpcomingEvents";
 
 // Context imports
-<<<<<<< HEAD
 import { TraineeContext } from '../../store/TraineeContext';
-=======
-import { Context } from "./../../store/Context";
->>>>>>> d7add23682bb77d936214a463d406b1a74592abb
 
 // Constants
 import Colors from "../../Constants/Colors";
