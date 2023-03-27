@@ -1,13 +1,30 @@
 // RN core components & API imports
-import { View, Text } from 'react-native';
+import { View, StyleSheet, Text } from "react-native";
 
-// RegisterEventForm Component
-const RegisterEventForm = () => {
-	return (
-		<View>
-			<Text>RegisterEventForm</Text>
-		</View>
-	);
+// Custom components imports
+import RegisterEventForm from "../../Components/RegisterEventOutput/RegisterEventForm";
+
+// RegisterEvent Component
+const RegisterEvent = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}>Accept Our Policies to register</Text>
+      <RegisterEventForm />
+    </View>
+  );
 };
 
-export default RegisterEventForm;
+// RegisterEvent StyleSheet
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  heading: {
+    fontSize: 20,
+    fontWeight: "400",
+    marginBottom: 20,
+  },
+});
+
+export default RegisterEvent;
