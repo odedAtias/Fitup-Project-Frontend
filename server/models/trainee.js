@@ -50,7 +50,7 @@ const validateTrainee = trainee => {
 		favoriteTrainers: Joi.array().default([]),
 		image: Joi.string().min(0),
 	});
-	return schema.validateTrainee(trainee);
+	return schema.validate(trainee);
 };
 
 exports.Trainee = Trainee;
