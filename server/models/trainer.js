@@ -1,6 +1,7 @@
 // Modules imports
 const mongoose = require('mongoose');
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 
 // Trainer model
 const Trainer = mongoose.model(
@@ -50,6 +51,7 @@ const Trainer = mongoose.model(
 // Trainer schema validator function
 const validateTrainer = trainer => {
 	const schema = Joi.object({
+		_id: Joi.objectId(),
 		userId: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{28}$')).required(),
 		firstName: Joi.string().min(1).required(),
 		lastName: Joi.string().min(2).required(),
