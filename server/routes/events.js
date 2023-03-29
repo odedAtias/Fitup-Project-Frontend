@@ -53,7 +53,6 @@ router.get('/:id', async (req, res) => {
 
 // Update an existing event by her id
 router.put('/:id', async (req, res) => {
-	console.log(req);
 	// Case 400 checking
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);

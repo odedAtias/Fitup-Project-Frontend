@@ -5,7 +5,7 @@ const router = express.Router();
 // Custom modules & API imports
 const { Trainer, validate } = require('../models/trainer');
 
-// Create a new trainer 
+// Create a new trainer
 router.post('/', async (req, res) => {
 	// Case 400 checking
 	const { error } = validate(req.body);
@@ -33,7 +33,11 @@ router.get('/login/:userId', async (req, res) => {
 
 // Get the trainer data for any users
 router.get('/:id', async (req, res) => {
-	const trainer = await Trainer.findById(req.params.id);
+	const trainer = await Trainer.findById(req.params.id).populate({
+		path: 'events',
+		select: '-__v',
+		model: 'Event',
+	});
 	// Case 404 checking
 	if (!trainer)
 		return res

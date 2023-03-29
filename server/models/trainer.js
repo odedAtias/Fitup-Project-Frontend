@@ -37,7 +37,7 @@ const Trainer = mongoose.model(
 		},
 		description: {
 			type: String,
-			max: 50,
+			max: 300,
 			default: '',
 		},
 		image: {
@@ -57,7 +57,7 @@ const validateTrainer = trainer => {
 		lastName: Joi.string().min(2).required(),
 		email: Joi.string().email({ minDomainSegments: 2 }).required(),
 		events: Joi.array().items(Joi.objectId()).default([]),
-		description: Joi.string().max(50).default(''),
+		description: Joi.string().max(300).default(''),
 		image: Joi.string().min(0).default(''),
 	});
 	return schema.validate(trainer);
