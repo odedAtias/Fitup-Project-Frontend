@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 	res.send(trainers);
 });
 
-// Get the trainer data for trainers users (for e.g after login case)
+// Get to specific trainer data for trainers users (for e.g after login case)
 router.get('/login/:userId', async (req, res) => {
 	// @TODO Case 404 checking
 	// @TODO Match case
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 	res.send(trainer);
 });
 
-// Update an existing trainer by her trainer id
+// Update an existing trainer by her id
 router.put('/:id', async (req, res) => {
 	// Case 400 checking
 	const { error } = validate(req.body);

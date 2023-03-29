@@ -26,14 +26,18 @@ router.get('/', async (req, res) => {
 	res.send(trainees);
 });
 
-// Get the trainer data for trainers users (for e.g after login case)
+// Get to specific trainer data for trainers users (for e.g after login case)
 router.get('/:userId', async (req, res) => {
 	const trainee = await Trainee.findOne({ userId: req.params.userId })
 		.populate({
 			path: 'registeredEvents',
+			select: '-__v',
+			model: 'Trainee',
 		})
 		.populate({
 			path: 'favoriteTrainers',
+			select: '-_userId -__v',
+			model: 'Trainee',
 		});
 	// Case 404 checking
 	if (!trainee)

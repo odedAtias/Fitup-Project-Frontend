@@ -40,7 +40,7 @@ const Trainer = mongoose.model(
 			max: 50,
 			default: '',
 		},
-		img: {
+		image: {
 			type: String,
 			min: 0,
 			default: '',
@@ -58,7 +58,7 @@ const validateTrainer = trainer => {
 		email: Joi.string().email({ minDomainSegments: 2 }).required(),
 		events: Joi.array().items(Joi.objectId()).default([]),
 		description: Joi.string().max(50).default(''),
-		img: Joi.string().min(0).default(''),
+		image: Joi.string().min(0).default(''),
 	});
 	return schema.validate(trainer);
 };
