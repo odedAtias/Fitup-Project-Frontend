@@ -5,15 +5,14 @@ const router = express.Router();
 // Custom modules & API imports
 const { Trainer, validate } = require('../models/trainer');
 
-// Create Methods
+// Create a new trainer method
 router.post('/', async (req, res) => {
-	const trainerData = req.body;
-
 	//Check if the request is legal
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
-	let trainer = new Trainer(trainerData);
+	// Match case
+	let trainer = new Trainer(req.body);
 	trainer = await trainer.save();
 	res.send(trainer);
 });
