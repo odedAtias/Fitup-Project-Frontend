@@ -1,6 +1,7 @@
 // Modules imports
 const mongoose = require('mongoose');
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 
 const Trainee = mongoose.model(
 	'Trainee',
@@ -30,16 +31,17 @@ const Trainee = mongoose.model(
 		},
 		registeredEvents: {
 			type: [mongoose.Schema.Types.ObjectId],
-			default: [],
 			ref: 'Event',
+			default: [],
 		},
 		favoriteTrainers: {
 			type: [mongoose.Schema.Types.ObjectId],
-			default: [],
 			ref: 'Trainers',
+			default: [],
 		},
 		image: {
 			type: String,
+			min: 0,
 			default: '',
 		},
 	})
@@ -47,11 +49,13 @@ const Trainee = mongoose.model(
 
 const validateTrainee = trainee => {
 	const schema = Joi.object({
+		_id: Joi.objectId(),
+		userId: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{28}$')),
 		firstName: Joi.string().min(2).required(),
 		lastName: Joi.string().min(2).required(),
 		email: Joi.string().email({ minDomainSegments: 2 }).required(),
-		registeredEvents: Joi.array().default([]),
-		favoriteTrainers: Joi.array().default([]),
+		registeredEvents: Joi.array().items(Joi.objectId()).default([]),
+		favoriteTrainers: Joi.array().items(Joi.objectId()).default([]),
 		image: Joi.string().min(0),
 	});
 	return schema.validate(trainee);

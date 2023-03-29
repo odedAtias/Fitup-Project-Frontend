@@ -5,9 +5,9 @@ const router = express.Router();
 // Custom modules & API imports
 const { Trainer, validate } = require('../models/trainer');
 
-// Create a new trainer method
+// Create a new trainer 
 router.post('/', async (req, res) => {
-	//Check if the request is legal
+	// Case 400 checking
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 

@@ -5,55 +5,66 @@ const router = express.Router();
 // Custom modules & API imports
 const { Trainee, validate } = require('../models/trainee');
 
-// Create Methods
+// Create a new trainer
 router.post('/', async (req, res) => {
-	const traineeData = req.body;
-
-	//Check if the request is legal
+	// Case 400 checking
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
-	let trainee = new Trainee(traineeData);
+	// Match case
+	let trainee = new Trainee(req.body);
 	trainee = await trainee.save();
 	res.send(trainee);
 });
 
-// Read Methods // Checks if the handle the sameID before countinue
-router.get('/:id', async (req, res) => {
-	const trainee = await Trainee.findById(req.params.id)
+// Get all the trainees
+router.get('/', async (req, res) => {
+	const trainees = await Trainee.find();
+	// Case 404 checking
+	if (!trainees) return res.status(404).send('Dont have trainees yet !');
+	// Match case
+	res.send(trainees);
+});
+
+// Get the trainer data for trainers users (for e.g after login case)
+router.get('/:userId', async (req, res) => {
+	const trainee = await Trainee.findOne({ userId: req.params.userId })
 		.populate({
-			// For thr registered events list
 			path: 'registeredEvents',
-			select: '_id category date hour city address',
 		})
 		.populate({
 			path: 'favoriteTrainers',
-			select: '_id firstName lastName image',
 		});
+	// Case 404 checking
 	if (!trainee)
 		return res.status(404).send('The trainee with the given ID was not found.');
+	// Match case
 	res.send(trainee);
 });
 
+// Update an existing trainee
 router.put('/:id', async (req, res) => {
-	// Check the request
+	// Case 400 checking
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
 	const trainee = await Trainee.findByIdAndUpdate(req.params.id, req.body, {
 		new: true,
 	});
+	// Case 404 checking
 	if (!trainee)
-		return res.status(404).send('The event with the given ID was not found.');
+		return res.status(404).send('The trainee with the given ID was not found.');
+	// Match case
 	res.send(trainee);
 });
 
-// Handling delete method
+// Delete an existing trainee
 router.delete('/:id', async (req, res) => {
 	const trainee = await Trainee.findByIdAndRemove(req.params.id);
+	// Case 404 checking
 	if (!trainee)
 		return res.status(404).send('The trainee with the given ID was not found.');
-	// TODO: Remove from fireBase too
+	// Match case
 	res.send(trainee);
 });
 

@@ -52,11 +52,11 @@ const Trainer = mongoose.model(
 const validateTrainer = trainer => {
 	const schema = Joi.object({
 		_id: Joi.objectId(),
-		userId: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{28}$')).required(),
+		userId: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{28}$')),
 		firstName: Joi.string().min(1).required(),
 		lastName: Joi.string().min(2).required(),
 		email: Joi.string().email({ minDomainSegments: 2 }).required(),
-		events: Joi.array().default([]),
+		events: Joi.array().items(Joi.objectId()).default([]),
 		description: Joi.string().max(50).default(''),
 		img: Joi.string().min(0).default(''),
 	});
