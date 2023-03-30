@@ -41,6 +41,10 @@ const TrainerProfile = ({ route, navigation }) => {
 		Linking.openURL(`mailto:${email}`);
 	};
 
+	const handleFavoriteTrainer = () => {
+		console.log('hi');
+	};
+
 	// Http request to get the trainer details ...
 	useEffect(() => {
 		async function getTrainer() {
@@ -73,7 +77,7 @@ const TrainerProfile = ({ route, navigation }) => {
 					}}
 					onPressLeft={() => navigation.goBack()}
 					rightButton='bookmark-outline'
-					onPressRight={() => navigation.goBack()}
+					onPressRight={handleFavoriteTrainer}
 				/>
 			),
 		});
