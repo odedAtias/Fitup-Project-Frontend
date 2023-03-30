@@ -9,7 +9,7 @@ import Rubik from './assets/fonts/Rubik-VariableFont_wght.ttf';
 import { StatusBar } from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, SafeAreaView, Platform } from 'react-native';
+import { StyleSheet, SafeAreaView, Platform, Text } from 'react-native';
 
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
@@ -212,7 +212,7 @@ export default function App() {
 										<Header
 											label={'Fit\nUp'}
 											containerStyle={{
-												backgroundColor: Colors.Headers.secondary,
+												backgroundColor: Colors.Backgrounds.primary,
 												padding: Platform.OS === 'ios' ? 10 : 30,
 											}}
 											onPress={() => navigation.goBack()}
