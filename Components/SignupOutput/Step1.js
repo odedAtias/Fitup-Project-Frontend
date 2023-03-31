@@ -21,6 +21,7 @@ const Step1 = ({ navigation }) => {
 	const context = useContext(SignupContext);
 	// Step1 submit handler
 	const handleSubmit = () => {
+		// Input validation
 		if (!context.type) {
 			Alert.alert(
 				'Missing Required Information',
@@ -146,6 +147,24 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	alertTitle: {
+		fontFamily: 'rubik',
+		fontSize: 24,
+		fontWeight: 'bold',
+		textAlign: 'center',
+		marginBottom: 10,
+	},
+	alertMessage: {
+		fontFamily: 'rubik',
+		fontSize: 16,
+		textAlign: 'center',
+		marginBottom: 20,
+	},
+	alertContainer: {
+		backgroundColor: '#f2f2f2',
+		borderRadius: 10,
+		padding: 20,
 	},
 });
 

@@ -18,18 +18,24 @@ const SignupInput = ({ label, inputConfigurations }) => {
 const styles = StyleSheet.create({
 	container: {
 		marginBottom: '5%',
+		paddingHorizontal: '5%',
 	},
 
 	label: {
+		marginTop: '5%',
 		fontSize: 18,
-		marginBottom: 5,
+		marginBottom: 10,
+		fontFamily: 'rubik',
+		fontWeight: '600',
+		color: Colors.Texts.primary,
 	},
 	input: {
 		textAlign: 'left',
-		padding: '2%',
 		fontSize: 16,
-		backgroundColor: Colors.Backgrounds.input,
+		borderBottomColor: 'black',
+		borderBottomWidth: 1,
 		width: '100%',
+		fontFamily: 'rubik',
 	},
 });
 

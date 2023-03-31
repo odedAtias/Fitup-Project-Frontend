@@ -228,7 +228,11 @@ export default function App() {
 								component={Login}
 								options={{ headerShown: false, presentation: 'modal' }}
 							/>
-							<Stack.Screen name='Signup' component={Signup} />
+							<Stack.Screen
+								name='Signup'
+								component={Signup}
+								options={{ headerShown: false }}
+							/>
 							<Stack.Screen
 								name='ForgotPassword'
 								component={ForgotPassword}

@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 // Custom components import
+import Header from '../Components/Header';
 import Step1 from '../Components/SignupOutput/Step1';
 import Step2 from '../Components/SignupOutput/Step2';
 import Step3 from '../Components/SignupOutput/Step3';
@@ -21,7 +22,24 @@ const Signup = () => {
 		<SignupContextProvider>
 			<Stack.Navigator
 				screenOptions={{
-					headerShown: false,
+					header: ({ navigation }) => {
+						return (
+							<Header
+								label={'Fit\nUp'}
+								containerStyle={{
+									backgroundColor: Colors.Headers.secondary,
+									padding: Platform.OS === 'ios' ? 10 : 10,
+									paddingTop: Platform.OS === 'ios' ? 10 : 35,
+									marginBottom: Platform.OS === 'ios' ? 10 : 5,
+								}}
+								labelStyle={{
+									fontSize: 50,
+									color: Colors.Texts.primary,
+								}}
+								onPressLeft={() => navigation.goBack()}
+							/>
+						);
+					},
 					contentStyle: {
 						backgroundColor: Colors.Backgrounds.primary,
 						flex: 1,
