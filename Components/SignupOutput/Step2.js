@@ -65,7 +65,6 @@ const Step2 = ({ navigation }) => {
 		// Input Validation
 		if (!validate(context.firstName, 'First Name', 'firstName')) return;
 		if (!validate(context.lastName, 'Last Name', 'lastName')) return;
-		console.log(context);
 		navigation.navigate('Step3');
 	};
 
