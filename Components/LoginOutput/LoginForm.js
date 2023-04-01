@@ -3,7 +3,13 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 // RN core components & API imports
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, LogBox } from 'react-native';
+
+// Firebase Authentication API imports
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { authentication } from '../../auth/firebase-config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+LogBox.ignoreLogs(['AsyncStorage has been extracted']);
 
 // Custom components imports
 import LoginInput from './LoginInput';
@@ -14,8 +20,9 @@ import Colors from '../../Constants/Colors';
 
 // Login Component
 const LoginForm = () => {
-	// navigation object initiallize
+	// navigation object initialize
 	const navigation = useNavigation();
+
 	// Login form local state (object contains username and password details)
 	const [inputs, setInputs] = useState({
 		username: {
@@ -27,32 +34,35 @@ const LoginForm = () => {
 			isValid: true,
 		},
 	});
+
 	// LoginForm handlers
-	const handleInputChange = (inputIdertifier, entredValue) => {
+	const handleInputChange = (inputIdentifier, enteredValue) => {
 		setInputs(currentInputs => {
 			return {
 				...currentInputs,
 				// Way to update keys/values dynamically
-				[inputIdertifier]: { value: entredValue, isValid: true },
+				[inputIdentifier]: { value: enteredValue, isValid: true },
 			};
 		});
 	};
+
+	// Login submit handler
 	const handleSubmit = () => {
-		// Inputs validation
-		console.log('username & password validation ...');
-		// Inputs authentication
-		console.log('username & password authentication ...');
 		// Submitted case
-		console.log(
-			`username : ${inputs.username.value}, password : ${inputs.password.value}`
-		);
-		let isTrainer = false;
-		if (isTrainer) {
-			// Go to trainer application
-		} else {
-			// Go to trainee application
-			navigation.navigate('TraineeBottomTab');
-		}
+		signInWithEmailAndPassword(
+			authentication,
+			inputs.username.value,
+			inputs.password.value
+		)
+			.then(re => {
+				console.log(re.user.uid);
+				// Check which user logged in
+				// Navigate to the adjusted app
+				navigation.navigate('TraineeBottomTab');
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
 
 	return (
