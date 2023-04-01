@@ -55,7 +55,6 @@ const LoginForm = () => {
 			inputs.password.value
 		)
 			.then(re => {
-				console.log(re.user.uid);
 				// Check which user logged in
 				// Navigate to the adjusted app
 				navigation.navigate('TraineeBottomTab');

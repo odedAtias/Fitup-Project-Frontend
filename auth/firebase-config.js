@@ -1,6 +1,5 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, fetchSignInMethodsForEmail } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,4 +13,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const authentication = getAuth(app);
+const auth = getAuth(app);
+
+export const isExistingEmail = async email => {
+	try {
+		const methods = await fetchSignInMethodsForEmail(auth, email);
+		return methods.length > 0;
+	} catch (error) {
+		console.log(error);
+	}
+};

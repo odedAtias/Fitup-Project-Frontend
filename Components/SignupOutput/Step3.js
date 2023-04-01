@@ -4,6 +4,9 @@ import { useContext } from 'react';
 // RN core components & API imports
 import { StyleSheet, View, Alert, Text } from 'react-native';
 
+// firebase API imports
+import { isExistingEmail } from '../../auth/firebase-config';
+
 // Custom component import
 import SignupButton from './SignupButton';
 import SignupInput from './SignupInput';
@@ -97,7 +100,6 @@ const Step3 = ({ navigation }) => {
 		}
 		return true;
 	};
-
 	// Step2 submit handler
 	const handleSubmit = async () => {
 		if (!validate(context.email, 'Email', 'email')) return;
@@ -106,6 +108,25 @@ const Step3 = ({ navigation }) => {
 			!validate(context.confirmPassword, 'Confirm Password', 'confirmPassword')
 		)
 			return;
+		// Check if the current email is exist in Fitup
+		const emailExists = await isExistingEmail(context.email);
+		if (emailExists) {
+			Alert.alert(
+				'Email already exists',
+				'The email you entered is already exist. Please use a different email address.',
+				[
+					{
+						style: 'cancel',
+					},
+				],
+				{
+					titleStyle: styles.alertTitle,
+					messageStyle: styles.alertMessage,
+					alertContainerStyle: styles.alertContainer,
+				}
+			);
+			return;
+		}
 		navigation.navigate('Step4');
 	};
 
