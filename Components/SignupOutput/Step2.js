@@ -56,11 +56,10 @@ const Step2 = ({ navigation }) => {
 			);
 			return false;
 		}
-		context[prop] = input;
 		return true;
 	};
 
-	// Step1 submit handler
+	// Step2 submit handler
 	const handleSubmit = () => {
 		// Input Validation
 		if (!validate(context.firstName, 'First Name', 'firstName')) return;
@@ -98,12 +97,6 @@ const styles = StyleSheet.create({
 		width: '100%',
 		paddingHorizontal: '5%',
 		marginTop: '5%',
-	},
-	headingText: {
-		fontFamily: 'rubik',
-		fontSize: 26,
-		fontWeight: '600',
-		textAlign: 'left',
 	},
 	spacing: {
 		marginBottom: '10%',
