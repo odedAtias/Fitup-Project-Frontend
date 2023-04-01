@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 	label: {
 		marginTop: '5%',
-		fontSize: 18,
+		fontSize: 21,
 		marginBottom: 10,
 		fontFamily: 'rubik',
 		fontWeight: '600',
