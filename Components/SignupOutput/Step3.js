@@ -99,10 +99,12 @@ const Step3 = ({ navigation }) => {
 	};
 
 	// Step2 submit handler
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		if (!validate(context.email, 'Email', 'email')) return;
 		if (!validate(context.password, 'Password', 'password')) return;
-		if (!validate(context.confirmPassword, 'ConfrmPassword', 'confirmPassword'))
+		if (
+			!validate(context.confirmPassword, 'Confirm Password', 'confirmPassword')
+		)
 			return;
 		navigation.navigate('Step4');
 	};
