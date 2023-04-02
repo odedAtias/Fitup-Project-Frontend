@@ -6,8 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet, LogBox } from 'react-native';
 
 // Firebase Authentication API imports
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { authentication } from '../../auth/firebase-config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../auth/firebase-config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 LogBox.ignoreLogs(['AsyncStorage has been extracted']);
 
@@ -50,7 +50,7 @@ const LoginForm = () => {
 	const handleSubmit = () => {
 		// Submitted case
 		signInWithEmailAndPassword(
-			authentication,
+			auth,
 			inputs.username.value,
 			inputs.password.value
 		)
