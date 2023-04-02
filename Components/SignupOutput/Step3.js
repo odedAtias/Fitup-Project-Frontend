@@ -14,6 +14,7 @@ import SignupInput from './SignupInput';
 // Contexts imports
 import { SignupContext } from '../../store/SignupContext';
 
+// Step3 component
 const Step3 = ({ navigation }) => {
 	// Context initialize
 	const context = useContext(SignupContext);
