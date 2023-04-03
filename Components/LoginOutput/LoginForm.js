@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 // RN core components & API imports
-import { View, StyleSheet, LogBox } from 'react-native';
+import { View, StyleSheet, LogBox, Alert } from 'react-native';
 
 // Firebase Authentication API imports
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../auth/firebase-config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 LogBox.ignoreLogs(['AsyncStorage has been extracted']);
@@ -59,8 +59,21 @@ const LoginForm = () => {
 				// Navigate to the adjusted app
 				navigation.navigate('TraineeBottomTab');
 			})
-			.catch(err => {
-				console.log(err);
+			.catch(() => {
+				Alert.alert(
+					'Login Error',
+					'We were unable to log you in. Please double-check your username and password and try again. If you continue to have trouble, please contact customer support for assistance.',
+					[
+						{
+							style: 'cancel',
+						},
+					],
+					{
+						titleStyle: styles.alertTitle,
+						messageStyle: styles.alertMessage,
+						alertContainerStyle: styles.alertContainer,
+					}
+				);
 			});
 	};
 
@@ -114,6 +127,24 @@ const styles = StyleSheet.create({
 	buttonsContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	alertTitle: {
+		fontFamily: 'rubik',
+		fontSize: 24,
+		fontWeight: 'bold',
+		textAlign: 'center',
+		marginBottom: 10,
+	},
+	alertMessage: {
+		fontFamily: 'rubik',
+		fontSize: 16,
+		textAlign: 'center',
+		marginBottom: 20,
+	},
+	alertContainer: {
+		backgroundColor: '#f2f2f2',
+		borderRadius: 10,
+		padding: 20,
 	},
 });
 

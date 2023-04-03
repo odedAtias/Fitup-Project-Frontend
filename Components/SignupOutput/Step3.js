@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 
 // RN core components & API imports
-import { StyleSheet, View, Alert, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // firebase API imports
 import { isExistingEmail } from '../../auth/firebase-config';
@@ -14,6 +14,9 @@ import SignupInput from './SignupInput';
 // Contexts imports
 import { SignupContext } from '../../store/SignupContext';
 
+// Constants
+import { alert } from '../../Constants/Alert';
+
 // Step3 component
 const Step3 = ({ navigation }) => {
 	// Context initialize
@@ -22,40 +25,14 @@ const Step3 = ({ navigation }) => {
 	// Step3 Validation function
 	const validate = (input, label, prop) => {
 		if (!input || !input.trim()) {
-			Alert.alert(
-				`Invalid ${label}`,
-				`${label} is requierd.\n`,
-				[
-					{
-						style: 'cancel',
-					},
-				],
-				{
-					titleStyle: styles.alertTitle,
-					messageStyle: styles.alertMessage,
-					alertContainerStyle: styles.alertContainer,
-				}
-			);
+			alert(`Invalid ${label}`, `${label} is requierd.\n`);
 			return false;
 		}
 		// Email input case
 		if (prop === 'email') {
 			const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 			if (!emailRegex.test(input)) {
-				Alert.alert(
-					'Invalid Email',
-					'Please enter a valid email address.\n',
-					[
-						{
-							style: 'cancel',
-						},
-					],
-					{
-						titleStyle: styles.alertTitle,
-						messageStyle: styles.alertMessage,
-						alertContainerStyle: styles.alertContainer,
-					}
-				);
+				alert('Invalid Email', 'Please enter a valid email address.\n');
 				return false;
 			}
 		}
@@ -64,37 +41,17 @@ const Step3 = ({ navigation }) => {
 			const passwordRegex =
 				/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 			if (!passwordRegex.test(input)) {
-				Alert.alert(
+				alert(
 					'Invalid Password',
-					'Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.',
-					[
-						{
-							style: 'cancel',
-						},
-					],
-					{
-						titleStyle: styles.alertTitle,
-						messageStyle: styles.alertMessage,
-						alertContainerStyle: styles.alertContainer,
-					}
+					'Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.'
 				);
 				return false;
 			}
 		} else {
 			if (input !== context.password) {
-				Alert.alert(
+				alert(
 					'Passwords do not match',
-					'Please make sure that your passwords match and try again.',
-					[
-						{
-							style: 'cancel',
-						},
-					],
-					{
-						titleStyle: styles.alertTitle,
-						messageStyle: styles.alertMessage,
-						alertContainerStyle: styles.alertContainer,
-					}
+					'Please make sure that your passwords match and try again.'
 				);
 				return false;
 			}
@@ -112,19 +69,9 @@ const Step3 = ({ navigation }) => {
 		// Check if the current email is exist in Fitup
 		const emailExists = await isExistingEmail(context.email);
 		if (emailExists) {
-			Alert.alert(
+			alert(
 				'Email already exists',
-				'The email you entered is already exist. Please use a different email address.',
-				[
-					{
-						style: 'cancel',
-					},
-				],
-				{
-					titleStyle: styles.alertTitle,
-					messageStyle: styles.alertMessage,
-					alertContainerStyle: styles.alertContainer,
-				}
+				'The email you entered is already exist. Please use a different email address.'
 			);
 			return;
 		}
@@ -174,24 +121,6 @@ const styles = StyleSheet.create({
 	},
 	spacing: {
 		marginBottom: '10%',
-	},
-	alertTitle: {
-		fontFamily: 'rubik',
-		fontSize: 24,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		marginBottom: 10,
-	},
-	alertMessage: {
-		fontFamily: 'rubik',
-		fontSize: 16,
-		textAlign: 'center',
-		marginBottom: 20,
-	},
-	alertContainer: {
-		backgroundColor: '#f2f2f2',
-		borderRadius: 10,
-		padding: 20,
 	},
 });
 

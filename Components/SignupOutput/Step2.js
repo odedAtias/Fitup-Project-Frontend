@@ -2,11 +2,14 @@
 import { useContext } from 'react';
 
 // RN core components & API imports
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // Custom component import
 import SignupButton from './SignupButton';
 import SignupInput from './SignupInput';
+
+// Constants
+import { alert } from '../../Constants/Alert';
 
 // Contexts imports
 import { SignupContext } from '../../store/SignupContext';
@@ -20,39 +23,16 @@ const Step2 = ({ navigation }) => {
 	const validate = (input, label, prop) => {
 		// First condition - input is requierd
 		if (!input || !input.trim()) {
-			Alert.alert(
-				`Invalid ${label}`,
-				`${label} is requierd.\n`,
-				[
-					{
-						style: 'cancel',
-					},
-				],
-				{
-					titleStyle: styles.alertTitle,
-					messageStyle: styles.alertMessage,
-					alertContainerStyle: styles.alertContainer,
-				}
-			);
+			alert(`Invalid ${label}`, `${label} is requierd.\n`);
 			return false;
 		}
 		// Second condition - checking the pattern
 		const regex = /^[A-Z][a-z]{1,}$/;
 		input = input.trim();
 		if (!regex.test(input)) {
-			Alert.alert(
+			alert(
 				`Invalid ${label}`,
-				`${label} must start with an uppercase letter and followed by only lowercase letters with no whitespaces and minimum 2 letters.\n\nPlease make sure is entered correctly.`,
-				[
-					{
-						style: 'cancel',
-					},
-				],
-				{
-					titleStyle: styles.alertTitle,
-					messageStyle: styles.alertMessage,
-					alertContainerStyle: styles.alertContainer,
-				}
+				`${label} must start with an uppercase letter and followed by only lowercase letters with no whitespaces and minimum 2 letters.\n\nPlease make sure is entered correctly.`
 			);
 			return false;
 		}
@@ -100,24 +80,6 @@ const styles = StyleSheet.create({
 	},
 	spacing: {
 		marginBottom: '10%',
-	},
-	alertTitle: {
-		fontFamily: 'rubik',
-		fontSize: 24,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		marginBottom: 10,
-	},
-	alertMessage: {
-		fontFamily: 'rubik',
-		fontSize: 16,
-		textAlign: 'center',
-		marginBottom: 20,
-	},
-	alertContainer: {
-		backgroundColor: '#f2f2f2',
-		borderRadius: 10,
-		padding: 20,
 	},
 });
 

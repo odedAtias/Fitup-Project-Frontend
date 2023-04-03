@@ -8,6 +8,7 @@ const Title = ({ children }) => (
 	</View>
 );
 
+// Title StyleSheet
 const styles = StyleSheet.create({
 	contaner: {
 		marginVertical: '2%',
@@ -18,4 +19,5 @@ const styles = StyleSheet.create({
 		fontFamily: 'rubik',
 	},
 });
+
 export default Title;

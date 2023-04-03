@@ -1,16 +1,8 @@
 // Hooks imports
-import { useContext, useEffect } from 'react';
+import { useContext, useState } from 'react';
 
 // RN core components & API imports
-import {
-	StyleSheet,
-	Text,
-	View,
-	Pressable,
-	Image,
-	Alert,
-	Linking,
-} from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 // Contexts imports
 import { SignupContext } from '../../store/SignupContext';
@@ -24,7 +16,10 @@ const Step4 = () => {
 	// Context initialize
 	const context = useContext(SignupContext);
 
-	// Sending mail to the current mail
+	// PinCode
+	const [pincode, setPincode] = useState('');
+
+	// Generate random pin code Sending mail to the current mail
 
 	// Step4 submit handler
 	const handleSubmit = async () => {
@@ -41,9 +36,9 @@ const Step4 = () => {
 			</Text>
 			<SignupInput
 				inputConfigurations={{
-					// onChangeText: t => context.setLastName(t),
+					onChangeText: p => setPincode(p),
 					autoCorrect: false,
-					value: context.lastName,
+					value: pincode,
 				}}
 			/>
 			<SignupButton onPress={handleSubmit}>Let' get started</SignupButton>
@@ -82,24 +77,6 @@ const styles = StyleSheet.create({
 		fontSize: 19,
 		fontWeight: '600',
 		textAlign: 'left',
-	},
-	alertTitle: {
-		fontFamily: 'rubik',
-		fontSize: 24,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		marginBottom: 10,
-	},
-	alertMessage: {
-		fontFamily: 'rubik',
-		fontSize: 16,
-		textAlign: 'center',
-		marginBottom: 20,
-	},
-	alertContainer: {
-		backgroundColor: '#f2f2f2',
-		borderRadius: 10,
-		padding: 20,
 	},
 });
 

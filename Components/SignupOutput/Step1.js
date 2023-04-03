@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 
 // RN core components & API imports
-import { StyleSheet, Text, View, Pressable, Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 // Custom component import
@@ -14,6 +14,7 @@ import { SignupContext } from '../../store/SignupContext';
 
 // Constants
 import Colors from './../../Constants/Colors';
+import { alert } from '../../Constants/Alert';
 
 // Step1 component
 const Step1 = ({ navigation }) => {
@@ -23,19 +24,9 @@ const Step1 = ({ navigation }) => {
 	const handleSubmit = () => {
 		// Input validation
 		if (!context.type) {
-			Alert.alert(
+			alert(
 				'Missing Required Information',
-				'Please select the relevant type to continue.',
-				[
-					{
-						style: 'cancel',
-					},
-				],
-				{
-					titleStyle: styles.alertTitle,
-					messageStyle: styles.alertMessage,
-					alertContainerStyle: styles.alertContainer,
-				}
+				'Please select the relevant type to continue.'
 			);
 			return;
 		}
@@ -99,6 +90,7 @@ const Step1 = ({ navigation }) => {
 	);
 };
 
+// Step1 StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -147,24 +139,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-	},
-	alertTitle: {
-		fontFamily: 'rubik',
-		fontSize: 24,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		marginBottom: 10,
-	},
-	alertMessage: {
-		fontFamily: 'rubik',
-		fontSize: 16,
-		textAlign: 'center',
-		marginBottom: 20,
-	},
-	alertContainer: {
-		backgroundColor: '#f2f2f2',
-		borderRadius: 10,
-		padding: 20,
 	},
 });
 

@@ -11,6 +11,7 @@ import TextBox from '../TextBox';
 
 // Constants
 import Colors from '../../Constants/Colors';
+import { alert } from '../../Constants/Alert';
 
 // Utills
 import { TEXT } from '../../utils/regulations';
@@ -26,19 +27,9 @@ const RegisterEventForm = () => {
 	const handleSubmit = () => {
 		// handle form submission
 		if (!isChecked) {
-			Alert.alert(
+			alert(
 				'Please Accept the Regulations',
-				'You must accept the regulations to proceed.',
-				[
-					{
-						style: 'cancel',
-					},
-				],
-				{
-					titleStyle: styles.alertTitle,
-					messageStyle: styles.alertMessage,
-					alertContainerStyle: styles.alertContainer,
-				}
+				'You must accept the regulations to proceed.'
 			);
 			return;
 		}
@@ -83,24 +74,6 @@ const styles = StyleSheet.create({
 	},
 	checkbox: {
 		marginRight: 5,
-	},
-	alertTitle: {
-		fontFamily: 'rubik',
-		fontSize: 24,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		marginBottom: 10,
-	},
-	alertMessage: {
-		fontFamily: 'rubik',
-		fontSize: 16,
-		textAlign: 'center',
-		marginBottom: 20,
-	},
-	alertContainer: {
-		backgroundColor: '#f2f2f2',
-		borderRadius: 10,
-		padding: 20,
 	},
 });
 
