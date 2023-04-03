@@ -226,7 +226,7 @@ export default function App() {
 							<Stack.Screen
 								name='Login'
 								component={Login}
-								options={{ headerShown: false, presentation: 'modal' }}
+								options={{ headerShown: false }}
 							/>
 							<Stack.Screen
 								name='Signup'

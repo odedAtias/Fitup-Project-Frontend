@@ -1,5 +1,5 @@
 // RN core components & API imports
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Platform } from 'react-native';
 
 // Constants
 import Colors from '../../Constants/Colors';
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		width: '100%',
 		fontFamily: 'rubik',
+		paddingVertical: Platform.OS === 'ios' ? '2%' : 0,
 	},
 });
 

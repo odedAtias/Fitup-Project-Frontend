@@ -29,12 +29,11 @@ const Signup = () => {
 								label={'Fit\nUp'}
 								containerStyle={{
 									backgroundColor: Colors.Headers.secondary,
-									padding: Platform.OS === 'ios' ? 10 : 10,
-									paddingTop: Platform.OS === 'ios' ? 10 : 35,
+									padding: Platform.OS === 'ios' ? '5%' : '10%',
 									marginBottom: Platform.OS === 'ios' ? 10 : 5,
 								}}
 								labelStyle={{
-									fontSize: 50,
+									fontSize: Platform.OS === 'ios' ? '55%' : '45%',
 									color: Colors.Texts.primary,
 								}}
 								onPressLeft={() => navigation.goBack()}
