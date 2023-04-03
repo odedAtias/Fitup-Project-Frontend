@@ -6,7 +6,7 @@ const Logo = ({ imageWidth, imageHeight }) => (
 	<View style={styles.logoContainer}>
 		<Image
 			style={{ width: imageWidth, height: imageHeight }}
-			source={require('../Images/FitUp-Logo.png')}
+			source={require('../../Images/FitUp-Logo.png')}
 		/>
 	</View>
 );

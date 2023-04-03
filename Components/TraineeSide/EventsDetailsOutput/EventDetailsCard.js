@@ -6,17 +6,17 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 // Custom components imports
 import EventItemImage from '../EventsOutput/TrainerImage';
-import Link from '../Link';
-import HeadingText from '../HeadingText';
+import Link from '../../UI/Link';
+import HeadingText from '../../UI/HeadingText';
 
 // Constatns
-import Colors from '../../Constants/Colors';
+import Colors from '../../../Constants/Colors';
 
 // Utils functions imports
-import { displayAddrress } from './../../utils/address';
-import { displayFullDate } from './../../utils/Date';
-import { displayParticipants } from './../../utils/participants';
-import { statusColor } from './../../utils/participants';
+import { displayAddrress } from '../../../utils/address';
+import { displayFullDate } from '../../../utils/Date';
+import { displayParticipants } from '../../../utils/participants';
+import { statusColor } from '../../../utils/participants';
 
 // EventDetailsCard component
 const EventDetailsCard = cardDetails => {

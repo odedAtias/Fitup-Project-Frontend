@@ -5,7 +5,7 @@ import { useContext, useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 // Contexts imports
-import { SignupContext } from '../../store/SignupContext';
+import { SignupContext } from '../../../store/SignupContext';
 
 // Custom component import
 import SignupButton from './SignupButton';
@@ -43,7 +43,7 @@ const Step4 = () => {
 			/>
 			<SignupButton onPress={handleSubmit}>Let' get started</SignupButton>
 			<Image
-				source={require('../../Images/Signup/step4.png')}
+				source={require('../../../Images/Signup/step4.png')}
 				style={{
 					width: 230,
 					height: 230,

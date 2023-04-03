@@ -2,7 +2,7 @@
 import { StyleSheet, Text, Pressable } from 'react-native';
 
 // Constants
-import Colors from './../Constants/Colors';
+import Colors from '../../Constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
 // Link component

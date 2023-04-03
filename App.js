@@ -16,10 +16,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-//Custom Components
-import Login from './Screens/Login';
-import Signup from './Screens/Signup';
-import ForgotPassword from './Screens/ForgotPassword';
+// Screen Components
+import Login from './Screens/GenericScreens/Login';
+import Signup from './Screens/GenericScreens/Signup';
+import ForgotPassword from './Screens/GenericScreens/ForgotPassword';
 import Categories from './Screens/TraineeScreens/Categories';
 import FavoriteTrainers from './Screens/TraineeScreens/FavoriteTrainers';
 import RegisteredEvents from './Screens/TraineeScreens/RegisteredEvents';
@@ -28,8 +28,10 @@ import Events from './Screens/TraineeScreens/Events';
 import EventDetails from './Screens/TraineeScreens/EventDetails';
 import RegisterEvent from './Screens/TraineeScreens/RegisterEvent';
 import RegistrationSucceed from './Screens/TraineeScreens/RegistrationSucceed';
-import Header from './Components/Header';
 import TrainerProfile from './Screens/TraineeScreens/TrainerProfile';
+
+//Custom Components
+import Header from './Components/UI/Header';
 
 // Ionicons
 import { Ionicons } from '@expo/vector-icons';

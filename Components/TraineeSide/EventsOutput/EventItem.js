@@ -6,7 +6,7 @@ import TrainerImage from './TrainerImage';
 import EventItemDetails from './EventItemDetails';
 
 // Constants
-import Colors from '../../Constants/Colors';
+import Colors from '../../../Constants/Colors';
 
 // EventItem component
 const EventItem = ({ event, onPress }) => {

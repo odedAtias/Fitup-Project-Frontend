@@ -8,8 +8,8 @@ import { TraineeContext } from '../../store/TraineeContext';
 import { View, StyleSheet, Platform } from 'react-native';
 
 // Custom components imports
-import Header from '../../Components/Header';
-import EventsList from '../../Components/EventsOutput/EventsList';
+import Header from '../../Components/UI/Header';
+import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
 
 // Constants
 import Colors from '../../Constants/Colors';

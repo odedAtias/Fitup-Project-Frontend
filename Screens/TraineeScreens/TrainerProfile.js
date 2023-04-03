@@ -5,12 +5,12 @@ import { useContext, useLayoutEffect, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Linking } from 'react-native';
 
 // Custom components imports
-import Header from '../../Components/Header';
-import TrainerImage from '../../Components/EventsOutput/TrainerImage';
-import Title from './../../Components/Title';
-import Link from '../../Components/Link';
-import Aboutme from '../../Components/TrainerProfileOutput/Aboutme';
-import MyUpcomingEvents from '../../Components/TrainerProfileOutput/MyUpcomingEvents';
+import Header from '../../Components/UI/Header';
+import TrainerImage from '../../Components/TraineeSide/EventsOutput/TrainerImage';
+import Title from '../../Components/UI/Title';
+import Link from '../../Components/UI/Link';
+import Aboutme from '../../Components/TraineeSide/TrainerProfileOutput/Aboutme';
+import MyUpcomingEvents from '../../Components/TraineeSide/TrainerProfileOutput/MyUpcomingEvents';
 
 // Context imports
 import { TraineeContext } from '../../store/TraineeContext';

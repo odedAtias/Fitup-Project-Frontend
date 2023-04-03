@@ -2,7 +2,7 @@
 import { View, StyleSheet, Text } from 'react-native';
 
 // Custom components imports
-import RegisterEventForm from '../../Components/RegisterEventOutput/RegisterEventForm';
+import RegisterEventForm from '../../Components/TraineeSide/RegisterEventOutput/RegisterEventForm';
 
 // RegisterEvent Component
 const RegisterEvent = () => {

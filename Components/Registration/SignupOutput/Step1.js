@@ -6,15 +6,15 @@ import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 // Custom component import
-import SignupButton from './SignupButton';
-import Link from '../Link';
+import SignupButton from '../SignupOutput/SignupButton';
+import Link from '../../UI/Link';
 
 // Contexts imports
-import { SignupContext } from '../../store/SignupContext';
+import { SignupContext } from '../../../store/SignupContext';
 
 // Constants
-import Colors from './../../Constants/Colors';
-import { alert } from '../../Constants/Alert';
+import Colors from '../../../Constants/Colors';
+import { alert } from '../../../Constants/Alert';
 
 // Step1 component
 const Step1 = ({ navigation }) => {
@@ -78,7 +78,7 @@ const Step1 = ({ navigation }) => {
 				<Link onPress={() => navigation.goBack()}>Sign in</Link>
 			</View>
 			<Image
-				source={require('../../Images/Signup/step1.png')}
+				source={require('../../../Images/Signup/step1.png')}
 				style={{
 					width: 180,
 					height: 180,

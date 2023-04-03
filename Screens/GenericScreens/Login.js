@@ -11,10 +11,10 @@ import {
 } from 'react-native';
 
 // Custom components imports
-import LoginForm from '../Components/LoginOutput/LoginForm';
-import Logo from '../Components/Logo';
-import Link from '../Components/Link';
-import Spinner from '../Components/Spinner';
+import Logo from '../../Components/UI/Logo';
+import Link from '../../Components/UI/Link';
+import Spinner from '../../Components/UI/Spinner';
+import LoginForm from '../../Components/Registration/LoginOutput/LoginForm';
 
 // Login Component
 const Login = ({ navigation }) => {

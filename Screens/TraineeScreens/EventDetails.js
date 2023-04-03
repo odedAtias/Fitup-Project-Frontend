@@ -1,14 +1,14 @@
 // RN core components & API imports
 import { StyleSheet, View } from 'react-native';
 
-// Custom components imports
-import EventDetailsCard from '../../Components/EventsDetailsOutput/EventDetailsCard';
-import EventDetailsDescription from '../../Components/EventsDetailsOutput/EventDetailsDescription';
-import EventParticipants from './../../Components/EventsDetailsOutput/EventParticipants';
+// Custom components
+import EventDetailsCard from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsCard';
+import EventParticipants from '../../Components/TraineeSide/EventsDetailsOutput/EventParticipants';
+import EventDetailsDescription from '../../Components/TraineeSide/EventsDetailsOutput/EventParticipants';
 
 // Constants
 import Colors from '../../Constants/Colors';
-import Link from '../../Components/Link';
+import Link from '../../Components/UI/Link';
 
 // EventDetails component
 const EventDetails = ({ navigation, route }) => {

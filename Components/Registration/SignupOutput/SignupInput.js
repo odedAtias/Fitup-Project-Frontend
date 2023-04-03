@@ -2,7 +2,7 @@
 import { View, Text, StyleSheet, TextInput, Platform } from 'react-native';
 
 // Constants
-import Colors from '../../Constants/Colors';
+import Colors from '../../../Constants/Colors';
 
 // SignpuInput component
 const SignupInput = ({ label, inputConfigurations }) => {

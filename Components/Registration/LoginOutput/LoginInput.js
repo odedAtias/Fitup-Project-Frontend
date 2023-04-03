@@ -1,9 +1,11 @@
 // RN core components & API imports
 import { View, Text, TextInput, StyleSheet } from 'react-native';
+
 // Ionicons imports
 import { Ionicons } from '@expo/vector-icons';
+
 // Constants
-import Colors from '../../Constants/Colors';
+import Colors from '../../../Constants/Colors';
 
 // Input component
 const LoginInput = ({
@@ -26,6 +28,7 @@ const LoginInput = ({
 	);
 };
 
+// LoginInput StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		marginVertical: 24,

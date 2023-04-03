@@ -9,10 +9,10 @@ import SignupButton from './SignupButton';
 import SignupInput from './SignupInput';
 
 // Constants
-import { alert } from '../../Constants/Alert';
+import { alert } from '../../../Constants/Alert';
 
 // Contexts imports
-import { SignupContext } from '../../store/SignupContext';
+import { SignupContext } from '../../../store/SignupContext';
 
 // Step2 Component
 const Step2 = ({ navigation }) => {

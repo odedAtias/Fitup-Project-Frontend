@@ -5,18 +5,18 @@ import { useContext, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 // firebase API imports
-import { isExistingEmail } from '../../auth/firebase-config';
+import { isExistingEmail } from '../../../auth/firebase-config';
 
 // Custom component import
 import SignupButton from './SignupButton';
 import SignupInput from './SignupInput';
-import Spinner from '../Spinner';
+import Spinner from '../../UI/Spinner';
 
 // Contexts imports
-import { SignupContext } from '../../store/SignupContext';
+import { SignupContext } from '../../../store/SignupContext';
 
 // Constants
-import { alert } from '../../Constants/Alert';
+import { alert } from '../../../Constants/Alert';
 
 // Step3 component
 const Step3 = ({ navigation }) => {

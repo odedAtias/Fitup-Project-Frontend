@@ -2,14 +2,14 @@
 import { View, Text, StyleSheet } from 'react-native';
 
 // Custom components imports
-import HeadingText from '../HeadingText';
-import SubHeadingText from '../SubHeadingText';
+import HeadingText from '../../UI/HeadingText';
+import SubHeadingText from '../../UI/SubHeadingText';
 
 // Utils functions imports
-import { displayAddrress } from '../../utils/address';
-import { displayFullDate } from '../../utils/Date';
-import { displayParticipants } from '../../utils/participants';
-import { statusColor } from '../../utils/participants';
+import { displayAddrress } from '../../../utils/address';
+import { displayFullDate } from '../../../utils/Date';
+import { displayParticipants } from '../../../utils/participants';
+import { statusColor } from '../../../utils/participants';
 
 // EventItemDetails component
 const EventItemDetails = ({

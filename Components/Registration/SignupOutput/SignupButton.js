@@ -2,7 +2,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 // Constants
-import Colors from './../../Constants/Colors';
+import Colors from '../../../Constants/Colors';
 
 // SignupButton component
 const SignupButton = ({ children, onPress }) => {

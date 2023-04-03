@@ -6,15 +6,15 @@ import { View, Text, StyleSheet, Alert } from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 // Custom components imports
-import Button from '../Button';
-import TextBox from '../TextBox';
+import Button from '../../UI/Button';
+import TextBox from '../../UI/TextBox';
 
 // Constants
-import Colors from '../../Constants/Colors';
-import { alert } from '../../Constants/Alert';
+import Colors from '../../../Constants/Colors';
+import { alert } from '../../../Constants/Alert';
 
 // Utills
-import { TEXT } from '../../utils/regulations';
+import { TEXT } from '../../../utils/regulations';
 
 // RegisterEventForm component
 const RegisterEventForm = () => {

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 // Constants
-import { CATEGORIES } from '../../Constants/Categories';
+import { CATEGORIES } from '../../../Constants/Categories';
 
 // EventCard component
 const EventCard = ({ event, onPress }) => {

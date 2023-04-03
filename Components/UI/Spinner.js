@@ -6,7 +6,7 @@ import LottieView from 'lottie-react-native';
 const Spinner = () => {
 	return (
 		<View style={[StyleSheet.absoluteFillObject, styles.container]}>
-			<LottieView source={require('../spinner/loader.json')} autoPlay loop />
+			<LottieView source={require('../../spinner/loader.json')} autoPlay loop />
 		</View>
 	);
 };

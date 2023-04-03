@@ -5,17 +5,17 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 // Custom components import
-import Header from '../Components/Header';
-import Step1 from '../Components/SignupOutput/Step1';
-import Step2 from '../Components/SignupOutput/Step2';
-import Step3 from '../Components/SignupOutput/Step3';
-import Step4 from '../Components/SignupOutput/Step4';
+import Header from '../../Components/UI/Header';
+import Step1 from '../../Components/Registration/SignupOutput/Step1';
+import Step2 from '../../Components/Registration/SignupOutput/Step2';
+import Step3 from '../../Components/Registration/SignupOutput/Step3';
+import Step4 from '../../Components/Registration/SignupOutput/Step4';
 
 // Constants
-import Colors from './../Constants/Colors';
+import Colors from '../../Constants/Colors';
 
 // Contexts imports
-import SignupContextProvider from '../store/SignupContext';
+import SignupContextProvider from '../../store/SignupContext';
 
 // SignUp Component
 const Signup = () => {

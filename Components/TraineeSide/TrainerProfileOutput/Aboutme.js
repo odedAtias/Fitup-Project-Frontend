@@ -2,11 +2,11 @@
 import { View } from 'react-native';
 
 // Custom components imports
-import Title from '../Title';
-import TextBox from '../TextBox';
+import Title from '../../UI/Title';
+import TextBox from '../../UI/TextBox';
 
 // Constants
-import Colors from '../../Constants/Colors';
+import Colors from '../../../Constants/Colors';
 
 // Aboutme component
 const Aboutme = ({ description }) => (

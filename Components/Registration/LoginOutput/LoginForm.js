@@ -7,19 +7,19 @@ import { View, StyleSheet, LogBox } from 'react-native';
 
 // Firebase Authentication API imports
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../auth/firebase-config';
+import { auth } from '../../../auth/firebase-config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 LogBox.ignoreLogs(['AsyncStorage has been extracted']);
 
 // Custom components imports
 import LoginInput from './LoginInput';
-import Button from '../Button';
+import Button from '../../UI/Button';
 
 // Constants
-import Colors from '../../Constants/Colors';
+import Colors from '../../../Constants/Colors';
 
 // Constants
-import { alert } from '../../Constants/Alert';
+import { alert } from '../../../Constants/Alert';
 
 // Login Component
 const LoginForm = ({ isLoading, setIsLoading }) => {

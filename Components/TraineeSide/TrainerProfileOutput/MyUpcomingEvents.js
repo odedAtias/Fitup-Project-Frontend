@@ -2,11 +2,11 @@
 import { View, FlatList, StyleSheet } from 'react-native';
 
 // Custom components imports
-import Title from '../Title';
-import EventCard from './EventCard';
+import Title from '../../UI/Title';
+import EventCard from '../../TraineeSide/TrainerProfileOutput/EventCard';
 
 // utils
-import { sortedEventsByDate } from '../../utils/Date';
+import { sortedEventsByDate } from '../../../utils/Date';
 
 // MyUpcomingEvents component
 const MyUpcomingEvents = ({ events }) => {

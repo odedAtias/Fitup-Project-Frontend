@@ -1,8 +1,8 @@
 // RN core components & API imports
 import { View, StyleSheet } from 'react-native';
 
-// Custom components imports
-import CategoryList from '../../Components/CategoriesOutput/CategoryList';
+// Custom components
+import CategoryList from '../../Components/TraineeSide/CategoriesOutput/CategoryList';
 
 // Constants
 import { CATEGORIES } from '../../Constants/Categories';
