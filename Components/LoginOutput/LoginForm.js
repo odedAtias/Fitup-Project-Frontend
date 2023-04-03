@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 // RN core components & API imports
-import { View, StyleSheet, LogBox, Alert } from 'react-native';
+import { View, StyleSheet, LogBox } from 'react-native';
 
 // Firebase Authentication API imports
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
@@ -18,8 +18,11 @@ import Button from '../Button';
 // Constants
 import Colors from '../../Constants/Colors';
 
+// Constants
+import { alert } from '../../Constants/Alert';
+
 // Login Component
-const LoginForm = () => {
+const LoginForm = ({ isLoading, setIsLoading }) => {
 	// navigation object initialize
 	const navigation = useNavigation();
 
@@ -48,6 +51,7 @@ const LoginForm = () => {
 
 	// Login submit handler
 	const handleSubmit = () => {
+		setIsLoading(true);
 		// Submitted case
 		signInWithEmailAndPassword(
 			auth,
@@ -57,22 +61,14 @@ const LoginForm = () => {
 			.then(re => {
 				// Check which user logged in
 				// Navigate to the adjusted app
+				setIsLoading(false);
 				navigation.navigate('TraineeBottomTab');
 			})
 			.catch(() => {
-				Alert.alert(
+				setIsLoading(false);
+				alert(
 					'Login Error',
-					'We were unable to log you in. Please double-check your username and password and try again. If you continue to have trouble, please contact customer support for assistance.',
-					[
-						{
-							style: 'cancel',
-						},
-					],
-					{
-						titleStyle: styles.alertTitle,
-						messageStyle: styles.alertMessage,
-						alertContainerStyle: styles.alertContainer,
-					}
+					'We were unable to log you in. Please double-check your username and password and try again. If you continue to have trouble, please contact customer support for assistance.'
 				);
 			});
 	};
@@ -127,24 +123,6 @@ const styles = StyleSheet.create({
 	buttonsContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	alertTitle: {
-		fontFamily: 'rubik',
-		fontSize: 24,
-		fontWeight: 'bold',
-		textAlign: 'center',
-		marginBottom: 10,
-	},
-	alertMessage: {
-		fontFamily: 'rubik',
-		fontSize: 16,
-		textAlign: 'center',
-		marginBottom: 20,
-	},
-	alertContainer: {
-		backgroundColor: '#f2f2f2',
-		borderRadius: 10,
-		padding: 20,
 	},
 });
 

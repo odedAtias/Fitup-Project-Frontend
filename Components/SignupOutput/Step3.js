@@ -1,5 +1,5 @@
 // Hooks imports
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 // RN core components & API imports
 import { StyleSheet, View } from 'react-native';
@@ -10,6 +10,7 @@ import { isExistingEmail } from '../../auth/firebase-config';
 // Custom component import
 import SignupButton from './SignupButton';
 import SignupInput from './SignupInput';
+import Spinner from '../Spinner';
 
 // Contexts imports
 import { SignupContext } from '../../store/SignupContext';
@@ -21,6 +22,9 @@ import { alert } from '../../Constants/Alert';
 const Step3 = ({ navigation }) => {
 	// Context initialize
 	const context = useContext(SignupContext);
+
+	// Load indicator
+	const [isLoading, setIsLoading] = useState(false);
 
 	// Step3 Validation function
 	const validate = (input, label, prop) => {
@@ -67,16 +71,27 @@ const Step3 = ({ navigation }) => {
 		)
 			return;
 		// Check if the current email is exist in Fitup
-		const emailExists = await isExistingEmail(context.email);
-		if (emailExists) {
-			alert(
-				'Email already exists',
-				'The email you entered is already exist. Please use a different email address.'
-			);
-			return;
+		setIsLoading(true);
+		try {
+			const emailExists = await isExistingEmail(context.email);
+			if (emailExists) {
+				alert(
+					'Email already exists',
+					'The email you entered is already exist. Please use a different email address.'
+				);
+				return;
+			}
+			setIsLoading(false);
+			navigation.navigate('Step4');
+		} catch (e) {
+			setIsLoading(false);
+			alert(e, 'Please try again later');
 		}
-		navigation.navigate('Step4');
 	};
+
+	if (isLoading) {
+		return <Spinner />;
+	}
 
 	return (
 		<View style={styles.container}>
