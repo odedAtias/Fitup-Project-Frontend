@@ -14,183 +14,26 @@ import { StyleSheet, SafeAreaView, Platform, Text } from 'react-native';
 // Navigation Imports
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Screen Components
 import Login from './Screens/GenericScreens/Login';
-import Signup from './Screens/GenericScreens/Signup';
 import ForgotPassword from './Screens/GenericScreens/ForgotPassword';
-import Categories from './Screens/TraineeScreens/Categories';
-import FavoriteTrainers from './Screens/TraineeScreens/FavoriteTrainers';
-import RegisteredEvents from './Screens/TraineeScreens/RegisteredEvents';
-import PersonalDetails from './Screens/TraineeScreens/PersonalDetails';
-import Events from './Screens/TraineeScreens/Events';
-import EventDetails from './Screens/TraineeScreens/EventDetails';
-import RegisterEvent from './Screens/TraineeScreens/RegisterEvent';
-import RegistrationSucceed from './Screens/TraineeScreens/RegistrationSucceed';
-import TrainerProfile from './Screens/TraineeScreens/TrainerProfile';
+
+// Custom Navigators components
+import Signup from './Screens/GenericScreens/Signup';
+import TraineeBottomTab from './Components/TraineeSide/Navigators/TraineeBottomTab';
 
 //Custom Components
 import Header from './Components/UI/Header';
 
-// Ionicons
-import { Ionicons } from '@expo/vector-icons';
-
 // Context providers
 import TraineeContextProvider from './store/TraineeContext';
 
-// Navigators Initialize`s
+// Navigators
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
 
 // Constants
 import Colors from './Constants/Colors';
-
-// Search Events Stack Navigator
-const StackSearchEvent = () => (
-	<Stack.Navigator
-		mode='modal'
-		screenOptions={{
-			header: ({ navigation }) => (
-				<Header
-					label={'Fit\nUp'}
-					containerStyle={{
-						backgroundColor: Colors.Headers.secondary,
-						padding: Platform.OS === 'ios' ? 10 : 10,
-						paddingTop: Platform.OS === 'ios' ? 10 : 30,
-					}}
-					labelStyle={{
-						fontSize: 50,
-						color: Colors.Texts.primary,
-					}}
-					onPressLeft={() => navigation.goBack()}
-				/>
-			),
-			contentStyle: {
-				backgroundColor: 'white',
-			},
-		}}>
-		<Stack.Screen
-			name='Categories'
-			component={Categories}
-			options={{
-				header: () => {
-					return (
-						<Header
-							label={'Fit\nUp'}
-							containerStyle={{
-								backgroundColor: Colors.Headers.primary,
-								padding: Platform.OS === 'ios' ? 10 : 20,
-							}}
-						/>
-					);
-				},
-			}}
-		/>
-		<Stack.Screen name='Events' component={Events} />
-		<Stack.Screen name='EventDetails' component={EventDetails} />
-		<Stack.Screen name='RegisterEvent' component={RegisterEvent} />
-		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
-		<Stack.Screen name='TrainerProfile' component={TrainerProfile} />
-	</Stack.Navigator>
-);
-
-// Auxilliary Components of trainee bottomTabs
-const TraineeBottomTab = () => {
-	return (
-		<Tab.Navigator
-			screenOptions={{
-				header: () => (
-					<Header
-						label={'Fit\nup'}
-						containerStyle={{
-							backgroundColor: Colors.Headers.primary,
-							padding: Platform.OS === 'ios' ? 10 : 20,
-						}}
-					/>
-				),
-
-				tabBarStyle: {
-					backgroundColor: Colors.Headers.primary,
-					position: 'absolute',
-					bottom: 10,
-					left: 20,
-					right: 20,
-					borderRadius: 15,
-					elevation: 0,
-				},
-				tabBarShowLabel: false,
-				tabBarActiveTintColor: Colors.Texts.third,
-				tabBarInactiveTintColor: Colors.Texts.secondary,
-			}}>
-			<Tab.Screen
-				name='StackSearchEvent'
-				component={StackSearchEvent}
-				options={{
-					headerShown: false,
-					tabBarIcon: ({ focused, color }) => {
-						let iconName = focused ? 'search' : 'search-outline';
-						return (
-							<Ionicons
-								name={iconName}
-								size={focused ? 35 : 25}
-								color={color}
-							/>
-						);
-					},
-				}}
-			/>
-			<Tab.Screen
-				name='FavoriteTrainers'
-				component={FavoriteTrainers}
-				options={{
-					tabBarIcon: ({ focused, color }) => {
-						let iconName = focused ? 'bookmarks' : 'bookmarks-outline';
-						return (
-							<Ionicons
-								name={iconName}
-								size={focused ? 35 : 25}
-								color={color}
-							/>
-						);
-					},
-				}}
-			/>
-			<Tab.Screen
-				name='RegisteredEvents'
-				component={RegisteredEvents}
-				options={{
-					tabBarIcon: ({ focused, color }) => {
-						let iconName = focused ? 'calendar' : 'calendar-outline';
-						return (
-							<Ionicons
-								name={iconName}
-								size={focused ? 35 : 25}
-								color={color}
-							/>
-						);
-					},
-				}}
-			/>
-			<Tab.Screen
-				name='PersonalDetails'
-				component={PersonalDetails}
-				options={{
-					tabBarIcon: ({ focused, color }) => {
-						let iconName = focused ? 'person' : 'person-outline';
-						return (
-							<Ionicons
-								name={iconName}
-								size={focused ? 35 : 25}
-								color={color}
-							/>
-						);
-					},
-				}}
-			/>
-		</Tab.Navigator>
-	);
-};
 
 // App Component
 export default function App() {
