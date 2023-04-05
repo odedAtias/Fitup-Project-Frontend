@@ -10,7 +10,7 @@ import { isExistingEmail } from '../../../auth/firebase-config';
 // Custom component import
 import SignupButton from './SignupButton';
 import SignupInput from './SignupInput';
-import Spinner from '../../UI/Spinner';
+import Spinner2 from '../../UI/Spinner2';
 
 // Contexts imports
 import { SignupContext } from '../../../store/SignupContext';
@@ -90,7 +90,7 @@ const Step3 = ({ navigation }) => {
 	};
 
 	if (isLoading) {
-		return <Spinner />;
+		return <Spinner2 />;
 	}
 
 	return (

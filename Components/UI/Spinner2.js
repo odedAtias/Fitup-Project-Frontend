@@ -3,10 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import LottieView from 'lottie-react-native';
 
 // Spinner Component
-const Spinner = () => {
+const Spinner2 = () => {
 	return (
 		<View style={[StyleSheet.absoluteFillObject, styles.container]}>
-			<LottieView source={require('../../spinner/loader.json')} autoPlay loop />
+			<LottieView
+				source={require('../../spinners/loader2.json')}
+				autoPlay
+				loop
+			/>
 		</View>
 	);
 };
@@ -21,4 +25,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Spinner;
+export default Spinner2;

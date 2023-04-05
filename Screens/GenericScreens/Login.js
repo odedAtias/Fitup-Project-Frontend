@@ -13,7 +13,7 @@ import {
 // Custom components imports
 import Logo from '../../Components/UI/Logo';
 import Link from '../../Components/UI/Link';
-import Spinner from '../../Components/UI/Spinner';
+import Spinner2 from '../../Components/UI/Spinner2';
 import LoginForm from '../../Components/Registration/LoginOutput/LoginForm';
 
 // Login Component
@@ -21,38 +21,37 @@ const Login = ({ navigation }) => {
 	// Load indicator
 	const [isLoading, setIsLoading] = useState(false);
 
-	if (isLoading) {
-		return <Spinner />;
-	} else {
-		return (
-			<ScrollView style={styles.screen}>
-				<KeyboardAvoidingView style={styles.screen}>
-					<View style={styles.container}>
-						{/* Logo */}
-						<View style={styles.logoContainer}>
-							<Logo imageWidth={260} imageHeight={220} />
-						</View>
-						{/* Login form  */}
-						<LoginForm isLoading={isLoading} setIsLoading={setIsLoading} />
-						{/* Forgot Password link */}
-						<View style={styles.forgotPasswordContainer}>
-							<Text style={[styles.forgotPasswordText, styles.text]}>
-								Forgot password ?
-							</Text>
-							<Link
-								onPress={() => {
-									console.log('forgot password Pressed ...');
-									navigation.navigate('ForgotPassword');
-								}}
-								style={{ fontSize: 20 }}>
-								Click here
-							</Link>
-						</View>
+	// Loading case
+	if (isLoading) return <Spinner2 />;
+
+	return (
+		<ScrollView style={styles.screen}>
+			<KeyboardAvoidingView style={styles.screen}>
+				<View style={styles.container}>
+					{/* Logo */}
+					<View style={styles.logoContainer}>
+						<Logo imageWidth={260} imageHeight={220} />
 					</View>
-				</KeyboardAvoidingView>
-			</ScrollView>
-		);
-	}
+					{/* Login form  */}
+					<LoginForm isLoading={isLoading} setIsLoading={setIsLoading} />
+					{/* Forgot Password link */}
+					<View style={styles.forgotPasswordContainer}>
+						<Text style={[styles.forgotPasswordText, styles.text]}>
+							Forgot password ?
+						</Text>
+						<Link
+							onPress={() => {
+								console.log('forgot password Pressed ...');
+								navigation.navigate('ForgotPassword');
+							}}
+							style={{ fontSize: 20 }}>
+							Click here
+						</Link>
+					</View>
+				</View>
+			</KeyboardAvoidingView>
+		</ScrollView>
+	);
 };
 
 // Login StyleSheet

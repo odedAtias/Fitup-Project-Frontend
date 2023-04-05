@@ -18,6 +18,9 @@ import PersonalDetails from '../../../Screens/TraineeScreens/PersonalDetails';
 // Custom Navigators components
 import StackSearchEvent from './StackSearchEvent';
 
+// Custom components
+import Header from '../../UI/Header';
+
 // TraineeBottomTab Component
 const TraineeBottomTab = () => {
 	return (
@@ -32,7 +35,6 @@ const TraineeBottomTab = () => {
 						}}
 					/>
 				),
-
 				tabBarStyle: {
 					backgroundColor: Colors.Headers.primary,
 					position: 'absolute',

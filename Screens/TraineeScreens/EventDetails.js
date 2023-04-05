@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 // Custom components
 import EventDetailsCard from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsCard';
 import EventParticipants from '../../Components/TraineeSide/EventsDetailsOutput/EventParticipants';
-import EventDetailsDescription from '../../Components/TraineeSide/EventsDetailsOutput/EventParticipants';
+import EventDetailsDescription from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsDescription';
 
 // Constants
 import Colors from '../../Constants/Colors';

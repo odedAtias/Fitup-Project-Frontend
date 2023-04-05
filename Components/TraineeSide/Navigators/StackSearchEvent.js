@@ -15,6 +15,9 @@ import Colors from '../../../Constants/Colors';
 // Navigators
 const Stack = createNativeStackNavigator();
 
+// Custom components
+import Header from '../../UI/Header';
+
 // StackSearchEvent Component
 const StackSearchEvent = () => (
 	<Stack.Navigator
@@ -43,17 +46,15 @@ const StackSearchEvent = () => (
 			name='Categories'
 			component={Categories}
 			options={{
-				header: () => {
-					return (
-						<Header
-							label={'Fit\nUp'}
-							containerStyle={{
-								backgroundColor: Colors.Headers.primary,
-								padding: Platform.OS === 'ios' ? 10 : 20,
-							}}
-						/>
-					);
-				},
+				header: () => (
+					<Header
+						label={'Fit\nUp'}
+						containerStyle={{
+							backgroundColor: Colors.Headers.primary,
+							padding: Platform.OS === 'ios' ? 10 : 20,
+						}}
+					/>
+				),
 			}}
 		/>
 		<Stack.Screen name='Events' component={Events} />
