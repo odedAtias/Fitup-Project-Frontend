@@ -1,5 +1,5 @@
 // Hooks imports
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 // RN core components & API imports
@@ -11,9 +11,15 @@ import { auth } from '../../../auth/firebase-config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 LogBox.ignoreLogs(['AsyncStorage has been extracted']);
 
+// Utils
+import { fetchData } from '../../../utils/http';
+
 // Custom components imports
 import LoginInput from './LoginInput';
 import Button from '../../UI/Button';
+
+// Context import
+import { TraineeContext } from '../../../store/TraineeContext';
 
 // Constants
 import Colors from '../../../Constants/Colors';
@@ -23,6 +29,9 @@ import { alert } from '../../../Constants/Alert';
 
 // Login Component
 const LoginForm = ({ isLoading, setIsLoading }) => {
+	// context initialize
+	const traineeContext = useContext(TraineeContext);
+
 	// navigation object initialize
 	const navigation = useNavigation();
 
@@ -49,28 +58,47 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 		});
 	};
 
+	// fetch user data
+	const fetchUserData = async id => {
+		const response = await fetchData(`/trainees/${id}`);
+		// Check if the user's type is trainee
+		if (response) {
+			const trainee = response.data;
+			const { __v, favoriteTrainers, registeredEvents, ...rest } = trainee;
+			// Set the data in the store
+			traineeContext.setTrainee(rest);
+			traineeContext.setFavoriteTrainers(favoriteTrainers);
+			traineeContext.setRegisteredEvents(registeredEvents);
+			return 'Trainee';
+		} else {
+			return 'Trainer';
+		}
+	};
+
 	// Login submit handler
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		setIsLoading(true);
 		// Submitted case
-		signInWithEmailAndPassword(
-			auth,
-			inputs.username.value,
-			inputs.password.value
-		)
-			.then(re => {
-				// Check which user logged in
-				// Navigate to the adjusted app
-				setIsLoading(false);
-				navigation.navigate('TraineeBottomTab');
-			})
-			.catch(() => {
-				setIsLoading(false);
-				alert(
-					'Login Error',
-					'We were unable to log you in. Please double-check your username and password and try again. If you continue to have trouble, please contact customer support for assistance.'
-				);
-			});
+		try {
+			const user = await signInWithEmailAndPassword(
+				auth,
+				inputs.username.value,
+				inputs.password.value
+			);
+			const result = await fetchUserData(user.user.uid);
+			// Navigate by case
+			if (result === 'Trainee') navigation.navigate('TraineeBottomTab');
+			else {
+				console.log('This is the case of navigate to trainer app ...');
+			}
+		} catch (error) {
+			alert(
+				'Login Error',
+				'We were unable to log you in. Please double-check your username and password and try again. If you continue to have trouble, please contact customer support for assistance.'
+			);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (

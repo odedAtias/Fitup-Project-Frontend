@@ -3,7 +3,7 @@ import { createContext, useReducer } from 'react';
 
 // The shared state schema
 export const TraineeContext = createContext({
-	trainee: '',
+	trainee: {},
 	events: [],
 	registerdEvents: [],
 	favoriteTrainers: [],
@@ -41,8 +41,8 @@ const TraineeContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, {});
 
 	// store handlers
-	const setTrainee = traineeId =>
-		dispatch({ type: 'SET_TRAINEE', payload: traineeId });
+	const setTrainee = trainee =>
+		dispatch({ type: 'SET_TRAINEE', payload: trainee });
 
 	const setEvents = events => dispatch({ type: 'SET_EVENTS', payload: events });
 

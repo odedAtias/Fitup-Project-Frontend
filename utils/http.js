@@ -5,6 +5,14 @@ import axios from 'axios';
 const BACKEND_URL = 'https://jade-gentle-dolphin.cyclic.app/api';
 
 export const fetchData = async path => {
-	const response = await axios.get(`${BACKEND_URL}/${path}`);
-	return response;
+	try {
+		const response = await axios.get(`${BACKEND_URL}/${path}`);
+		return response;
+	} catch (error) {
+		if (error.response.status === 404) {
+			return undefined;
+		} else {
+			throw error;
+		}
+	}
 };
