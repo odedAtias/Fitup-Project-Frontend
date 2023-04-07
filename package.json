@@ -18,11 +18,11 @@
     "expo": "~47.0.12",
     "expo-checkbox": "~2.2.2",
     "expo-font": "^11.0.1",
-    "expo-status-bar": "~1.4.2", 
+    "expo-status-bar": "~1.4.2",
     "firebase": "^9.19.1",
     "lottie-react-native": "^5.1.4",
     "react": "18.1.0",
-    "react-native": "0.70.5",
+    "react-native": "0.70.8",
     "react-native-paper": "^5.2.0"
   },
   "devDependencies": {

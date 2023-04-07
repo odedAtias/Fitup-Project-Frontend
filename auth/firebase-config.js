@@ -3,12 +3,12 @@ import { getAuth, fetchSignInMethodsForEmail } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: 'AIzaSyCbRB-0iwmWJWo7I52zgDvcekysWxUCInY',
-	authDomain: 'fitup-16e0d.firebaseapp.com',
-	projectId: 'fitup-16e0d',
-	storageBucket: 'fitup-16e0d.appspot.com',
-	messagingSenderId: '590588144869',
-	appId: '1:590588144869:web:ac295d7574db0f827ab80c',
+	apiKey: 'AIzaSyBOKbUjLyAQwVnTr0t_rh5pesureQRSv3E',
+	authDomain: 'fitup-project.firebaseapp.com',
+	projectId: 'fitup-project',
+	storageBucket: 'fitup-project.appspot.com',
+	messagingSenderId: '471893103470',
+	appId: '1:471893103470:web:31b0cfcf0b4516ee27e77f',
 };
 
 // Initialize Firebase
