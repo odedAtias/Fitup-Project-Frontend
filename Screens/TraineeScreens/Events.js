@@ -63,7 +63,7 @@ const Events = ({ navigation, route }) => {
 		getEvents();
 	}, []);
 
-	if (!isFetching) {
+	if (!isFetching && context.events) {
 		return (
 			<View style={styles.container}>
 				<EventsList
