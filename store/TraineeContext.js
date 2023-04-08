@@ -5,7 +5,7 @@ import { createContext, useReducer } from 'react';
 export const TraineeContext = createContext({
 	trainee: {},
 	events: [],
-	registerdEvents: [],
+	registeredEvents: [],
 	favoriteTrainers: [],
 	// The current trainer viewed in Trainer Profile Screen
 	trainer: {},
@@ -25,7 +25,7 @@ const reducer = (state, action) => {
 		case 'SET_EVENTS':
 			return { ...state, events: action.payload };
 		case 'SET_REGISTERED_EVENTS':
-			return { ...state, registerdEvents: action.payload };
+			return { ...state, registeredEvents: action.payload };
 		case 'SET_FAVORITE_TRAINERS':
 			return { ...state, favoriteTrainers: action.payload };
 		case 'SET_TRAINER':
@@ -38,7 +38,13 @@ const reducer = (state, action) => {
 // The context provider of the store
 const TraineeContextProvider = ({ children }) => {
 	// reducer initialize
-	const [state, dispatch] = useReducer(reducer, {});
+	const [state, dispatch] = useReducer(reducer, {
+		trainee: {},
+		events: [],
+		registeredEvents: [],
+		favoriteTrainers: [],
+		trainer: {},
+	});
 
 	// store handlers
 	const setTrainee = trainee =>
@@ -59,7 +65,7 @@ const TraineeContextProvider = ({ children }) => {
 	const value = {
 		trainee: state.trainee,
 		events: state.events,
-		registerdEvents: state.registerdEvents,
+		registerdEvents: state.registeredEvents,
 		favoriteTrainers: state.favoriteTrainers,
 		trainer: state.trainer,
 		setTrainee: setTrainee,

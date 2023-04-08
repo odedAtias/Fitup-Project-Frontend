@@ -17,6 +17,7 @@ import { TraineeContext } from '../../store/TraineeContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
+import { alert } from '../../Constants/Alert';
 
 // Utils
 import { fetchData } from '../../utils/http';
@@ -30,19 +31,33 @@ const TrainerProfile = ({ route, navigation }) => {
 	// Loading indicator state
 	const [isFetching, setIsFetching] = useState(false);
 
+	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState(false);
+
 	// Initialize our context
 	const context = useContext(TraineeContext);
 
 	// accesing trainer id
 	const trainerId = route.params.trainerId;
 
-	// handlers
+	// TrainerProfile handlers
 	const handleSendEmail = email => {
 		Linking.openURL(`mailto:${email}`);
 	};
 
 	const handleFavoriteTrainer = () => {
-		console.log('hi');
+		setIsFavoriteTrainer(!isFavoriteTrainer);
+		let favoriteTrainers = context.favoriteTrainers;
+		// is this trainer is not in the favorite trainers list of the trainee
+		if (!isFavoriteTrainer) {
+			favoriteTrainers = [...favoriteTrainers, trainerId];
+		} else {
+			favoriteTrainers = favoriteTrainers.filter(tid => tid !== trainerId);
+		}
+		context.setFavoriteTrainers(favoriteTrainers);
+		alert(
+			'Favorite Trainers Updated',
+			'Your favorite trainers list has been updated successfully!'
+		);
 	};
 
 	// Http request to get the trainer details ...
@@ -76,14 +91,14 @@ const TrainerProfile = ({ route, navigation }) => {
 						paddingTop: '8%',
 					}}
 					onPressLeft={() => navigation.goBack()}
-					rightButton='bookmark-outline'
+					rightButton={isFavoriteTrainer ? 'bookmark' : 'bookmark-outline'} // Use bookmark or bookmark-outline icon based on the value of isFavoriteTrainer
 					onPressRight={handleFavoriteTrainer}
 				/>
 			),
 		});
-	});
+	}, [isFavoriteTrainer]);
 
-	if (!isFetching && context.trainer) {
+	if (!isFetching && Object.keys(context.trainer).length !== 0) {
 		let trainer = context.trainer;
 		return (
 			<View style={styles.container}>

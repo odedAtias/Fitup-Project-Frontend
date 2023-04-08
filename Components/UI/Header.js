@@ -37,7 +37,7 @@ const Header = ({
 					<IconButton
 						icon={rightButton}
 						size={30}
-						onPress={onPressLeft}
+						onPress={onPressRight}
 						color={iconsColor}
 					/>
 				)}
