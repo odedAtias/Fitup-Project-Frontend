@@ -16,3 +16,12 @@ export const fetchData = async path => {
 		}
 	}
 };
+
+export const updateData = async (path, payload) => {
+	try {
+		const response = await axios.put(`${BACKEND_URL}/${path}`, payload);
+		return response;
+	} catch (error) {
+		console.log(error);
+	}
+};

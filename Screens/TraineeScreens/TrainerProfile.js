@@ -20,7 +20,7 @@ import Colors from '../../Constants/Colors';
 import { alert } from '../../Constants/Alert';
 
 // Utils
-import { fetchData } from '../../utils/http';
+import { fetchData, updateData } from '../../utils/http';
 
 // Default image URL
 const DEFAULT_IMAGE_URL =
@@ -44,7 +44,7 @@ const TrainerProfile = ({ route, navigation }) => {
 		Linking.openURL(`mailto:${email}`);
 	};
 
-	const handleFavoriteTrainer = () => {
+	const handleFavoriteTrainer = async () => {
 		setIsFavoriteTrainer(!isFavoriteTrainer);
 		let favoriteTrainers = context.favoriteTrainers;
 		// is this trainer is not in the favorite trainers list of the trainee
@@ -58,6 +58,34 @@ const TrainerProfile = ({ route, navigation }) => {
 			'Favorite Trainers Updated',
 			'Your favorite trainers list has been updated successfully!'
 		);
+
+		// Creating the updated user data and send to the backend
+		const updatedTraineeData = {
+			userId: context.trainee.userId,
+			firstName: context.trainee.firstName,
+			lastName: context.trainee.lastName,
+			email: context.trainee.email,
+			favoriteTrainers: favoriteTrainers,
+			registeredEvents: context.registeredEvents,
+			image: context.trainee.image,
+		};
+
+		// Remove any undefined properties
+		Object.keys(updatedTraineeData).forEach(
+			key =>
+				updatedTraineeData[key] === undefined && delete updatedTraineeData[key]
+		);
+
+		console.log(context);
+
+		// Update the backend
+		try {
+			const response = await updateData(
+				`trainees/${context.trainee._id}`,
+				updatedTraineeData
+			);
+			console.log(response);
+		} catch (error) {}
 	};
 
 	// Http request to get the trainer details ...
