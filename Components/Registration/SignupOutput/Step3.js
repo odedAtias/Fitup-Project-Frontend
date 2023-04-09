@@ -1,5 +1,5 @@
 // Hooks imports
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 // RN core components & API imports
 import { StyleSheet, View } from 'react-native';
@@ -22,9 +22,6 @@ import { alert } from '../../../Constants/Alert';
 const Step3 = ({ navigation }) => {
 	// Context initialize
 	const context = useContext(SignupContext);
-
-	// Load indicator
-	const [isLoading, setIsLoading] = useState(false);
 
 	// Step3 Validation function
 	const validate = (input, label, prop) => {
@@ -71,7 +68,6 @@ const Step3 = ({ navigation }) => {
 		)
 			return;
 		// Check if the current email is exist in Fitup
-		setIsLoading(true);
 		try {
 			const emailExists = await isExistingEmail(context.email);
 			if (emailExists) {
@@ -81,17 +77,11 @@ const Step3 = ({ navigation }) => {
 				);
 				return;
 			}
-			setIsLoading(false);
 			navigation.navigate('Step4');
 		} catch (e) {
-			setIsLoading(false);
 			alert(e, 'Please try again later');
 		}
 	};
-
-	if (isLoading) {
-		return <Spinner2 />;
-	}
 
 	return (
 		<View style={styles.container}>
@@ -128,6 +118,9 @@ const Step3 = ({ navigation }) => {
 
 // Step3 StyleSheet
 const styles = StyleSheet.create({
+	spinnerContainer: {
+		flex: 1,
+	},
 	container: {
 		flex: 1,
 		width: '100%',

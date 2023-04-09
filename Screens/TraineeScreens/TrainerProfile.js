@@ -2,7 +2,7 @@
 import { useContext, useLayoutEffect, useEffect, useState } from 'react';
 
 // RN core components & API imports
-import { View, Text, StyleSheet, Linking } from 'react-native';
+import { View, Text, StyleSheet, Linking, Platform } from 'react-native';
 
 // Custom components imports
 import Header from '../../Components/UI/Header';
@@ -76,8 +76,6 @@ const TrainerProfile = ({ route, navigation }) => {
 				updatedTraineeData[key] === undefined && delete updatedTraineeData[key]
 		);
 
-		console.log(context);
-
 		// Update the backend
 		try {
 			const response = await updateData(
@@ -116,7 +114,9 @@ const TrainerProfile = ({ route, navigation }) => {
 					containerStyle={{
 						backgroundColor: Colors.Headers.secondary,
 						paddingHorizontal: '5%',
-						paddingTop: '8%',
+						padding: Platform.OS === 'ios' ? 20 : 30,
+						// Need to adjust the height for ios devices ...
+						height: Platform.Os === 'ios' ? 100 : 0,
 					}}
 					onPressLeft={() => navigation.goBack()}
 					rightButton={isFavoriteTrainer ? 'bookmark' : 'bookmark-outline'} // Use bookmark or bookmark-outline icon based on the value of isFavoriteTrainer
@@ -166,6 +166,7 @@ const TrainerProfile = ({ route, navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: '5%',
+		marginTop: 5,
 	},
 	trainerHeaderContainer: {
 		alignItems: 'center',

@@ -97,7 +97,7 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 				'We were unable to log you in. Please double-check your username and password and try again. If you continue to have trouble, please contact customer support for assistance.'
 			);
 		} finally {
-			setIsLoading(false);
+			setTimeout(() => setIsLoading(false), 1500);
 		}
 	};
 
