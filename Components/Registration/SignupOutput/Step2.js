@@ -20,7 +20,7 @@ const Step2 = ({ navigation }) => {
 	const context = useContext(SignupContext);
 
 	// Step2 Validation function
-	const validate = (input, label, prop) => {
+	const validate = (input, label) => {
 		// First condition - input is requierd
 		if (!input || !input.trim()) {
 			alert(`Invalid ${label}`, `${label} is requierd.\n`);

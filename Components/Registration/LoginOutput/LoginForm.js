@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 LogBox.ignoreLogs(['AsyncStorage has been extracted']);
 
 // Utils
-import { fetchData } from '../../../utils/http';
+import { fetchData } from '../../../utils/http/rest';
 
 // Custom components imports
 import LoginInput from './LoginInput';
@@ -145,7 +145,6 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 				<Button
 					style={{ backgroundColor: Colors.Buttons.secondary }}
 					onPress={() => {
-						console.log('sign-up handler');
 						navigation.navigate('Signup');
 					}}>
 					Sign up

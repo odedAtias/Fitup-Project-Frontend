@@ -20,7 +20,7 @@ import Colors from '../../Constants/Colors';
 import { alert } from '../../Constants/Alert';
 
 // Utils
-import { fetchData, updateData } from '../../utils/http';
+import { fetchData, updateData } from '../../utils/http/rest';
 
 // Default image URL
 const DEFAULT_IMAGE_URL =
@@ -31,13 +31,15 @@ const TrainerProfile = ({ route, navigation }) => {
 	// Loading indicator state
 	const [isFetching, setIsFetching] = useState(false);
 
-	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState(false);
-
 	// Initialize our context
 	const context = useContext(TraineeContext);
 
 	// accesing trainer id
 	const trainerId = route.params.trainerId;
+
+	let flag = context.favoriteTrainers.some(t => t._id === trainerId);
+
+	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState(flag);
 
 	// TrainerProfile handlers
 	const handleSendEmail = email => {
@@ -45,19 +47,24 @@ const TrainerProfile = ({ route, navigation }) => {
 	};
 
 	const handleFavoriteTrainer = async () => {
-		setIsFavoriteTrainer(!isFavoriteTrainer);
 		let favoriteTrainers = context.favoriteTrainers;
 		// is this trainer is not in the favorite trainers list of the trainee
 		if (!isFavoriteTrainer) {
-			favoriteTrainers = [...favoriteTrainers, trainerId];
+			favoriteTrainers = [...favoriteTrainers, context.trainer];
 		} else {
-			favoriteTrainers = favoriteTrainers.filter(tid => tid !== trainerId);
+			const index = favoriteTrainers.findIndex(t => t._id === trainerId);
+			if (index !== -1) {
+				favoriteTrainers.splice(index, 1);
+			}
 		}
 		context.setFavoriteTrainers(favoriteTrainers);
+		setIsFavoriteTrainer(!isFavoriteTrainer);
 		alert(
 			'Favorite Trainers Updated',
 			'Your favorite trainers list has been updated successfully!'
 		);
+
+		const ids = favoriteTrainers.map(t => t._id);
 
 		// Creating the updated user data and send to the backend
 		const updatedTraineeData = {
@@ -65,7 +72,7 @@ const TrainerProfile = ({ route, navigation }) => {
 			firstName: context.trainee.firstName,
 			lastName: context.trainee.lastName,
 			email: context.trainee.email,
-			favoriteTrainers: favoriteTrainers,
+			favoriteTrainers: ids,
 			registeredEvents: context.registeredEvents,
 			image: context.trainee.image,
 		};
@@ -82,8 +89,9 @@ const TrainerProfile = ({ route, navigation }) => {
 				`api/trainees/${context.trainee._id}`,
 				updatedTraineeData
 			);
-			console.log(response);
-		} catch (error) {}
+		} catch (error) {
+			console.log('error occured');
+		}
 	};
 
 	// Http request to get the trainer details ...
@@ -116,7 +124,6 @@ const TrainerProfile = ({ route, navigation }) => {
 						paddingHorizontal: '5%',
 						padding: Platform.OS === 'ios' ? 20 : 30,
 						// Need to adjust the height for ios devices ...
-						height: Platform.Os === 'ios' ? 100 : 0,
 					}}
 					onPressLeft={() => navigation.goBack()}
 					rightButton={isFavoriteTrainer ? 'bookmark' : 'bookmark-outline'} // Use bookmark or bookmark-outline icon based on the value of isFavoriteTrainer

@@ -15,7 +15,7 @@ import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
 import Colors from '../../Constants/Colors';
 
 // Utils
-import { fetchData } from '../../utils/http';
+import { fetchData } from '../../utils/http/rest';
 
 // Events component
 const Events = ({ navigation, route }) => {

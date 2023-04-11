@@ -11,7 +11,7 @@ import { SignupContext } from '../../../store/SignupContext';
 import SignupButton from './SignupButton';
 
 // utils
-import { postData } from './../../../utils/http';
+import { postData } from './../../../utils/http/rest';
 
 // Firebase imports
 import {
@@ -19,9 +19,6 @@ import {
 	createUserWithEmailAndPassword,
 	sendEmailVerification,
 } from 'firebase/auth';
-
-// Constants
-import Colors from '../../../Constants/Colors';
 
 // Step4 component
 const Step4 = ({ navigation }) => {
