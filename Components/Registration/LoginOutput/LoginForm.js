@@ -60,7 +60,7 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 
 	// fetch user data
 	const fetchUserData = async id => {
-		const response = await fetchData(`/trainees/${id}`);
+		const response = await fetchData(`api/trainees/${id}`);
 		// Check if the user's type is trainee
 		if (response) {
 			const trainee = response.data;
@@ -80,24 +80,33 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 		setIsLoading(true);
 		// Submitted case
 		try {
-			const user = await signInWithEmailAndPassword(
+			const userCredential = await signInWithEmailAndPassword(
 				auth,
 				inputs.username.value,
 				inputs.password.value
 			);
-			const result = await fetchUserData(user.user.uid);
-			// Navigate by case
-			if (result === 'Trainee') navigation.navigate('TraineeBottomTab');
-			else {
-				console.log('This is the case of navigate to trainer app ...');
+			if (userCredential.user) {
+				if (userCredential.user.emailVerified) {
+					const result = await fetchUserData(userCredential.user.uid);
+					if (result === 'Trainee') navigation.navigate('TraineeBottomTab');
+					else {
+						console.log('This is the case of navigate to trainer app ...');
+					}
+				} else {
+					alert(
+						'Email verification error',
+						'Please verify your email before logging in'
+					);
+				}
 			}
+			// Navigate by case
 		} catch (error) {
 			alert(
 				'Login Error',
 				'We were unable to log you in. Please double-check your username and password and try again. If you continue to have trouble, please contact customer support for assistance.'
 			);
 		} finally {
-			setTimeout(() => setIsLoading(false), 1500);
+			setIsLoading(false);
 		}
 	};
 

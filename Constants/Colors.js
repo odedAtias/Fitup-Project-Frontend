@@ -23,6 +23,7 @@ const Colors = {
 		primary: '#010101',
 		secondary: '#f4f4f4',
 		third: '#e4deae',
+		fourth: ' #29a8ab',
 		available: '#00FF73',
 		intermediate: '#FFE300',
 		almostFull: '#FF0000',

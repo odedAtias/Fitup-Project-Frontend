@@ -1,5 +1,5 @@
 // Hooks imports
-import { useContext, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 // RN core components & API imports
 import { StyleSheet, Text, View, Image } from 'react-native';
@@ -9,21 +9,70 @@ import { SignupContext } from '../../../store/SignupContext';
 
 // Custom component import
 import SignupButton from './SignupButton';
-import SignupInput from './SignupInput';
+
+// utils
+import { postData } from './../../../utils/http';
+
+// Firebase imports
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	sendEmailVerification,
+} from 'firebase/auth';
+
+// Constants
+import Colors from '../../../Constants/Colors';
 
 // Step4 component
-const Step4 = () => {
+const Step4 = ({ navigation }) => {
 	// Context initialize
 	const context = useContext(SignupContext);
+	// Creating user in firebase auth & sending email verification
+	useEffect(() => {
+		async function createNewUser() {
+			try {
+				// getting the auth vaule
+				const auth = getAuth();
 
-	// PinCode
-	const [pincode, setPincode] = useState('');
+				// getting user credential from firebase auth
+				const userCredential = await createUserWithEmailAndPassword(
+					auth,
+					context.email,
+					context.password
+				);
 
-	// Generate random pin code Sending mail to the current mail
+				// getting the user from the fullfield promise
+				const user = userCredential.user;
 
-	// Step4 submit handler
-	const handleSubmit = async () => {
-		console.log('here');
+				// send email verification
+				await sendEmailVerification(user);
+
+				// Posting new user in the mongoDB collection (by user type)
+				const payload = {
+					userId: user.uid,
+					firstName: context.firstName,
+					lastName: context.lastName,
+					email: context.email,
+				};
+
+				if (context.type === 'trainee') {
+					await postData('api/trainees', payload);
+				} else if (context.type === 'trainer') {
+					await postData('api/trainers', payload);
+				} else {
+					console.log('Something failed ...');
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		if (context.type) {
+			createNewUser();
+		}
+	}, []);
+
+	const handleSubmit = () => {
+		navigation.navigate('Login');
 	};
 
 	return (
@@ -31,16 +80,14 @@ const Step4 = () => {
 			<Text style={[styles.headingText, styles.spacing]}>
 				We're almost done
 			</Text>
-			<Text style={[styles.text]}>
-				We have sent a pin code to your email. Please enter it here.
+			<Text style={[styles.text, styles.spacing]}>
+				We have sent you an email verification link. please click on the link in
+				the email to verify your account before signing in.
 			</Text>
-			<SignupInput
-				inputConfigurations={{
-					onChangeText: p => setPincode(p),
-					autoCorrect: false,
-					value: pincode,
-				}}
-			/>
+			<Text style={styles.note}>
+				Check in the spam or junk folder if you dont recieve the email in your
+				inbox.
+			</Text>
 			<SignupButton onPress={handleSubmit}>Let' get started</SignupButton>
 			<Image
 				source={require('../../../Images/Signup/step4.png')}
@@ -49,7 +96,6 @@ const Step4 = () => {
 					height: 230,
 					resizeMode: 'contain',
 					alignSelf: 'center',
-					marginTop: '5%',
 				}}></Image>
 		</View>
 	);
@@ -77,6 +123,13 @@ const styles = StyleSheet.create({
 		fontSize: 19,
 		fontWeight: '600',
 		textAlign: 'left',
+	},
+	note: {
+		fontFamily: 'rubik',
+		fontSize: 17,
+		textAlign: 'left',
+		fontWeight: '600',
+		color: 'grey',
 	},
 });
 

@@ -10,7 +10,6 @@ import { isExistingEmail } from '../../../auth/firebase-config';
 // Custom component import
 import SignupButton from './SignupButton';
 import SignupInput from './SignupInput';
-import Spinner2 from '../../UI/Spinner2';
 
 // Contexts imports
 import { SignupContext } from '../../../store/SignupContext';
@@ -59,7 +58,8 @@ const Step3 = ({ navigation }) => {
 		}
 		return true;
 	};
-	// Step2 submit handler
+
+	// Step3 submit handler
 	const handleSubmit = async () => {
 		if (!validate(context.email, 'Email', 'email')) return;
 		if (!validate(context.password, 'Password', 'password')) return;
@@ -76,8 +76,9 @@ const Step3 = ({ navigation }) => {
 					'The email you entered is already exist. Please use a different email address.'
 				);
 				return;
+			} else {
+				navigation.navigate('Step4');
 			}
-			navigation.navigate('Step4');
 		} catch (e) {
 			alert(e, 'Please try again later');
 		}

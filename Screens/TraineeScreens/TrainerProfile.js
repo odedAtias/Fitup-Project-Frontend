@@ -79,7 +79,7 @@ const TrainerProfile = ({ route, navigation }) => {
 		// Update the backend
 		try {
 			const response = await updateData(
-				`trainees/${context.trainee._id}`,
+				`api/trainees/${context.trainee._id}`,
 				updatedTraineeData
 			);
 			console.log(response);
@@ -91,7 +91,7 @@ const TrainerProfile = ({ route, navigation }) => {
 		async function getTrainer() {
 			setIsFetching(true);
 			try {
-				const response = await fetchData(`trainers/${trainerId}`);
+				const response = await fetchData(`api/trainers/${trainerId}`);
 				context.setTrainer({
 					...response.data,
 					imageUrl: !response.data.imageUrl

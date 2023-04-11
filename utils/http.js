@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // This backend url if specific for android emulators
-const BACKEND_URL = 'https://jade-gentle-dolphin.cyclic.app/api';
+const BACKEND_URL = 'https://jade-gentle-dolphin.cyclic.app';
 
 export const fetchData = async path => {
 	try {
@@ -20,6 +20,15 @@ export const fetchData = async path => {
 export const updateData = async (path, payload) => {
 	try {
 		const response = await axios.put(`${BACKEND_URL}/${path}`, payload);
+		return response;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const postData = async (path, payload) => {
+	try {
+		const response = await axios.post(`${BACKEND_URL}/${path}`, payload);
 		return response;
 	} catch (error) {
 		console.log(error);

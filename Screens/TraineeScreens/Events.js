@@ -53,7 +53,7 @@ const Events = ({ navigation, route }) => {
 		async function getEvents() {
 			setIsFetching(true);
 			try {
-				const response = await fetchData('events');
+				const response = await fetchData('api/events');
 				context.setEvents(response.data);
 			} catch (error) {
 				console.log(error.message);
