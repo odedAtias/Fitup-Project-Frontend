@@ -62,9 +62,10 @@ const TrainerProfile = ({ route, navigation }) => {
 			header: () => (
 				<Header
 					containerStyle={{
-						backgroundColor: Colors.Headers.secondary,
+						backgroundColor: Colors.Backgrounds.primary,
 						paddingHorizontal: '5%',
-						padding: Platform.OS === 'ios' ? 20 : 30,
+						height: Platform.OS === 'ios' ? 70 : 100,
+
 						// Need to adjust the height for ios devices ...
 					}}
 					onPressLeft={() => navigation.goBack()}
@@ -167,7 +168,6 @@ const TrainerProfile = ({ route, navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: '5%',
-		marginTop: 5,
 	},
 	trainerHeaderContainer: {
 		alignItems: 'center',
