@@ -15,6 +15,7 @@ const Colors = {
 		primary: '#8C52FF',
 		secondary: '#010101',
 		third: '#38B6FF',
+		fourth: '#F78761',
 	},
 	Links: {
 		primary: '#2657c1',

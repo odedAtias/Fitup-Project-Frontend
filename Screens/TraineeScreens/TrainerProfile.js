@@ -11,6 +11,7 @@ import Title from '../../Components/UI/Title';
 import Link from '../../Components/UI/Link';
 import Aboutme from '../../Components/TraineeSide/TrainerProfileOutput/Aboutme';
 import MyUpcomingEvents from '../../Components/TraineeSide/TrainerProfileOutput/MyUpcomingEvents';
+import Spinner1 from './../../Components/UI/Spinner1';
 
 // Context imports
 import { TraineeContext } from '../../store/TraineeContext';
@@ -28,93 +29,34 @@ const DEFAULT_IMAGE_URL =
 
 // TrainerProfile component
 const TrainerProfile = ({ route, navigation }) => {
-	// Loading indicator state
-	const [isFetching, setIsFetching] = useState(false);
-
-	// Initialize our context
+	// Initialize trainer state & trainee context
+	const [trainer, setTrainer] = useState(null);
+	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState('');
 	const context = useContext(TraineeContext);
 
-	// accesing trainer id
-	const trainerId = route.params.trainerId;
+	// Getting the trainer id
+	let trainerId = route.params.trainerId;
 
-	let flag = context.favoriteTrainers.some(t => t._id === trainerId);
-
-	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState(flag);
-
-	// TrainerProfile handlers
-	const handleSendEmail = email => {
-		Linking.openURL(`mailto:${email}`);
-	};
-
-	const handleFavoriteTrainer = async () => {
-		let favoriteTrainers = context.favoriteTrainers;
-		// is this trainer is not in the favorite trainers list of the trainee
-		if (!isFavoriteTrainer) {
-			favoriteTrainers = [...favoriteTrainers, context.trainer];
-		} else {
-			const index = favoriteTrainers.findIndex(t => t._id === trainerId);
-			if (index !== -1) {
-				favoriteTrainers.splice(index, 1);
-			}
-		}
-		context.setFavoriteTrainers(favoriteTrainers);
-		setIsFavoriteTrainer(!isFavoriteTrainer);
-		alert(
-			'Favorite Trainers Updated',
-			'Your favorite trainers list has been updated successfully!'
-		);
-
-		const ids = favoriteTrainers.map(t => t._id);
-
-		// Creating the updated user data and send to the backend
-		const updatedTraineeData = {
-			userId: context.trainee.userId,
-			firstName: context.trainee.firstName,
-			lastName: context.trainee.lastName,
-			email: context.trainee.email,
-			favoriteTrainers: ids,
-			registeredEvents: context.registeredEvents,
-			image: context.trainee.image,
-		};
-
-		// Remove any undefined properties
-		Object.keys(updatedTraineeData).forEach(
-			key =>
-				updatedTraineeData[key] === undefined && delete updatedTraineeData[key]
-		);
-
-		// Update the backend
-		try {
-			const response = await updateData(
-				`api/trainees/${context.trainee._id}`,
-				updatedTraineeData
-			);
-		} catch (error) {
-			console.log('error occured');
-		}
-	};
-
-	// Http request to get the trainer details ...
 	useEffect(() => {
-		async function getTrainer() {
-			setIsFetching(true);
+		const getTrainer = async () => {
 			try {
 				const response = await fetchData(`api/trainers/${trainerId}`);
-				context.setTrainer({
+				setTrainer({
 					...response.data,
-					imageUrl: !response.data.imageUrl
-						? DEFAULT_IMAGE_URL
-						: response.data.imageUrl,
+					image:
+						response.data.image === ''
+							? DEFAULT_IMAGE_URL
+							: response.data.image,
 				});
+				const flag = context.favoriteTrainers.some(t => t._id === trainerId);
+				setIsFavoriteTrainer(flag);
 			} catch (error) {
-				console.log(error.message);
+				alert('Error fetching trainer data');
 			}
-			setIsFetching(false);
-		}
+		};
 		getTrainer();
-	}, []);
+	}, [trainerId]);
 
-	// Loading dynamically the screen options
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			header: () => (
@@ -126,47 +68,99 @@ const TrainerProfile = ({ route, navigation }) => {
 						// Need to adjust the height for ios devices ...
 					}}
 					onPressLeft={() => navigation.goBack()}
-					rightButton={isFavoriteTrainer ? 'bookmark' : 'bookmark-outline'} // Use bookmark or bookmark-outline icon based on the value of isFavoriteTrainer
-					onPressRight={handleFavoriteTrainer}
+					rightButton={isFavoriteTrainer ? 'bookmark' : 'bookmark-outline'}
+					onPressRight={handleAddToFavorite}
 				/>
 			),
 		});
 	}, [isFavoriteTrainer]);
 
-	if (!isFetching && Object.keys(context.trainer).length !== 0) {
-		let trainer = context.trainer;
+	// TrainerProfile handlers
+	async function handleAddToFavorite() {
+		let favoriteTrainers = context.favoriteTrainers;
+		// Add to favorite trainers list
+		if (!isFavoriteTrainer) {
+			favoriteTrainers.push(trainer);
+		}
+		// Remove from favorite Trainers
+		else {
+			let index = favoriteTrainers.findIndex(t => t._id === trainerId);
+			if (index !== -1) {
+				favoriteTrainers.splice(index, 1);
+			}
+		}
+		setIsFavoriteTrainer(prev => !prev);
+		context.setFavoriteTrainers(favoriteTrainers);
+		const ids = favoriteTrainers.map(t => t._id);
+		// Creating the updated user data and send to the backend
+		const updatedTraineeData = {
+			userId: context.trainee.userId,
+			firstName: context.trainee.firstName,
+			lastName: context.trainee.lastName,
+			email: context.trainee.email,
+			favoriteTrainers: ids,
+			registeredEvents: context.registeredEvents,
+			image: context.trainee.image,
+		};
+		// Remove any undefined properties
+		Object.keys(updatedTraineeData).forEach(
+			key =>
+				updatedTraineeData[key] === undefined && delete updatedTraineeData[key]
+		);
+		// Update the backend
+		try {
+			const response = await updateData(
+				`api/trainees/${context.trainee._id}`,
+				updatedTraineeData
+			);
+			alert(
+				'Favorite Trainers Updated',
+				'Your favorite trainers list has been updated successfully!'
+			);
+		} catch (error) {
+			console.log('error occured');
+			alert('Favorite Trainers Update failed', 'Error occured!');
+		}
+	}
+
+	if (!trainer) {
 		return (
-			<View style={styles.container}>
-				<View style={styles.trainerHeaderContainer}>
-					<TrainerImage
-						imageUrl={trainer.imageUrl}
-						style={{
-							width: 130,
-							height: 130,
-							borderRadius: 100,
-						}}
-					/>
-					<Title>{`${trainer.firstName} ${trainer.lastName}`}</Title>
-					<Text style={[styles.font, styles.rating]}>
-						Rating average : {trainer.rating}
-					</Text>
-					<Link
-						icon={{
-							name: 'chatbox-outline',
-							color: Colors.Links.primary,
-							size: 20,
-						}}
-						onPress={() => handleSendEmail(trainer.email)}>
-						Contact Me
-					</Link>
-				</View>
-				<Aboutme description={trainer.description} />
-				<MyUpcomingEvents events={trainer.events} />
+			<View
+				style={{ flex: 1, justifyContent: 'flex-start', marginBottom: '10%' }}>
+				<Spinner1 />
 			</View>
 		);
-	} else {
-		return <Text>Loading trainer profile ...</Text>;
 	}
+
+	return (
+		<View style={styles.container}>
+			<View style={styles.trainerHeaderContainer}>
+				<TrainerImage
+					imageUrl={trainer.image}
+					style={{
+						width: 130,
+						height: 130,
+						borderRadius: 100,
+					}}
+				/>
+				<Title>{`${trainer.firstName} ${trainer.lastName}`}</Title>
+				<Text style={[styles.font, styles.rating]}>
+					Rating average : {trainer.rating}
+				</Text>
+				<Link
+					icon={{
+						name: 'chatbox-outline',
+						color: Colors.Links.primary,
+						size: 20,
+					}}
+					onPress={() => handleSendEmail(trainer.email)}>
+					Contact Me
+				</Link>
+			</View>
+			<Aboutme description={trainer.description} />
+			<MyUpcomingEvents events={trainer.events} />
+		</View>
+	);
 };
 
 // TrainerProfile StyleSheet

@@ -1,5 +1,6 @@
 // Hooks imports
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 // RN core components & API imports
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
@@ -13,6 +14,8 @@ const DEFAULT_IMAGE_URL =
 
 // FavoriteTrainerItem
 const FavoriteTrainerItem = ({ _id, firstName, lastName, image }) => {
+	const navigation = useNavigation();
+
 	const [imageError, setImageError] = useState(false);
 
 	const handleImageError = () => {
@@ -34,7 +37,9 @@ const FavoriteTrainerItem = ({ _id, firstName, lastName, image }) => {
 			<Pressable style={styles.visitProfileButtonContainer}>
 				<Text
 					style={styles.visitProfileButtonText}
-					onPress={() => console.log('Navigate to profile')}>
+					onPress={() =>
+						navigation.navigate('TrainerProfile', { trainerId: _id })
+					}>
 					Visit Profile
 				</Text>
 			</Pressable>
@@ -50,11 +55,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: '#fff',
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.23,
+		borderRadius: 20,
 	},
 	image: {
 		width: 80,
@@ -68,9 +69,10 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	visitProfileButtonContainer: {
-		backgroundColor: Colors.Buttons.third,
+		backgroundColor: Colors.Buttons.fourth,
 		paddingHorizontal: '7%',
 		paddingVertical: '2%',
+		borderRadius: 2,
 	},
 	visitProfileButtonText: {
 		fontFamily: 'rubik',

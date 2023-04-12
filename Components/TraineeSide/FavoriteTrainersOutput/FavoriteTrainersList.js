@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 // Custom components imports
 import FavoriteTrainerItem from './FavoriteTrainerItem';
+import Colors from '../../../Constants/Colors';
 
 // FavoriteTrainerItem
 const FavoriteTrainersList = ({ favoriteTrainers }) => {
@@ -13,6 +14,9 @@ const FavoriteTrainersList = ({ favoriteTrainers }) => {
 	};
 	return (
 		<View style={styles.container}>
+			<Text style={styles.headingText}>
+				Take your trainings to new heights with your favotire trainers
+			</Text>
 			<FlatList
 				data={favoriteTrainers}
 				renderItem={renderItem}
@@ -26,10 +30,14 @@ const FavoriteTrainersList = ({ favoriteTrainers }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-		alignItems: 'flex-start',
 		padding: 20,
+	},
+	headingText: {
+		fontFamily: 'rubik',
+		fontSize: 20,
+		textAlign: 'center',
+		marginBottom: 30,
+		color: Colors.Texts.primary,
 	},
 	list: {
 		width: '100%',
