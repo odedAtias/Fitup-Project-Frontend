@@ -20,7 +20,7 @@ const FavoriteTrainers = () => {
 
 	if (context.favoriteTrainers.length === 0 || !context.favoriteTrainers) {
 		return (
-			<View style={styles.conainer}>
+			<View style={styles.container}>
 				<Text style={styles.headingText}>Not have favorite trainers yet</Text>
 			</View>
 		);
@@ -30,7 +30,7 @@ const FavoriteTrainers = () => {
 };
 
 const styles = StyleSheet.create({
-	conainer: {
+	container: {
 		height: '90%',
 		justifyContent: 'center',
 	},

@@ -7,7 +7,6 @@ export const TraineeContext = createContext({
 	events: [],
 	registeredEvents: [],
 	favoriteTrainers: [],
-
 	// Handlers
 	setTrainee: traineeId => {},
 	setEvents: events => {},
@@ -67,6 +66,7 @@ const TraineeContextProvider = ({ children }) => {
 		setRegisteredEvents: setRegisteredEvents,
 		setFavoriteTrainers: setFavoriteTrainers,
 	};
+
 	return (
 		<TraineeContext.Provider value={value}>{children}</TraineeContext.Provider>
 	);
