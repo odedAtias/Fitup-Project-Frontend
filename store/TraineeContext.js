@@ -7,8 +7,7 @@ export const TraineeContext = createContext({
 	events: [],
 	registeredEvents: [],
 	favoriteTrainers: [],
-	// The current trainer viewed in Trainer Profile Screen
-	trainer: {},
+
 	// Handlers
 	setTrainee: traineeId => {},
 	setEvents: events => {},
@@ -28,8 +27,7 @@ const reducer = (state, action) => {
 			return { ...state, registeredEvents: action.payload };
 		case 'SET_FAVORITE_TRAINERS':
 			return { ...state, favoriteTrainers: action.payload };
-		case 'SET_TRAINER':
-			return { ...state, trainer: action.payload };
+
 		default:
 			return state;
 	}
@@ -58,21 +56,16 @@ const TraineeContextProvider = ({ children }) => {
 	const setFavoriteTrainers = favoriteTrainers =>
 		dispatch({ type: 'SET_FAVORITE_TRAINERS', payload: favoriteTrainers });
 
-	const setTrainer = trainer =>
-		dispatch({ type: 'SET_TRAINER', payload: trainer });
-
 	// Connecting the store to the context provider
 	const value = {
 		trainee: state.trainee,
 		events: state.events,
 		registerdEvents: state.registeredEvents,
 		favoriteTrainers: state.favoriteTrainers,
-		trainer: state.trainer,
 		setTrainee: setTrainee,
 		setEvents: setEvents,
 		setRegisteredEvents: setRegisteredEvents,
 		setFavoriteTrainers: setFavoriteTrainers,
-		setTrainer: setTrainer,
 	};
 	return (
 		<TraineeContext.Provider value={value}>{children}</TraineeContext.Provider>
