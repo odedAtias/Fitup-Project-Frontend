@@ -1,5 +1,5 @@
 // Hooks imports
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 // RN core components & API imports
 import { View, Text, StyleSheet } from 'react-native';
@@ -17,7 +17,7 @@ import Colors from '../../Constants/Colors';
 const RegisteredEvents = () => {
 	const context = useContext(TraineeContext);
 
-	if (!context.registeredEvents || context.registeredEvents.length === 0) {
+	if (!context.registerdEvents || context.registerdEvents.length === 0) {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.headingText}>Not have registered events yet</Text>
@@ -25,9 +25,14 @@ const RegisteredEvents = () => {
 		);
 	}
 
+	const registeredEventsIds = context.registerdEvents.map(e => e._id);
+	const events = context.events.filter(e =>
+		registeredEventsIds.includes(e._id)
+	);
+
 	return (
 		<View>
-			<EventsList events={context.registeredEvents} />
+			<EventsList events={events} />
 		</View>
 	);
 };

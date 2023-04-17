@@ -1,3 +1,6 @@
+// Hooks imports
+import { useNavigation } from '@react-navigation/native';
+
 // RN core components & API imports
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -24,6 +27,7 @@ const EventItemDetails = ({
 }) => {
 	const numOfTrainees = participants.length;
 	const participantColor = statusColor(numOfTrainees, maxParticipants);
+
 	return (
 		<View>
 			<HeadingText>{`${trainer.firstName} ${trainer.lastName}`}</HeadingText>

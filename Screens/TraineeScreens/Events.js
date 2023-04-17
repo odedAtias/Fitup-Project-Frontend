@@ -1,5 +1,5 @@
 // Hooks components
-import { useLayoutEffect, useContext, useEffect, useState } from 'react';
+import { useLayoutEffect, useContext } from 'react';
 
 // Contexts imports
 import { TraineeContext } from '../../store/TraineeContext';
@@ -14,14 +14,8 @@ import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
 // Constants
 import Colors from '../../Constants/Colors';
 
-// Utils
-import { fetchData } from '../../utils/http/rest';
-
 // Events component
 const Events = ({ navigation, route }) => {
-	// loading indicator
-	const [isFetching, setIsFetching] = useState(true);
-
 	// Context initialize
 	const context = useContext(TraineeContext);
 
@@ -48,22 +42,7 @@ const Events = ({ navigation, route }) => {
 		});
 	});
 
-	// Loading the Events to our store
-	useEffect(() => {
-		async function getEvents() {
-			setIsFetching(true);
-			try {
-				const response = await fetchData('api/events');
-				context.setEvents(response.data);
-			} catch (error) {
-				console.log(error.message);
-			}
-			setIsFetching(false);
-		}
-		getEvents();
-	}, []);
-
-	if (!isFetching && context.events) {
+	if (context.events) {
 		return (
 			<View style={styles.container}>
 				<EventsList

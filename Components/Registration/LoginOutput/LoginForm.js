@@ -60,15 +60,17 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 
 	// fetch user data
 	const fetchUserData = async id => {
-		const response = await fetchData(`api/trainees/${id}`);
+		const response1 = await fetchData(`api/trainees/${id}`);
+		const response2 = await fetchData('api/events');
 		// Check if the user's type is trainee
-		if (response) {
-			const trainee = response.data;
+		if (response1 && response2) {
+			const trainee = response1.data;
 			const { __v, favoriteTrainers, registeredEvents, ...rest } = trainee;
 			// Set the data in the store
 			traineeContext.setTrainee(rest);
 			traineeContext.setFavoriteTrainers(favoriteTrainers);
 			traineeContext.setRegisteredEvents(registeredEvents);
+			traineeContext.setEvents(response2.data);
 			return 'Trainee';
 		} else {
 			return 'Trainer';
