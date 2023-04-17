@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
 	title: {
 		fontWeight: 'bold',
 		fontSize: 25,
+		textAlign: 'center',
 		fontFamily: 'rubik',
 	},
 });

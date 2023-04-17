@@ -40,7 +40,7 @@ const EventDetailsCard = cardDetails => {
 			</Pressable>
 
 			{/* Main details */}
-			<View>
+			<View style={styles.detailsContainer}>
 				<HeadingText>{cardDetails.category} Training</HeadingText>
 				<Text style={styles.name}>
 					{`${cardDetails.trainer.firstName} ${cardDetails.trainer.lastName}`}
@@ -94,6 +94,9 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowOffset: { width: 10, height: 5 },
 		shadowRadius: 8,
+	},
+	detailsContainer: {
+		marginLeft: 20,
 	},
 	visitProfileContainer: {
 		alignItems: 'center',

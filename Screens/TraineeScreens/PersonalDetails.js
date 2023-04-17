@@ -1,19 +1,45 @@
+// Hooks imports
+import { useContext } from 'react';
+
 // RN core components & API imports
-import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+
+// Context's imports
+import { TraineeContext } from '../../store/TraineeContext';
+
+// Custom components imports
+import TrainerImage from '../../Components/TraineeSide/EventsOutput/TrainerImage';
+import Title from '../../Components/UI/Title';
+import TraineeMetrics from '../../Components/TraineeSide/PesonalDetailsOutput/TraineeMetrics';
+
+// Constants
+import Colors from './../../Constants/Colors';
+import CategoryHorizontalList from '../../Components/TraineeSide/PesonalDetailsOutput/CategoryHorizontalList';
 
 // PersonalDetails Component
 const PersonalDetails = () => {
-	// Dummy Information
-	const DETAILS = {
-		name: 'Or Dayani',
-		email: 'Odayani21@gmail.com',
-		city: 'Jerusalem',
-		address: 'Hatnofa 18 st',
-	};
+	// initialize the trainee context
+	const context = useContext(TraineeContext);
+
 	return (
-		<View>
-			<Text>{DETAILS.name}</Text>
+		<View style={styles.container}>
+			<TrainerImage
+				imageUrl={context.trainee.image}
+				style={{
+					width: 130,
+					height: 130,
+					borderRadius: 100,
+				}}
+			/>
+			<Title>
+				{context.trainee.firstName + ' ' + context.trainee.lastName}
+			</Title>
+			<Text style={styles.headingText}>In fitup from 15.02.2023</Text>
+			<TraineeMetrics height={1.78} weight={78} />
+			<Text style={styles.discover}>
+				Discover new fitness events & trainings
+			</Text>
+			<CategoryHorizontalList />
 		</View>
 	);
 };
@@ -21,36 +47,20 @@ const PersonalDetails = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
-		padding: 20,
-	},
-	avatarContainer: {
 		alignItems: 'center',
-		marginTop: 20,
+		padding: 10,
+		backgroundColor: '#fffaf7',
 	},
-	avatar: {
-		width: 150,
-		height: 150,
-		borderRadius: 80,
+
+	headingText: {
+		fontSize: 17,
+		fontFamily: 'rubik',
+		color: Colors.Texts.fifth,
 	},
-	name: {
-		fontSize: 25,
-		fontWeight: 'bold',
-		marginTop: 10,
-	},
-	infoContainer: {
-		marginTop: 20,
-	},
-	infoLabel: {
-		fontWeight: 'bold',
-	},
-	infoValue: {
-		marginTop: 5,
-	},
-	graphLabel: {
-		textAlign: 'center',
-		fontWeight: 'bold',
-		fontSize: 18,
+
+	discover: {
+		marginBottom: 10,
+		fontSize: 20,
 	},
 });
 

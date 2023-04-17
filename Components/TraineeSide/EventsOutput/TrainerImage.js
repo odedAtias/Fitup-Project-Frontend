@@ -31,8 +31,8 @@ const TrainerImage = ({ imageUrl, style }) => {
 // TrainerImage StyleSheet
 const styles = StyleSheet.create({
 	container: {
-		marginRight: 20,
-		marginLeft: 5,
+		// marginRight: 20,
+		// marginLeft: 5,
 		marginVertical: 5,
 	},
 	imageContainer: {

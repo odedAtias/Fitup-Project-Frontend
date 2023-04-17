@@ -29,7 +29,7 @@ const EventItemDetails = ({
 	const participantColor = statusColor(numOfTrainees, maxParticipants);
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<HeadingText>{`${trainer.firstName} ${trainer.lastName}`}</HeadingText>
 			<SubHeadingText>{displayAddrress(address, city)}</SubHeadingText>
 			<Text style={[styles.spacing, styles.font]}>
@@ -45,6 +45,9 @@ const EventItemDetails = ({
 
 // EventItemDetails StyleSheet
 const styles = StyleSheet.create({
+	container: {
+		marginLeft: 20,
+	},
 	spacing: {
 		marginBottom: 3,
 	},

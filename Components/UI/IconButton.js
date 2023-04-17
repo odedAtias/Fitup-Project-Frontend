@@ -20,7 +20,6 @@ const IconButton = ({ icon, size, color, onPress }) => (
 // IconButton StyleSheet
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
