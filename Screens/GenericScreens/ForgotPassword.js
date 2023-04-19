@@ -1,43 +1,41 @@
 // RN Core compenents & API imports
-import { View, Text, StyleSheet, Button } from "react-native";
-import { TextInput } from "react-native-paper";
+import { View, Text, StyleSheet, Image } from "react-native";
+import SignupButton from '../../Components/Registration/SignupOutput/SignupButton'; 
+import SignupInput from '../../Components/Registration/SignupOutput/SignupInput'; 
 
 // ForgotPassword Component
 const ForgotPassword = () => {
   return (
-    <View style={styles.MainContainer}>
-      <View style={styles.Container}>
-        <Text style={styles.TextContainer}>Forget your password?</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Forgot Your Password?</Text>
+      <SignupInput  label="Enter your email and we'll send you a link to reset your password" />
+      <View style={styles.button}>
+        <SignupButton children={"Send Email"}/>
       </View>
-      <View style={styles.PressableContainer}>
-        <TextInput style={styles.TextInputStyle} placeholder="Your Email" />
+      <View>
+        <Image style={styles.image} source={require('./../../Images/Signup/forgetPassword.png')}/>
       </View>
-      <Button title="Send Email" color="#79AD94" style={styles.ButtonStyle} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  MainContainer: {
-    paddingVertical: 20,
+  container: {
+    flex: 1,
+    paddingVertical: 5,
   },
-  Container: {
-    alignItems: "center",
-    margin: 20,
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
   },
-  TextContainer: {
-    fontSize: 20,
+  button: {
+    paddingHorizontal: 40,
   },
-  TextInputStyle: {
-    backgroundColor: "#79AD94",
-  },
-  ButtonStyle: {
-    fontSize: 20,
-  },
-  PressableContainer: {
-    marginHorizontal: 10,
-    marginBottom: 20,
-  },
+  image: {
+    width: 230,
+    height: 230,
+    alignSelf: 'center',
+  }
 });
 
 export default ForgotPassword;
