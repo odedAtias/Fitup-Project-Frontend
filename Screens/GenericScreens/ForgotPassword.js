@@ -10,10 +10,10 @@ const ForgotPassword = () => {
       <Text style={styles.title}>Forgot Your Password?</Text>
       <SignupInput  label="Enter your email and we'll send you a link to reset your password" />
       <View style={styles.button}>
-        <SignupButton children={"Send Email"}/>
+        <SignupButton children={"Send Email"} />
       </View>
       <View>
-        <Image style={styles.image} source={require('./../../Images/Signup/forgetPassword.png')}/>
+        <Image style={styles.image} source={require('./../../Images/Signup/forgotPassword.png')}/>
       </View>
     </View>
   );

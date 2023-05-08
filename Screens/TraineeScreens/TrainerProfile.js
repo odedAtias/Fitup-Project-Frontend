@@ -77,6 +77,10 @@ const TrainerProfile = ({ route, navigation }) => {
 	}, [isFavoriteTrainer]);
 
 	// TrainerProfile handlers
+	const handleSendEmail = () => {
+		Linking.openURL(`mailto:${trainer.email}`);
+	};
+
 	async function handleAddToFavorite() {
 		let favoriteTrainers = context.favoriteTrainers;
 		// Add to favorite trainers list
