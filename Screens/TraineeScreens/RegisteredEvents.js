@@ -15,9 +15,10 @@ import Colors from '../../Constants/Colors';
 
 // RegisteredEvents component
 const RegisteredEvents = () => {
+	// Context initialize
 	const context = useContext(TraineeContext);
 
-	if (!context.registerdEvents || context.registerdEvents.length === 0) {
+	if (context.registeredEvents.length === 0 || !context.registeredEvents) {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.headingText}>Not have registered events yet</Text>
@@ -25,7 +26,8 @@ const RegisteredEvents = () => {
 		);
 	}
 
-	const registeredEventsIds = context.registerdEvents.map(e => e._id);
+	const registeredEventsIds = context.registeredEvents.map(e => e._id);
+	console.log(context.registeredEvents);
 	const events = context.events.filter(e =>
 		registeredEventsIds.includes(e._id)
 	);

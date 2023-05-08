@@ -33,7 +33,6 @@ const TrainerProfile = ({ route, navigation }) => {
 	const [trainer, setTrainer] = useState(null);
 	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState('');
 	const context = useContext(TraineeContext);
-
 	// Getting the trainer id
 	let trainerId = route.params.trainerId;
 

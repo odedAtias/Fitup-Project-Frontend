@@ -59,7 +59,7 @@ const TraineeContextProvider = ({ children }) => {
 	const value = {
 		trainee: state.trainee,
 		events: state.events,
-		registerdEvents: state.registeredEvents,
+		registeredEvents: state.registeredEvents,
 		favoriteTrainers: state.favoriteTrainers,
 		setTrainee: setTrainee,
 		setEvents: setEvents,
