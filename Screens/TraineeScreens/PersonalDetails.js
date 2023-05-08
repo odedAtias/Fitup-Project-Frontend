@@ -11,13 +11,14 @@ import { TraineeContext } from '../../store/TraineeContext';
 import TrainerImage from '../../Components/TraineeSide/EventsOutput/TrainerImage';
 import Title from '../../Components/UI/Title';
 import TraineeMetrics from '../../Components/TraineeSide/PesonalDetailsOutput/TraineeMetrics';
+import Link from '../../Components/UI/Link';
 
 // Constants
 import Colors from './../../Constants/Colors';
 import CategoryHorizontalList from '../../Components/TraineeSide/PesonalDetailsOutput/CategoryHorizontalList';
 
 // PersonalDetails Component
-const PersonalDetails = () => {
+const PersonalDetails = ({navigation}) => {
 	// initialize the trainee context
 	const context = useContext(TraineeContext);
 
@@ -39,12 +40,17 @@ const PersonalDetails = () => {
 			<Text style={styles.discover}>
 				Discover new fitness events & trainings
 			</Text>
-			<CategoryHorizontalList />
+			{/* <CategoryHorizontalList /> */}
+			<Link style={styles.logOutButton} onPress={() => navigation.navigate('Login')}>Log out</Link>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
+	logOutButton:{
+		color: 'red',
+		fontSize: 20,
+	},
 	container: {
 		flex: 1,
 		alignItems: 'center',
