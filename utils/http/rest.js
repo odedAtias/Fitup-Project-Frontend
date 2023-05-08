@@ -22,7 +22,7 @@ export const updateData = async (path, payload) => {
 		const response = await axios.put(`${BACKEND_URL}/${path}`, payload);
 		return response;
 	} catch (error) {
-		console.log(error);
+		return error.response.data;
 	}
 };
 
@@ -31,6 +31,6 @@ export const postData = async (path, payload) => {
 		const response = await axios.post(`${BACKEND_URL}/${path}`, payload);
 		return response;
 	} catch (error) {
-		console.log(error);
+		return error.response.data;
 	}
 };

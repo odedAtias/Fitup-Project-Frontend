@@ -1,5 +1,5 @@
 // Hooks imports
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 // RN core components & API imports
 import { View, Text, StyleSheet, Alert } from 'react-native';
@@ -15,24 +15,58 @@ import { alert } from '../../../Constants/Alert';
 
 // Utills
 import { TEXT } from '../../../utils/regulations';
+import { updateData } from '../../../utils/http/rest';
+
+// Contexts imports
+import { TraineeContext } from './../../../store/TraineeContext';
 
 // RegisterEventForm component
-const RegisterEventForm = () => {
+const RegisterEventForm = ({ event }) => {
 	const [isChecked, setIsChecked] = useState(false);
+
+	const context = useContext(TraineeContext);
+
+	const updateEvent = async () => {
+		try {
+			// Update the event document in the backend
+			const participantsIds = event.participants.map(p => p._id);
+			participantsIds.push(context.trainee._id);
+			const { __v, _id, trainer, participants, ...adjustedEvent } = event;
+			// Setting the adjusted event properties
+			adjustedEvent.trainer = trainer._id;
+			adjustedEvent.participants = participantsIds;
+			await updateData(`api/events/${_id}`, adjustedEvent);
+
+			// Updating the trainee document in the backend
+			const adjustedTrainee = {
+				...context.trainee,
+				registeredEvents: context.registeredEvents
+					? context.registeredEvents.map(r => r._id)
+					: [],
+				favoriteTrainers: context.favoriteTrainers.map(t => t._id),
+			};
+			adjustedTrainee.registeredEvents.push(_id);
+			await updateData(`api/trainees/${context.trainee._id}`, adjustedTrainee);
+			alert(
+				'Registration Successful!',
+				'Message: Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
+			);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	const handleCheck = () => {
 		setIsChecked(!isChecked);
 	};
 
 	const handleSubmit = () => {
-		// handle form submission
-		if (!isChecked) {
+		if (!isChecked)
 			alert(
-				'Please Accept the Regulations',
+				'Please accept the regulations',
 				'You must accept the regulations to proceed.'
 			);
-			return;
-		}
+		else updateEvent();
 	};
 
 	return (

@@ -5,11 +5,11 @@ import { View, StyleSheet, Text } from 'react-native';
 import RegisterEventForm from '../../Components/TraineeSide/RegisterEventOutput/RegisterEventForm';
 
 // RegisterEvent Component
-const RegisterEvent = () => {
+const RegisterEvent = ({ route }) => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.heading}>Accept our policies to register</Text>
-			<RegisterEventForm />
+			<RegisterEventForm event={route.params.event} />
 		</View>
 	);
 };

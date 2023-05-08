@@ -14,6 +14,7 @@ import Link from '../../Components/UI/Link';
 const EventDetails = ({ navigation, route }) => {
 	// destructuring the relevant properties form params
 	const { description, _id, ...cardDetails } = route.params;
+
 	return (
 		<View style={styles.container}>
 			<EventDetailsCard {...cardDetails} />
@@ -24,17 +25,22 @@ const EventDetails = ({ navigation, route }) => {
 					margin: 20,
 					alignItems: 'center',
 				}}>
-				<Link
-					style={{
-						fontSize: 20,
-						textAlign: 'center',
-						borderBottomColor: Colors.Links.primary,
-						borderBottomWidth: 1,
-						width: '40%',
-					}}
-					onPress={() => navigation.navigate('RegisterEvent')}>
-					Register now
-				</Link>
+				{/* Only if have place to register */}
+				{cardDetails.maxParticipants - cardDetails.participants.length >= 0 && (
+					<Link
+						style={{
+							fontSize: 20,
+							textAlign: 'center',
+							borderBottomColor: Colors.Links.primary,
+							borderBottomWidth: 1,
+							width: '40%',
+						}}
+						onPress={() =>
+							navigation.navigate('RegisterEvent', { event: route.params })
+						}>
+						Register now
+					</Link>
+				)}
 			</View>
 		</View>
 	);
