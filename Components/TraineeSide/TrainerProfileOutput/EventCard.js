@@ -1,3 +1,7 @@
+// Hooks imports
+import { useNavigation } from '@react-navigation/native';
+import { useContext } from 'react';
+
 // RN core components & API imports
 import {
 	View,
@@ -7,20 +11,35 @@ import {
 	Text,
 } from 'react-native';
 
+// Contexts imports
+import { TraineeContext } from './../../../store/TraineeContext';
+
 // Constants
 import { CATEGORIES } from '../../../Constants/Categories';
 
 // EventCard component
-const EventCard = ({ event, onPress }) => {
+const EventCard = ({ event }) => {
+	// Context intitialize
+	const context = useContext(TraineeContext);
+
+	// Navigation initialize
+	const navigation = useNavigation();
+
 	// destructuring the relevant props
 	const { category, date, hour, city, participants, maxParticipants } = event;
 
 	// find the relevant imageUrl
 	const imageUrl = CATEGORIES.find(c => c.name === category).imageUrl;
 
+	// EventCard handlers
+	const handlePress = () => {
+		const adjustedEvent = context.events.find(e => e._id === event._id);
+		navigation.navigate('EventDetails', adjustedEvent);
+	};
+
 	return (
-		<View style={styles.container}>
-			<Pressable onPress={onPress} style={styles.innerContainer}>
+		<Pressable onPress={handlePress} style={styles.innerContainer}>
+			<View style={styles.container}>
 				<ImageBackground source={imageUrl} style={styles.contentContainer}>
 					<View style={styles.flexRow}>
 						<Text style={styles.text}>{date}</Text>
@@ -36,8 +55,8 @@ const EventCard = ({ event, onPress }) => {
 						</Text>
 					</View>
 				</ImageBackground>
-			</Pressable>
-		</View>
+			</View>
+		</Pressable>
 	);
 };
 
