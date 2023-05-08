@@ -41,7 +41,6 @@ const Login = ({ navigation }) => {
 						</Text>
 						<Link
 							onPress={() => {
-								console.log('forgot password Pressed ...');
 								navigation.navigate('ForgotPassword');
 							}}
 							style={{ fontSize: 20 }}>
