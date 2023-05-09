@@ -27,7 +27,6 @@ const RegisteredEvents = () => {
 	}
 
 	const registeredEventsIds = context.registeredEvents.map(e => e._id);
-	console.log(context.registeredEvents);
 	const events = context.events.filter(e =>
 		registeredEventsIds.includes(e._id)
 	);
