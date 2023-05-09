@@ -15,10 +15,9 @@ import Link from '../../Components/UI/Link';
 
 // Constants
 import Colors from './../../Constants/Colors';
-import CategoryHorizontalList from '../../Components/TraineeSide/PesonalDetailsOutput/CategoryHorizontalList';
 
 // PersonalDetails Component
-const PersonalDetails = ({navigation}) => {
+const PersonalDetails = ({ navigation }) => {
 	// initialize the trainee context
 	const context = useContext(TraineeContext);
 
@@ -41,13 +40,17 @@ const PersonalDetails = ({navigation}) => {
 				Discover new fitness events & trainings
 			</Text>
 			{/* <CategoryHorizontalList /> */}
-			<Link style={styles.logOutButton} onPress={() => navigation.navigate('Login')}>Log out</Link>
+			<Link
+				style={styles.logOutButton}
+				onPress={() => navigation.navigate('Login')}>
+				Log out
+			</Link>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
-	logOutButton:{
+	logOutButton: {
 		color: 'red',
 		fontSize: 20,
 	},

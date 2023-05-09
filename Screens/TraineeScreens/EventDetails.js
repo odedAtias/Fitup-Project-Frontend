@@ -2,19 +2,23 @@
 import { useContext } from 'react';
 
 // RN core components & API imports
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 
 // Custom components
 import EventDetailsCard from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsCard';
 import EventParticipants from '../../Components/TraineeSide/EventsDetailsOutput/EventParticipants';
 import EventDetailsDescription from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsDescription';
+import Link from '../../Components/UI/Link';
 
 // Contexts imports
 import { TraineeContext } from '../../store/TraineeContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
-import Link from '../../Components/UI/Link';
+import { alert } from '../../Constants/Alert';
+
+// Utils
+import { updateData } from '../../utils/http/rest';
 
 // EventDetails component
 const EventDetails = ({ navigation, route }) => {
@@ -23,7 +27,35 @@ const EventDetails = ({ navigation, route }) => {
 
 	// context initialize
 	const context = useContext(TraineeContext);
-	console.log();
+
+	// EventDetails handlers
+	const cancelRegistration = async () => {
+		console.log('cancel registration ...');
+		alert(
+			'Cancelation Successful!',
+			'Your registration for the sport training event has been successfully canceled.'
+		);
+	};
+
+	const handleCancelRegistration = () => {
+		Alert.alert(
+			'Cancel Registration',
+			'Are you sure you want to cancel your registration for this sport training event?',
+			[
+				{
+					text: 'No',
+					style: 'cancel',
+				},
+				{
+					text: 'Yes',
+					onPress: cancelRegistration,
+					style: 'destructive',
+				},
+			],
+			{ cancelable: false }
+		);
+	};
+
 	return (
 		<View style={styles.container}>
 			<EventDetailsCard {...cardDetails} />
@@ -36,9 +68,17 @@ const EventDetails = ({ navigation, route }) => {
 				}}>
 				{/* Only if have place to register */}
 				{cardDetails.participants.some(p => p._id === context.trainee._id) ? (
-					<Text style={styles.registeredText}>
-						You are registered for this training
-					</Text>
+					<Link
+						style={{
+							fontSize: 20,
+							textAlign: 'center',
+							borderBottomColor: Colors.Links.primary,
+							borderBottomWidth: 1,
+							width: '40%',
+						}}
+						onPress={handleCancelRegistration}>
+						Cancel registration
+					</Link>
 				) : (
 					<Link
 						style={{
@@ -64,14 +104,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		paddingHorizontal: 15,
 		paddingVertical: Platform.OS === 'ios' ? 30 : 0,
-	},
-	registeredText: {
-		marginTop: '5%',
-		fontSize: 20,
-		textAlign: 'center',
-		fontFamily: 'rubik',
-		color: Colors.Texts.sixth,
-		maxWidth: 320,
 	},
 });
 

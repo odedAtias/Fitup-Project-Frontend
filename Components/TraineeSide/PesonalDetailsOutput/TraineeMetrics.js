@@ -1,5 +1,10 @@
+// RN core components & API imports
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
+// Utils
+import { bmiColor } from './../../../utils/stats';
+
+// TraineeMetrics
 const TraineeMetrics = ({ height, weight }) => {
 	const bmi = (weight / height ** 2).toFixed(1);
 	return (
@@ -29,7 +34,7 @@ const TraineeMetrics = ({ height, weight }) => {
 				</View>
 			</View>
 			<View style={styles.metricContainer}>
-				<View style={styles.metric}>
+				<View style={[styles.metric, { backgroundColor: bmiColor(bmi) }]}>
 					<Text style={styles.title}>BMI</Text>
 					<Text style={styles.value}>{bmi}</Text>
 				</View>
@@ -70,11 +75,6 @@ const styles = StyleSheet.create({
 		borderRadius: 50,
 		backgroundColor: '#f2dcc5',
 	},
-	// iconButton: {
-	// 	position: 'absolute', // to position the IconButton
-	// 	top: 5,
-	// 	left: 5,
-	// },
 });
 
 export default TraineeMetrics;

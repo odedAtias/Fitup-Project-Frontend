@@ -25,43 +25,6 @@ const RegisterEventForm = ({ event }) => {
 	const [isChecked, setIsChecked] = useState(false);
 
 	const context = useContext(TraineeContext);
-	const updateTrainee = async () => {
-		try {
-			// Updating the trainee document in the backend
-			const adjustedTrainee = {
-				...context.trainee,
-				registeredEvents: context.registeredEvents
-					? context.registeredEvents.map(r => r._id)
-					: [],
-				favoriteTrainers: context.favoriteTrainers.map(t => t._id),
-			};
-			adjustedTrainee.registeredEvents.push(event._id);
-			await updateData(`api/trainees/${context.trainee._id}`, adjustedTrainee);
-			// Update the context
-			const { __v, trainer, ...adjustedEvent } = event;
-			const contextRegisteredEvents = [
-				...context.registeredEvents,
-				{ ...adjustedEvent, trainer: trainer._id },
-			];
-			context.setRegisteredEvents(contextRegisteredEvents);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	const updateEvent = async () => {
-		try {
-			const participantsIds = event.participants.map(p => p._id);
-			participantsIds.push(context.trainee._id);
-			const { __v, _id, trainer, participants, ...adjustedEvent } = event;
-			// Setting the adjusted event properties
-			adjustedEvent.trainer = trainer._id;
-			adjustedEvent.participants = participantsIds;
-			await updateData(`api/events/${_id}`, adjustedEvent);
-		} catch (error) {
-			console.log(error);
-		}
-	};
 
 	const handleCheck = () => {
 		setIsChecked(!isChecked);
@@ -74,11 +37,10 @@ const RegisterEventForm = ({ event }) => {
 				'You must accept the regulations to proceed.'
 			);
 		else {
-			await updateEvent();
-			await updateTrainee();
+			console.log('Register to the event handler ...');
 			alert(
 				'Registration Successful!',
-				'Message: Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
+				'Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
 			);
 		}
 	};
