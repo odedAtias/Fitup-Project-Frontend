@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Events from '../../../Screens/TraineeScreens/Events';
 import EventDetails from '../../../Screens/TraineeScreens/EventDetails';
 import RegisterEvent from '../../../Screens/TraineeScreens/RegisterEvent';
-import RegistrationSucceed from '../../../Screens/TraineeScreens/RegistrationSucceed';
 import TrainerProfile from '../../../Screens/TraineeScreens/TrainerProfile';
 import Categories from '../../../Screens/TraineeScreens/Categories';
 
@@ -60,7 +59,6 @@ const StackSearchEvent = () => (
 		<Stack.Screen name='Events' component={Events} />
 		<Stack.Screen name='EventDetails' component={EventDetails} />
 		<Stack.Screen name='RegisterEvent' component={RegisterEvent} />
-		<Stack.Screen name='RegistrationSucceed' component={RegistrationSucceed} />
 		<Stack.Screen name='TrainerProfile' component={TrainerProfile} />
 	</Stack.Navigator>
 );

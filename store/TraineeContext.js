@@ -26,7 +26,6 @@ const reducer = (state, action) => {
 			return { ...state, registeredEvents: action.payload };
 		case 'SET_FAVORITE_TRAINERS':
 			return { ...state, favoriteTrainers: action.payload };
-
 		default:
 			return state;
 	}

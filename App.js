@@ -2,8 +2,9 @@
 import { useFonts } from 'expo-font';
 
 // Fonts imports
-import Blanka from './assets/fonts/Blanka-Regular.otf';
-import Rubik from './assets/fonts/Rubik-VariableFont_wght.ttf';
+import Blanka from './assets/fonts/Blanka.otf';
+import RubikLight from './assets/fonts/Rubik-Light.ttf';
+import Rubik from './assets/fonts/Rubik.ttf';
 
 // Status Bar
 import { StatusBar } from 'expo-status-bar';
@@ -41,6 +42,7 @@ export default function App() {
 	const [loaded] = useFonts({
 		blanka: Blanka,
 		rubik: Rubik,
+		rubikLight: RubikLight,
 	});
 	if (loaded)
 		return (
