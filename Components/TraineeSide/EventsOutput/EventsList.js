@@ -32,3 +32,6 @@ const EventsList = ({ events }) => {
 };
 
 export default EventsList;
+
+// {event, trainerName}
+//

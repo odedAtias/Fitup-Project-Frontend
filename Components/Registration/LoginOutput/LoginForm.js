@@ -6,8 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet, LogBox } from 'react-native';
 
 // Firebase Authentication API imports
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../auth/firebase-config';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 LogBox.ignoreLogs(['AsyncStorage has been extracted']);
 
@@ -20,6 +21,7 @@ import Button from '../../UI/Button';
 
 // Context import
 import { TraineeContext } from '../../../store/TraineeContext';
+import { EventsContext } from './../../../store/EventsContext';
 
 // Constants
 import Colors from '../../../Constants/Colors';
@@ -31,6 +33,7 @@ import { alert } from '../../../Constants/Alert';
 const LoginForm = ({ isLoading, setIsLoading }) => {
 	// context initialize
 	const traineeContext = useContext(TraineeContext);
+	const eventsContext = useContext(EventsContext);
 
 	// navigation object initialize
 	const navigation = useNavigation();
@@ -64,13 +67,13 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 		const response2 = await fetchData('api/events');
 		// Check if the user's type is trainee
 		if (response1 && response2) {
-			const trainee = response1.data;
+			const [trainee, events] = [response1.data, response2.data];
 			const { __v, favoriteTrainers, registeredEvents, ...rest } = trainee;
 			// Set the data in the store
 			traineeContext.setTrainee(rest);
 			traineeContext.setFavoriteTrainers(favoriteTrainers);
 			traineeContext.setRegisteredEvents(registeredEvents);
-			traineeContext.setEvents(response2.data);
+			eventsContext.setEvents(events);
 			return 'Trainee';
 		} else {
 			return 'Trainer';

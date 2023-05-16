@@ -3,6 +3,7 @@ import { useLayoutEffect, useContext } from 'react';
 
 // Contexts imports
 import { TraineeContext } from '../../store/TraineeContext';
+import { EventsContext } from '../../store/EventsContext';
 
 // RN core components & API imports
 import { View, StyleSheet, Platform } from 'react-native';
@@ -17,7 +18,7 @@ import Colors from '../../Constants/Colors';
 // Events component
 const Events = ({ navigation, route }) => {
 	// Context initialize
-	const context = useContext(TraineeContext);
+	const eventsContext = useContext(EventsContext);
 
 	// Loading dynamically the screen options
 	useLayoutEffect(() => {
@@ -42,11 +43,11 @@ const Events = ({ navigation, route }) => {
 		});
 	});
 
-	if (context.events) {
+	if (eventsContext.events) {
 		return (
 			<View style={styles.container}>
 				<EventsList
-					events={context.events.filter(
+					events={eventsContext.events.filter(
 						e => e.category === route.params.categoryName
 					)}
 				/>

@@ -23,7 +23,6 @@ const LoginInput = ({
 				{iconName && <Ionicons name={iconName} size={30} />}
 			</View>
 			<TextInput {...inputConfigurations} style={[styles.input, style]} />
-			{/* Buttons container (sign-in & sign-up) */}
 		</View>
 	);
 };
