@@ -12,6 +12,7 @@ import Link from '../../Components/UI/Link';
 
 // Contexts imports
 import { TraineeContext } from '../../store/TraineeContext';
+import { EventsContext } from './../../store/EventsContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
@@ -19,6 +20,7 @@ import { alert } from '../../Constants/Alert';
 
 // Utils
 import { updateData } from '../../utils/http/rest';
+import { adjustEvent } from './../../utils/schemas';
 
 // EventDetails component
 const EventDetails = ({ navigation, route }) => {
@@ -26,18 +28,53 @@ const EventDetails = ({ navigation, route }) => {
 	const { description, _id, ...cardDetails } = route.params;
 
 	// context initialize
-	const context = useContext(TraineeContext);
+	const [traineeContext, eventsContext] = [
+		useContext(TraineeContext),
+		useContext(EventsContext),
+	];
+
+	const events = eventsContext.events;
+	const trainee = traineeContext.trainee;
 
 	// EventDetails handlers
 	const cancelRegistration = async () => {
-		console.log('cancel registration ...');
+		// Update the participants on the backend
+		const event = { ...route.params };
+		event.participants = event.participants.filter(p => p._id !== trainee._id);
+		await updateData(`api/events/${_id}`, adjustEvent(event));
+
+		// Update the participants on the context
+		const index = events.findIndex(e => e._id === _id);
+		const updatedEvents = [...events];
+		updatedEvents.splice(index, 1);
+		updatedEvents.push(event);
+		eventsContext.setEvents(updatedEvents);
+
+		// Update the registeredEvents on the backend
+		const newRegisteredEvents = traineeContext.registeredEvents.filter(
+			eid => eid !== _id
+		);
+
+		const payload = {
+			...trainee,
+			favoriteTrainers: traineeContext.favoriteTrainers.map(t => t._id),
+			registeredEvents: newRegisteredEvents,
+		};
+		delete payload._id;
+		await updateData(`api/trainees/${trainee._id}`, payload);
+
+		// Update the registeredEvents on the context
+		traineeContext.setRegisteredEvents(newRegisteredEvents);
+
 		alert(
-			'Cancelation Successful!',
+			'Cancellation Successful!',
 			'Your registration for the sport training event has been successfully canceled.'
 		);
+
+		navigation.navigate('RegisteredEvents');
 	};
 
-	const handleCancelRegistration = () => {
+	const handleCancelRegistration = async () => {
 		Alert.alert(
 			'Cancel Registration',
 			'Are you sure you want to cancel your registration for this sport training event?',
@@ -67,7 +104,9 @@ const EventDetails = ({ navigation, route }) => {
 					alignItems: 'center',
 				}}>
 				{/* Only if have place to register */}
-				{cardDetails.participants.some(p => p._id === context.trainee._id) ? (
+				{cardDetails.participants.some(
+					p => p._id === traineeContext.trainee._id
+				) ? (
 					<Link
 						style={{
 							fontSize: 20,
@@ -86,7 +125,7 @@ const EventDetails = ({ navigation, route }) => {
 							textAlign: 'center',
 							borderBottomColor: Colors.Links.primary,
 							borderBottomWidth: 1,
-							width: '40%',
+							width: '60%',
 						}}
 						onPress={() =>
 							navigation.navigate('RegisterEvent', { event: route.params })

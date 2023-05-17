@@ -34,8 +34,6 @@ const RegisteredEvents = () => {
 	}
 
 	const ids = traineeContext.registeredEvents;
-
-	console.log(ids);
 	const events = eventsContext.events.filter(e => ids.includes(e._id));
 
 	return (
