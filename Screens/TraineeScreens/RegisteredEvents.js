@@ -9,6 +9,7 @@ import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
 
 // Context imports
 import { TraineeContext } from '../../store/TraineeContext';
+import { EventsContext } from './../../store/EventsContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
@@ -16,9 +17,15 @@ import Colors from '../../Constants/Colors';
 // RegisteredEvents component
 const RegisteredEvents = () => {
 	// Context initialize
-	const context = useContext(TraineeContext);
+	const [traineeContext, eventsContext] = [
+		useContext(TraineeContext),
+		useContext(EventsContext),
+	];
 
-	if (context.registeredEvents.length === 0 || !context.registeredEvents) {
+	if (
+		traineeContext.registeredEvents.length === 0 ||
+		!traineeContext.registeredEvents
+	) {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.headingText}>Not have registered events yet</Text>
@@ -26,10 +33,10 @@ const RegisteredEvents = () => {
 		);
 	}
 
-	const registeredEventsIds = context.registeredEvents.map(e => e._id);
-	const events = context.events.filter(e =>
-		registeredEventsIds.includes(e._id)
-	);
+	const ids = traineeContext.registeredEvents;
+
+	console.log(ids);
+	const events = eventsContext.events.filter(e => ids.includes(e._id));
 
 	return (
 		<View>

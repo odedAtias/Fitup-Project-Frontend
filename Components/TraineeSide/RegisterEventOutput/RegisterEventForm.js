@@ -1,5 +1,6 @@
 // Hooks imports
 import { useState, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 // RN core components & API imports
 import { View, Text, StyleSheet, Alert } from 'react-native';
@@ -16,18 +17,57 @@ import { alert } from '../../../Constants/Alert';
 // Utills
 import { TEXT } from '../../../utils/regulations';
 import { updateData } from '../../../utils/http/rest';
+import { adjustEvent } from './../../../utils/schemas';
 
 // Contexts imports
 import { TraineeContext } from './../../../store/TraineeContext';
+import { EventsContext } from '../../../store/EventsContext';
 
 // RegisterEventForm component
-const RegisterEventForm = ({ event }) => {
+const RegisterEventForm = ({ eventId }) => {
+	const navigation = useNavigation();
+
 	const [isChecked, setIsChecked] = useState(false);
 
-	const context = useContext(TraineeContext);
+	const [traineeContext, eventsContext] = [
+		useContext(TraineeContext),
+		useContext(EventsContext),
+	];
 
 	const handleCheck = () => {
 		setIsChecked(!isChecked);
+	};
+
+	const registerEvent = async () => {
+		// Update the participants on the backend
+		const event = eventsContext.events.find(e => e._id === eventId);
+		const index = eventsContext.events.indexOf(event);
+		const { userId, email, ...participant } = traineeContext.trainee;
+		event.participants.push(participant);
+		let res1 = await updateData(`api/events/${eventId}`, adjustEvent(event));
+
+		// Update the participans on the context
+		const updatedEvents = [...eventsContext.events];
+		updatedEvents.splice(index, 1);
+		updatedEvents.push(event);
+		eventsContext.setEvents(updatedEvents);
+
+		// Update the registeredEvents on the backend
+		const updatedRegisteredEvents = [...traineeContext.registeredEvents];
+		updatedRegisteredEvents.push(eventId);
+		const trainee = {
+			...traineeContext.trainee,
+			favoriteTrainers: [...traineeContext.favoriteTrainers].map(t => t._id),
+			registeredEvents: updatedRegisteredEvents,
+		};
+		delete trainee._id;
+		let res2 = await updateData(
+			`api/trainees/${traineeContext.trainee._id}`,
+			trainee
+		);
+
+		// Update the registeredEvents on the context
+		traineeContext.setRegisteredEvents(updatedRegisteredEvents);
 	};
 
 	const handleSubmit = async () => {
@@ -38,10 +78,16 @@ const RegisterEventForm = ({ event }) => {
 			);
 		else {
 			console.log('Register to the event handler ...');
-			alert(
-				'Registration Successful!',
-				'Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
-			);
+			try {
+				await registerEvent();
+				alert(
+					'Registration Successful!',
+					'Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
+				);
+				navigation.navigate('RegisteredEvents');
+			} catch (error) {
+				console.log(error);
+			}
 		}
 	};
 

@@ -9,7 +9,7 @@ const RegisterEvent = ({ route }) => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.heading}>Accept our policies to register</Text>
-			<RegisterEventForm event={route.params.event} />
+			<RegisterEventForm eventId={route.params.event._id} />
 		</View>
 	);
 };
