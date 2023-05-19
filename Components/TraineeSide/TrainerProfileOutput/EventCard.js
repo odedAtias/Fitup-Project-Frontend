@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 // Contexts imports
-import { TraineeContext } from './../../../store/TraineeContext';
+import { EventsContext } from './../../../store/EventsContext';
 
 // Constants
 import { CATEGORIES } from '../../../Constants/Categories';
@@ -20,7 +20,7 @@ import { CATEGORIES } from '../../../Constants/Categories';
 // EventCard component
 const EventCard = ({ event }) => {
 	// Context intitialize
-	const context = useContext(TraineeContext);
+	const context = useContext(EventsContext);
 
 	// Navigation initialize
 	const navigation = useNavigation();
