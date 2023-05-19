@@ -2,7 +2,7 @@
 import { Text, Pressable, StyleSheet } from 'react-native';
 
 //  Button component
-const Button = ({ children, style, onPress }) => (
+const Button = ({ children, style, onPress, textStyle }) => (
 	<Pressable
 		style={({ pressed }) => [
 			styles.button,
@@ -10,7 +10,7 @@ const Button = ({ children, style, onPress }) => (
 			pressed && styles.pressed,
 		]}
 		onPress={onPress}>
-		<Text style={styles.text}>{children}</Text>
+		<Text style={[styles.text, { ...textStyle }]}>{children}</Text>
 	</Pressable>
 );
 

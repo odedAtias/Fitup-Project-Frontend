@@ -8,7 +8,7 @@ import { StyleSheet, View, Alert } from 'react-native';
 import EventDetailsCard from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsCard';
 import EventParticipants from '../../Components/TraineeSide/EventsDetailsOutput/EventParticipants';
 import EventDetailsDescription from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsDescription';
-import Link from '../../Components/UI/Link';
+import Button from '../../Components/UI/Button';
 
 // Contexts imports
 import { TraineeContext } from '../../store/TraineeContext';
@@ -107,31 +107,23 @@ const EventDetails = ({ navigation, route }) => {
 				{cardDetails.participants.some(
 					p => p._id === traineeContext.trainee._id
 				) ? (
-					<Link
-						style={{
-							fontSize: 20,
-							textAlign: 'center',
-							borderBottomColor: Colors.Links.primary,
-							borderBottomWidth: 1,
-							width: '40%',
-						}}
-						onPress={handleCancelRegistration}>
+					<Button
+						style={{ backgroundColor: 'red', width: '100%' }}
+						textStyle={{ fontSize: 18 }}
+						onPress={() =>
+							navigation.navigate('RegisterEvent', { event: route.params })
+						}>
 						Cancel registration
-					</Link>
+					</Button>
 				) : (
-					<Link
-						style={{
-							fontSize: 20,
-							textAlign: 'center',
-							borderBottomColor: Colors.Links.primary,
-							borderBottomWidth: 1,
-							width: '60%',
-						}}
+					<Button
+						style={{ backgroundColor: Colors.Buttons.fourth, width: '105%' }}
+						textStyle={{ fontSize: 18 }}
 						onPress={() =>
 							navigation.navigate('RegisterEvent', { event: route.params })
 						}>
 						Register now
-					</Link>
+					</Button>
 				)}
 			</View>
 		</View>
