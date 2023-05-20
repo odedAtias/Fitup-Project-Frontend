@@ -119,9 +119,7 @@ const EventDetails = ({ navigation, route }) => {
 					<Button
 						style={{ backgroundColor: Colors.Buttons.fourth, width: '105%' }}
 						textStyle={{ fontSize: 18 }}
-						onPress={() =>
-							navigation.navigate('RegisterEvent', { event: route.params })
-						}>
+						onPress={handleCancelRegistration}>
 						Register now
 					</Button>
 				)}
