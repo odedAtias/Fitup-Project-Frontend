@@ -2,7 +2,6 @@
 import { useLayoutEffect, useContext } from 'react';
 
 // Contexts imports
-import { TraineeContext } from '../../store/TraineeContext';
 import { EventsContext } from '../../store/EventsContext';
 
 // RN core components & API imports
