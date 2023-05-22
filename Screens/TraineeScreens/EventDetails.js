@@ -1,8 +1,8 @@
 // Hooks imports
-import { useContext } from 'react';
+import {useContext} from 'react';
 
 // RN core components & API imports
-import { StyleSheet, View, Alert } from 'react-native';
+import {StyleSheet, View, Alert} from 'react-native';
 
 // Custom components
 import EventDetailsCard from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsCard';
@@ -11,21 +11,21 @@ import EventDetailsDescription from '../../Components/TraineeSide/EventsDetailsO
 import Button from '../../Components/UI/Button';
 
 // Contexts imports
-import { TraineeContext } from '../../store/TraineeContext';
-import { EventsContext } from './../../store/EventsContext';
+import {TraineeContext} from '../../store/TraineeContext';
+import {EventsContext} from './../../store/EventsContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
-import { alert } from '../../Constants/Alert';
+import {alert} from '../../Constants/Alert';
 
 // Utils
-import { updateData } from '../../utils/http/rest';
-import { adjustEvent } from './../../utils/schemas';
+import {updateData} from '../../utils/http/rest';
+import {adjustEvent} from './../../utils/schemas';
 
 // EventDetails component
-const EventDetails = ({ navigation, route }) => {
+const EventDetails = ({navigation, route}) => {
 	// destructuring the relevant properties form params
-	const { description, _id, ...cardDetails } = route.params;
+	const {description, _id, ...cardDetails} = route.params;
 
 	// context initialize
 	const [traineeContext, eventsContext] = [
@@ -39,7 +39,7 @@ const EventDetails = ({ navigation, route }) => {
 	// EventDetails handlers
 	const cancelRegistration = async () => {
 		// Update the participants on the backend
-		const event = { ...route.params };
+		const event = {...route.params};
 		event.participants = event.participants.filter(p => p._id !== trainee._id);
 		await updateData(`api/events/${_id}`, adjustEvent(event));
 
@@ -89,7 +89,7 @@ const EventDetails = ({ navigation, route }) => {
 					style: 'destructive',
 				},
 			],
-			{ cancelable: false }
+			{cancelable: false}
 		);
 	};
 
@@ -102,24 +102,27 @@ const EventDetails = ({ navigation, route }) => {
 				style={{
 					margin: 20,
 					alignItems: 'center',
-				}}>
+				}}
+			>
 				{/* Only if have place to register */}
 				{cardDetails.participants.some(
 					p => p._id === traineeContext.trainee._id
 				) ? (
 					<Button
-						style={{ backgroundColor: 'red', width: '100%' }}
-						textStyle={{ fontSize: 18 }}
-						onPress={() =>
-							navigation.navigate('RegisterEvent', { event: route.params })
-						}>
+						style={{backgroundColor: 'red', width: '100%'}}
+						textStyle={{fontSize: 18}}
+						onPress={handleCancelRegistration}
+					>
 						Cancel registration
 					</Button>
 				) : (
 					<Button
-						style={{ backgroundColor: Colors.Buttons.fourth, width: '105%' }}
-						textStyle={{ fontSize: 18 }}
-						onPress={handleCancelRegistration}>
+						style={{backgroundColor: Colors.Buttons.fourth, width: '105%'}}
+						textStyle={{fontSize: 18}}
+						onPress={() =>
+							navigation.navigate('RegisterEvent', {event: route.params})
+						}
+					>
 						Register now
 					</Button>
 				)}
