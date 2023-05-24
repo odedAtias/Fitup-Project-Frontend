@@ -1,9 +1,9 @@
 // Hooks imports
-import { useState, useContext } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import {useState, useContext} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import {View, Text, StyleSheet, Alert} from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 // Custom components imports
@@ -12,19 +12,19 @@ import TextBox from '../../UI/TextBox';
 
 // Constants
 import Colors from '../../../Constants/Colors';
-import { alert } from '../../../Constants/Alert';
+import {alert} from '../../../Constants/Alert';
 
 // Utills
-import { TEXT } from '../../../utils/regulations';
-import { updateData } from '../../../utils/http/rest';
-import { adjustEvent } from './../../../utils/schemas';
+import {TEXT} from '../../../utils/regulations';
+import {updateData} from '../../../utils/http/rest';
+import {adjustEvent} from './../../../utils/schemas';
 
 // Contexts imports
-import { TraineeContext } from './../../../store/TraineeContext';
-import { EventsContext } from '../../../store/EventsContext';
+import {TraineeContext} from './../../../store/TraineeContext';
+import {EventsContext} from '../../../store/EventsContext';
 
 // RegisterEventForm component
-const RegisterEventForm = ({ eventId }) => {
+const RegisterEventForm = ({eventId}) => {
 	const navigation = useNavigation();
 
 	const [isChecked, setIsChecked] = useState(false);
@@ -42,7 +42,7 @@ const RegisterEventForm = ({ eventId }) => {
 		// Update the participants on the backend
 		const event = eventsContext.events.find(e => e._id === eventId);
 		const index = eventsContext.events.indexOf(event);
-		const { userId, email, ...participant } = traineeContext.trainee;
+		const {userId, email, ...participant} = traineeContext.trainee;
 		event.participants.push(participant);
 		let res1 = await updateData(`api/events/${eventId}`, adjustEvent(event));
 
@@ -84,7 +84,7 @@ const RegisterEventForm = ({ eventId }) => {
 					'Registration Successful!',
 					'Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
 				);
-				navigation.navigate('RegisteredEvents');
+				navigation.navigate('Categories');
 			} catch (error) {
 				console.log(error);
 			}
@@ -96,7 +96,8 @@ const RegisterEventForm = ({ eventId }) => {
 			<TextBox
 				bgColor={Colors.Backgrounds.third}
 				txtColor={Colors.Texts.primary}
-				maxHeight={400}>
+				maxHeight={400}
+			>
 				{TEXT}
 			</TextBox>
 			<View style={styles.checkBoxContainer}>
@@ -107,10 +108,11 @@ const RegisterEventForm = ({ eventId }) => {
 				/>
 				<Text>I have read and agree to all the terms</Text>
 			</View>
-			<View style={{ alignItems: 'center' }}>
+			<View style={{alignItems: 'center'}}>
 				<Button
-					style={{ backgroundColor: Colors.Buttons.secondary }}
-					onPress={handleSubmit}>
+					style={{backgroundColor: Colors.Buttons.secondary}}
+					onPress={handleSubmit}
+				>
 					Accept
 				</Button>
 			</View>

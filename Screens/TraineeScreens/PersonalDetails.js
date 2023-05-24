@@ -1,11 +1,11 @@
 // Hooks imports
-import { useContext } from 'react';
+import {useContext} from 'react';
 
 // RN core components & API imports
-import { Text, View, StyleSheet } from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 
 // Context's imports
-import { TraineeContext } from '../../store/TraineeContext';
+import {TraineeContext} from '../../store/TraineeContext';
 
 // Custom components imports
 import TrainerImage from '../../Components/TraineeSide/EventsOutput/TrainerImage';
@@ -17,7 +17,7 @@ import Link from '../../Components/UI/Link';
 import Colors from './../../Constants/Colors';
 
 // PersonalDetails Component
-const PersonalDetails = ({ navigation }) => {
+const PersonalDetails = ({navigation}) => {
 	// initialize the trainee context
 	const context = useContext(TraineeContext);
 
@@ -36,15 +36,16 @@ const PersonalDetails = ({ navigation }) => {
 			</Title>
 			<Text style={styles.headingText}>In fitup from 15.02.2023</Text>
 			<TraineeMetrics height={1.78} weight={78} />
-			<Text style={styles.discover}>
-				Discover new fitness events & trainings
-			</Text>
+
 			{/* <CategoryHorizontalList /> */}
-			<Link
-				style={styles.logOutButton}
-				onPress={() => navigation.navigate('Login')}>
-				Log out
-			</Link>
+			<View style={{marginTop: '15%'}}>
+				<Link
+					style={styles.logOutButton}
+					onPress={() => navigation.navigate('Login')}
+				>
+					Log out
+				</Link>
+			</View>
 		</View>
 	);
 };
@@ -65,11 +66,6 @@ const styles = StyleSheet.create({
 		fontSize: 17,
 		fontFamily: 'rubik',
 		color: Colors.Texts.fifth,
-	},
-
-	discover: {
-		marginBottom: 10,
-		fontSize: 20,
 	},
 });
 

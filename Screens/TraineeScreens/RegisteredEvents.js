@@ -1,15 +1,15 @@
 // Hooks imports
-import { useContext, useEffect } from 'react';
+import {useContext, useEffect} from 'react';
 
 // RN core components & API imports
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 // Custom components
 import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
 
 // Context imports
-import { TraineeContext } from '../../store/TraineeContext';
-import { EventsContext } from './../../store/EventsContext';
+import {TraineeContext} from '../../store/TraineeContext';
+import {EventsContext} from './../../store/EventsContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
@@ -37,7 +37,10 @@ const RegisteredEvents = () => {
 	const events = eventsContext.events.filter(e => ids.includes(e._id));
 
 	return (
-		<View>
+		<View style={styles.container}>
+			<Text style={styles.headingText}>
+				View and manage your registered training events
+			</Text>
 			<EventsList events={events} />
 		</View>
 	);
@@ -45,14 +48,18 @@ const RegisteredEvents = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		height: '90%',
+		height: '100%',
 		justifyContent: 'center',
+		paddingVertical: 20,
+		alignItems: 'center',
 	},
 	headingText: {
 		fontFamily: 'rubik',
-		fontSize: 25,
+		fontSize: 20,
 		textAlign: 'center',
+		marginBottom: 20,
 		color: Colors.Texts.primary,
+		maxWidth: '85%',
 	},
 });
 

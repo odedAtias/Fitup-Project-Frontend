@@ -71,7 +71,7 @@ const EventDetails = ({navigation, route}) => {
 			'Your registration for the sport training event has been successfully canceled.'
 		);
 
-		navigation.navigate('RegisteredEvents');
+		navigation.navigate('Categories');
 	};
 
 	const handleCancelRegistration = async () => {
@@ -97,7 +97,7 @@ const EventDetails = ({navigation, route}) => {
 		<View style={styles.container}>
 			<EventDetailsCard {...cardDetails} />
 			<EventDetailsDescription description={description} />
-			<EventParticipants />
+			<EventParticipants participants={cardDetails.participants} />
 			<View
 				style={{
 					margin: 20,

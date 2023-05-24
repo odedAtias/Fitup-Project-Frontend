@@ -1,11 +1,11 @@
 // Hooks imports
-import { useContext } from 'react';
+import {useContext} from 'react';
 
 // RN core components & API imports
-import { Text, View, StyleSheet } from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 
 // Context import
-import { TraineeContext } from './../../store/TraineeContext';
+import {TraineeContext} from './../../store/TraineeContext';
 
 // Custom components imports
 import FavoriteTrainersList from '../../Components/TraineeSide/FavoriteTrainersOutput/FavoriteTrainersList';
@@ -36,8 +36,9 @@ const styles = StyleSheet.create({
 	},
 	headingText: {
 		fontFamily: 'rubik',
-		fontSize: 25,
+		fontSize: 20,
 		textAlign: 'center',
+		marginBottom: 30,
 		color: Colors.Texts.primary,
 	},
 });

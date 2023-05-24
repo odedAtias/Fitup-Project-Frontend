@@ -1,13 +1,20 @@
 // RN core components & API imports
-import { View, Text, StyleSheet, Image } from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
 // ParticipantItem component
-const ParticipantItem = ({ participant }) => (
-	<View style={styles.container}>
-		<Image source={participant.imageUrl} style={styles.participantImage} />
-		<Text style={styles.participantName}>{participant.firstName}</Text>
-	</View>
-);
+const ParticipantItem = ({participant}) => {
+	const DEFAULT_IMAGE_URL =
+		'https://pbs.twimg.com/card_img/1658642619595890688/fh8HRTJ6?format=png&name=240x240';
+
+	const image =
+		participant.image === '' ? DEFAULT_IMAGE_URL : participant.image;
+	return (
+		<View style={styles.container}>
+			<Image source={{uri: image}} style={styles.participantImage} />
+			<Text style={styles.participantName}>{participant.firstName}</Text>
+		</View>
+	);
+};
 
 // ParticipantItem StyleSheet
 const styles = StyleSheet.create({
