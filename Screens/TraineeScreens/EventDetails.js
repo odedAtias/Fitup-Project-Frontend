@@ -1,5 +1,5 @@
 // Hooks imports
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 
 // RN core components & API imports
 import {StyleSheet, View, Alert} from 'react-native';

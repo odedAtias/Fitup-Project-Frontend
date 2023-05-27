@@ -27,6 +27,8 @@ import {EventsContext} from '../../../store/EventsContext';
 const RegisterEventForm = ({eventId}) => {
 	const navigation = useNavigation();
 
+	const [isClicked, setIsClicked] = useState(false);
+
 	const [isChecked, setIsChecked] = useState(false);
 
 	const [traineeContext, eventsContext] = [
@@ -76,7 +78,9 @@ const RegisterEventForm = ({eventId}) => {
 				'Please accept the regulations',
 				'You must accept the regulations to proceed.'
 			);
+		else if (isClicked) return;
 		else {
+			setIsClicked(true);
 			console.log('Register to the event handler ...');
 			try {
 				await registerEvent();
