@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 // ParticipantItem component
 const ParticipantItem = ({participant}) => {
 	const DEFAULT_IMAGE_URL =
-		'https://pbs.twimg.com/card_img/1658642619595890688/fh8HRTJ6?format=png&name=240x240';
+		'https://static.vecteezy.com/system/resources/previews/013/019/183/original/account-avatar-pixel-perfect-flat-gradient-color-ui-icon-personal-page-of-user-access-to-profile-simple-filled-pictogram-gui-ux-design-for-mobile-application-isolated-rgb-illustration-vector.jpg';
 
 	const image =
 		participant.image === '' ? DEFAULT_IMAGE_URL : participant.image;
