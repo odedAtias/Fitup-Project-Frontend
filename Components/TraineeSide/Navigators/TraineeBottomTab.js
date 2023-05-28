@@ -1,8 +1,8 @@
 // Navigation Imports
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Ionicons
-import { Ionicons } from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
 
 // Constants
 import Colors from '../../../Constants/Colors';
@@ -17,6 +17,7 @@ import PersonalDetails from '../../../Screens/TraineeScreens/PersonalDetails';
 
 // Custom Navigators components
 import StackSearchEvent from './StackSearchEvent';
+import StackManageDetails from './StackManageDetails';
 
 // Custom components
 import Header from '../../UI/Header';
@@ -47,13 +48,14 @@ const TraineeBottomTab = () => {
 				tabBarShowLabel: false,
 				tabBarActiveTintColor: Colors.Texts.third,
 				tabBarInactiveTintColor: Colors.Texts.secondary,
-			}}>
+			}}
+		>
 			<Tab.Screen
 				name='StackSearchEvent'
 				component={StackSearchEvent}
 				options={{
 					headerShown: false,
-					tabBarIcon: ({ focused, color }) => {
+					tabBarIcon: ({focused, color}) => {
 						let iconName = focused ? 'search' : 'search-outline';
 						return (
 							<Ionicons
@@ -69,7 +71,7 @@ const TraineeBottomTab = () => {
 				name='FavoriteTrainers'
 				component={FavoriteTrainers}
 				options={{
-					tabBarIcon: ({ focused, color }) => {
+					tabBarIcon: ({focused, color}) => {
 						let iconName = focused ? 'bookmarks' : 'bookmarks-outline';
 						return (
 							<Ionicons
@@ -85,7 +87,7 @@ const TraineeBottomTab = () => {
 				name='RegisteredEvents'
 				component={RegisteredEvents}
 				options={{
-					tabBarIcon: ({ focused, color }) => {
+					tabBarIcon: ({focused, color}) => {
 						let iconName = focused ? 'calendar' : 'calendar-outline';
 						return (
 							<Ionicons
@@ -98,10 +100,10 @@ const TraineeBottomTab = () => {
 				}}
 			/>
 			<Tab.Screen
-				name='PersonalDetails'
-				component={PersonalDetails}
+				name='StackManageDetails'
+				component={StackManageDetails}
 				options={{
-					tabBarIcon: ({ focused, color }) => {
+					tabBarIcon: ({focused, color}) => {
 						let iconName = focused ? 'person' : 'person-outline';
 						return (
 							<Ionicons

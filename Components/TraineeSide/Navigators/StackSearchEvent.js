@@ -1,5 +1,5 @@
 // Navigation Imports
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Screen Components
 import Events from '../../../Screens/TraineeScreens/Events';
@@ -22,7 +22,7 @@ const StackSearchEvent = () => (
 	<Stack.Navigator
 		mode='modal'
 		screenOptions={{
-			header: ({ navigation }) => (
+			header: ({navigation}) => (
 				<Header
 					label={'Fit\nUp'}
 					containerStyle={{
@@ -40,7 +40,8 @@ const StackSearchEvent = () => (
 			contentStyle: {
 				backgroundColor: 'white',
 			},
-		}}>
+		}}
+	>
 		<Stack.Screen
 			name='Categories'
 			component={Categories}
