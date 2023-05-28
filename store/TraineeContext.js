@@ -1,5 +1,5 @@
 // React Hooks & API imports
-import { createContext, useReducer } from 'react';
+import {createContext, useReducer} from 'react';
 
 // The shared state schema
 export const TraineeContext = createContext({
@@ -19,20 +19,20 @@ export const TraineeContext = createContext({
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'SET_TRAINEE':
-			return { ...state, trainee: action.payload };
+			return {...state, trainee: action.payload};
 		case 'SET_EVENTS':
-			return { ...state, events: action.payload };
+			return {...state, events: action.payload};
 		case 'SET_REGISTERED_EVENTS':
-			return { ...state, registeredEvents: action.payload };
+			return {...state, registeredEvents: action.payload};
 		case 'SET_FAVORITE_TRAINERS':
-			return { ...state, favoriteTrainers: action.payload };
+			return {...state, favoriteTrainers: action.payload};
 		default:
 			return state;
 	}
 };
 
 // The context provider of the store
-const TraineeContextProvider = ({ children }) => {
+const TraineeContextProvider = ({children}) => {
 	// reducer initialize
 	const [state, dispatch] = useReducer(reducer, {
 		trainee: {},
@@ -44,15 +44,15 @@ const TraineeContextProvider = ({ children }) => {
 
 	// store handlers
 	const setTrainee = trainee =>
-		dispatch({ type: 'SET_TRAINEE', payload: trainee });
+		dispatch({type: 'SET_TRAINEE', payload: trainee});
 
-	const setEvents = events => dispatch({ type: 'SET_EVENTS', payload: events });
+	const setEvents = events => dispatch({type: 'SET_EVENTS', payload: events});
 
 	const setRegisteredEvents = registeredEvents =>
-		dispatch({ type: 'SET_REGISTERED_EVENTS', payload: registeredEvents });
+		dispatch({type: 'SET_REGISTERED_EVENTS', payload: registeredEvents});
 
 	const setFavoriteTrainers = favoriteTrainers =>
-		dispatch({ type: 'SET_FAVORITE_TRAINERS', payload: favoriteTrainers });
+		dispatch({type: 'SET_FAVORITE_TRAINERS', payload: favoriteTrainers});
 
 	// Connecting the store to the context provider
 	const value = {

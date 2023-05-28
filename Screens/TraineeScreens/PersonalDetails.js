@@ -35,8 +35,10 @@ const PersonalDetails = ({navigation}) => {
 				{context.trainee.firstName + ' ' + context.trainee.lastName}
 			</Title>
 			<Text style={styles.headingText}>In fitup from 15.02.2023</Text>
-			<TraineeMetrics height={1.78} weight={78} />
-
+			<TraineeMetrics
+				height={context.trainee.height}
+				weight={context.trainee.weight}
+			/>
 			{/* <CategoryHorizontalList /> */}
 			<View style={{marginTop: '15%'}}>
 				<Link

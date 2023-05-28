@@ -1,17 +1,17 @@
 // Hooks imports
-import { useContext, useEffect } from 'react';
+import {useContext, useEffect} from 'react';
 
 // RN core components & API imports
-import { StyleSheet, Text, View, Image } from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 
 // Contexts imports
-import { SignupContext } from '../../../store/SignupContext';
+import {SignupContext} from '../../../store/SignupContext';
 
 // Custom component import
 import SignupButton from './SignupButton';
 
 // utils
-import { postData } from './../../../utils/http/rest';
+import {postData} from './../../../utils/http/rest';
 
 // Firebase imports
 import {
@@ -21,7 +21,7 @@ import {
 } from 'firebase/auth';
 
 // Step4 component
-const Step4 = ({ navigation }) => {
+const Step4 = ({navigation}) => {
 	// Context initialize
 	const context = useContext(SignupContext);
 	// Creating user in firebase auth & sending email verification
@@ -50,6 +50,8 @@ const Step4 = ({ navigation }) => {
 					firstName: context.firstName,
 					lastName: context.lastName,
 					email: context.email,
+					weight: 70,
+					height: 170,
 				};
 
 				if (context.type === 'trainee') {
@@ -93,7 +95,8 @@ const Step4 = ({ navigation }) => {
 					height: 230,
 					resizeMode: 'contain',
 					alignSelf: 'center',
-				}}></Image>
+				}}
+			></Image>
 		</View>
 	);
 };

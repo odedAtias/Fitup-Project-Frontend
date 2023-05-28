@@ -1,5 +1,5 @@
 // Hooks imports
-import { useFonts } from 'expo-font';
+import {useFonts} from 'expo-font';
 
 // Fonts imports
 import Blanka from './assets/fonts/Blanka.otf';
@@ -7,14 +7,14 @@ import RubikLight from './assets/fonts/Rubik-Light.ttf';
 import Rubik from './assets/fonts/Rubik.ttf';
 
 // Status Bar
-import { StatusBar } from 'expo-status-bar';
+import {StatusBar} from 'expo-status-bar';
 
 // RN core components & API imports
-import { StyleSheet, SafeAreaView, Platform, Text } from 'react-native';
+import {StyleSheet, SafeAreaView, Platform, Text} from 'react-native';
 
 // Navigation Imports
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Screen Components
 import Login from './Screens/GenericScreens/Login';
@@ -56,7 +56,7 @@ export default function App() {
 						<NavigationContainer>
 							<Stack.Navigator
 								screenOptions={{
-									header: ({ navigation }) => {
+									header: ({navigation}) => {
 										return (
 											<Header
 												label={'Fit\nUp'}
@@ -71,21 +71,22 @@ export default function App() {
 									contentStyle: {
 										backgroundColor: Colors.Backgrounds.primary,
 									},
-								}}>
+								}}
+							>
 								<Stack.Screen
 									name='Login'
 									component={Login}
-									options={{ headerShown: false }}
+									options={{headerShown: false}}
 								/>
 								<Stack.Screen
 									name='Signup'
 									component={Signup}
-									options={{ headerShown: false }}
+									options={{headerShown: false}}
 								/>
 								<Stack.Screen
 									name='ForgotPassword'
 									component={ForgotPassword}
-									options={{ presentation: 'modal' }}
+									options={{presentation: 'modal'}}
 								/>
 								{/* The gate to the trainee app */}
 								<Stack.Screen
