@@ -103,6 +103,7 @@ const TraineeBottomTab = () => {
 				name='StackManageDetails'
 				component={StackManageDetails}
 				options={{
+					headerShown: false,
 					tabBarIcon: ({focused, color}) => {
 						let iconName = focused ? 'person' : 'person-outline';
 						return (

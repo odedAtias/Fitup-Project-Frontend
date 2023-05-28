@@ -1,11 +1,15 @@
+// Hooks imports
+import {useNavigation} from '@react-navigation/native';
+
 // RN core components & API imports
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 
 // Utils
-import { bmiColor } from './../../../utils/stats';
+import {bmiColor} from './../../../utils/stats';
 
 // TraineeMetrics
-const TraineeMetrics = ({ height, weight }) => {
+const TraineeMetrics = ({height, weight}) => {
+	const navigation = useNavigation();
 	const bmi = (weight / height ** 2).toFixed(1);
 	return (
 		<View style={styles.container}>
@@ -15,9 +19,10 @@ const TraineeMetrics = ({ height, weight }) => {
 					<Text style={styles.value}>{height}</Text>
 					<Pressable
 						onPress={() => {
-							console.log('edit ...');
-						}}>
-						<Text style={{ color: 'grey', marginTop: 5 }}>Edit</Text>
+							navigation.navigate('ManageDetails');
+						}}
+					>
+						<Text style={{color: 'grey', marginTop: 5}}>Edit</Text>
 					</Pressable>
 				</View>
 			</View>
@@ -27,14 +32,15 @@ const TraineeMetrics = ({ height, weight }) => {
 					<Text style={styles.value}>{weight}</Text>
 					<Pressable
 						onPress={() => {
-							console.log('edit ...');
-						}}>
-						<Text style={{ color: 'grey', marginTop: 5 }}>Edit</Text>
+							navigation.navigate('ManageDetails');
+						}}
+					>
+						<Text style={{color: 'grey', marginTop: 5}}>Edit</Text>
 					</Pressable>
 				</View>
 			</View>
 			<View style={styles.metricContainer}>
-				<View style={[styles.metric, { backgroundColor: bmiColor(bmi) }]}>
+				<View style={[styles.metric, {backgroundColor: bmiColor(bmi)}]}>
 					<Text style={styles.title}>BMI</Text>
 					<Text style={styles.value}>{bmi}</Text>
 				</View>
