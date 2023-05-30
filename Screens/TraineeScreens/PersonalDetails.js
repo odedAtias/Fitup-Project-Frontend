@@ -40,12 +40,12 @@ const PersonalDetails = ({navigation}) => {
 				weight={context.trainee.weight}
 			/>
 			{/* <CategoryHorizontalList /> */}
-			<View style={{marginTop: '15%'}}>
+			<View style={{marginTop: '5%'}}>
 				<Link
 					style={styles.logOutButton}
 					onPress={() => navigation.navigate('Login')}
 				>
-					Log out
+					Sign Out
 				</Link>
 			</View>
 		</View>
@@ -54,20 +54,23 @@ const PersonalDetails = ({navigation}) => {
 
 const styles = StyleSheet.create({
 	logOutButton: {
-		color: 'red',
-		fontSize: 20,
+		color: Colors.Headers.primary,
+		fontSize: 25,
 	},
 	container: {
 		flex: 1,
 		alignItems: 'center',
-		padding: 10,
 		backgroundColor: '#fffaf7',
+		paddingTop: '5%',
 	},
 
 	headingText: {
 		fontSize: 17,
 		fontFamily: 'rubik',
 		color: Colors.Texts.fifth,
+	},
+	spacing: {
+		marginTop: 10,
 	},
 });
 

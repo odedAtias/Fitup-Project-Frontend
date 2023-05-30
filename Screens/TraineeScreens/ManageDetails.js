@@ -1,16 +1,12 @@
-// RN components imports
-import {StyleSheet, Text, View} from 'react-native';
+// Custom components imports
+import ManageDetailsForm from '../../Components/TraineeSide/ManageDetailsOutput/ManageDetailsForm';
 
 // ManageDetails component
 const ManageDetails = () => {
-	return (
-		<View>
-			<Text>ManageDetails</Text>
-		</View>
-	);
+	const handleSubmit = formData => {
+		console.log('submitted ...', formData);
+	};
+	return <ManageDetailsForm onSubmit={handleSubmit} />;
 };
-
-// ManageDetails StyleSheets
-const styles = StyleSheet.create({});
 
 export default ManageDetails;

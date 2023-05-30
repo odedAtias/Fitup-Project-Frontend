@@ -1,11 +1,11 @@
 // RN core components & API imports
-import { View, Text, StyleSheet, TextInput, Platform } from 'react-native';
+import {View, Text, StyleSheet, TextInput, Platform} from 'react-native';
 
 // Constants
 import Colors from '../../../Constants/Colors';
 
 // SignpuInput component
-const SignupInput = ({ label, inputConfigurations }) => {
+const SignupInput = ({label, inputConfigurations}) => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.label}>{label}</Text>

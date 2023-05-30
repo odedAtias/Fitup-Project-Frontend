@@ -20,7 +20,7 @@ const StackManageDetails = () => {
 		<Stack.Navigator
 			mode='modal'
 			screenOptions={{
-				header: ({navigation}) => (
+				header: () => (
 					<Header
 						label={'Fit\nUp'}
 						containerStyle={{
@@ -32,7 +32,6 @@ const StackManageDetails = () => {
 							fontSize: 50,
 							color: Colors.Texts.primary,
 						}}
-						onPressLeft={() => navigation.goBack()}
 					/>
 				),
 				contentStyle: {
@@ -44,7 +43,26 @@ const StackManageDetails = () => {
 			<Stack.Screen
 				name='ManageDetails'
 				component={ManageDetails}
-				options={{headerShown: true}}
+				options={{
+					header: ({navigation}) => (
+						<Header
+							label={'Fit\nUp'}
+							containerStyle={{
+								backgroundColor: Colors.Headers.primary,
+								padding: Platform.OS === 'ios' ? 10 : 10,
+								paddingTop: Platform.OS === 'ios' ? 10 : 30,
+							}}
+							labelStyle={{
+								fontSize: 50,
+								color: Colors.Texts.primary,
+							}}
+							onPressLeft={() => navigation.goBack()}
+						/>
+					),
+					contentStyle: {
+						backgroundColor: 'white',
+					},
+				}}
 			/>
 		</Stack.Navigator>
 	);
