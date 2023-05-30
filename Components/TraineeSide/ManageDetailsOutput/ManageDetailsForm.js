@@ -131,7 +131,11 @@ const ManageDetailsForm = ({onSubmit}) => {
 			});
 			return;
 		}
-		onSubmit(formData);
+		onSubmit({
+			...formData,
+			weight: parseInt(formData.weight),
+			height: parseInt(formData.height),
+		});
 	};
 
 	return (

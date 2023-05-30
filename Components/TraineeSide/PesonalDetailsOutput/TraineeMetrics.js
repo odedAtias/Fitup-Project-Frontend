@@ -5,12 +5,13 @@ import {useNavigation} from '@react-navigation/native';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 
 // Utils
-import {bmiColor} from './../../../utils/stats';
+import {bmiColor, calculateBMI} from './../../../utils/stats';
 
 // TraineeMetrics
 const TraineeMetrics = ({height, weight}) => {
 	const navigation = useNavigation();
-	const bmi = (weight / height ** 2).toFixed(1);
+	const bmi = calculateBMI(height, weight);
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.metricContainer}>

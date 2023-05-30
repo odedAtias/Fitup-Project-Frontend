@@ -1,4 +1,11 @@
 import Colors from '../Constants/Colors';
+
+export const calculateBMI = (height, weight) => {
+	const heightInMeters = height / 100; // Convert height from cm to meters
+	const bmi = weight / (heightInMeters * heightInMeters);
+	return bmi.toFixed(2); // Return BMI with 2 decimal places
+};
+
 export const bmiColor = bmi => {
 	// under weight case
 	if (bmi < 18.5) return Colors.Links.primary;
