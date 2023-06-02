@@ -1,36 +1,36 @@
 // Hooks imports
-import { useState, useContext } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import {useState, useContext} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import { View, StyleSheet, LogBox } from 'react-native';
+import {View, StyleSheet, LogBox} from 'react-native';
 
 // Firebase Authentication API imports
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../auth/firebase-config';
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {auth} from '../../../auth/firebase-config';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 LogBox.ignoreLogs(['AsyncStorage has been extracted']);
 
 // Utils
-import { fetchData } from '../../../utils/http/rest';
+import {fetchData} from '../../../utils/http/rest';
 
 // Custom components imports
 import LoginInput from './LoginInput';
 import Button from '../../UI/Button';
 
 // Context import
-import { TraineeContext } from '../../../store/TraineeContext';
-import { EventsContext } from './../../../store/EventsContext';
+import {TraineeContext} from '../../../store/TraineeContext';
+import {EventsContext} from './../../../store/EventsContext';
 
 // Constants
 import Colors from '../../../Constants/Colors';
 
 // Constants
-import { alert } from '../../../Constants/Alert';
+import {alert} from '../../../Constants/Alert';
 
 // Login Component
-const LoginForm = ({ isLoading, setIsLoading }) => {
+const LoginForm = ({isLoading, setIsLoading}) => {
 	// context initialize
 	const traineeContext = useContext(TraineeContext);
 	const eventsContext = useContext(EventsContext);
@@ -56,19 +56,19 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 			return {
 				...currentInputs,
 				// Way to update keys/values dynamically
-				[inputIdentifier]: { value: enteredValue, isValid: true },
+				[inputIdentifier]: {value: enteredValue, isValid: true},
 			};
 		});
 	};
 
 	// fetch user data
 	const fetchUserData = async id => {
-		const response1 = await fetchData(`api/trainees/${id}`);
-		const response2 = await fetchData('api/events');
+		let response1 = await fetchData(`api/trainees/${id}`);
+		let response2 = await fetchData('api/events');
 		// Check if the user's type is trainee
 		if (response1 && response2) {
 			const [trainee, events] = [response1.data, response2.data];
-			const { __v, favoriteTrainers, registeredEvents, ...rest } = trainee;
+			const {__v, favoriteTrainers, registeredEvents, ...rest} = trainee;
 			// Set the data in the store
 			traineeContext.setTrainee(rest);
 			traineeContext.setFavoriteTrainers(favoriteTrainers);
@@ -76,7 +76,10 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 			eventsContext.setEvents(events);
 			return 'Trainee';
 		} else {
-			return 'Trainer';
+			response1 = await fetchData(`api/trainers/login/${id}`);
+			if (response1) {
+				return 'Trainer';
+			}
 		}
 	};
 
@@ -95,7 +98,7 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 					const result = await fetchUserData(userCredential.user.uid);
 					if (result === 'Trainee') navigation.navigate('TraineeBottomTab');
 					else {
-						console.log('This is the case of navigate to trainer app ...');
+						navigation.navigate('TrainerBottomTab');
 					}
 				} else {
 					alert(
@@ -126,7 +129,7 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 					autoCorrect: false,
 					value: inputs.username.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
+				style={{textAlign: 'left', fontSize: 16}}
 			/>
 			<LoginInput
 				label='Password'
@@ -138,20 +141,22 @@ const LoginForm = ({ isLoading, setIsLoading }) => {
 					secureTextEntry: true,
 					value: inputs.password.value,
 				}}
-				style={{ textAlign: 'left', fontSize: 16 }}
+				style={{textAlign: 'left', fontSize: 16}}
 			/>
 			{/* Buttons container (sign-in & sign-up) */}
 			<View style={styles.buttonsContainer}>
 				<Button
-					style={{ backgroundColor: Colors.Buttons.primary }}
-					onPress={handleSubmit}>
+					style={{backgroundColor: Colors.Buttons.primary}}
+					onPress={handleSubmit}
+				>
 					Sign in
 				</Button>
 				<Button
-					style={{ backgroundColor: Colors.Buttons.secondary }}
+					style={{backgroundColor: Colors.Buttons.secondary}}
 					onPress={() => {
 						navigation.navigate('Signup');
-					}}>
+					}}
+				>
 					Sign up
 				</Button>
 			</View>

@@ -23,6 +23,7 @@ import ForgotPassword from './Screens/GenericScreens/ForgotPassword';
 // Custom Navigators components
 import Signup from './Screens/GenericScreens/Signup';
 import TraineeBottomTab from './Components/TraineeSide/Navigators/TraineeBottomTab';
+import TrainerBottomTab from './Components/TrainerSide/Navigators/TrainerBottomTab';
 
 //Custom Components
 import Header from './Components/UI/Header';
@@ -97,7 +98,14 @@ export default function App() {
 										presentation: 'containedModal',
 									}}
 								/>
-								{/* The gate to the trainer app */}
+								<Stack.Screen
+									name='TrainerBottomTab'
+									component={TrainerBottomTab}
+									options={{
+										headerShown: false,
+										presentation: 'containedModal',
+									}}
+								/>
 							</Stack.Navigator>
 						</NavigationContainer>
 					</TraineeContextProvider>

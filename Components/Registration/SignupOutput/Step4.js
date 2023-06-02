@@ -50,9 +50,12 @@ const Step4 = ({navigation}) => {
 					firstName: context.firstName,
 					lastName: context.lastName,
 					email: context.email,
-					weight: 70,
-					height: 170,
 				};
+
+				if (context.type === 'trainee') {
+					payload.weight = 70;
+					payload.height = 170;
+				}
 
 				if (context.type === 'trainee') {
 					await postData('api/trainees', payload);
