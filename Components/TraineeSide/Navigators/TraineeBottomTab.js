@@ -13,7 +13,6 @@ const Tab = createBottomTabNavigator();
 // Screen Components
 import FavoriteTrainers from '../../../Screens/TraineeScreens/FavoriteTrainers';
 import RegisteredEvents from '../../../Screens/TraineeScreens/RegisteredEvents';
-import PersonalDetails from '../../../Screens/TraineeScreens/PersonalDetails';
 
 // Custom Navigators components
 import StackSearchEvent from './StackSearchEvent';
