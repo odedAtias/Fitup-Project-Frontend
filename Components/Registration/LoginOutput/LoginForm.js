@@ -22,6 +22,7 @@ import Button from '../../UI/Button';
 // Context import
 import {TraineeContext} from '../../../store/TraineeContext';
 import {EventsContext} from './../../../store/EventsContext';
+import {TrainerContext} from '../../../store/TrainerContext';
 
 // Constants
 import Colors from '../../../Constants/Colors';
@@ -33,6 +34,7 @@ import {alert} from '../../../Constants/Alert';
 const LoginForm = ({isLoading, setIsLoading}) => {
 	// context initialize
 	const traineeContext = useContext(TraineeContext);
+	const trainerContext = useContext(TrainerContext);
 	const eventsContext = useContext(EventsContext);
 
 	// navigation object initialize
@@ -77,9 +79,10 @@ const LoginForm = ({isLoading, setIsLoading}) => {
 			return 'Trainee';
 		} else {
 			response1 = await fetchData(`api/trainers/login/${id}`);
-			if (response1) {
-				return 'Trainer';
-			}
+			const {__v, events, ...rest} = response1.data;
+			trainerContext.setTrainer(rest);
+			trainerContext.setEvents(events);
+			return 'Trainer';
 		}
 	};
 
@@ -97,9 +100,7 @@ const LoginForm = ({isLoading, setIsLoading}) => {
 				if (userCredential.user.emailVerified) {
 					const result = await fetchUserData(userCredential.user.uid);
 					if (result === 'Trainee') navigation.navigate('TraineeBottomTab');
-					else {
-						navigation.navigate('TrainerBottomTab');
-					}
+					else navigation.navigate('TrainerBottomTab');
 				} else {
 					alert(
 						'Email verification error',

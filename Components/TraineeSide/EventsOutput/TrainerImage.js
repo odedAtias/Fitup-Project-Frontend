@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+// Hooks imports
+import {useState} from 'react';
+
+// RN core components & API imports
+import {View, StyleSheet, Image} from 'react-native';
 
 // Default image URL
 const DEFAULT_IMAGE_URL =
 	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTECb7TBZ1o0RLkM-VV-41JPLLMwKwPRgACKvj89wueS9AqoK-mieFUvl1whh1G7ODWQ&usqp=CAU';
 
 // TrainerImage component
-const TrainerImage = ({ imageUrl, style }) => {
+const TrainerImage = ({imageUrl, style}) => {
 	const [imageError, setImageError] = useState(false);
 
 	const handleImageError = () => {
@@ -31,8 +34,6 @@ const TrainerImage = ({ imageUrl, style }) => {
 // TrainerImage StyleSheet
 const styles = StyleSheet.create({
 	container: {
-		// marginRight: 20,
-		// marginLeft: 5,
 		marginVertical: 5,
 	},
 	imageContainer: {

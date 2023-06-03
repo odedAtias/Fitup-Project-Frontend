@@ -1,5 +1,3 @@
-import {StyleSheet, Text, View} from 'react-native';
-
 // Navigation Imports
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -17,7 +15,7 @@ import AllEvents from '../../../Screens/TrainerScreens/AllEvents';
 import PersonalDetails from './../../../Screens/TrainerScreens/PersonalDetails';
 
 // Custom Navigators components
-import Welcome from './Welcome';
+import WelcomeNavigator from './WelcomeNavigator';
 
 // Custom components
 import Header from '../../UI/Header';
@@ -51,8 +49,8 @@ const TrainerBottomTab = () => {
 			}}
 		>
 			<Tab.Screen
-				name='Welcome'
-				component={Welcome}
+				name='WelcomeNavigator'
+				component={WelcomeNavigator}
 				options={{
 					headerShown: false,
 					tabBarIcon: ({focused, color}) => {
@@ -105,5 +103,3 @@ const TrainerBottomTab = () => {
 };
 
 export default TrainerBottomTab;
-
-const styles = StyleSheet.create({});

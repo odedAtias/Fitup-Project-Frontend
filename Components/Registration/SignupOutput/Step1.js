@@ -1,8 +1,8 @@
 // Hooks imports
-import { useContext } from 'react';
+import {useContext} from 'react';
 
 // RN core components & API imports
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
+import {StyleSheet, Text, View, Pressable, Image} from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 // Custom component import
@@ -10,14 +10,14 @@ import SignupButton from '../SignupOutput/SignupButton';
 import Link from '../../UI/Link';
 
 // Contexts imports
-import { SignupContext } from '../../../store/SignupContext';
+import {SignupContext} from '../../../store/SignupContext';
 
 // Constants
 import Colors from '../../../Constants/Colors';
-import { alert } from '../../../Constants/Alert';
+import {alert} from '../../../Constants/Alert';
 
 // Step1 component
-const Step1 = ({ navigation }) => {
+const Step1 = ({navigation}) => {
 	// Context initialize
 	const context = useContext(SignupContext);
 	// Step1 submit handler
@@ -35,7 +35,7 @@ const Step1 = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<Text style={[styles.headingText, styles.spacing]}>
-				Let's customize your profile{' '}
+				Let's customize your profile
 			</Text>
 			<Text style={[styles.text]}>Choose the type of your account :</Text>
 			<View style={styles.CheckboxesContainer}>
@@ -44,7 +44,8 @@ const Step1 = ({ navigation }) => {
 						styles.checkboxContainer,
 						context.type === 'trainee' && styles.checked,
 					]}
-					onPress={() => context.setType('trainee')}>
+					onPress={() => context.setType('trainee')}
+				>
 					<Checkbox
 						style={styles.checkbox}
 						color={
@@ -59,7 +60,8 @@ const Step1 = ({ navigation }) => {
 						styles.checkboxContainer,
 						context.type === 'trainer' && styles.checked,
 					]}
-					onPress={() => context.setType('trainer')}>
+					onPress={() => context.setType('trainer')}
+				>
 					<Checkbox
 						style={styles.checkbox}
 						color={
@@ -72,7 +74,7 @@ const Step1 = ({ navigation }) => {
 			</View>
 			<SignupButton onPress={handleSubmit}>{'Next >'}</SignupButton>
 			<View style={styles.linkContainer}>
-				<Text style={[styles.text, { marginRight: 5 }]}>
+				<Text style={[styles.text, {marginRight: 5}]}>
 					Alreay have an account ?
 				</Text>
 				<Link onPress={() => navigation.goBack()}>Sign in</Link>
@@ -85,7 +87,8 @@ const Step1 = ({ navigation }) => {
 					resizeMode: 'contain',
 					alignSelf: 'center',
 					marginTop: '5%',
-				}}></Image>
+				}}
+			></Image>
 		</View>
 	);
 };

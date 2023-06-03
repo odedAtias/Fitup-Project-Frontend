@@ -10,27 +10,30 @@ import Colors from './../../Constants/Colors';
 // Contexts imports
 import {TrainerContext} from './../../store/TrainerContext';
 
-// AllEvents component
-const AllEvents = () => {
+// UpcomingEvents
+const UpcomingEvents = () => {
 	const context = useContext(TrainerContext);
 	if (context.events.length === 0)
 		return (
 			<View style={styles.container}>
-				<Text style={styles.headingText}>Not have registered events yet !</Text>
+				<Text style={styles.headingText}>
+					You haven't posted any traning events yet, Share your unwritten events
+					with us.
+				</Text>
 			</View>
 		);
 	else
 		return (
 			<View style={styles.container}>
 				<Text style={styles.headingText}>
-					View and manage your registered training events
+					View and manage your posted events training events
 				</Text>
 				{/* <EventsList events={context.events} /> */}
 			</View>
 		);
 };
 
-// AllEvents component
+// UpcomingEvents StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		height: '90%',
@@ -44,8 +47,8 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginBottom: 20,
 		color: Colors.Texts.primary,
-		maxWidth: '90%',
+		maxWidth: '95%',
 	},
 });
 
-export default AllEvents;
+export default UpcomingEvents;

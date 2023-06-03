@@ -1,13 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
-// Welcome component
-const Welcome = () => {
+
+const Feedbacks = () => {
 	return (
 		<View>
-			<Text>Welcome</Text>
+			<Text>Feedbacks</Text>
 		</View>
 	);
 };
 
-export default Welcome;
+export default Feedbacks;
 
 const styles = StyleSheet.create({});

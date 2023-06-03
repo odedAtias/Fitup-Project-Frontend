@@ -1,24 +1,18 @@
 // Hooks imports
-import { useNavigation } from '@react-navigation/native';
-import { useContext } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {useContext} from 'react';
 
 // RN core components & API imports
-import {
-	View,
-	ImageBackground,
-	StyleSheet,
-	Pressable,
-	Text,
-} from 'react-native';
+import {View, ImageBackground, StyleSheet, Pressable, Text} from 'react-native';
 
 // Contexts imports
-import { EventsContext } from './../../../store/EventsContext';
+import {EventsContext} from './../../../store/EventsContext';
 
 // Constants
-import { CATEGORIES } from '../../../Constants/Categories';
+import {CATEGORIES} from '../../../Constants/Categories';
 
 // EventCard component
-const EventCard = ({ event }) => {
+const EventCard = ({event}) => {
 	// Context intitialize
 	const context = useContext(EventsContext);
 
@@ -26,7 +20,7 @@ const EventCard = ({ event }) => {
 	const navigation = useNavigation();
 
 	// destructuring the relevant props
-	const { category, date, hour, city, participants, maxParticipants } = event;
+	const {category, date, hour, city, participants, maxParticipants} = event;
 
 	// find the relevant imageUrl
 	const imageUrl = CATEGORIES.find(c => c.name === category).imageUrl;
