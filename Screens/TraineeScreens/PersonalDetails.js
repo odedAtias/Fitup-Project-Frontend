@@ -52,7 +52,9 @@ const PersonalDetails = ({navigation}) => {
 						color='black'
 						icon='create-outline'
 						size={30}
-						onPress={() => navigation.navigate('ManageDetails')}
+						onPress={() =>
+							navigation.navigate('ManageDetails', {isTrainer: false})
+						}
 					/>
 				</View>
 			</View>

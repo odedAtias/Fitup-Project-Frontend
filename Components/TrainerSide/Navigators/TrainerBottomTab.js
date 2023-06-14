@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 
 // Screen Components
 import AllEvents from '../../../Screens/TrainerScreens/AllEvents';
-import PersonalDetails from './../../../Screens/TrainerScreens/PersonalDetails';
+import StackManageDetails from './StackManageDetailsTrainee';
 
 // Custom Navigators components
 import WelcomeNavigator from './WelcomeNavigator';
@@ -82,8 +82,8 @@ const TrainerBottomTab = () => {
 				}}
 			/>
 			<Tab.Screen
-				name='PersonalDetails'
-				component={PersonalDetails}
+				name='StackManageDetails'
+				component={StackManageDetails}
 				options={{
 					headerShown: false,
 					tabBarIcon: ({focused, color}) => {

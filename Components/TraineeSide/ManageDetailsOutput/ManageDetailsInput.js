@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		fontFamily: 'rubik',
 		paddingVertical: 8,
-		backgroundColor: Colors.Backgrounds.fourth,
+		backgroundColor: Colors.Backgrounds.secondary,
 		paddingLeft: 10,
 	},
 	invalidLabel: {

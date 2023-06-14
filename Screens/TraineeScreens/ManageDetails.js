@@ -6,6 +6,7 @@ import ManageDetailsForm from '../../Components/TraineeSide/ManageDetailsOutput/
 
 // Contexts imports
 import {TraineeContext} from '../../store/TraineeContext';
+import {TrainerContext} from '../../store/TrainerContext';
 
 // Utils
 import {updateData} from '../../utils/http/rest';
@@ -15,27 +16,35 @@ import {alert} from '../../Constants/Alert';
 import Spinner2 from './../../Components/UI/Spinner2';
 
 // ManageDetails component
-const ManageDetails = ({navigation}) => {
-	const tcx = useContext(TraineeContext);
+const ManageDetails = ({navigation, route}) => {
+	const tcx = route.params.isTrainer
+		? useContext(TrainerContext)
+		: useContext(TraineeContext);
+
+	const target = route.params.isTrainer ? tcx.trainer : tcx.trainee;
 
 	const [loading, setLoading] = useState(null);
 
 	const handleSubmit = async formData => {
 		// caching checking
 		const notChanged =
-			tcx.trainee.firstName === formData.firstName &&
-			tcx.trainee.lastName === formData.lastName &&
-			tcx.trainee.height === formData.height &&
-			tcx.trainee.weight === formData.weight;
+			target.firstName === formData.firstName &&
+			target.lastName === formData.lastName &&
+			target.height === formData.height &&
+			target.weight === formData.weight;
 
 		// Update in the backend
 		if (!notChanged) {
 			setLoading(true);
 			// Upadte the context of the trainee
-			const trainee = {...tcx.trainee, ...formData};
-			tcx.setTrainee(trainee);
+			const trainee = {...target, ...formData};
+			route.params.isTrainer
+				? tcx.setTrainer(trainee)
+				: tcx.setTrainee(trainee);
 			try {
-				await updateData(`api/trainees/${trainee._id}`, trainee);
+				route.params.isTrainer
+					? await updateData(`api/trainees/${trainee._id}`, trainee)
+					: await updateData(`api/trainers/${trainee._id}`, trainee);
 				alert(
 					'Update Successful',
 					'Your personal details has been successfully updated! 🎉.'
@@ -57,7 +66,12 @@ const ManageDetails = ({navigation}) => {
 		return <Spinner2 />;
 	}
 
-	return <ManageDetailsForm onSubmit={handleSubmit} />;
+	return (
+		<ManageDetailsForm
+			onSubmit={handleSubmit}
+			isTrainer={route.params.isTrainer}
+		/>
+	);
 };
 
 export default ManageDetails;

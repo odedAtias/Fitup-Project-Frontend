@@ -17,27 +17,13 @@ const TraineeMetrics = ({height, weight}) => {
 			<View style={styles.metricContainer}>
 				<View style={styles.metric}>
 					<Text style={styles.title}>Height</Text>
-					<Text style={styles.value}>{height}</Text>
-					<Pressable
-						onPress={() => {
-							navigation.navigate('ManageDetails');
-						}}
-					>
-						<Text style={{color: 'grey', marginTop: 5}}>Edit</Text>
-					</Pressable>
+					<Text style={styles.value}>{height} cm</Text>
 				</View>
 			</View>
 			<View style={styles.metricContainer}>
 				<View style={styles.metric}>
 					<Text style={styles.title}>Weight</Text>
-					<Text style={styles.value}>{weight}</Text>
-					<Pressable
-						onPress={() => {
-							navigation.navigate('ManageDetails');
-						}}
-					>
-						<Text style={{color: 'grey', marginTop: 5}}>Edit</Text>
-					</Pressable>
+					<Text style={styles.value}>{weight} kg</Text>
 				</View>
 			</View>
 			<View style={styles.metricContainer}>
@@ -56,7 +42,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		width: '90%',
+		width: '100%',
 	},
 	title: {
 		fontFamily: 'rubik',

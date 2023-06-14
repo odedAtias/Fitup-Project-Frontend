@@ -12,30 +12,35 @@ import Button from '../../UI/Button';
 
 // Constants
 import Colors from '../../../Constants/Colors';
+import {alert} from './../../../Constants/Alert';
 
 // Contexts imports
 import {TraineeContext} from './../../../store/TraineeContext';
-import {alert} from './../../../Constants/Alert';
+import {TrainerContext} from '../../../store/TrainerContext';
 
 // ManageDetailsForm component
-const ManageDetailsForm = ({onSubmit}) => {
-	const ctx = useContext(TraineeContext);
+const ManageDetailsForm = ({onSubmit, isTrainer}) => {
+	const tcx = isTrainer
+		? useContext(TrainerContext)
+		: useContext(TraineeContext);
+
+	const target = isTrainer ? tcx.trainer : tcx.trainee;
 
 	const [inputs, setInputs] = useState({
 		firstName: {
-			value: ctx.trainee.firstName,
+			value: target.firstName,
 			isValid: true,
 		},
 		lastName: {
-			value: ctx.trainee.lastName,
+			value: target.lastName,
 			isValid: true,
 		},
 		height: {
-			value: ctx.trainee.height,
+			value: target.height,
 			isValid: true,
 		},
 		weight: {
-			value: ctx.trainee.weight,
+			value: target.weight,
 			isValid: true,
 		},
 	});
@@ -143,7 +148,7 @@ const ManageDetailsForm = ({onSubmit}) => {
 			{/* Image */}
 			<View style={styles.avatar}>
 				<TrainerImage
-					imageUrl={ctx.trainee.image}
+					imageUrl={target.image}
 					style={{
 						width: 130,
 						height: 130,
