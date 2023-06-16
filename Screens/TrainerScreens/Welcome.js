@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 	},
 	qouteContainer: {
 		marginTop: '6%',
-		backgroundColor: Colors.Backgrounds.fourth,
+		backgroundColor: Colors.Backgrounds.secondary,
 		borderRadius: 20,
 		padding: '5%',
 	},

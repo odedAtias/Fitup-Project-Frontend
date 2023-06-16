@@ -66,7 +66,6 @@ const PersonalDetails = ({navigation}) => {
 				height={context.trainee.height}
 				weight={context.trainee.weight}
 			/>
-			{/* <CategoryHorizontalList /> */}
 			<Button
 				style={{
 					backgroundColor: '#F06A6E',

@@ -2,7 +2,7 @@
 import {useContext, useState} from 'react';
 
 // RN core components & API imports
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 
 // Custom components imports
 import ManageDetailsInput from './ManageDetailsInput';
@@ -43,6 +43,12 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 			value: target.weight,
 			isValid: true,
 		},
+		...(isTrainer && {
+			description: {
+				value: target.description,
+				isValid: true,
+			},
+		}),
 	});
 
 	// Input validation functions
@@ -99,6 +105,7 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 			lastName: inputs.lastName.value,
 			weight: inputs.weight.value.toString(),
 			height: inputs.height.value.toString(),
+			...(isTrainer && {description: inputs?.description?.value}),
 		};
 
 		// Input validation
@@ -114,26 +121,49 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 			!heightIsValid
 		) {
 			alert('Invalid Input', 'Please check your input fields.');
-			setInputs(currentInputs => {
-				return {
-					firstName: {
-						value: currentInputs.firstName.value,
-						isValid: firstNameIsValid,
-					},
-					lastName: {
-						value: currentInputs.lastName.value,
-						isValid: lastNameIsValid,
-					},
-					weight: {
-						value: currentInputs.weight.value,
-						isValid: weightIsValid,
-					},
-					height: {
-						value: currentInputs.height.value,
-						isValid: heightIsValid,
-					},
-				};
-			});
+			setInputs(currentInputs =>
+				isTrainer
+					? {
+							firstName: {
+								value: currentInputs.firstName.value,
+								isValid: firstNameIsValid,
+							},
+							lastName: {
+								value: currentInputs.lastName.value,
+								isValid: lastNameIsValid,
+							},
+							weight: {
+								value: currentInputs.weight.value,
+								isValid: weightIsValid,
+							},
+							height: {
+								value: currentInputs.height.value,
+								isValid: heightIsValid,
+							},
+							description: {
+								value: currentInputs.description.value,
+								isValid: true,
+							},
+					  }
+					: {
+							firstName: {
+								value: currentInputs.firstName.value,
+								isValid: firstNameIsValid,
+							},
+							lastName: {
+								value: currentInputs.lastName.value,
+								isValid: lastNameIsValid,
+							},
+							weight: {
+								value: currentInputs.weight.value,
+								isValid: weightIsValid,
+							},
+							height: {
+								value: currentInputs.height.value,
+								isValid: heightIsValid,
+							},
+					  }
+			);
 			return;
 		}
 		onSubmit({
@@ -144,92 +174,115 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 	};
 
 	return (
-		<View style={styles.container}>
-			{/* Image */}
-			<View style={styles.avatar}>
-				<TrainerImage
-					imageUrl={target.image}
-					style={{
-						width: 130,
-						height: 130,
-						borderRadius: 100,
-						marginBottom: 2,
+		<ScrollView style={styles.scrolling}>
+			<View style={styles.container}>
+				{/* Image */}
+				<View style={styles.avatar}>
+					<TrainerImage
+						imageUrl={target.image}
+						style={{
+							width: 130,
+							height: 130,
+							borderRadius: 100,
+							marginBottom: 2,
+						}}
+					/>
+					<Link>Change Picture</Link>
+				</View>
+				{/* First Name */}
+				<ManageDetailsInput
+					label='First Name'
+					invalid={!inputs.firstName.isValid}
+					inputConfigurations={{
+						placeholder: 'John',
+						autoCorrect: false,
+						value: inputs.firstName.value,
+						onChangeText: handleInputChange.bind(this, 'firstName'),
 					}}
 				/>
-				<Link>Change Picture</Link>
-			</View>
-			{/* First Name */}
-			<ManageDetailsInput
-				label='First Name'
-				invalid={!inputs.firstName.isValid}
-				inputConfigurations={{
-					placeholder: 'John',
-					autoCorrect: false,
-					value: inputs.firstName.value,
-					onChangeText: handleInputChange.bind(this, 'firstName'),
-				}}
-			/>
-			{/* Last Name */}
-			<ManageDetailsInput
-				label='Last Name'
-				invalid={!inputs.lastName.isValid}
-				inputConfigurations={{
-					placeholder: 'Doe',
-					value: inputs.lastName.value,
-					onChangeText: handleInputChange.bind(this, 'lastName'),
-				}}
-			/>
-			{/* Weight & Height */}
-			<View style={styles.twoInRow}>
-				<View style={styles.inputContainer}>
+				{/* Last Name */}
+				<ManageDetailsInput
+					label='Last Name'
+					invalid={!inputs.lastName.isValid}
+					inputConfigurations={{
+						placeholder: 'Doe',
+						value: inputs.lastName.value,
+						onChangeText: handleInputChange.bind(this, 'lastName'),
+					}}
+				/>
+				{/* Optional - About me for trainers */}
+				{isTrainer && (
 					<ManageDetailsInput
-						label='Height (cm)'
-						invalid={!inputs.height.isValid}
+						label='Description'
+						invalid={!inputs.description.isValid}
 						inputConfigurations={{
-							keyboardType: 'numeric',
-							minValue: 30,
-							maxValue: 200,
-							maxLength: 3,
-							value: inputs.height.value.toString(),
-							onChangeText: handleInputChange.bind(this, 'height'),
+							placeholder: 'Write something about you ...',
+							multiline: true,
+							numberOfLines: 4,
+							maxLength: 300,
+							value: inputs.description.value,
+							onChangeText: handleInputChange.bind(this, 'description'),
+							textAlignVertical: 'top',
 						}}
 					/>
+				)}
+
+				{/* Weight & Height */}
+				<View style={styles.twoInRow}>
+					<View style={styles.inputContainer}>
+						<ManageDetailsInput
+							label='Height (cm)'
+							invalid={!inputs.height.isValid}
+							inputConfigurations={{
+								keyboardType: 'numeric',
+								minValue: 30,
+								maxValue: 200,
+								maxLength: 3,
+								value: inputs.height.value.toString(),
+								onChangeText: handleInputChange.bind(this, 'height'),
+							}}
+						/>
+					</View>
+					<View style={styles.inputContainer}>
+						<ManageDetailsInput
+							label='Weight (kg)'
+							invalid={!inputs.weight.isValid}
+							inputConfigurations={{
+								keyboardType: 'numeric',
+								minValue: 140,
+								maxValue: 220,
+								maxLength: 3,
+								value: inputs.weight.value.toString(),
+								onChangeText: handleInputChange.bind(this, 'weight'),
+							}}
+						/>
+					</View>
 				</View>
-				<View style={styles.inputContainer}>
-					<ManageDetailsInput
-						label='Weight (kg)'
-						invalid={!inputs.weight.isValid}
-						inputConfigurations={{
-							keyboardType: 'numeric',
-							minValue: 140,
-							maxValue: 220,
-							maxLength: 3,
-							value: inputs.weight.value.toString(),
-							onChangeText: handleInputChange.bind(this, 'weight'),
-						}}
-					/>
-				</View>
-			</View>
-			<View
-				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					marginTop: '5%',
-				}}
-			>
-				<Button
-					style={{backgroundColor: Colors.Buttons.fifth, width: '90%'}}
-					textStyle={{fontSize: 18}}
-					onPress={handleConfirm}
+				<View
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginTop: '5%',
+					}}
 				>
-					Update
-				</Button>
+					<Button
+						style={{backgroundColor: Colors.Buttons.fifth, width: '90%'}}
+						textStyle={{fontSize: 18}}
+						onPress={handleConfirm}
+					>
+						Update
+					</Button>
+				</View>
 			</View>
-		</View>
+		</ScrollView>
 	);
 };
 
 const styles = StyleSheet.create({
+	scrolling: {
+		flexGrow: 1,
+		marginBottom: '10%',
+	},
 	container: {
 		flex: 1,
 		padding: '5%',

@@ -17,11 +17,13 @@ import Spinner2 from './../../Components/UI/Spinner2';
 
 // ManageDetails component
 const ManageDetails = ({navigation, route}) => {
-	const tcx = route.params.isTrainer
+	const isTrainer = route.params.isTrainer;
+
+	const tcx = isTrainer
 		? useContext(TrainerContext)
 		: useContext(TraineeContext);
 
-	const target = route.params.isTrainer ? tcx.trainer : tcx.trainee;
+	const target = isTrainer ? tcx.trainer : tcx.trainee;
 
 	const [loading, setLoading] = useState(null);
 
@@ -31,20 +33,19 @@ const ManageDetails = ({navigation, route}) => {
 			target.firstName === formData.firstName &&
 			target.lastName === formData.lastName &&
 			target.height === formData.height &&
-			target.weight === formData.weight;
+			target.weight === formData.weight &&
+			(!isTrainer || target.description === formData.description);
 
 		// Update in the backend
 		if (!notChanged) {
 			setLoading(true);
 			// Upadte the context of the trainee
 			const trainee = {...target, ...formData};
-			route.params.isTrainer
-				? tcx.setTrainer(trainee)
-				: tcx.setTrainee(trainee);
+			isTrainer ? tcx.setTrainer(trainee) : tcx.setTrainee(trainee);
 			try {
-				route.params.isTrainer
-					? await updateData(`api/trainees/${trainee._id}`, trainee)
-					: await updateData(`api/trainers/${trainee._id}`, trainee);
+				isTrainer
+					? await updateData(`api/trainers/${trainee._id}`, trainee)
+					: await updateData(`api/trainees/${trainee._id}`, trainee);
 				alert(
 					'Update Successful',
 					'Your personal details has been successfully updated! 🎉.'
@@ -66,12 +67,7 @@ const ManageDetails = ({navigation, route}) => {
 		return <Spinner2 />;
 	}
 
-	return (
-		<ManageDetailsForm
-			onSubmit={handleSubmit}
-			isTrainer={route.params.isTrainer}
-		/>
-	);
+	return <ManageDetailsForm onSubmit={handleSubmit} isTrainer={isTrainer} />;
 };
 
 export default ManageDetails;

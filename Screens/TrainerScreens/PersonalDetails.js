@@ -17,7 +17,7 @@ import Colors from '../../Constants/Colors';
 import {TrainerContext} from './../../store/TrainerContext';
 
 // PersonalDetails
-const PersonalDetails = () => {
+const PersonalDetails = ({navigation}) => {
 	const context = useContext(TrainerContext);
 	const {image, firstName, lastName, email, description, weight, height} =
 		context.trainer;
