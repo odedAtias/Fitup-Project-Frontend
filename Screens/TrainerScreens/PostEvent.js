@@ -1,6 +1,7 @@
+// RN core components & API imporדts
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
 
+// PostEvent StyleSheet
 const PostEvent = () => {
 	return (
 		<View>
@@ -9,6 +10,7 @@ const PostEvent = () => {
 	);
 };
 
-export default PostEvent;
-
+// PostEvent StyleSheet
 const styles = StyleSheet.create({});
+
+export default PostEvent;

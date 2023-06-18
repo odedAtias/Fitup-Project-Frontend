@@ -17,6 +17,7 @@ import {alert} from './../../../Constants/Alert';
 // Contexts imports
 import {TraineeContext} from './../../../store/TraineeContext';
 import {TrainerContext} from '../../../store/TrainerContext';
+import ImagePicker from '../../UI/ImagePicker';
 
 // ManageDetailsForm component
 const ManageDetailsForm = ({onSubmit, isTrainer}) => {
@@ -50,6 +51,8 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 			},
 		}),
 	});
+
+	const [image, setPickedImage] = useState('');
 
 	// Input validation functions
 	const validateNames = input => {
@@ -97,6 +100,12 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 				[inputIdertifier]: {value: enteredValue, isValid: true},
 			};
 		});
+	};
+
+	// Set new image
+	const onPickImage = image => {
+		if (isTrainer) tcx.setTrainer({...tcx.trainer, image: image});
+		else tcx.setTrainee({...tcx.trainee, image: image});
 	};
 
 	const handleConfirm = () => {
@@ -187,7 +196,7 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 							marginBottom: 2,
 						}}
 					/>
-					<Link>Change Picture</Link>
+					<ImagePicker onPickImage={onPickImage} />
 				</View>
 				{/* First Name */}
 				<ManageDetailsInput

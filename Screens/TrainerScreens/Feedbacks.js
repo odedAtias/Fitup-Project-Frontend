@@ -1,5 +1,7 @@
+// RN core components & API imporדts
 import {StyleSheet, Text, View} from 'react-native';
 
+// Feedback component
 const Feedbacks = () => {
 	return (
 		<View>

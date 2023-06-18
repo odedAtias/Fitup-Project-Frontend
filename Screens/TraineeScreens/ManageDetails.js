@@ -3,6 +3,7 @@ import {useContext, useState} from 'react';
 
 // Custom components imports
 import ManageDetailsForm from '../../Components/TraineeSide/ManageDetailsOutput/ManageDetailsForm';
+import ImagePicker from '../../Components/UI/ImagePicker';
 
 // Contexts imports
 import {TraineeContext} from '../../store/TraineeContext';
