@@ -1,6 +1,3 @@
-// Hooks imports
-import {useState} from 'react';
-
 // constants
 import {alert} from '../../Constants/Alert';
 
@@ -24,6 +21,7 @@ const ImagePicker = ({onPickImage}) => {
 	const verifyPermissions = async () => {
 		if (cameraPermissionsInformation.status === PermissionStatus.UNDETERMINED) {
 			const permissionResponse = await requestPermission();
+			console.log(permissionResponse);
 			// true if granted, otherwise false
 			return permissionResponse.granted;
 		}
@@ -47,7 +45,12 @@ const ImagePicker = ({onPickImage}) => {
 			aspect: [16, 9],
 			quality: 0.5,
 		});
-		onPickImage(image.assets[0].uri);
+
+		if (image && image.assets && image.assets.length > 0) {
+			onPickImage(image.assets[0].uri);
+		} else {
+			alert('Pick image error', 'Failed to pick an image. Please try again.');
+		}
 	};
 
 	return (

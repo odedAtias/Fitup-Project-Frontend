@@ -67,7 +67,7 @@ export default function App() {
 														backgroundColor: Colors.Backgrounds.primary,
 														padding: Platform.OS === 'ios' ? 10 : 30,
 													}}
-													onPress={() => navigation.goBack()}
+													onPressLeft={() => navigation.goBack()}
 												/>
 											);
 										},

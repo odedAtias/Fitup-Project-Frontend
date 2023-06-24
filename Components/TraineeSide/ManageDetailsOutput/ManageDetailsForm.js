@@ -7,7 +7,6 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 // Custom components imports
 import ManageDetailsInput from './ManageDetailsInput';
 import TrainerImage from '../EventsOutput/TrainerImage';
-import Link from '../../UI/Link';
 import Button from '../../UI/Button';
 
 // Constants
@@ -18,6 +17,7 @@ import {alert} from './../../../Constants/Alert';
 import {TraineeContext} from './../../../store/TraineeContext';
 import {TrainerContext} from '../../../store/TrainerContext';
 import ImagePicker from '../../UI/ImagePicker';
+import {uploadImage} from '../../../utils/http/camera';
 
 // ManageDetailsForm component
 const ManageDetailsForm = ({onSubmit, isTrainer}) => {
@@ -51,8 +51,6 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 			},
 		}),
 	});
-
-	const [image, setPickedImage] = useState('');
 
 	// Input validation functions
 	const validateNames = input => {
@@ -104,8 +102,12 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 
 	// Set new image
 	const onPickImage = image => {
-		if (isTrainer) tcx.setTrainer({...tcx.trainer, image: image});
-		else tcx.setTrainee({...tcx.trainee, image: image});
+		if (isTrainer) {
+			tcx.setTrainer({...tcx.trainer, image: image});
+			// Upload the image to the backed
+			uploadImage(tcx.trainer._id, true, image);
+			// uploadImage(tcx.trainer.id, true, image);
+		} else tcx.setTrainee({...tcx.trainee, image: image});
 	};
 
 	const handleConfirm = () => {

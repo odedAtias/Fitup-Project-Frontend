@@ -51,9 +51,9 @@ const PersonalDetails = ({navigation}) => {
 			>
 				<Button
 					style={{
-						backgroundColor: '#F06A6E',
+						backgroundColor: '#000',
 						color: 'white',
-						borderRadius: 10,
+						borderRadius: 50,
 						width: '80%',
 						marginTop: '5%',
 					}}

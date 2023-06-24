@@ -68,14 +68,14 @@ const PersonalDetails = ({navigation}) => {
 			/>
 			<Button
 				style={{
-					backgroundColor: '#F06A6E',
+					backgroundColor: '#000',
 					color: 'white',
-					borderRadius: 10,
+					borderRadius: 50,
 					width: '80%',
 					marginTop: '5%',
 				}}
 				onPress={() => navigation.navigate('Login')}
-				textStyle={{fontSize: 20}}
+				textStyle={{fontSize: 16}}
 			>
 				Sign Out
 			</Button>
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: '#fffaf7',
 		paddingTop: '5%',
+		paddingHorizontal: '5%',
 	},
 
 	headingText: {
