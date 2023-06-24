@@ -1,5 +1,5 @@
 // RN core components & API imports
-import { Pressable, StyleSheet } from 'react-native';
+import {Pressable, StyleSheet} from 'react-native';
 
 // Custom components imports
 import TrainerImage from './TrainerImage';
@@ -9,8 +9,8 @@ import EventItemDetails from './EventItemDetails';
 import Colors from '../../../Constants/Colors';
 
 // EventItem component
-const EventItem = ({ event, onPress }) => {
-	const { _id, category, __v, ...rest } = event;
+const EventItem = ({event, onPress}) => {
+	const {_id, category, __v, ...rest} = event;
 
 	return (
 		<Pressable style={styles.container} onPress={onPress}>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		shadowColor: Colors.Shadows.primary,
 		shadowOpacity: 0.25,
-		shadowOffset: { width: 4, height: 2 },
+		shadowOffset: {width: 4, height: 2},
 		shadowRadius: 8,
 	},
 });

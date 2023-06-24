@@ -21,7 +21,7 @@ const TrainerImage = ({imageUrl, style}) => {
 			<View style={[styles.imageContainer, style]}>
 				<Image
 					source={{
-						uri: imageUrl && !imageError ? imageUrl : DEFAULT_IMAGE_URL,
+						uri: imageUrl ? imageUrl : DEFAULT_IMAGE_URL,
 					}}
 					style={styles.image}
 					onError={handleImageError}

@@ -1,20 +1,20 @@
 // Hooks imports
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import { FlatList } from 'react-native';
+import {FlatList} from 'react-native';
 
 // Custom components imports
 import EventItem from './EventItem';
 
 // EventsList component
-const EventsList = ({ events }) => {
+const EventsList = ({events}) => {
 	// Navigation initialize
 	const navigation = useNavigation();
 
 	// EventsList handlers
 	const handlePress = event => {
-		navigation.navigate('EventDetails', { ...event });
+		navigation.navigate('EventDetails', {...event});
 	};
 
 	return (
@@ -23,7 +23,7 @@ const EventsList = ({ events }) => {
 			keyExtractor={item => item._id}
 			renderItem={itemData => (
 				<EventItem
-					event={{ ...itemData.item }}
+					event={{...itemData.item}}
 					onPress={() => handlePress(itemData.item)}
 				/>
 			)}
