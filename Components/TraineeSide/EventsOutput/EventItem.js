@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 15,
 		marginVertical: 10,
 		// Shadow for android
-		elevation: 30,
+		elevation: 10,
 		// Shadow for ios
 		backgroundColor: 'white',
 		shadowColor: Colors.Shadows.primary,

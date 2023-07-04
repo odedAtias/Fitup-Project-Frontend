@@ -28,7 +28,9 @@ const RegisteredEvents = () => {
 	) {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.headingText}>Not have registered events yet</Text>
+				<Text style={styles.headingText}>
+					Hurry up and register for upcoming events!
+				</Text>
 			</View>
 		);
 	}

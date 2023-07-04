@@ -98,7 +98,7 @@ const RegisterEventForm = ({eventId}) => {
 	return (
 		<View style={styles.container}>
 			<TextBox
-				bgColor={Colors.Backgrounds.third}
+				bgColor={Colors.Backgrounds.secondary}
 				txtColor={Colors.Texts.primary}
 				maxHeight={400}
 			>

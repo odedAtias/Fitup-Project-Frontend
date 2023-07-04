@@ -6,7 +6,6 @@ const ParticipantItem = ({participant}) => {
 	const DEFAULT_IMAGE_URL =
 		'https://static.vecteezy.com/system/resources/previews/013/019/183/original/account-avatar-pixel-perfect-flat-gradient-color-ui-icon-personal-page-of-user-access-to-profile-simple-filled-pictogram-gui-ux-design-for-mobile-application-isolated-rgb-illustration-vector.jpg';
 
-	console.log(participant);
 	const image = participant.image ? participant.image : DEFAULT_IMAGE_URL;
 	return (
 		<View style={styles.container}>

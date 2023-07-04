@@ -146,9 +146,9 @@ const TrainerProfile = ({route, navigation}) => {
 					}}
 				/>
 				<Title>{`${trainer.firstName} ${trainer.lastName}`}</Title>
-				<Text style={[styles.font, styles.rating]}>
+				{/* <Text style={[styles.font, styles.rating]}>
 					Rating average : {trainer.rating}
-				</Text>
+				</Text> */}
 				<Link
 					icon={{
 						name: 'chatbox-outline',
@@ -173,7 +173,6 @@ const styles = StyleSheet.create({
 	},
 	trainerHeaderContainer: {
 		alignItems: 'center',
-		marginBottom: 5,
 	},
 	font: {
 		fontFamily: 'rubik',

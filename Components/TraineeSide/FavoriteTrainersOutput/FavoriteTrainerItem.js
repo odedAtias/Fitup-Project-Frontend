@@ -1,5 +1,4 @@
 // Hooks imports
-import {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
@@ -52,8 +51,10 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: '#fff',
+		backgroundColor: Colors.Backgrounds.fifth,
 		borderRadius: 20,
+		shadowColor: 'black',
+		elevation: 2,
 	},
 	image: {
 		width: 80,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	visitProfileButtonContainer: {
-		backgroundColor: Colors.Buttons.fourth,
+		backgroundColor: Colors.Buttons.third,
 		paddingHorizontal: '7%',
 		paddingVertical: '2%',
 		borderRadius: 2,

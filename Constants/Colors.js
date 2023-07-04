@@ -9,6 +9,7 @@ const Colors = {
 		secondary: '#e4e4dc',
 		third: '#EFF1F7',
 		fourth: '#ebedfb',
+		fifth: '#e4e4e9',
 	},
 	Buttons: {
 		primary: '#8C52FF',
@@ -16,6 +17,7 @@ const Colors = {
 		third: '#38B6FF',
 		fourth: '#F78761',
 		fifth: '#525edc',
+		sixth: '#cadeef',
 	},
 	Links: {
 		primary: '#2657c1',
