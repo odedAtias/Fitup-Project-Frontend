@@ -34,7 +34,7 @@ const Colors = {
 		error500: '#9b095c',
 	},
 	Shadows: {
-		primary: '#8C52FF',
+		primary: '#000',
 	},
 };
 

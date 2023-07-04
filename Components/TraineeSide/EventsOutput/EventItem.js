@@ -11,7 +11,6 @@ import Colors from '../../../Constants/Colors';
 // EventItem component
 const EventItem = ({event, onPress}) => {
 	const {_id, category, __v, ...rest} = event;
-
 	return (
 		<Pressable style={styles.container} onPress={onPress}>
 			{/* Events trainer image container */}
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 15,
 		marginVertical: 10,
 		// Shadow for android
-		elevation: 8,
+		elevation: 30,
 		// Shadow for ios
 		backgroundColor: 'white',
 		shadowColor: Colors.Shadows.primary,

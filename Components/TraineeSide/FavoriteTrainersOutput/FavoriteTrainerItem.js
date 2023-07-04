@@ -1,9 +1,9 @@
 // Hooks imports
-import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import {View, Text, Image, StyleSheet, Pressable} from 'react-native';
 
 // Constants
 import Colors from '../../../Constants/Colors';
@@ -13,10 +13,8 @@ const DEFAULT_IMAGE_URL =
 	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTECb7TBZ1o0RLkM-VV-41JPLLMwKwPRgACKvj89wueS9AqoK-mieFUvl1whh1G7ODWQ&usqp=CAU';
 
 // FavoriteTrainerItem
-const FavoriteTrainerItem = ({ _id, firstName, lastName, image }) => {
+const FavoriteTrainerItem = ({_id, firstName, lastName, image}) => {
 	const navigation = useNavigation();
-
-	const [imageError, setImageError] = useState(false);
 
 	const handleImageError = () => {
 		setImageError(true);
@@ -25,11 +23,10 @@ const FavoriteTrainerItem = ({ _id, firstName, lastName, image }) => {
 		<View style={styles.container}>
 			<Image
 				source={{
-					uri: image && !imageError ? image : DEFAULT_IMAGE_URL,
+					uri: image ? image : DEFAULT_IMAGE_URL,
 				}}
 				resizeMode='cover'
 				style={styles.image}
-				onError={handleImageError}
 			/>
 			<View style={styles.trainerInfo}>
 				<Text style={styles.nameText}>{firstName + ' ' + lastName}</Text>
@@ -38,8 +35,9 @@ const FavoriteTrainerItem = ({ _id, firstName, lastName, image }) => {
 				<Text
 					style={styles.visitProfileButtonText}
 					onPress={() =>
-						navigation.navigate('TrainerProfile', { trainerId: _id })
-					}>
+						navigation.navigate('TrainerProfile', {trainerId: _id})
+					}
+				>
 					Visit Profile
 				</Text>
 			</Pressable>

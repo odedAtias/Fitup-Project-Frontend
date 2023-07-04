@@ -1,8 +1,8 @@
 // Hooks imports
-import { useContext, useLayoutEffect, useEffect, useState } from 'react';
+import {useContext, useLayoutEffect, useEffect, useState} from 'react';
 
 // RN core components & API imports
-import { View, Text, StyleSheet, Linking, Platform } from 'react-native';
+import {View, Text, StyleSheet, Linking, Platform} from 'react-native';
 
 // Custom components imports
 import Header from '../../Components/UI/Header';
@@ -14,21 +14,21 @@ import MyUpcomingEvents from '../../Components/TraineeSide/TrainerProfileOutput/
 import Spinner1 from './../../Components/UI/Spinner1';
 
 // Context imports
-import { TraineeContext } from '../../store/TraineeContext';
+import {TraineeContext} from '../../store/TraineeContext';
 
 // Constants
 import Colors from '../../Constants/Colors';
-import { alert } from '../../Constants/Alert';
+import {alert} from '../../Constants/Alert';
 
 // Utils
-import { fetchData, updateData } from '../../utils/http/rest';
+import {fetchData, updateData} from '../../utils/http/rest';
 
 // Default image URL
 const DEFAULT_IMAGE_URL =
 	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTECb7TBZ1o0RLkM-VV-41JPLLMwKwPRgACKvj89wueS9AqoK-mieFUvl1whh1G7ODWQ&usqp=CAU';
 
 // TrainerProfile component
-const TrainerProfile = ({ route, navigation }) => {
+const TrainerProfile = ({route, navigation}) => {
 	// Initialize trainer state & trainee context
 	const [trainer, setTrainer] = useState(null);
 	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState('');
@@ -42,10 +42,7 @@ const TrainerProfile = ({ route, navigation }) => {
 				const response = await fetchData(`api/trainers/${trainerId}`);
 				setTrainer({
 					...response.data,
-					image:
-						response.data.image === ''
-							? DEFAULT_IMAGE_URL
-							: response.data.image,
+					image: response.data.image ? response.data.image : DEFAULT_IMAGE_URL,
 				});
 				const flag = context.favoriteTrainers.some(t => t._id === trainerId);
 				setIsFavoriteTrainer(flag);
@@ -130,7 +127,8 @@ const TrainerProfile = ({ route, navigation }) => {
 	if (!trainer) {
 		return (
 			<View
-				style={{ flex: 1, justifyContent: 'flex-start', marginBottom: '10%' }}>
+				style={{flex: 1, justifyContent: 'flex-start', marginBottom: '10%'}}
+			>
 				<Spinner1 />
 			</View>
 		);
@@ -157,7 +155,8 @@ const TrainerProfile = ({ route, navigation }) => {
 						color: Colors.Links.primary,
 						size: 20,
 					}}
-					onPress={() => handleSendEmail(trainer.email)}>
+					onPress={() => handleSendEmail(trainer.email)}
+				>
 					Contact Me
 				</Link>
 			</View>

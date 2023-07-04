@@ -1,11 +1,11 @@
 // Hooks components
-import { useLayoutEffect, useContext } from 'react';
+import {useLayoutEffect, useContext} from 'react';
 
 // Contexts imports
-import { EventsContext } from '../../store/EventsContext';
+import {EventsContext} from '../../store/EventsContext';
 
 // RN core components & API imports
-import { View, StyleSheet, Platform } from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
 
 // Custom components imports
 import Header from '../../Components/UI/Header';
@@ -15,16 +15,17 @@ import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
 import Colors from '../../Constants/Colors';
 
 // Events component
-const Events = ({ navigation, route }) => {
+const Events = ({navigation, route}) => {
 	// Context initialize
 	const eventsContext = useContext(EventsContext);
+	const {categoryName} = route.params;
 
 	// Loading dynamically the screen options
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			header: () => (
 				<Header
-					label={route.params.categoryName}
+					label={categoryName}
 					containerStyle={{
 						backgroundColor: Colors.Headers.primary,
 						paddingTop: Platform.OS === 'android' ? '15%' : '7%',
@@ -46,9 +47,8 @@ const Events = ({ navigation, route }) => {
 		return (
 			<View style={styles.container}>
 				<EventsList
-					events={eventsContext.events.filter(
-						e => e.category === route.params.categoryName
-					)}
+					events={eventsContext.events.filter(e => e.category === categoryName)}
+					category={categoryName}
 				/>
 			</View>
 		);

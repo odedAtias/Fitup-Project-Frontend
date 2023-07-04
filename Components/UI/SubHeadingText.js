@@ -1,8 +1,8 @@
 // RN core components & API imports
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 // SubHeadingText component
-const SubHeadingText = ({ children }) => (
+const SubHeadingText = ({children}) => (
 	<View style={styles.container}>
 		<Text style={styles.subHeadingText}>{children}</Text>
 	</View>
@@ -12,6 +12,7 @@ const SubHeadingText = ({ children }) => (
 const styles = StyleSheet.create({
 	container: {
 		marginBottom: 2,
+		maxWidth: '95%',
 	},
 	subHeadingText: {
 		fontSize: 16,

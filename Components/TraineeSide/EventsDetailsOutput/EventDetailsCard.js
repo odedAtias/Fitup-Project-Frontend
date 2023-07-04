@@ -1,8 +1,8 @@
 // Hooks imports
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 
 // Custom components imports
 import EventItemImage from '../EventsOutput/TrainerImage';
@@ -13,10 +13,10 @@ import HeadingText from '../../UI/HeadingText';
 import Colors from '../../../Constants/Colors';
 
 // Utils functions imports
-import { displayAddrress } from '../../../utils/address';
-import { displayFullDate } from '../../../utils/Date';
-import { displayParticipants } from '../../../utils/participants';
-import { statusColor } from '../../../utils/participants';
+import {displayAddrress} from '../../../utils/address';
+import {displayFullDate} from '../../../utils/Date';
+import {displayParticipants} from '../../../utils/participants';
+import {statusColor} from '../../../utils/participants';
 
 // EventDetailsCard component
 const EventDetailsCard = cardDetails => {
@@ -34,8 +34,9 @@ const EventDetailsCard = cardDetails => {
 			{/* Events trainer image container */}
 			<Pressable
 				onPress={handleVisitProfile}
-				style={styles.visitProfileContainer}>
-				<EventItemImage imageUrl={cardDetails.imageUrl} />
+				style={styles.visitProfileContainer}
+			>
+				<EventItemImage imageUrl={cardDetails.trainer.imageUrl} />
 				<Link onPress={handleVisitProfile}>Visit Profile</Link>
 			</Pressable>
 
@@ -65,7 +66,8 @@ const EventDetailsCard = cardDetails => {
 								),
 							},
 							styles.font,
-						]}>
+						]}
+					>
 						{displayParticipants(
 							cardDetails.participants.length,
 							cardDetails.maxParticipants
@@ -87,12 +89,12 @@ const styles = StyleSheet.create({
 		// Adjust by the platforms !!!!!
 		marginTop: 10,
 		// Shadow for android
-		elevation: 15,
+		elevation: 30,
 		// Shadow for ios
 		backgroundColor: 'white',
 		shadowColor: Colors.Shadows.primary,
 		shadowOpacity: 0.25,
-		shadowOffset: { width: 10, height: 5 },
+		shadowOffset: {width: 10, height: 5},
 		shadowRadius: 8,
 	},
 	detailsContainer: {
