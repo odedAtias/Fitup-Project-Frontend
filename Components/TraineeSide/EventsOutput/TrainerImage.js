@@ -10,12 +10,6 @@ const DEFAULT_IMAGE_URL =
 
 // TrainerImage component
 const TrainerImage = ({imageUrl, style}) => {
-	const [imageError, setImageError] = useState(false);
-
-	const handleImageError = () => {
-		setImageError(true);
-	};
-
 	return (
 		<View style={styles.container}>
 			<View style={[styles.imageContainer, style]}>
@@ -24,7 +18,6 @@ const TrainerImage = ({imageUrl, style}) => {
 						uri: imageUrl ? imageUrl : DEFAULT_IMAGE_URL,
 					}}
 					style={styles.image}
-					onError={handleImageError}
 				/>
 			</View>
 		</View>
