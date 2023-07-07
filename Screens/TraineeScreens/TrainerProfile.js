@@ -126,9 +126,7 @@ const TrainerProfile = ({route, navigation}) => {
 
 	if (!trainer || trainer._id !== trainerId) {
 		return (
-			<View
-				style={{flex: 1, justifyContent: 'flex-start', marginBottom: '30%'}}
-			>
+			<View style={styles.spinnerContainer}>
 				<Spinner2 />
 			</View>
 		);
@@ -180,6 +178,11 @@ const styles = StyleSheet.create({
 	rating: {
 		color: Colors.Texts.available,
 		marginBottom: '2%',
+	},
+	spinnerContainer: {
+		flex: 1,
+		justifyContent: 'flex-start',
+		marginBottom: '30%',
 	},
 });
 

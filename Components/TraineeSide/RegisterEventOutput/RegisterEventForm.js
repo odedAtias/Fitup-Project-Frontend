@@ -3,12 +3,13 @@ import {useState, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import {View, Text, StyleSheet, Alert} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 // Custom components imports
 import Button from '../../UI/Button';
 import TextBox from '../../UI/TextBox';
+import Spinner2 from '../../UI/Spinner2';
 
 // Constants
 import Colors from '../../../Constants/Colors';
@@ -24,7 +25,7 @@ import {TraineeContext} from './../../../store/TraineeContext';
 import {EventsContext} from '../../../store/EventsContext';
 
 // RegisterEventForm component
-const RegisterEventForm = ({eventId}) => {
+const RegisterEventForm = ({eventId, setIsLoading}) => {
 	const navigation = useNavigation();
 
 	const [isClicked, setIsClicked] = useState(false);
@@ -63,10 +64,7 @@ const RegisterEventForm = ({eventId}) => {
 			registeredEvents: updatedRegisteredEvents,
 		};
 		delete trainee._id;
-		let res2 = await updateData(
-			`api/trainees/${traineeContext.trainee._id}`,
-			trainee
-		);
+		await updateData(`api/trainees/${traineeContext.trainee._id}`, trainee);
 
 		// Update the registeredEvents on the context
 		traineeContext.setRegisteredEvents(updatedRegisteredEvents);
@@ -84,11 +82,15 @@ const RegisterEventForm = ({eventId}) => {
 			console.log('Register to the event handler ...');
 			try {
 				await registerEvent();
-				alert(
-					'Registration Successful!',
-					'Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
-				);
-				navigation.navigate('Categories');
+				setIsLoading(true);
+				setTimeout(() => {
+					alert(
+						'Registration Successful!',
+						'Congratulations! You have successfully registered for the training event. We look forward to seeing you there. You will receive a confirmation email shortly with further details. Thank you for choosing to enhance your skills with us!'
+					);
+					setIsLoading(false);
+					navigation.navigate('Categories');
+				}, 2000);
 			} catch (error) {
 				console.log(error);
 			}
