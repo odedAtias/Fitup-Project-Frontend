@@ -43,7 +43,7 @@ const Events = ({navigation, route}) => {
 		});
 	});
 
-	if (eventsContext.events) {
+	if (eventsContext.events && eventsContext.events.length > 0) {
 		return (
 			<View style={styles.container}>
 				<EventsList
@@ -58,7 +58,7 @@ const Events = ({navigation, route}) => {
 // Events StyleSheet
 const styles = StyleSheet.create({
 	container: {
-		paddingBottom: '12%',
+		paddingBottom: '15%',
 	},
 });
 

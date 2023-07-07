@@ -41,7 +41,7 @@ const RegisteredEvents = () => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.headingText}>
-				View and manage your registered training events
+				View and manage your registered events
 			</Text>
 			<EventsList events={events} />
 		</View>
@@ -51,9 +51,8 @@ const RegisteredEvents = () => {
 const styles = StyleSheet.create({
 	container: {
 		height: '100%',
-		justifyContent: 'center',
-		paddingVertical: 20,
-		alignItems: 'center',
+		paddingTop: '5%',
+		paddingBottom: '15%',
 	},
 	headingText: {
 		fontFamily: 'rubik',
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginBottom: 20,
 		color: Colors.Texts.primary,
-		maxWidth: '85%',
 	},
 });
 

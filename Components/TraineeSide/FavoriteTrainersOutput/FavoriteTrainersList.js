@@ -1,15 +1,15 @@
 // RN core components & API imports
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 
 // Custom components imports
 import FavoriteTrainerItem from './FavoriteTrainerItem';
 import Colors from '../../../Constants/Colors';
 
 // FavoriteTrainerItem
-const FavoriteTrainersList = ({ favoriteTrainers }) => {
+const FavoriteTrainersList = ({favoriteTrainers}) => {
 	// FavoriteTrainersList handlers
-	const renderItem = ({ item }) => {
-		const { email, events, description, ...rest } = item;
+	const renderItem = ({item}) => {
+		const {email, events, description, ...rest} = item;
 		return <FavoriteTrainerItem {...rest} />;
 	};
 	return (
@@ -21,7 +21,7 @@ const FavoriteTrainersList = ({ favoriteTrainers }) => {
 				data={favoriteTrainers}
 				renderItem={renderItem}
 				keyExtractor={item => item._id}
-				contentContainerStyle={styles.list}
+				style={styles.list}
 			/>
 		</View>
 	);
@@ -30,13 +30,15 @@ const FavoriteTrainersList = ({ favoriteTrainers }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 20,
+		paddingTop: '5%',
+		paddingBottom: '15%',
+		paddingHorizontal: '3%',
 	},
 	headingText: {
 		fontFamily: 'rubik',
 		fontSize: 20,
 		textAlign: 'center',
-		marginBottom: 30,
+		marginBottom: 15,
 		color: Colors.Texts.primary,
 	},
 	list: {

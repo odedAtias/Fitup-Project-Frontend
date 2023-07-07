@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 // ParticipantItem component
 const ParticipantItem = ({participant}) => {
 	const DEFAULT_IMAGE_URL =
-		'https://static.vecteezy.com/system/resources/previews/013/019/183/original/account-avatar-pixel-perfect-flat-gradient-color-ui-icon-personal-page-of-user-access-to-profile-simple-filled-pictogram-gui-ux-design-for-mobile-application-isolated-rgb-illustration-vector.jpg';
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTECb7TBZ1o0RLkM-VV-41JPLLMwKwPRgACKvj89wueS9AqoK-mieFUvl1whh1G7ODWQ&usqp=CAU';
 
 	const image = participant.image ? participant.image : DEFAULT_IMAGE_URL;
 	return (

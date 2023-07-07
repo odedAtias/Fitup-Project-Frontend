@@ -31,7 +31,7 @@ const FavoriteTrainers = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		height: '90%',
+		height: '100%',
 		justifyContent: 'center',
 	},
 	headingText: {
