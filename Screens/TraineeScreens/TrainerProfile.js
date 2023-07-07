@@ -11,7 +11,7 @@ import Title from '../../Components/UI/Title';
 import Link from '../../Components/UI/Link';
 import Aboutme from '../../Components/TraineeSide/TrainerProfileOutput/Aboutme';
 import MyUpcomingEvents from '../../Components/TraineeSide/TrainerProfileOutput/MyUpcomingEvents';
-import Spinner1 from './../../Components/UI/Spinner1';
+import Spinner2 from './../../Components/UI/Spinner2';
 
 // Context imports
 import {TraineeContext} from '../../store/TraineeContext';
@@ -124,12 +124,12 @@ const TrainerProfile = ({route, navigation}) => {
 		}
 	}
 
-	if (!trainer) {
+	if (!trainer || trainer._id !== trainerId) {
 		return (
 			<View
-				style={{flex: 1, justifyContent: 'flex-start', marginBottom: '10%'}}
+				style={{flex: 1, justifyContent: 'flex-start', marginBottom: '30%'}}
 			>
-				<Spinner1 />
+				<Spinner2 />
 			</View>
 		);
 	}
