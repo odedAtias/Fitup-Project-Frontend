@@ -12,6 +12,7 @@ import SignupButton from './SignupButton';
 
 // utils
 import {postData} from './../../../utils/http/rest';
+import {getCurrentDate} from '../../../utils/Date';
 
 // Firebase imports
 import {
@@ -52,6 +53,7 @@ const Step4 = ({navigation}) => {
 					email: context.email,
 					weight: 70,
 					height: 170,
+					timeStamp: getCurrentDate(),
 				};
 
 				if (context.type === 'trainee') {

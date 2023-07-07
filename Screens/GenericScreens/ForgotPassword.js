@@ -15,9 +15,12 @@ import {getAuth, sendPasswordResetEmail} from 'firebase/auth';
 import {alert} from '../../Constants/Alert';
 
 // ForgotPassword Component
-const ForgotPassword = () => {
+const ForgotPassword = ({navigation}) => {
 	// entered email state
 	const [email, setEmail] = useState('');
+
+	// Loading indicator
+	const [isLoading, setIsLoading] = useState(false);
 
 	// Auth initialize
 	const auth = getAuth();
@@ -26,12 +29,25 @@ const ForgotPassword = () => {
 	async function handleResetPassword() {
 		try {
 			await sendPasswordResetEmail(auth, email);
+			alert(
+				'Password Reset Sent',
+				'We have sent you an email with instructions to reset your password. Please check your inbox.'
+			);
+			navigation.navigate('Login');
 		} catch (error) {
 			alert(
 				'Password Reset Failed',
 				'Oops! Something went wrong while resetting your password. Please try again later.'
 			);
 		}
+	}
+
+	if (isLoading) {
+		return (
+			<View style={styles.spinnerContainer}>
+				<Spinner2 />
+			</View>
+		);
 	}
 
 	return (
@@ -76,6 +92,11 @@ const styles = StyleSheet.create({
 		width: 230,
 		height: 230,
 		alignSelf: 'center',
+	},
+	spinnerContainer: {
+		flex: 1,
+		justifyContent: 'flex-start',
+		marginBottom: '30%',
 	},
 });
 

@@ -110,7 +110,7 @@ const TrainerProfile = ({route, navigation}) => {
 		);
 		// Update the backend
 		try {
-			const response = await updateData(
+			await updateData(
 				`api/trainees/${context.trainee._id}`,
 				updatedTraineeData
 			);

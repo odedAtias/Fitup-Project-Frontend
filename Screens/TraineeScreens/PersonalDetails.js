@@ -21,6 +21,7 @@ import Colors from './../../Constants/Colors';
 const PersonalDetails = ({navigation}) => {
 	// initialize the trainee context
 	const context = useContext(TraineeContext);
+	const date = '15/02/2023';
 
 	return (
 		<View style={styles.container}>
@@ -61,7 +62,7 @@ const PersonalDetails = ({navigation}) => {
 			<Title>
 				{context.trainee.firstName + ' ' + context.trainee.lastName}
 			</Title>
-			<Text style={styles.headingText}>In fitup from 15.02.2023</Text>
+			<Text style={styles.headingText}>In fitup from {date}</Text>
 			<TraineeMetrics
 				height={context.trainee.height}
 				weight={context.trainee.weight}
