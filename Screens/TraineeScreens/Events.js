@@ -5,7 +5,7 @@ import {useLayoutEffect, useContext} from 'react';
 import {EventsContext} from '../../store/EventsContext';
 
 // RN core components & API imports
-import {View, StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet, Platform, Text} from 'react-native';
 
 // Custom components imports
 import Header from '../../Components/UI/Header';
@@ -19,6 +19,11 @@ const Events = ({navigation, route}) => {
 	// Context initialize
 	const eventsContext = useContext(EventsContext);
 	const {categoryName} = route.params;
+
+	// Adjsuted events list by category
+	const relevantEvents = eventsContext.events.filter(
+		e => e.category === categoryName
+	);
 
 	// Loading dynamically the screen options
 	useLayoutEffect(() => {
@@ -43,22 +48,40 @@ const Events = ({navigation, route}) => {
 		});
 	});
 
-	if (eventsContext.events && eventsContext.events.length > 0) {
+	if (!relevantEvents || relevantEvents.length === 0) {
 		return (
-			<View style={styles.container}>
-				<EventsList
-					events={eventsContext.events.filter(e => e.category === categoryName)}
-					category={categoryName}
-				/>
+			<View style={styles.noEventsContainer}>
+				<Text style={styles.headingText}>
+					There are no {categoryName} trainings in the system !
+				</Text>
 			</View>
 		);
 	}
+
+	return (
+		<View style={styles.container}>
+			<EventsList events={relevantEvents} />
+		</View>
+	);
 };
 
 // Events StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		paddingBottom: '15%',
+	},
+	noEventsContainer: {
+		height: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingHorizontal: '15%',
+	},
+	headingText: {
+		fontFamily: 'rubik',
+		fontSize: 20,
+		textAlign: 'center',
+		marginBottom: 30,
+		color: Colors.Texts.primary,
 	},
 });
 

@@ -15,7 +15,7 @@ import Colors from '../../../Constants/Colors';
 import {sortedEventsByDate} from '../../../utils/Date';
 
 // EventsList component
-const EventsList = ({events, category}) => {
+const EventsList = ({events}) => {
 	// Navigation initialize
 	const navigation = useNavigation();
 
@@ -24,16 +24,6 @@ const EventsList = ({events, category}) => {
 		navigation.navigate('EventDetails', {...event});
 	};
 
-	// If case dont have events in the relevant categories
-	if (!events || events.length === 0) {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.headingText}>
-					There are no {category} trainings in the system
-				</Text>
-			</View>
-		);
-	}
 	const sortedEvents = sortedEventsByDate(events);
 
 	return (
@@ -55,13 +45,6 @@ const styles = StyleSheet.create({
 	container: {
 		height: '90%',
 		justifyContent: 'center',
-	},
-	headingText: {
-		fontFamily: 'rubik',
-		fontSize: 20,
-		textAlign: 'center',
-		marginBottom: 30,
-		color: Colors.Texts.primary,
 	},
 });
 
