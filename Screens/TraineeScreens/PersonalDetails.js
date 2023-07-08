@@ -22,6 +22,7 @@ const PersonalDetails = ({navigation}) => {
 	// initialize the trainee context
 	const context = useContext(TraineeContext);
 	const date = '15/02/2023';
+	console.log(context);
 
 	return (
 		<View style={styles.container}>
@@ -62,7 +63,9 @@ const PersonalDetails = ({navigation}) => {
 			<Title>
 				{context.trainee.firstName + ' ' + context.trainee.lastName}
 			</Title>
-			<Text style={styles.headingText}>In fitup from {date}</Text>
+			<Text style={styles.headingText}>
+				In fitup from {context.trainee.timeStamp}
+			</Text>
 			<TraineeMetrics
 				height={context.trainee.height}
 				weight={context.trainee.weight}

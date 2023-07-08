@@ -9,8 +9,12 @@ export const displayFullDate = (date, hour) => {
 
 export const sortedEventsByDate = events => {
 	events.sort(function (a, b) {
-		const dateA = new Date(a.date.split('/').reverse().join('/') + ' ' + a.hour);
-		const dateB = new Date(b.date.split('/').reverse().join('/') + ' ' + b.hour);
+		const dateA = new Date(
+			a.date.split('/').reverse().join('/') + ' ' + a.hour
+		);
+		const dateB = new Date(
+			b.date.split('/').reverse().join('/') + ' ' + b.hour
+		);
 		return dateA - dateB;
 	});
 	return events;
@@ -19,7 +23,7 @@ export const sortedEventsByDate = events => {
 export const getCurrentDate = () => {
 	const currentDate = new Date();
 	const day = String(currentDate.getDate()).padStart(2, '0');
-	const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+	const month = String(currentDate.getMonth() + 1).padStart(2, '0');
 	const year = currentDate.getFullYear();
 	const formattedDate = `${day}/${month}/${year}`;
 	return formattedDate;
