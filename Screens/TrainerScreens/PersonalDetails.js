@@ -19,8 +19,16 @@ import {TrainerContext} from './../../store/TrainerContext';
 // PersonalDetails
 const PersonalDetails = ({navigation}) => {
 	const context = useContext(TrainerContext);
-	const {image, firstName, lastName, email, description, weight, height} =
-		context.trainer;
+	const {
+		image,
+		firstName,
+		lastName,
+		email,
+		description,
+		weight,
+		height,
+		timeStamp,
+	} = context.trainer;
 
 	return (
 		<ScrollView>
@@ -36,7 +44,8 @@ const PersonalDetails = ({navigation}) => {
 						}}
 					/>
 					<Text style={styles.headingText}>{firstName + ' ' + lastName}</Text>
-					<Text style={styles.text}>{email}</Text>
+					<Text style={styles.subHeadingText}>In fitup from {timeStamp}</Text>
+					{/* <Text style={styles.headingText}>In fitup from {timeStamp}</Text> */}
 				</View>
 				{/* ABOUT ME */}
 				<Aboutme
@@ -99,6 +108,11 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		fontFamily: 'rubik',
 		color: Colors.Texts.sixth,
+	},
+	subHeadingText: {
+		fontSize: 17,
+		fontFamily: 'rubik',
+		color: Colors.Texts.fifth,
 	},
 });
 

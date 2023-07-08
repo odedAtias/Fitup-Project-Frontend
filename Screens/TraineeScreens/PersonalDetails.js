@@ -21,8 +21,6 @@ import Colors from './../../Constants/Colors';
 const PersonalDetails = ({navigation}) => {
 	// initialize the trainee context
 	const context = useContext(TraineeContext);
-	const date = '15/02/2023';
-	console.log(context);
 
 	return (
 		<View style={styles.container}>
