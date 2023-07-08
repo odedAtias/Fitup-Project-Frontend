@@ -27,7 +27,7 @@ const RegisteredEvents = () => {
 		!traineeContext.registeredEvents
 	) {
 		return (
-			<View style={styles.container}>
+			<View style={styles.noEventsContainer}>
 				<Text style={styles.headingText}>
 					Hurry up and register for upcoming events!
 				</Text>
@@ -53,6 +53,12 @@ const styles = StyleSheet.create({
 		height: '100%',
 		paddingTop: '5%',
 		paddingBottom: '15%',
+	},
+	noEventsContainer: {
+		height: '90%',
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingHorizontal: '10%',
 	},
 	headingText: {
 		fontFamily: 'rubik',
