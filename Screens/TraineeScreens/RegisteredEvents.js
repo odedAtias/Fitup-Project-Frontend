@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 		paddingBottom: '15%',
 	},
 	noEventsContainer: {
-		height: '90%',
+		height: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingHorizontal: '10%',
