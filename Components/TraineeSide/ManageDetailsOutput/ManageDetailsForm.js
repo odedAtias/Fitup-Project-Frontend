@@ -8,6 +8,7 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 import ManageDetailsInput from './ManageDetailsInput';
 import TrainerImage from '../EventsOutput/TrainerImage';
 import Button from '../../UI/Button';
+import ImagePicker from '../../UI/ImagePicker';
 
 // Constants
 import Colors from '../../../Constants/Colors';
@@ -16,7 +17,8 @@ import {alert} from './../../../Constants/Alert';
 // Contexts imports
 import {TraineeContext} from './../../../store/TraineeContext';
 import {TrainerContext} from '../../../store/TrainerContext';
-import ImagePicker from '../../UI/ImagePicker';
+
+// Utils
 import {uploadImage} from '../../../utils/http/camera';
 
 // ManageDetailsForm component

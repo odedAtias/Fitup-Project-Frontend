@@ -5,8 +5,9 @@ import {View, Text, StyleSheet, TextInput} from 'react-native';
 import Colors from '../../../Constants/Colors';
 
 // ManageDetailsInput component
-const ManageDetailsInput = ({label, inputConfigurations, invalid}) => {
+const PostEventInput = ({label, inputConfigurations, invalid}) => {
 	const inputStyles = [styles.input];
+
 	if (invalid) {
 		inputStyles.push(styles.invalidInput);
 	}
@@ -21,7 +22,7 @@ const ManageDetailsInput = ({label, inputConfigurations, invalid}) => {
 	);
 };
 
-// ManageDetailsInput StyleSheet
+// PostEventInput StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: '5%',
@@ -52,4 +53,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default ManageDetailsInput;
+export default PostEventInput;

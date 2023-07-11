@@ -3,7 +3,7 @@ import {useContext, useState} from 'react';
 
 // Custom components imports
 import ManageDetailsForm from '../../Components/TraineeSide/ManageDetailsOutput/ManageDetailsForm';
-import ImagePicker from '../../Components/UI/ImagePicker';
+import Spinner2 from './../../Components/UI/Spinner2';
 
 // Contexts imports
 import {TraineeContext} from '../../store/TraineeContext';
@@ -14,7 +14,6 @@ import {updateData} from '../../utils/http/rest';
 
 // Constants
 import {alert} from '../../Constants/Alert';
-import Spinner2 from './../../Components/UI/Spinner2';
 
 // ManageDetails component
 const ManageDetails = ({navigation, route}) => {

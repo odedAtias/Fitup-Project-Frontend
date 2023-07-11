@@ -21,7 +21,7 @@ const FavoriteTrainers = () => {
 	if (context.favoriteTrainers.length === 0 || !context.favoriteTrainers) {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.headingText}>Not have favorite trainers yet</Text>
+				<Text style={styles.headingText}>Not have favorite trainers yet !</Text>
 			</View>
 		);
 	}
