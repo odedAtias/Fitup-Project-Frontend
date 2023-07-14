@@ -1,24 +1,24 @@
 // Hooks imports
-import {useState, useContext} from 'react';
+import {useContext, useState} from 'react';
 
 // RN core components & API imports
 import {StyleSheet, View} from 'react-native';
 
-// Custom components imports
-import PostEventInput from './PostEventInput';
-import Button from '../../UI/Button';
+// Constants
+import Colors from '../../../Constants/Colors';
 
 // Contexts imports
 import {TrainerContext} from '../../../store/TrainerContext';
 
-// Constants
-import Colors from '../../../Constants/Colors';
+// Custom components imports
+import Button from '../../UI/Button';
+import PostEventInput from './PostEventInput';
+import DateTimeInput from '../../UI/DateTimeInput';
 
-// PostEventForm
+// PostEventForm component
 const PostEventForm = () => {
 	const tcx = useContext(TrainerContext);
 
-	// PostEvent inputs
 	const [inputs, setInputs] = useState({
 		category: {
 			value: '',
@@ -54,38 +54,29 @@ const PostEventForm = () => {
 		},
 	});
 
-	// PostEvent handlers
-	const handleInputChange = (inputIdertifier, enteredValue) => {
-		setInputs(currentInputs => {
-			return {
-				...currentInputs,
-				// Way to update keys/values dynamically
-				[inputIdertifier]: {value: enteredValue, isValid: true},
-			};
-		});
+	const handleInputChange = (inputIdentifier, enteredValue) => {
+		setInputs(currentInputs => ({
+			...currentInputs,
+			[inputIdentifier]: {value: enteredValue, isValid: true},
+		}));
 	};
 
 	return (
 		<View style={styles.container}>
-			{/* Hour */}
-			<PostEventInput
-				label='Hour'
-				invalid={!inputs.hour.isValid}
-				inputConfigurations={{
-					placeholder: 'hh : mm',
-					autoCorrect: false,
-					value: inputs.hour.value,
-					onChangeText: handleInputChange.bind(this, 'hour'),
-				}}
-			/>
 			<View style={styles.twoInRow}>
-				{/* City */}
+				<View style={styles.inputContainer}>
+					<DateTimeInput mode='date' onChange={handleInputChange} />
+				</View>
+				<View style={styles.inputContainer}>
+					<DateTimeInput mode='time' onChange={handleInputChange} />
+				</View>
+			</View>
+			<View style={styles.twoInRow}>
 				<View style={styles.inputContainer}>
 					<PostEventInput
 						label='City'
 						invalid={!inputs.city.isValid}
 						inputConfigurations={{
-							placeholder: 'Jerusalem',
 							autoCorrect: false,
 							value: inputs.city.value,
 							onChangeText: handleInputChange.bind(this, 'city'),
@@ -93,12 +84,10 @@ const PostEventForm = () => {
 					/>
 				</View>
 				<View style={styles.inputContainer}>
-					{/* Address */}
 					<PostEventInput
 						label='Address'
 						invalid={!inputs.address.isValid}
 						inputConfigurations={{
-							placeholder: 'Hakim Eliyahu 37',
 							autoCorrect: false,
 							value: inputs.address.value,
 							onChangeText: handleInputChange.bind(this, 'address'),
@@ -106,12 +95,10 @@ const PostEventForm = () => {
 					/>
 				</View>
 			</View>
-			{/* Description */}
 			<PostEventInput
 				label='Description'
 				invalid={!inputs.description.isValid}
 				inputConfigurations={{
-					placeholder: 'This is can be a great event ...',
 					autoCorrect: false,
 					multiline: true,
 					numberOfLines: 4,
@@ -123,45 +110,36 @@ const PostEventForm = () => {
 			/>
 			<View style={styles.twoInRow}>
 				<View style={styles.inputContainer}>
-					{/* Number of particpants */}
 					<PostEventInput
 						label='How many trainees'
 						invalid={!inputs.maxParticipants.isValid}
 						inputConfigurations={{
-							placeholder: 'digits only',
 							autoCorrect: false,
 							value: inputs.maxParticipants.value,
+							keyboardType: 'numeric',
 							onChangeText: handleInputChange.bind(this, 'maxParticipants'),
 						}}
 					/>
 				</View>
 				<View style={styles.inputContainer}>
-					{/* Hour */}
 					<PostEventInput
 						label='Price'
 						invalid={!inputs.price.isValid}
 						inputConfigurations={{
-							placeholder: 'In NIS',
 							autoCorrect: false,
 							value: inputs.price.value,
+							keyboardType: 'numeric',
 							onChangeText: handleInputChange.bind(this, 'price'),
 						}}
 					/>
 				</View>
 			</View>
-
-			<View
-				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					marginTop: '5%',
-				}}
-			>
+			<View style={styles.buttonContainer}>
 				<Button
-					style={{backgroundColor: Colors.Buttons.fifth, width: '90%'}}
-					textStyle={{fontSize: 18}}
+					style={styles.button}
+					textStyle={styles.buttonText}
 					onPress={() => {
-						console.log('Hereeeeeeee');
+						console.log(inputs);
 					}}
 				>
 					Submit
@@ -175,7 +153,7 @@ const PostEventForm = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		marginBottom: '20%',
+		marginBottom: '10%',
 	},
 	twoInRow: {
 		flexDirection: 'row',
@@ -183,6 +161,18 @@ const styles = StyleSheet.create({
 	},
 	inputContainer: {
 		flex: 1,
+	},
+	buttonContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: '5%',
+	},
+	button: {
+		backgroundColor: Colors.Buttons.fifth,
+		width: '90%',
+	},
+	buttonText: {
+		fontSize: 18,
 	},
 });
 

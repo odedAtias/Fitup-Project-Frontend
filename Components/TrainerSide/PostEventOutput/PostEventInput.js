@@ -17,7 +17,11 @@ const PostEventInput = ({label, inputConfigurations, invalid}) => {
 			<Text style={[styles.label, invalid && styles.invalidLabel]}>
 				{label}
 			</Text>
-			<TextInput style={[inputStyles]} {...inputConfigurations} />
+			<TextInput
+				style={[inputStyles]}
+				placeholderTextColor={'#717181'}
+				{...inputConfigurations}
+			/>
 		</View>
 	);
 };

@@ -28,3 +28,19 @@ export const getCurrentDate = () => {
 	const formattedDate = `${day}/${month}/${year}`;
 	return formattedDate;
 };
+
+export const getHour = value => {
+	const date = new Date(value);
+	const hour = ('0' + date.getUTCHours()).slice(-2); // Pad with leading zero if necessary
+	const minutes = ('0' + date.getUTCMinutes()).slice(-2); // Pad with leading zero if necessary
+	return hour + ':' + minutes;
+};
+
+export const getDate = value => {
+	const currentDate = new Date(value);
+	const day = String(currentDate.getDate()).padStart(2, '0');
+	const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+	const year = currentDate.getFullYear();
+	const formattedDate = `${day}/${month}/${year}`;
+	return formattedDate;
+};
