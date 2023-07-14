@@ -9,5 +9,12 @@ export const validateDate = value => {
 
 export const validateHour = value => {
 	const [hours, minutes] = value.split(':').map(Number);
-	return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
+	const currentHour = new Date().getHours();
+	return (
+		hours >= 0 &&
+		hours <= 23 &&
+		minutes >= 0 &&
+		minutes <= 59 &&
+		hours >= currentHour + 6
+	);
 };

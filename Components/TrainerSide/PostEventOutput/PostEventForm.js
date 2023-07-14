@@ -97,7 +97,7 @@ const PostEventForm = () => {
 
 		// Step 3 - validate the hour format
 		const isValidateHour = validateHour(hour.value);
-		console.log(hour, date);
+		console.log(isValidateHour);
 		// Step 4 - validate dont have event with same date and hour
 
 		// Step 5 - validate the city and adress
