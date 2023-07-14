@@ -6,6 +6,7 @@ import {StyleSheet, View} from 'react-native';
 
 // Constants
 import Colors from '../../../Constants/Colors';
+import {CATEGORIES} from './../../../Constants/Categories';
 
 // Contexts imports
 import {TrainerContext} from '../../../store/TrainerContext';
@@ -15,6 +16,19 @@ import Button from '../../UI/Button';
 import PostEventInput from './PostEventInput';
 import DateTimeInput from '../../UI/DateTimeInput';
 import DropDownInput from './../../UI/DropDownInput';
+
+// Utils
+import {
+	validateDropdownInput,
+	validateDate,
+	validateHour,
+} from './../../../utils/validations';
+
+// Drop down list data
+const dropDownListData = CATEGORIES.map((category, index) => ({
+	label: category.name,
+	value: category.name,
+}));
 
 // PostEventForm component
 const PostEventForm = () => {
@@ -55,6 +69,7 @@ const PostEventForm = () => {
 		},
 	});
 
+	// PostEventForm handlers
 	const handleInputChange = (inputIdentifier, enteredValue) => {
 		setInputs(currentInputs => ({
 			...currentInputs,
@@ -62,9 +77,52 @@ const PostEventForm = () => {
 		}));
 	};
 
+	const validateInputs = () => {
+		const {
+			category,
+			address,
+			city,
+			date,
+			description,
+			hour,
+			maxParticipants,
+			price,
+		} = inputs;
+
+		// Step 1 - validate the category input
+		const list = dropDownListData.map(c => c.value);
+		const isValidCategory = validateDropdownInput(list, category.value);
+		// Step 2 - validate the date format
+		const isValidDate = validateDate(date.value);
+
+		// Step 3 - validate the hour format
+		const isValidateHour = validateHour(hour.value);
+		console.log(hour, date);
+		// Step 4 - validate dont have event with same date and hour
+
+		// Step 5 - validate the city and adress
+
+		// Step 6 - validate description
+
+		// Step 7 - validate the number of trainees and price
+
+		// return true if all these steps returns truthy values
+	};
+
+	const handleSubmit = () => {
+		// validateInputs()
+		validateInputs();
+		// POST the object to the backend
+		// Update the context (Events + trainer's events)
+	};
+
 	return (
 		<View style={styles.container}>
-			<DropDownInput label='Category' onChange={handleInputChange} />
+			<DropDownInput
+				label='Category'
+				onChange={handleInputChange}
+				data={dropDownListData}
+			/>
 			<View style={styles.twoInRow}>
 				<View style={styles.inputContainer}>
 					<DateTimeInput mode='date' onChange={handleInputChange} />
@@ -140,9 +198,7 @@ const PostEventForm = () => {
 				<Button
 					style={styles.button}
 					textStyle={styles.buttonText}
-					onPress={() => {
-						console.log(inputs);
-					}}
+					onPress={handleSubmit}
 				>
 					Submit
 				</Button>

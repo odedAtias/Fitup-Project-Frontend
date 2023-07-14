@@ -7,20 +7,14 @@ import {Dropdown} from 'react-native-element-dropdown';
 
 // Constants
 import Colors from '../../Constants/Colors';
-import {CATEGORIES} from '../../Constants/Categories';
-
-const data = CATEGORIES.map((category, index) => ({
-	label: category.name,
-	value: index,
-}));
 
 // DropDownInput
-const DropDownInput = ({label, onChange}) => {
+const DropDownInput = ({label, data, onChange}) => {
 	const [value, setValue] = useState(null);
 
 	const handleDropdownChange = item => {
 		setValue(item.value);
-		onChange(label.toLowerCase(), item);
+		onChange(label.toLowerCase(), item.value);
 	};
 
 	return (

@@ -15,8 +15,13 @@ import Colors from '../../Constants/Colors';
 import {getDate, getHour} from '../../utils/Date';
 
 const DateTimeInput = ({mode, onChange}) => {
+	const prop = mode === 'time' ? 'Hour' : 'Date';
+
+	const currentDateTime = new Date();
+	currentDateTime.setTime(currentDateTime.getTime() + 9 * 60 * 60 * 1000);
+
 	const [dateTime, setDateTime] = useState({
-		value: new Date(1228832224020),
+		value: currentDateTime,
 		show: false,
 	});
 
@@ -24,7 +29,7 @@ const DateTimeInput = ({mode, onChange}) => {
 	useEffect(() => {
 		const initialValue =
 			mode === 'time' ? getHour(dateTime.value) : getDate(dateTime.value);
-		onChange(mode.toLowerCase(), initialValue);
+		onChange(prop.toLocaleLowerCase(), initialValue);
 	}, []);
 
 	const handleInputChange = (_, selectedValue) => {
@@ -35,7 +40,7 @@ const DateTimeInput = ({mode, onChange}) => {
 		}));
 		const currentValue =
 			mode === 'time' ? getHour(selectedValue) : getDate(selectedValue);
-		onChange(mode.toLowerCase(), currentValue);
+		onChange(prop.toLocaleLowerCase(), currentValue);
 	};
 
 	return (
@@ -44,7 +49,7 @@ const DateTimeInput = ({mode, onChange}) => {
 				onPress={() => setDateTime(prevState => ({...prevState, show: true}))}
 			>
 				<PostEventInput
-					label={mode === 'time' ? 'Hour' : 'Date'}
+					label={prop}
 					inputConfigurations={{
 						value:
 							mode === 'time'

@@ -20,6 +20,7 @@ import {alert} from '../../../Constants/Alert';
 const Step1 = ({navigation}) => {
 	// Context initialize
 	const context = useContext(SignupContext);
+	
 	// Step1 submit handler
 	const handleSubmit = () => {
 		// Input validation
@@ -32,6 +33,7 @@ const Step1 = ({navigation}) => {
 		}
 		navigation.navigate('Step2');
 	};
+	
 	return (
 		<View style={styles.container}>
 			<Text style={[styles.headingText, styles.spacing]}>
