@@ -14,6 +14,7 @@ import {TrainerContext} from '../../../store/TrainerContext';
 import Button from '../../UI/Button';
 import PostEventInput from './PostEventInput';
 import DateTimeInput from '../../UI/DateTimeInput';
+import DropDownInput from './../../UI/DropDownInput';
 
 // PostEventForm component
 const PostEventForm = () => {
@@ -63,6 +64,7 @@ const PostEventForm = () => {
 
 	return (
 		<View style={styles.container}>
+			<DropDownInput label='Category' onChange={handleInputChange} />
 			<View style={styles.twoInRow}>
 				<View style={styles.inputContainer}>
 					<DateTimeInput mode='date' onChange={handleInputChange} />
