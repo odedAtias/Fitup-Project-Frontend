@@ -38,7 +38,8 @@ const EventsList = ({events, trainerSide}) => {
 					onPress={() => handlePress(itemData.item)}
 				/>
 			)}
-			style={{width: '90%'}}
+			showsVerticalScrollIndicator={false}
+			style={{flex: 1}}
 		/>
 	);
 };

@@ -10,6 +10,9 @@ import Colors from './../../Constants/Colors';
 // Contexts imports
 import {TrainerContext} from './../../store/TrainerContext';
 
+// Custom components imports
+import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
+
 // AllEvents component
 const AllEvents = () => {
 	const context = useContext(TrainerContext);
@@ -25,7 +28,7 @@ const AllEvents = () => {
 				<Text style={styles.headingText}>
 					View and manage your registered training events
 				</Text>
-				{/* <EventsList events={context.events} /> */}
+				<EventsList events={context.events} />
 			</View>
 		);
 };
@@ -33,16 +36,16 @@ const AllEvents = () => {
 // AllEvents component
 const styles = StyleSheet.create({
 	container: {
-		height: '90%',
+		flex: 1,
 		justifyContent: 'center',
-		paddingVertical: 20,
 		alignItems: 'center',
+		paddingBottom: '10%',
 	},
 	headingText: {
+		marginVertical: '5%',
 		fontFamily: 'rubik',
-		fontSize: 24,
+		fontSize: 20,
 		textAlign: 'center',
-		marginBottom: 20,
 		color: Colors.Texts.primary,
 		maxWidth: '90%',
 	},

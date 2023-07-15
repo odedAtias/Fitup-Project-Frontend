@@ -16,7 +16,6 @@ import Colors from '../../Constants/Colors';
 
 // RegisteredEvents component
 const RegisteredEvents = () => {
-	// Context initialize
 	const [traineeContext, eventsContext] = [
 		useContext(TraineeContext),
 		useContext(EventsContext),

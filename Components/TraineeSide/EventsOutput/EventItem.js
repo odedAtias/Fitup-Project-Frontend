@@ -30,16 +30,17 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		padding: 10,
 		// Adjust by the platforms
-		marginVertical: 10,
+		marginHorizontal: '3%',
+		marginBottom: '7%',
 		// Shadow for android
 		elevation: 10,
 		// Shadow for ios
 		backgroundColor: 'white',
 		shadowColor: Colors.Shadows.primary,
-		shadowOpacity: 0.25,
+		shadowOpacity: 0.45,
 		shadowOffset: {width: 4, height: 2},
 		shadowRadius: 8,
-		width: '100%',
+		flex: 1,
 	},
 });
 

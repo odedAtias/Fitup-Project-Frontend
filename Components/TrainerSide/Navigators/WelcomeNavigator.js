@@ -5,9 +5,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 // Screen Components
-import Welcome from '../../../Screens/TrainerScreens/Welcome';
-import UpcomingEventsCards from '../../../Screens/TrainerScreens/UpcomingEventsCards';
 import Feedbacks from '../../../Screens/TrainerScreens/Feedbacks';
+import UpcomingEventsCards from '../../../Screens/TrainerScreens/UpcomingEventsCards';
+import Welcome from '../../../Screens/TrainerScreens/Welcome';
 import PostEvent from './../../../Screens/TrainerScreens/PostEvent';
 
 // Custom components imports
@@ -16,7 +16,6 @@ import Header from '../../UI/Header';
 // Constants
 import Colors from '../../../Constants/Colors';
 import EventDetails from '../../../Screens/TraineeScreens/EventDetails';
-import ManageDetails from '../../../Screens/TraineeScreens/ManageDetails';
 
 // WelcomeNavigator component
 const WelcomeNavigator = () => {
