@@ -14,8 +14,6 @@ const DropDownInput = ({label, data, onChange, invalid}) => {
 
 	const inputStyles = [styles.dropdown];
 
-	console.log(invalid);
-
 	if (invalid) {
 		inputStyles.push(styles.invalidInput);
 	}

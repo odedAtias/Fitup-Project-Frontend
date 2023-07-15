@@ -9,14 +9,10 @@ export const validateDateHour = (date, hour) => {
 	const [day, month, year] = date.split('/').map(Number);
 	const [hours, minutes] = hour.split(':').map(Number);
 
-	const futureDateTime = Date.now() + 6 * 60 * 60 * 1000;
-	const selectedDateTime = new Date(
-		year,
-		month - 1,
-		day,
-		hours,
-		minutes
-	).getTime();
+	const futureDateTime = new Date();
+	futureDateTime.setHours(futureDateTime.getHours() + 6);
+
+	const selectedDateTime = new Date(year, month - 1, day, hours, minutes);
 
 	return selectedDateTime > futureDateTime;
 };

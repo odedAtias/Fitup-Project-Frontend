@@ -93,6 +93,8 @@ const PostEventForm = () => {
 			price,
 		} = inputs;
 
+		let result = true;
+
 		// Step 1 - validate the category input
 		const list = dropDownListData.map(c => c.value);
 		const isValidCategory = validateDropdownInput(list, category.value);
@@ -167,8 +169,8 @@ const PostEventForm = () => {
 			!isValidMaxParticipants ||
 			!isValidPrice
 		) {
-			alert('Invalid Input', 'Please check your input fields again.');
-			return false;
+			alert('Invalid Input', 'Please check the following red fields');
+			result = false;
 		}
 
 		// Step 7 - validate (date,hour) together
@@ -177,7 +179,7 @@ const PostEventForm = () => {
 				'Invalid Date and Hour',
 				'Please enter a valid date and hour that is at least 6 hours ahead of the current date.'
 			);
-			return false;
+			result = false;
 		}
 
 		if (!validateLegalTiming(date.value, hour.value, 45, [])) {
@@ -185,15 +187,15 @@ const PostEventForm = () => {
 				'Invalid Date and Hour',
 				'Please enter a valid date and hour that is not conflict with your other trainings.'
 			);
-			return false;
+			result = false;
 		}
-
 		return true;
 	};
 
 	const handleSubmit = () => {
 		// validateInputs()
 		validateInputs();
+		console.log(inputs);
 		// POST the object to the backend
 		// Update the context (Events + trainer's events)
 	};

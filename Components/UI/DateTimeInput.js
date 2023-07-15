@@ -18,7 +18,7 @@ const DateTimeInput = ({mode, onChange}) => {
 	const prop = mode === 'time' ? 'Hour' : 'Date';
 
 	const currentDateTime = new Date();
-	currentDateTime.setTime(currentDateTime.getTime() + 6 * 60 * 60 * 1000);
+	currentDateTime.setTime(currentDateTime.getTime() + 9 * 60 * 60 * 1000);
 
 	const [dateTime, setDateTime] = useState({
 		value: currentDateTime,
