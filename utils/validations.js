@@ -44,6 +44,4 @@ export const validateLegalTiming = (date, hour, duration, events) => {
 };
 
 export const validateNumber = (value, zeroIsLegal) =>
-	typeof value === 'number' &&
-	!isNaN(value) &&
-	(!zeroIsLegal ? value > 0 : true);
+	!isNaN(value) && (!zeroIsLegal ? value > 0 : true);

@@ -194,8 +194,8 @@ const PostEventForm = () => {
 
 	const handleSubmit = () => {
 		// validateInputs()
-		validateInputs();
-		console.log(inputs);
+		let isValidEvent = validateInputs();
+		console.log(isValidEvent);
 		// POST the object to the backend
 		// Update the context (Events + trainer's events)
 	};

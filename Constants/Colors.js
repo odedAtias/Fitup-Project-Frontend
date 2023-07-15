@@ -32,8 +32,8 @@ const Colors = {
 		available: '#00FF73',
 		intermediate: '#FFE300',
 		almostFull: '#FF0000',
-		error50: '#fcc4e4',
-		error500: '#9b095c',
+		error50: '#ff6b84',
+		error500: '#fd3b59',
 	},
 	Shadows: {
 		primary: '#000',
