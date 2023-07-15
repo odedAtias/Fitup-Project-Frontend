@@ -80,8 +80,11 @@ const LoginForm = ({isLoading, setIsLoading}) => {
 		} else {
 			response1 = await fetchData(`api/trainers/login/${id}`);
 			const {__v, events, ...rest} = response1.data;
+			const trainerEvents = response2.data.filter(
+				e => e.trainer._id === rest._id
+			);
 			trainerContext.setTrainer(rest);
-			trainerContext.setEvents(events);
+			trainerContext.setEvents(trainerEvents);
 			return 'Trainer';
 		}
 	};

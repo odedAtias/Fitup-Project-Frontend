@@ -2,7 +2,7 @@
 import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import {FlatList, StyleSheet, View, Text} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 
 // Custom components imports
 import EventItem from './EventItem';
@@ -11,11 +11,10 @@ import EventItem from './EventItem';
 export {sortedEventsByDate} from '../../../utils/Date';
 
 // Constants
-import Colors from '../../../Constants/Colors';
 import {sortedEventsByDate} from '../../../utils/Date';
 
 // EventsList component
-const EventsList = ({events}) => {
+const EventsList = ({events, trainerSide}) => {
 	// Navigation initialize
 	const navigation = useNavigation();
 
@@ -39,13 +38,5 @@ const EventsList = ({events}) => {
 		/>
 	);
 };
-
-// EventsList StyleSheet
-const styles = StyleSheet.create({
-	container: {
-		height: '90%',
-		justifyContent: 'center',
-	},
-});
 
 export default EventsList;

@@ -115,6 +115,9 @@ const EventDetails = ({navigation, route}) => {
 					>
 						Cancel registration
 					</Button>
+				) : cardDetails.participants.length >= cardDetails.maxParticipants ||
+				  cardDetails.trainerSide ? (
+					<></>
 				) : (
 					<Button
 						style={{backgroundColor: Colors.Buttons.fourth, width: '105%'}}

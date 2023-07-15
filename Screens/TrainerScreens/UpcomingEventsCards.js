@@ -4,16 +4,21 @@ import {useContext} from 'react';
 // RN core components & API imporדts
 import {StyleSheet, Text, View} from 'react-native';
 
+// Custom components import
+import EventsList from './../../Components/TraineeSide/EventsOutput/EventsList';
+
 // Constants
 import Colors from './../../Constants/Colors';
 
 // Contexts imports
 import {TrainerContext} from './../../store/TrainerContext';
 
-// UpcomingEvents
-const UpcomingEvents = () => {
+// UpcomingEventsCards
+const UpcomingEventsCards = () => {
 	const context = useContext(TrainerContext);
-	if (context.events.length === 0)
+	const {events} = context;
+
+	if (events.length === 0)
 		return (
 			<View style={styles.container}>
 				<Text style={styles.headingText}>
@@ -28,12 +33,12 @@ const UpcomingEvents = () => {
 				<Text style={styles.headingText}>
 					View and manage your posted events training events
 				</Text>
-				{/* <EventsList events={context.events} /> */}
+				<EventsList events={events} trainerSide />
 			</View>
 		);
 };
 
-// UpcomingEvents StyleSheet
+// UpcomingEventsCards StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		height: '90%',
@@ -51,4 +56,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default UpcomingEvents;
+export default UpcomingEventsCards;

@@ -6,7 +6,7 @@ const Stack = createNativeStackNavigator();
 
 // Screen Components
 import Welcome from '../../../Screens/TrainerScreens/Welcome';
-import UpcomingEvents from '../../../Screens/TrainerScreens/UpcomingEvents';
+import UpcomingEventsCards from '../../../Screens/TrainerScreens/UpcomingEventsCards';
 import Feedbacks from '../../../Screens/TrainerScreens/Feedbacks';
 import PostEvent from './../../../Screens/TrainerScreens/PostEvent';
 
@@ -15,6 +15,7 @@ import Header from '../../UI/Header';
 
 // Constants
 import Colors from '../../../Constants/Colors';
+import EventDetails from '../../../Screens/TraineeScreens/EventDetails';
 
 // WelcomeNavigator component
 const WelcomeNavigator = () => {
@@ -58,7 +59,11 @@ const WelcomeNavigator = () => {
 				}}
 			/>
 			<Stack.Screen name='PostEvent' component={PostEvent} />
-			<Stack.Screen name='UpcomingEvents' component={UpcomingEvents} />
+			<Stack.Screen
+				name='UpcomingEventsCards'
+				component={UpcomingEventsCards}
+			/>
+			<Stack.Screen name='EventDetails' component={EventDetails} />
 			<Stack.Screen name='Feedbacks' component={Feedbacks} />
 		</Stack.Navigator>
 	);

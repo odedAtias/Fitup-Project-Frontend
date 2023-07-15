@@ -1,30 +1,29 @@
 // Hooks imports
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 
 // RN core components & API imports
 import {StyleSheet, View} from 'react-native';
 
 // Constants
+import {alert} from '../../../Constants/Alert';
 import Colors from '../../../Constants/Colors';
 import {CATEGORIES} from './../../../Constants/Categories';
-import {alert} from '../../../Constants/Alert';
 
 // Contexts imports
-import {TrainerContext} from '../../../store/TrainerContext';
 
 // Custom components imports
 import Button from '../../UI/Button';
-import PostEventInput from './PostEventInput';
 import DateTimeInput from '../../UI/DateTimeInput';
 import DropDownInput from './../../UI/DropDownInput';
+import PostEventInput from './PostEventInput';
 
 // Utils
 import {
-	validateDropdownInput,
-	validatePattern,
 	validateDateHour,
+	validateDropdownInput,
 	validateLegalTiming,
 	validateNumber,
+	validatePattern,
 } from './../../../utils/validations';
 
 // Drop down list data
@@ -34,9 +33,7 @@ const dropDownListData = CATEGORIES.map((category, index) => ({
 }));
 
 // PostEventForm component
-const PostEventForm = () => {
-	const tcx = useContext(TrainerContext);
-
+const PostEventForm = ({onSubmit}) => {
 	const [inputs, setInputs] = useState({
 		category: {
 			value: '',
@@ -189,15 +186,15 @@ const PostEventForm = () => {
 			);
 			result = false;
 		}
-		return true;
+		return result;
 	};
 
 	const handleSubmit = () => {
 		// validateInputs()
 		let isValidEvent = validateInputs();
-		console.log(isValidEvent);
-		// POST the object to the backend
-		// Update the context (Events + trainer's events)
+		if (isValidEvent) {
+			onSubmit(inputs);
+		}
 	};
 
 	return (

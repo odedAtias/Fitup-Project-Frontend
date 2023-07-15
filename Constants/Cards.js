@@ -3,7 +3,7 @@ export const CARDS = [
 		id: 'c1',
 		title: 'Upcoming Events',
 		image: require('../Images/Options/UpcomingEvents.png'),
-		link: 'UpcomingEvents',
+		link: 'UpcomingEventsCards',
 	},
 	{
 		id: 'c2',
