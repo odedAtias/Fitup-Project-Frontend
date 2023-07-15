@@ -106,7 +106,7 @@ const PostEventForm = () => {
 		const isValidHour = validatePattern(hour.value, hourPattern);
 
 		// Step 5 - validate the city and address
-		const cityAddressPattern = /^[a-zA-Z\s]{2,45}$/;
+		const cityAddressPattern = /^(?!\s*$).{2,45}$/;
 		const isValidCity = validatePattern(city.value, cityAddressPattern);
 		const isValidAddress = validatePattern(address.value, cityAddressPattern);
 
