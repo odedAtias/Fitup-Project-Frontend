@@ -105,6 +105,72 @@ const PostEventForm = () => {
 		const hourPattern = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
 		const isValidHour = validatePattern(hour.value, hourPattern);
 
+		// Step 5 - validate the city and address
+		const cityAddressPattern = /^[a-zA-Z\s]{2,45}$/;
+		const isValidCity = validatePattern(city.value, cityAddressPattern);
+		const isValidAddress = validatePattern(address.value, cityAddressPattern);
+
+		// Step 6 - validate description
+		const descriptionPattern = /^(?!\s*$).{10,300}$/;
+		const isValidDescription = validatePattern(
+			description.value,
+			descriptionPattern
+		);
+		console.log(description.isValid);
+
+		// Step 7 - validate the number of trainees and price
+		const isValidMaxParticipants = validateNumber(maxParticipants.value, false);
+		const isValidPrice = validateNumber(price.value, true);
+
+		setInputs(currentInputs => ({
+			category: {
+				value: category.value,
+				isValid: isValidCategory,
+			},
+			date: {
+				value: date.value,
+				isValid: isValidDate,
+			},
+			hour: {
+				value: hour.value,
+				isValid: isValidHour,
+			},
+			address: {
+				value: address.value,
+				isValid: isValidAddress,
+			},
+			city: {
+				value: city.value,
+				isValid: isValidCity,
+			},
+			description: {
+				value: description.value,
+				isValid: isValidDescription,
+			},
+			maxParticipants: {
+				value: maxParticipants.value,
+				isValid: isValidMaxParticipants,
+			},
+			price: {
+				value: price.value,
+				isValid: isValidPrice,
+			},
+		}));
+		// return true if all these steps returns truthy values
+		if (
+			!isValidCategory ||
+			!isValidDate ||
+			!isValidHour ||
+			!isValidAddress ||
+			!isValidCity ||
+			!isValidDescription ||
+			!isValidMaxParticipants ||
+			!isValidPrice
+		) {
+			alert('Invalid Input', 'Please check your input fields again.');
+			return false;
+		}
+
 		// Step 4 - validate (date,hour) together
 		if (!validateDateHour(date.value, hour.value)) {
 			alert(
@@ -122,22 +188,7 @@ const PostEventForm = () => {
 			return false;
 		}
 
-		// Step 5 - validate the city and address
-		const cityAddressPattern = /^[a-zA-Z\s]{2,45}$/;
-		const isValidCity = validatePattern(city.value, cityAddressPattern);
-		const isValidAddress = validatePattern(address.value, cityAddressPattern);
-
-		// Step 6 - validate description
-		const descriptionPattern = /^[a-zA-Z\s]{10,200}$/;
-		const isValidDescription = validatePattern(
-			description.value,
-			descriptionPattern
-		);
-
-		// Step 7 - validate the number of trainees and price
-		const isValidMaxParticipants = validateNumber(maxParticipants.value, false);
-		const isValidPrice = validateNumber(price.value, true);
-		// return true if all these steps returns truthy values
+		return true;
 	};
 
 	const handleSubmit = () => {
@@ -153,6 +204,7 @@ const PostEventForm = () => {
 				label='Category'
 				onChange={handleInputChange}
 				data={dropDownListData}
+				invalid={inputs.category.isValid}
 			/>
 			<View style={styles.twoInRow}>
 				<View style={styles.inputContainer}>
@@ -187,7 +239,9 @@ const PostEventForm = () => {
 				</View>
 			</View>
 			<PostEventInput
-				label='Description'
+				label={`description [ remaining ${
+					300 - inputs.description.value.length
+				} characters ]`}
 				invalid={!inputs.description.isValid}
 				inputConfigurations={{
 					autoCorrect: false,
@@ -214,7 +268,7 @@ const PostEventForm = () => {
 				</View>
 				<View style={styles.inputContainer}>
 					<PostEventInput
-						label='Price'
+						label='Price (NIS)'
 						invalid={!inputs.price.isValid}
 						inputConfigurations={{
 							autoCorrect: false,

@@ -9,8 +9,14 @@ import {Dropdown} from 'react-native-element-dropdown';
 import Colors from '../../Constants/Colors';
 
 // DropDownInput
-const DropDownInput = ({label, data, onChange}) => {
+const DropDownInput = ({label, data, onChange, invalid}) => {
 	const [value, setValue] = useState(null);
+
+	const inputStyles = [styles.dropdown];
+	
+	if (invalid) {
+		inputStyles.push(styles.invalidInput);
+	}
 
 	const handleDropdownChange = item => {
 		setValue(item.value);
@@ -19,9 +25,11 @@ const DropDownInput = ({label, data, onChange}) => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.label}>{label}</Text>
+			<Text style={[styles.label, invalid && styles.invalidLabel]}>
+				{label}
+			</Text>
 			<Dropdown
-				style={styles.dropdown}
+				style={[inputStyles]}
 				placeholderStyle={styles.placeholderStyle}
 				selectedTextStyle={styles.selectedTextStyle}
 				inputSearchStyle={styles.inputSearchStyle}
@@ -82,6 +90,12 @@ const styles = StyleSheet.create({
 	},
 	dropdownContainer: {
 		backgroundColor: Colors.Backgrounds.secondary,
+	},
+	invalidLabel: {
+		color: Colors.Texts.error500,
+	},
+	invalidInput: {
+		backgroundColor: Colors.Texts.error50,
 	},
 });
 

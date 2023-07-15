@@ -1,6 +1,9 @@
 export const validateDropdownInput = (list, value) => list.includes(value);
 
-export const validatePattern = (value, pattern) => pattern.test(value);
+export const validatePattern = (value, pattern) => {
+	const trimmedValue = value.trim();
+	return trimmedValue && trimmedValue.length > 0 && pattern.test(trimmedValue);
+};
 
 export const validateDateHour = (date, hour) => {
 	const [day, month, year] = date.split('/').map(Number);
