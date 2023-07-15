@@ -7,6 +7,7 @@ import {StyleSheet, View} from 'react-native';
 // Constants
 import Colors from '../../../Constants/Colors';
 import {CATEGORIES} from './../../../Constants/Categories';
+import {alert} from '../../../Constants/Alert';
 
 // Contexts imports
 import {TrainerContext} from '../../../store/TrainerContext';
@@ -20,8 +21,10 @@ import DropDownInput from './../../UI/DropDownInput';
 // Utils
 import {
 	validateDropdownInput,
-	validateDate,
-	validateHour,
+	validatePattern,
+	validateDateHour,
+	validateLegalTiming,
+	validateNumber,
 } from './../../../utils/validations';
 
 // Drop down list data
@@ -56,7 +59,8 @@ const PostEventForm = () => {
 			isValid: true,
 		},
 		description: {
-			value: '',
+			value:
+				'Welcome to my training sanctuary, where champions rise through passion and dedication. Embrace the challenge, push your limits, and leave an indelible mark on the road to greatness.',
 			isValid: true,
 		},
 		maxParticipants: {
@@ -92,20 +96,47 @@ const PostEventForm = () => {
 		// Step 1 - validate the category input
 		const list = dropDownListData.map(c => c.value);
 		const isValidCategory = validateDropdownInput(list, category.value);
+
 		// Step 2 - validate the date format
-		const isValidDate = validateDate(date.value);
+		const datePattern = /^\d{2}\/\d{2}\/\d{4}$/;
+		const isValidDate = validatePattern(date.value, datePattern);
 
 		// Step 3 - validate the hour format
-		const isValidateHour = validateHour(hour.value);
-		console.log(isValidateHour);
-		// Step 4 - validate dont have event with same date and hour
+		const hourPattern = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+		const isValidHour = validatePattern(hour.value, hourPattern);
 
-		// Step 5 - validate the city and adress
+		// Step 4 - validate (date,hour) together
+		if (!validateDateHour(date.value, hour.value)) {
+			alert(
+				'Invalid Date and Hour',
+				'Please enter a valid date and hour that is at least 6 hours ahead of the current date.'
+			);
+			return false;
+		}
+
+		if (!validateLegalTiming(date.value, hour.value, 45, [])) {
+			alert(
+				'Invalid Date and Hour',
+				'Please enter a valid date and hour that is not conflict with your other trainings.'
+			);
+			return false;
+		}
+
+		// Step 5 - validate the city and address
+		const cityAddressPattern = /^[a-zA-Z\s]{2,45}$/;
+		const isValidCity = validatePattern(city.value, cityAddressPattern);
+		const isValidAddress = validatePattern(address.value, cityAddressPattern);
 
 		// Step 6 - validate description
+		const descriptionPattern = /^[a-zA-Z\s]{10,200}$/;
+		const isValidDescription = validatePattern(
+			description.value,
+			descriptionPattern
+		);
 
 		// Step 7 - validate the number of trainees and price
-
+		const isValidMaxParticipants = validateNumber(maxParticipants.value, false);
+		const isValidPrice = validateNumber(price.value, true);
 		// return true if all these steps returns truthy values
 	};
 
