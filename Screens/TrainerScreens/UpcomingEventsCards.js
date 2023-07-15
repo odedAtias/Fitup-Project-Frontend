@@ -1,8 +1,8 @@
 // Hooks imports
-import {useContext} from 'react';
+import { useContext } from 'react';
 
 // RN core components & API imporדts
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 // Custom components import
 import EventsList from './../../Components/TraineeSide/EventsOutput/EventsList';
@@ -11,7 +11,7 @@ import EventsList from './../../Components/TraineeSide/EventsOutput/EventsList';
 import Colors from './../../Constants/Colors';
 
 // Contexts imports
-import {TrainerContext} from './../../store/TrainerContext';
+import { TrainerContext } from './../../store/TrainerContext';
 
 // UpcomingEventsCards
 const UpcomingEventsCards = () => {

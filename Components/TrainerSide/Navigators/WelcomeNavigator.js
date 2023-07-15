@@ -16,6 +16,7 @@ import Header from '../../UI/Header';
 // Constants
 import Colors from '../../../Constants/Colors';
 import EventDetails from '../../../Screens/TraineeScreens/EventDetails';
+import ManageDetails from '../../../Screens/TraineeScreens/ManageDetails';
 
 // WelcomeNavigator component
 const WelcomeNavigator = () => {

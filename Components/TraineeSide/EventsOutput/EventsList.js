@@ -1,17 +1,17 @@
 // Hooks imports
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 // RN core components & API imports
-import {FlatList, StyleSheet} from 'react-native';
+import { FlatList } from 'react-native';
 
 // Custom components imports
 import EventItem from './EventItem';
 
 // Utils
-export {sortedEventsByDate} from '../../../utils/Date';
+export { sortedEventsByDate } from '../../../utils/Date';
 
 // Constants
-import {sortedEventsByDate} from '../../../utils/Date';
+import { sortedEventsByDate } from '../../../utils/Date';
 
 // EventsList component
 const EventsList = ({events, trainerSide}) => {
@@ -20,7 +20,10 @@ const EventsList = ({events, trainerSide}) => {
 
 	// EventsList handlers
 	const handlePress = event => {
-		navigation.navigate('EventDetails', {...event});
+		navigation.navigate(
+			'EventDetails',
+			trainerSide ? {...event, trainerSide: true} : {...event}
+		);
 	};
 
 	const sortedEvents = sortedEventsByDate(events);
