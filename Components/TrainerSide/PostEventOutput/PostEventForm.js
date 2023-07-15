@@ -105,20 +105,19 @@ const PostEventForm = () => {
 		const hourPattern = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
 		const isValidHour = validatePattern(hour.value, hourPattern);
 
-		// Step 5 - validate the city and address
+		// Step 4 - validate the city and address
 		const cityAddressPattern = /^(?!\s*$).{2,45}$/;
 		const isValidCity = validatePattern(city.value, cityAddressPattern);
 		const isValidAddress = validatePattern(address.value, cityAddressPattern);
 
-		// Step 6 - validate description
+		// Step 5 - validate description
 		const descriptionPattern = /^(?!\s*$).{10,300}$/;
 		const isValidDescription = validatePattern(
 			description.value,
 			descriptionPattern
 		);
-		console.log(description.isValid);
 
-		// Step 7 - validate the number of trainees and price
+		// Step 6 - validate the number of trainees and price
 		const isValidMaxParticipants = validateNumber(maxParticipants.value, false);
 		const isValidPrice = validateNumber(price.value, true);
 
@@ -156,6 +155,7 @@ const PostEventForm = () => {
 				isValid: isValidPrice,
 			},
 		}));
+
 		// return true if all these steps returns truthy values
 		if (
 			!isValidCategory ||
@@ -171,7 +171,7 @@ const PostEventForm = () => {
 			return false;
 		}
 
-		// Step 4 - validate (date,hour) together
+		// Step 7 - validate (date,hour) together
 		if (!validateDateHour(date.value, hour.value)) {
 			alert(
 				'Invalid Date and Hour',
@@ -204,7 +204,7 @@ const PostEventForm = () => {
 				label='Category'
 				onChange={handleInputChange}
 				data={dropDownListData}
-				invalid={inputs.category.isValid}
+				invalid={!inputs.category.isValid}
 			/>
 			<View style={styles.twoInRow}>
 				<View style={styles.inputContainer}>
