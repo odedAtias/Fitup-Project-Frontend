@@ -14,7 +14,7 @@ import PostEventForm from '../../Components/TrainerSide/PostEventOutput/PostEven
 import {postData, updateData} from '../../utils/http/rest';
 
 // PostEvent StyleSheet
-const PostEvent = () => {
+const PostEvent = ({navigation}) => {
 	const tcx = useContext(TrainerContext);
 	const handleSubmit = async event => {
 		// Backend -  Post event to events collection (get back id of the event from mongoDB)
@@ -44,6 +44,8 @@ const PostEvent = () => {
 			);
 			// Frontend - update event on the trainers events list on the context
 			tcx.setEvents([...tcx.events, {_id: eventId, ...eventPayload}]);
+			// Navigate to the home page
+			navigation.navigate('Welcome');
 		} catch (err) {
 			console.log('Connection error', err);
 		}

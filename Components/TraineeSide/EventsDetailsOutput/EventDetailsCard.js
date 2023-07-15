@@ -13,7 +13,7 @@ import HeadingText from '../../UI/HeadingText';
 import Colors from '../../../Constants/Colors';
 
 // Utils functions imports
-import {displayAddrress} from '../../../utils/address';
+import {displayAddress} from '../../../utils/address';
 import {displayFullDate} from '../../../utils/Date';
 import {displayParticipants} from '../../../utils/participants';
 import {statusColor} from '../../../utils/participants';
@@ -49,8 +49,9 @@ const EventDetailsCard = cardDetails => {
 					{`${cardDetails.trainer.firstName} ${cardDetails.trainer.lastName}`}
 				</Text>
 				<Text style={[styles.spacing, styles.font]}>
-					{displayAddrress(cardDetails.address, cardDetails.city)}
+					{displayAddress(cardDetails.address)}
 				</Text>
+				<Text style={[styles.spacing, styles.font]}>{cardDetails.city}</Text>
 				<Text style={[styles.spacing, styles.font]}>
 					Price: {cardDetails.price}₪
 				</Text>

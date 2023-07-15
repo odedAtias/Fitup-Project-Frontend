@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		padding: 10,
 		// Adjust by the platforms
-		marginHorizontal: 15,
 		marginVertical: 10,
 		// Shadow for android
 		elevation: 10,
@@ -40,6 +39,7 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowOffset: {width: 4, height: 2},
 		shadowRadius: 8,
+		width: '100%',
 	},
 });
 

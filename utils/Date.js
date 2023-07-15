@@ -44,3 +44,12 @@ export const getDate = value => {
 	const formattedDate = `${day}/${month}/${year}`;
 	return formattedDate;
 };
+
+export const isWithinNext7Days = dateStr => {
+	const today = new Date();
+	const dateParts = dateStr.split('/');
+	const eventDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+	const timeDiff = eventDate.getTime() - today.getTime();
+	const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+	return daysDiff >= 0 && daysDiff <= 7;
+};

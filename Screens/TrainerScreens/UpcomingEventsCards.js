@@ -1,8 +1,8 @@
 // Hooks imports
-import { useContext } from 'react';
+import {useContext} from 'react';
 
 // RN core components & API imporדts
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 // Custom components import
 import EventsList from './../../Components/TraineeSide/EventsOutput/EventsList';
@@ -11,14 +11,18 @@ import EventsList from './../../Components/TraineeSide/EventsOutput/EventsList';
 import Colors from './../../Constants/Colors';
 
 // Contexts imports
-import { TrainerContext } from './../../store/TrainerContext';
+import {TrainerContext} from './../../store/TrainerContext';
+
+// Utils
+import {isWithinNext7Days} from '../../utils/Date';
 
 // UpcomingEventsCards
 const UpcomingEventsCards = () => {
 	const context = useContext(TrainerContext);
 	const {events} = context;
+	const recentEvents = events.filter(event => isWithinNext7Days(event.date));
 
-	if (events.length === 0)
+	if (recentEvents.length === 0)
 		return (
 			<View style={styles.container}>
 				<Text style={styles.headingText}>
@@ -31,9 +35,9 @@ const UpcomingEventsCards = () => {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.headingText}>
-					View and manage your posted events training events
+					View your upcoming training events withing the next 7 days
 				</Text>
-				<EventsList events={events} trainerSide />
+				<EventsList events={recentEvents} trainerSide />
 			</View>
 		);
 };
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
 	},
 	headingText: {
 		fontFamily: 'rubik',
-		fontSize: 24,
+		fontSize: 20,
 		textAlign: 'center',
 		marginBottom: 20,
 		color: Colors.Texts.primary,
