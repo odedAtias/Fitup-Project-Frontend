@@ -10,17 +10,21 @@ import Title from '../../UI/Title';
 import TextBox from './../../UI/TextBox';
 
 // EventParticipants component
-const EventParticipants = ({participants}) => {
+const EventParticipants = ({participants, trainerSide}) => {
 	let children = <ParticipantsList participants={participants} />;
-	if (participants.length === 0)
+
+	if (participants.length === 0) {
 		children = (
 			<TextBox
 				bgColor={Colors.Backgrounds.primary}
 				txtColor={Colors.Texts.primary}
 			>
-				Be the first person to participate in this event.
+				{trainerSide
+					? 'The training is currently open for registration, we look forward to welcoming participants as none have registered yet.'
+					: 'Be the first person to participate in this event.'}
 			</TextBox>
 		);
+	}
 
 	return (
 		<View style={styles.container}>

@@ -1,8 +1,8 @@
 // Hooks imports
-import { useContext } from 'react';
+import {useContext} from 'react';
 
 // RN core components & API imports
-import { Alert, StyleSheet, View } from 'react-native';
+import {Alert, StyleSheet, View} from 'react-native';
 
 // Custom components
 import EventDetailsCard from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsCard';
@@ -11,16 +11,16 @@ import EventParticipants from '../../Components/TraineeSide/EventsDetailsOutput/
 import Button from '../../Components/UI/Button';
 
 // Contexts imports
-import { TraineeContext } from '../../store/TraineeContext';
-import { EventsContext } from './../../store/EventsContext';
+import {TraineeContext} from '../../store/TraineeContext';
+import {EventsContext} from './../../store/EventsContext';
 
 // Constants
-import { alert } from '../../Constants/Alert';
+import {alert} from '../../Constants/Alert';
 import Colors from '../../Constants/Colors';
 
 // Utils
-import { updateData } from '../../utils/http/rest';
-import { adjustEvent } from './../../utils/schemas';
+import {updateData} from '../../utils/http/rest';
+import {adjustEvent} from './../../utils/schemas';
 
 // EventDetails component
 const EventDetails = ({navigation, route}) => {
@@ -95,9 +95,9 @@ const EventDetails = ({navigation, route}) => {
 
 	return (
 		<View style={styles.container}>
-			<EventDetailsCard {...cardDetails} trainerSide/>
+			<EventDetailsCard {...cardDetails} trainerSide />
 			<EventDetailsDescription description={description} />
-			<EventParticipants participants={cardDetails.participants} />
+			<EventParticipants participants={cardDetails.participants} trainerSide />
 			<View
 				style={{
 					margin: 20,
