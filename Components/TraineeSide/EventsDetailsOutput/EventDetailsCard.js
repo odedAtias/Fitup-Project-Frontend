@@ -33,7 +33,7 @@ const EventDetailsCard = cardDetails => {
 		<View style={styles.container}>
 			{/* Events trainer image container */}
 			<Pressable
-				onPress={handleVisitProfile}
+				onPress={cardDetails.trainer ? null : handleVisitProfile}
 				style={styles.visitProfileContainer}
 			>
 				<EventItemImage imageUrl={cardDetails.trainer.image} />

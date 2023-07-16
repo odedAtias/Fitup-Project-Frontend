@@ -18,7 +18,6 @@ const EventParticipants = ({participants, trainerSide}) => {
 			<TextBox
 				bgColor={Colors.Backgrounds.primary}
 				txtColor={Colors.Texts.primary}
-				containerStyle={{marginTop: '2%'}}
 			>
 				{trainerSide
 					? 'The training is currently open for registration, we look forward to welcoming participants as none have registered yet.'
@@ -28,7 +27,7 @@ const EventParticipants = ({participants, trainerSide}) => {
 	}
 
 	return (
-		<View>
+		<View style={{marginTop: participants.length === 0 ? '2%' : 0}}>
 			<Title>Participants</Title>
 			{children}
 		</View>
