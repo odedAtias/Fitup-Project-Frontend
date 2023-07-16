@@ -186,8 +186,6 @@ const ManageEventForm = ({event, navigation, onSubmit, onDelete}) => {
 		return result;
 	};
 
-	const handleSubmit = () => {};
-
 	return (
 		<View style={styles.container}>
 			<DropDownInput
@@ -278,14 +276,25 @@ const ManageEventForm = ({event, navigation, onSubmit, onDelete}) => {
 					/>
 				</View>
 			</View>
-			<View style={styles.buttonContainer}>
-				<Button
-					style={styles.button}
-					textStyle={styles.buttonText}
-					onPress={handleSubmit}
-				>
-					Submit
-				</Button>
+			<View style={styles.twoInRow}>
+				<View style={styles.buttonContainer}>
+					<Button
+						style={styles.button}
+						textStyle={styles.buttonText}
+						onPress={onSubmit}
+					>
+						Submit
+					</Button>
+				</View>
+				<View style={styles.buttonContainer}>
+					<Button
+						style={{...styles.button, backgroundColor: Colors.Texts.error500}}
+						textStyle={styles.buttonText}
+						onPress={onDelete}
+					>
+						Delete
+					</Button>
+				</View>
 			</View>
 		</View>
 	);
@@ -308,10 +317,12 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginTop: '2%',
+		flex: 1,
+		marginHorizontal: 10,
 	},
 	button: {
 		backgroundColor: Colors.Buttons.fifth,
-		width: '50%',
+		width: '100%',
 	},
 	buttonText: {
 		fontSize: 18,
