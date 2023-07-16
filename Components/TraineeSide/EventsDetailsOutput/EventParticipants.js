@@ -1,13 +1,13 @@
 // RN core components & API imports
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
 // Constants
 import Colors from '../../../Constants/Colors';
 
 // Custom components imports
-import ParticipantsList from './ParticipantsList';
 import Title from '../../UI/Title';
 import TextBox from './../../UI/TextBox';
+import ParticipantsList from './ParticipantsList';
 
 // EventParticipants component
 const EventParticipants = ({participants, trainerSide}) => {
@@ -18,6 +18,7 @@ const EventParticipants = ({participants, trainerSide}) => {
 			<TextBox
 				bgColor={Colors.Backgrounds.primary}
 				txtColor={Colors.Texts.primary}
+				containerStyle={{marginTop: '2%'}}
 			>
 				{trainerSide
 					? 'The training is currently open for registration, we look forward to welcoming participants as none have registered yet.'
@@ -27,18 +28,11 @@ const EventParticipants = ({participants, trainerSide}) => {
 	}
 
 	return (
-		<View style={styles.container}>
+		<View>
 			<Title>Participants</Title>
 			{children}
 		</View>
 	);
 };
-
-// EventParticipants Stylesheet
-const styles = StyleSheet.create({
-	container: {
-		marginTop: '3%',
-	},
-});
 
 export default EventParticipants;

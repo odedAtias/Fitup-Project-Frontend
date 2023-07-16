@@ -95,13 +95,19 @@ const EventDetails = ({navigation, route}) => {
 
 	return (
 		<View style={styles.container}>
-			<EventDetailsCard {...cardDetails} trainerSide />
+			<EventDetailsCard
+				{...cardDetails}
+				trainerSide={cardDetails.trainerSide}
+			/>
 			<EventDetailsDescription description={description} />
-			<EventParticipants participants={cardDetails.participants} trainerSide />
+			<EventParticipants
+				participants={cardDetails.participants}
+				trainerSide={cardDetails.trainerSide}
+			/>
 			<View
 				style={{
 					alignItems: 'center',
-					marginHorizontal: 20,
+					marginHorizontal: 15,
 				}}
 			>
 				{/* Only if have place to register */}
