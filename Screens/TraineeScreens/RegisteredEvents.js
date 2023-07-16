@@ -39,9 +39,6 @@ const RegisteredEvents = () => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.headingText}>
-				View and manage your registered events
-			</Text>
 			<EventsList events={events} />
 		</View>
 	);

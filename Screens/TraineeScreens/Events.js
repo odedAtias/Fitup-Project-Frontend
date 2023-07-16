@@ -61,7 +61,7 @@ const Events = ({navigation, route}) => {
 
 	return (
 		<View style={styles.container}>
-			<SearchInput />
+			<SearchInput inputConfigurations={{placeholder: 'search something'}} />
 			<EventsList events={relevantEvents} />
 		</View>
 	);
