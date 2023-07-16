@@ -50,7 +50,7 @@ const Events = ({navigation, route}) => {
 
 	if (!relevantEvents || relevantEvents.length === 0) {
 		return (
-			<View style={styles.noEventsContainer}>
+			<View style={styles.fallbackTextContainer}>
 				<Text style={styles.headingText}>
 					There are no {categoryName} trainings in the system !
 				</Text>
@@ -67,17 +67,20 @@ const Events = ({navigation, route}) => {
 
 // Events StyleSheet
 const styles = StyleSheet.create({
-	noEventsContainer: {
+	container: {
 		height: '100%',
-		justifyContent: 'center',
+	},
+	fallbackTextContainer: {
+		height: '100%',
+		paddingHorizontal: '5%',
 		alignItems: 'center',
-		paddingHorizontal: '15%',
+		justifyContent: 'center',
 	},
 	headingText: {
 		fontFamily: 'rubik',
-		fontSize: 20,
+		fontSize: 22,
 		textAlign: 'center',
-		marginBottom: 30,
+		marginBottom: 20,
 		color: Colors.Texts.primary,
 	},
 });
