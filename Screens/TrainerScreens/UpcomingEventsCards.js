@@ -22,11 +22,9 @@ const UpcomingEventsCards = () => {
 	const {events} = context;
 	const recentEvents = events.filter(event => isWithinNext7Days(event.date));
 
-	console.log(recentEvents);
-
 	if (recentEvents.length === 0)
 		return (
-			<View style={styles.container}>
+			<View style={styles.fallbackTextContainer}>
 				<Text style={styles.headingText}>
 					You haven't posted any traning events yet, Share your unwritten events
 					with us.
@@ -36,9 +34,6 @@ const UpcomingEventsCards = () => {
 	else
 		return (
 			<View style={styles.container}>
-				<Text style={styles.headingText}>
-					View your upcoming training events withing the next 7 days
-				</Text>
 				<EventsList events={recentEvents} trainerSide />
 			</View>
 		);
@@ -47,18 +42,20 @@ const UpcomingEventsCards = () => {
 // UpcomingEventsCards StyleSheet
 const styles = StyleSheet.create({
 	container: {
-		height: '90%',
-		justifyContent: 'center',
-		paddingVertical: 20,
+		height: '100%',
+	},
+	fallbackTextContainer: {
+		height: '100%',
+		paddingHorizontal: '5%',
 		alignItems: 'center',
+		justifyContent: 'center',
 	},
 	headingText: {
 		fontFamily: 'rubik',
-		fontSize: 20,
+		fontSize: 22,
 		textAlign: 'center',
 		marginBottom: 20,
 		color: Colors.Texts.primary,
-		maxWidth: '95%',
 	},
 });
 

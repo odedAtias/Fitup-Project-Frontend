@@ -18,16 +18,13 @@ const AllEvents = () => {
 	const context = useContext(TrainerContext);
 	if (context.events.length === 0)
 		return (
-			<View style={styles.container}>
+			<View style={styles.fallbackTextContainer}>
 				<Text style={styles.headingText}>Not have registered events yet !</Text>
 			</View>
 		);
 	else
 		return (
 			<View style={styles.container}>
-				<Text style={styles.headingText}>
-					View and manage your registered training events
-				</Text>
 				<EventsList events={context.events} />
 			</View>
 		);
@@ -36,18 +33,20 @@ const AllEvents = () => {
 // AllEvents component
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		justifyContent: 'center',
+		height: '100%',
+	},
+	fallbackTextContainer: {
+		height: '100%',
+		paddingHorizontal: '5%',
 		alignItems: 'center',
-		paddingBottom: '10%',
+		justifyContent: 'center',
 	},
 	headingText: {
-		marginVertical: '5%',
 		fontFamily: 'rubik',
-		fontSize: 20,
+		fontSize: 22,
 		textAlign: 'center',
+		marginBottom: 20,
 		color: Colors.Texts.primary,
-		maxWidth: '90%',
 	},
 });
 

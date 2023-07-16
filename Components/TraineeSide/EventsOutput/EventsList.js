@@ -2,7 +2,7 @@
 import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import {FlatList} from 'react-native';
+import {FlatList, View, StyleSheet} from 'react-native';
 
 // Custom components imports
 import EventItem from './EventItem';
@@ -29,19 +29,28 @@ const EventsList = ({events, trainerSide}) => {
 	const sortedEvents = sortedEventsByDate(events);
 
 	return (
-		<FlatList
-			data={sortedEvents}
-			keyExtractor={item => item._id}
-			renderItem={itemData => (
-				<EventItem
-					event={{...itemData.item}}
-					onPress={() => handlePress(itemData.item)}
-				/>
-			)}
-			showsVerticalScrollIndicator={false}
-			style={{flex: 1}}
-		/>
+		<View style={styles.container}>
+			<FlatList
+				data={sortedEvents}
+				keyExtractor={item => item._id}
+				renderItem={itemData => (
+					<EventItem
+						event={{...itemData.item}}
+						onPress={() => handlePress(itemData.item)}
+					/>
+				)}
+				showsVerticalScrollIndicator={false}
+			/>
+		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		paddingTop: '2.5%',
+		paddingBottom: '15%',
+	},
+});
 
 export default EventsList;

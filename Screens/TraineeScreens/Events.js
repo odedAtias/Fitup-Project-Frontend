@@ -67,9 +67,6 @@ const Events = ({navigation, route}) => {
 
 // Events StyleSheet
 const styles = StyleSheet.create({
-	container: {
-		paddingBottom: '15%',
-	},
 	noEventsContainer: {
 		height: '100%',
 		justifyContent: 'center',

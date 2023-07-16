@@ -50,8 +50,6 @@ const RegisteredEvents = () => {
 const styles = StyleSheet.create({
 	container: {
 		height: '100%',
-		paddingTop: '5%',
-		paddingBottom: '15%',
 	},
 	noEventsContainer: {
 		height: '100%',
@@ -65,6 +63,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginBottom: 20,
 		color: Colors.Texts.primary,
+		maxWidth: '95%',
 	},
 });
 

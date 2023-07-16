@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		// Adjust by the platforms
 		marginHorizontal: '3%',
-		marginBottom: '7%',
+		marginBottom: '5%',
 		// Shadow for android
 		elevation: 10,
 		// Shadow for ios
