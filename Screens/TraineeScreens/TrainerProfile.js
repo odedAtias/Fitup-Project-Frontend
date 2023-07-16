@@ -79,6 +79,7 @@ const TrainerProfile = ({route, navigation}) => {
 
 	async function handleAddToFavorite() {
 		let favoriteTrainers = context.favoriteTrainers;
+		console.log(favoriteTrainers);
 		// Add to favorite trainers list
 		if (!isFavoriteTrainer) {
 			favoriteTrainers.push(trainer);
@@ -116,7 +117,8 @@ const TrainerProfile = ({route, navigation}) => {
 			);
 			alert(
 				'Favorite Trainers Updated',
-				'Your favorite trainers list has been updated successfully!'
+				'Your favorite trainers list has been updated successfully!',
+				navigation.navigate('FavoriteTrainers')
 			);
 		} catch (error) {
 			console.log('error occured');
