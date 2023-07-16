@@ -279,7 +279,7 @@ const ManageDetailsForm = ({onSubmit, isTrainer}) => {
 					}}
 				>
 					<Button
-						style={{backgroundColor: Colors.Buttons.fifth, width: '90%'}}
+						style={{backgroundColor: Colors.Buttons.fifth, width: '50%'}}
 						textStyle={{fontSize: 18}}
 						onPress={handleConfirm}
 					>

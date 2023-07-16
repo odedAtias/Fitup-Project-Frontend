@@ -307,11 +307,11 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginTop: '5%',
+		marginTop: '2%',
 	},
 	button: {
 		backgroundColor: Colors.Buttons.fifth,
-		width: '90%',
+		width: '50%',
 	},
 	buttonText: {
 		fontSize: 18,

@@ -10,6 +10,7 @@ import {View, StyleSheet, Platform, Text} from 'react-native';
 // Custom components imports
 import Header from '../../Components/UI/Header';
 import EventsList from '../../Components/TraineeSide/EventsOutput/EventsList';
+import SearchInput from '../../Components/TraineeSide/EventsOutput/SearchInput';
 
 // Constants
 import Colors from '../../Constants/Colors';
@@ -60,6 +61,7 @@ const Events = ({navigation, route}) => {
 
 	return (
 		<View style={styles.container}>
+			<SearchInput />
 			<EventsList events={relevantEvents} />
 		</View>
 	);

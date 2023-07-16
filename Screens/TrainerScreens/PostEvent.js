@@ -68,9 +68,6 @@ const PostEvent = ({navigation}) => {
 	return (
 		<ScrollView style={styles.scrolling}>
 			<View style={styles.container}>
-				{/* Heading */}
-				<Text style={styles.headingText}>Create a New Training Event</Text>
-				{/* Form */}
 				<PostEventForm onSubmit={handleSubmit} />
 			</View>
 		</ScrollView>

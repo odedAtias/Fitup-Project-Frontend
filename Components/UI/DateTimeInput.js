@@ -65,6 +65,7 @@ const DateTimeInput = ({mode, onChange}) => {
 							paddingVertical: 8,
 							paddingLeft: 10,
 							backgroundColor: Colors.Backgrounds.secondary,
+							borderRadius: 10,
 						},
 					}}
 				/>

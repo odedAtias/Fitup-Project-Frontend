@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
 		fontFamily: 'rubik',
 		fontWeight: '600',
 		color: Colors.Texts.primary,
+		fontWeight: 'bold',
 	},
 	dropdown: {
 		height: 50,
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 8,
 		backgroundColor: Colors.Backgrounds.secondary,
 		paddingLeft: 10,
+		borderRadius: 10,
 	},
 	iconStyle: {
 		width: 20,

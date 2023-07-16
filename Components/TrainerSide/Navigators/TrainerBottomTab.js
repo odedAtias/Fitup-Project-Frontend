@@ -44,7 +44,7 @@ const TrainerBottomTab = () => {
 					elevation: 0,
 				},
 				tabBarShowLabel: false,
-				tabBarActiveTintColor: Colors.Texts.third,
+				tabBarActiveTintColor: Colors.Backgrounds.secondary,
 				tabBarInactiveTintColor: Colors.Texts.secondary,
 			}}
 		>

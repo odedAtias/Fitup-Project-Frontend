@@ -1,12 +1,12 @@
 // Project colors pallets
 const Colors = {
 	Headers: {
-		primary: '#72a4e8',
+		primary: '#623fb7',
 		secondary: '#fff',
 	},
 	Backgrounds: {
 		primary: 'white',
-		secondary: '#e4e4dc',
+		secondary: 'rgb(216,216,216)',
 		third: '#EFF1F7',
 		fourth: '#ebedfb',
 		fifth: '#e4e4e9',
@@ -15,8 +15,8 @@ const Colors = {
 		primary: '#8C52FF',
 		secondary: '#010101',
 		third: '#38B6FF',
-		fourth: '#F78761',
-		fifth: '#525edc',
+		fourth: '#ea522b',
+		fifth: '#ea522b',
 		sixth: '#cadeef',
 	},
 	Links: {
@@ -29,7 +29,7 @@ const Colors = {
 		fourth: ' #29a8ab',
 		fifth: '#4a4e4d',
 		sixth: '#5271ff',
-		available: '#00FF73',
+		available: '#29a8ab',
 		intermediate: '#FFE300',
 		almostFull: '#FF0000',
 		error50: '#ff6b84',

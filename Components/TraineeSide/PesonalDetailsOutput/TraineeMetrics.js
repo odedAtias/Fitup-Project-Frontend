@@ -2,7 +2,7 @@
 import {useNavigation} from '@react-navigation/native';
 
 // RN core components & API imports
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 // Utils
 import {bmiColor, calculateBMI} from './../../../utils/stats';
@@ -27,9 +27,9 @@ const TraineeMetrics = ({height, weight}) => {
 				</View>
 			</View>
 			<View style={styles.metricContainer}>
-				<View style={[styles.metric, {backgroundColor: bmiColor(bmi)}]}>
-					<Text style={styles.title}>BMI</Text>
-					<Text style={styles.value}>{bmi}</Text>
+				<View style={[styles.metric]}>
+					<Text style={[styles.title, {color: bmiColor(bmi)}]}>BMI</Text>
+					<Text style={[styles.value, {color: bmiColor(bmi)}]}>{bmi}</Text>
 				</View>
 			</View>
 		</View>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
 		width: 100,
 		height: 100,
 		borderRadius: 50,
-		backgroundColor: '#f2dcc5',
+		backgroundColor: 'rgb(216,216,216)',
 	},
 });
 

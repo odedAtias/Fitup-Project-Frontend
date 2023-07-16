@@ -70,7 +70,7 @@ const PersonalDetails = ({navigation}) => {
 			/>
 			<Button
 				style={{
-					backgroundColor: '#000',
+					backgroundColor: Colors.Buttons.fourth,
 					color: 'white',
 					borderRadius: 50,
 					width: '80%',

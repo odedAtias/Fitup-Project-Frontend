@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
 		fontFamily: 'rubik',
 		fontWeight: '600',
 		color: Colors.Texts.primary,
+		fontWeight: 'bold',
 	},
 	input: {
 		textAlign: 'left',
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 8,
 		backgroundColor: Colors.Backgrounds.secondary,
 		paddingLeft: 10,
+		borderRadius: 10,
 	},
 	invalidLabel: {
 		color: Colors.Texts.error500,
