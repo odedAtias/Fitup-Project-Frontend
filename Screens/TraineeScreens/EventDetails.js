@@ -1,5 +1,5 @@
 // Hooks imports
-import {useContext} from 'react';
+import {useContext, useLayoutEffect} from 'react';
 
 // RN core components & API imports
 import {Alert, StyleSheet, View} from 'react-native';
@@ -9,6 +9,7 @@ import EventDetailsCard from '../../Components/TraineeSide/EventsDetailsOutput/E
 import EventDetailsDescription from '../../Components/TraineeSide/EventsDetailsOutput/EventDetailsDescription';
 import EventParticipants from '../../Components/TraineeSide/EventsDetailsOutput/EventParticipants';
 import Button from '../../Components/UI/Button';
+import Header from '../../Components/UI/Header';
 
 // Contexts imports
 import {TraineeContext} from '../../store/TraineeContext';
@@ -92,6 +93,35 @@ const EventDetails = ({navigation, route}) => {
 			{cancelable: false}
 		);
 	};
+
+	if (cardDetails.trainerSide) {
+		useLayoutEffect(() => {
+			navigation.setOptions({
+				header: ({navigation}) => (
+					<Header
+						label={'Fit\nUp'}
+						containerStyle={{
+							backgroundColor: Colors.Headers.primary,
+							padding: Platform.OS === 'ios' ? 10 : 10,
+							paddingTop: Platform.OS === 'ios' ? 10 : 30,
+						}}
+						labelStyle={{
+							fontSize: 50,
+							color: Colors.Texts.primary,
+						}}
+						onPressLeft={() => navigation.goBack()}
+						onPressRight={() =>
+							navigation.navigate('ManageEvent', {eventId: _id})
+						}
+						rightButton={'create-outline'}
+					/>
+				),
+				contentStyle: {
+					backgroundColor: 'white',
+				},
+			});
+		}, [_id, navigation]);
+	}
 
 	return (
 		<View style={styles.container}>

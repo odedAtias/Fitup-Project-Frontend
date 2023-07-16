@@ -9,8 +9,8 @@ import {Dropdown} from 'react-native-element-dropdown';
 import Colors from '../../Constants/Colors';
 
 // DropDownInput
-const DropDownInput = ({label, data, onChange, invalid}) => {
-	const [value, setValue] = useState(null);
+const DropDownInput = ({label, data, onChange, invalid, val}) => {
+	const [value, setValue] = useState(val ? val : null);
 
 	const inputStyles = [styles.dropdown];
 

@@ -2,7 +2,7 @@
 import {useContext} from 'react';
 
 // RN core components & API imports
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 
 // Contexts imports
 import {TrainerContext} from '../../store/TrainerContext';

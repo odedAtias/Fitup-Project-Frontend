@@ -9,13 +9,14 @@ import Feedbacks from '../../../Screens/TrainerScreens/Feedbacks';
 import UpcomingEventsCards from '../../../Screens/TrainerScreens/UpcomingEventsCards';
 import Welcome from '../../../Screens/TrainerScreens/Welcome';
 import PostEvent from './../../../Screens/TrainerScreens/PostEvent';
+import EventDetails from '../../../Screens/TraineeScreens/EventDetails';
+import ManageEvent from '../../../Screens/TrainerScreens/ManageEvent';
 
 // Custom components imports
 import Header from '../../UI/Header';
 
 // Constants
 import Colors from '../../../Constants/Colors';
-import EventDetails from '../../../Screens/TraineeScreens/EventDetails';
 
 // WelcomeNavigator component
 const WelcomeNavigator = () => {
@@ -65,6 +66,7 @@ const WelcomeNavigator = () => {
 			/>
 			<Stack.Screen name='EventDetails' component={EventDetails} />
 			<Stack.Screen name='Feedbacks' component={Feedbacks} />
+			<Stack.Screen name='ManageEvent' component={ManageEvent} />
 		</Stack.Navigator>
 	);
 };

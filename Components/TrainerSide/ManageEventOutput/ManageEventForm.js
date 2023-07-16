@@ -13,7 +13,7 @@ import {CATEGORIES} from './../../../Constants/Categories';
 import Button from '../../UI/Button';
 import DateTimeInput from '../../UI/DateTimeInput';
 import DropDownInput from './../../UI/DropDownInput';
-import PostEventInput from './PostEventInput';
+import PostEventInput from '../PostEventOutput/PostEventInput';
 
 // Utils
 import {
@@ -30,40 +30,39 @@ const dropDownListData = CATEGORIES.map((category, index) => ({
 	value: category.name,
 }));
 
-// PostEventForm component
-const PostEventForm = ({onSubmit}) => {
+// ManageEventForm Component
+const ManageEventForm = ({event, navigation, onSubmit, onDelete}) => {
 	const [inputs, setInputs] = useState({
 		category: {
-			value: '',
+			value: event.category,
 			isValid: true,
 		},
 		date: {
-			value: '',
+			value: event.date,
 			isValid: true,
 		},
 		hour: {
-			value: '',
+			value: event.hour,
 			isValid: true,
 		},
 		address: {
-			value: '',
+			value: event.address,
 			isValid: true,
 		},
 		city: {
-			value: '',
+			value: event.city,
 			isValid: true,
 		},
 		description: {
-			value:
-				'Welcome to my training sanctuary, where champions rise through passion and dedication. Embrace the challenge, push your limits, and leave an indelible mark on the road to greatness.',
+			value: event.description,
 			isValid: true,
 		},
 		maxParticipants: {
-			value: null,
+			value: event.maxParticipants.toString(),
 			isValid: true,
 		},
 		price: {
-			value: null,
+			value: event.price.toString(),
 			isValid: true,
 		},
 	});
@@ -187,13 +186,7 @@ const PostEventForm = ({onSubmit}) => {
 		return result;
 	};
 
-	const handleSubmit = () => {
-		// validateInputs()
-		let isValidEvent = validateInputs();
-		if (isValidEvent) {
-			onSubmit(inputs);
-		}
-	};
+	const handleSubmit = () => {};
 
 	return (
 		<View style={styles.container}>
@@ -202,13 +195,22 @@ const PostEventForm = ({onSubmit}) => {
 				onChange={handleInputChange}
 				data={dropDownListData}
 				invalid={!inputs.category.isValid}
+				val={inputs.category.value}
 			/>
 			<View style={styles.twoInRow}>
 				<View style={styles.inputContainer}>
-					<DateTimeInput mode='date' onChange={handleInputChange} />
+					<DateTimeInput
+						mode='date'
+						onChange={handleInputChange}
+						value={inputs.date.value}
+					/>
 				</View>
 				<View style={styles.inputContainer}>
-					<DateTimeInput mode='time' onChange={handleInputChange} />
+					<DateTimeInput
+						mode='time'
+						onChange={handleInputChange}
+						value={inputs.hour.value}
+					/>
 				</View>
 			</View>
 			<View style={styles.twoInRow}>
@@ -289,7 +291,7 @@ const PostEventForm = ({onSubmit}) => {
 	);
 };
 
-// PostEventForm StyleSheet
+// ManageEventForm StyleSheet
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -316,4 +318,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default PostEventForm;
+export default ManageEventForm;

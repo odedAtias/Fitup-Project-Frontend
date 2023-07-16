@@ -14,11 +14,22 @@ import Colors from '../../Constants/Colors';
 // Utils
 import {getDate, getHour} from '../../utils/Date';
 
-const DateTimeInput = ({mode, onChange}) => {
+const DateTimeInput = ({mode, onChange, value}) => {
 	const prop = mode === 'time' ? 'Hour' : 'Date';
 
-	const currentDateTime = new Date();
+	let currentDateTime = new Date();
 	currentDateTime.setTime(currentDateTime.getTime() + 9 * 60 * 60 * 1000);
+
+	if (value) {
+		if (prop === 'Hour') {
+			let [hours, minutes] = value.split(':');
+			currentDateTime.setHours(hours);
+			currentDateTime.setMinutes(minutes);
+		} else {
+			let [day, month, year] = value.split('/');
+			currentDateTime = new Date(Number(year), Number(month) - 1, Number(day));
+		}
+	}
 
 	const [dateTime, setDateTime] = useState({
 		value: currentDateTime,

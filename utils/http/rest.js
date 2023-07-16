@@ -37,3 +37,11 @@ export const postData = async (path, payload, headers) => {
 		return error.response.data;
 	}
 };
+export const deleteData = async path => {
+	try {
+		const response = await axios.delete(`${BACKEND_URL}/${path}`);
+		return response;
+	} catch (error) {
+		return error.response.data;
+	}
+};
