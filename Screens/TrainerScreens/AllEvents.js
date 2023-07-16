@@ -25,7 +25,7 @@ const AllEvents = () => {
 	else
 		return (
 			<View style={styles.container}>
-				<EventsList events={context.events} />
+				<EventsList events={context.events} trainerSide />
 			</View>
 		);
 };

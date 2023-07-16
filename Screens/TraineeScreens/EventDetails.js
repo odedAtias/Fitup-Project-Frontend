@@ -100,8 +100,8 @@ const EventDetails = ({navigation, route}) => {
 			<EventParticipants participants={cardDetails.participants} trainerSide />
 			<View
 				style={{
-					margin: 20,
 					alignItems: 'center',
+					marginHorizontal: 20,
 				}}
 			>
 				{/* Only if have place to register */}
@@ -120,7 +120,7 @@ const EventDetails = ({navigation, route}) => {
 					<></>
 				) : (
 					<Button
-						style={{backgroundColor: Colors.Buttons.fourth, width: '105%'}}
+						style={{backgroundColor: Colors.Buttons.fourth, width: '100%'}}
 						textStyle={{fontSize: 18}}
 						onPress={() =>
 							navigation.navigate('RegisterEvent', {event: route.params})
