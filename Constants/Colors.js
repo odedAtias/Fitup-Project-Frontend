@@ -30,7 +30,7 @@ const Colors = {
 		fifth: '#4a4e4d',
 		sixth: '#5271ff',
 		available: '#29a8ab',
-		intermediate: '#FFE300',
+		intermediate: '#8C52FF',
 		almostFull: '#FF0000',
 		error50: '#ff6b84',
 		error500: '#fd3b59',

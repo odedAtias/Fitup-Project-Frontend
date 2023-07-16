@@ -1,5 +1,5 @@
 // Hooks components
-import {useLayoutEffect, useContext} from 'react';
+import {useLayoutEffect, useContext, useState} from 'react';
 
 // Contexts imports
 import {EventsContext} from '../../store/EventsContext';
@@ -15,6 +15,9 @@ import SearchInput from '../../Components/TraineeSide/EventsOutput/SearchInput';
 // Constants
 import Colors from '../../Constants/Colors';
 
+// Utils
+import {filterEventsByCity} from './../../utils/filters';
+
 // Events component
 const Events = ({navigation, route}) => {
 	// Context initialize
@@ -25,6 +28,9 @@ const Events = ({navigation, route}) => {
 	const relevantEvents = eventsContext.events.filter(
 		e => e.category === categoryName
 	);
+
+	const [searchText, setSearchText] = useState('');
+	const [eventsList, setEventsList] = useState(relevantEvents);
 
 	// Loading dynamically the screen options
 	useLayoutEffect(() => {
@@ -59,10 +65,25 @@ const Events = ({navigation, route}) => {
 		);
 	}
 
+	const handleChangeText = text => {
+		if (!text || text.length === 0) {
+			setEventsList(prev => eventsContext.events);
+			return;
+		}
+		const events = filterEventsByCity(relevantEvents, text);
+		console.log(text, events);
+		setEventsList(prev => events);
+	};
+
 	return (
 		<View style={styles.container}>
-			<SearchInput inputConfigurations={{placeholder: 'search something'}} />
-			<EventsList events={relevantEvents} />
+			<SearchInput
+				inputConfigurations={{
+					placeholder: 'Search events by city ...',
+					onChangeText: handleChangeText,
+				}}
+			/>
+			<EventsList events={eventsList} />
 		</View>
 	);
 };

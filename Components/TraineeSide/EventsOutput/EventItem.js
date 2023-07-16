@@ -28,7 +28,7 @@ const EventItem = ({event, onPress}) => {
 		<Pressable
 			style={
 				isFavoriteTrainer
-					? [styles.container, {backgroundColor: '#fff7a4'}]
+					? [styles.container, {backgroundColor: Colors.Texts.third}]
 					: styles.container
 			}
 			onPress={onPress}
