@@ -27,8 +27,8 @@ const StackSearchEvent = () => (
 					label={'Fit\nUp'}
 					containerStyle={{
 						backgroundColor: Colors.Headers.secondary,
-						padding: Platform.OS === 'ios' ? 10 : 10,
-						paddingTop: Platform.OS === 'ios' ? 10 : 30,
+						padding: Platform.OS === 'ios' ? 0 : 10,
+						paddingTop: Platform.OS === 'ios' ? 0 : 30,
 					}}
 					labelStyle={{
 						fontSize: 50,
