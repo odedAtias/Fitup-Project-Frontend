@@ -79,7 +79,6 @@ const TrainerProfile = ({route, navigation}) => {
 
 	async function handleAddToFavorite() {
 		let favoriteTrainers = context.favoriteTrainers;
-		console.log(favoriteTrainers);
 		// Add to favorite trainers list
 		if (!isFavoriteTrainer) {
 			favoriteTrainers.push(trainer);
@@ -103,6 +102,7 @@ const TrainerProfile = ({route, navigation}) => {
 			favoriteTrainers: ids,
 			registeredEvents: context.registeredEvents,
 			image: context.trainee.image,
+			timeStamp: context.trainee.timeStamp,
 		};
 		// Remove any undefined properties
 		Object.keys(updatedTraineeData).forEach(
