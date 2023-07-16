@@ -33,6 +33,7 @@ const TrainerProfile = ({route, navigation}) => {
 	const [trainer, setTrainer] = useState(null);
 	const [isFavoriteTrainer, setIsFavoriteTrainer] = useState('');
 	const context = useContext(TraineeContext);
+
 	// Getting the trainer id
 	let trainerId = route.params.trainerId;
 
@@ -146,9 +147,6 @@ const TrainerProfile = ({route, navigation}) => {
 					}}
 				/>
 				<Title>{`${trainer.firstName} ${trainer.lastName}`}</Title>
-				{/* <Text style={[styles.font, styles.rating]}>
-					Rating average : {trainer.rating}
-				</Text> */}
 				<Link
 					icon={{
 						name: 'chatbox-outline',
@@ -160,7 +158,15 @@ const TrainerProfile = ({route, navigation}) => {
 					Contact Me
 				</Link>
 			</View>
-			<Aboutme description={trainer.description} />
+			<Aboutme
+				description={
+					trainer.description
+						? trainer.description
+						: `Hi, I'm ${
+								trainer.firstName + ' ' + trainer.lastName
+						  }, an experienced FitUp trainer passionate about helping you reach your fitness goals. With personalized training plans and unwavering support, let's make progress and transform your fitness journey. Let's start this empowering fitness partnership today!`
+				}
+			/>
 			<MyUpcomingEvents events={trainer.events} />
 		</View>
 	);

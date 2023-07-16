@@ -9,17 +9,19 @@ import TextBox from '../../UI/TextBox';
 import Colors from '../../../Constants/Colors';
 
 // EventDetailsDescription component
-const EventDetailsDescription = ({description}) => (
-	<View style={styles.container}>
-		<Title>Description</Title>
-		<TextBox
-			bgColor={Colors.Backgrounds.secondary}
-			txtColor={Colors.Texts.primary}
-		>
-			{description}
-		</TextBox>
-	</View>
-);
+const EventDetailsDescription = ({description}) => {
+	return (
+		<View style={styles.container}>
+			<Title>Description</Title>
+			<TextBox
+				bgColor={Colors.Backgrounds.secondary}
+				txtColor={Colors.Texts.primary}
+			>
+				{description}
+			</TextBox>
+		</View>
+	);
+};
 
 // EventDetailsDescription
 const styles = StyleSheet.create({
