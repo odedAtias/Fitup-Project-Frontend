@@ -47,6 +47,12 @@ const PostEvent = ({navigation}) => {
 				trainerPayload
 			);
 			// Frontend - update event on the trainers events list on the context
+			eventPayload.trainer = {
+				_id: tcx.trainer._id,
+				firstName: tcx.trainer.firstName,
+				lastName: tcx.trainer.lastName,
+				image: tcx.trainer.image,
+			};
 			tcx.setEvents([...tcx.events, {_id: eventId, ...eventPayload}]);
 			// Navigate to the home page
 			alert(

@@ -22,6 +22,8 @@ const UpcomingEventsCards = () => {
 	const {events} = context;
 	const recentEvents = events.filter(event => isWithinNext7Days(event.date));
 
+	console.log(recentEvents);
+
 	if (recentEvents.length === 0)
 		return (
 			<View style={styles.container}>
