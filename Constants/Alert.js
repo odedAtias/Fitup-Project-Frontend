@@ -1,13 +1,15 @@
 // RN core components & API imports
-import { StyleSheet, LogBox, Alert } from 'react-native';
+import {StyleSheet, Alert} from 'react-native';
 
-export const alert = (title, message) => {
+export const alert = (title, message, onPress) => {
 	Alert.alert(
 		title,
 		message,
 		[
 			{
+				text: 'OK',
 				style: 'cancel',
+				onPress: onPress,
 			},
 		],
 		{

@@ -13,6 +13,9 @@ import PostEventForm from '../../Components/TrainerSide/PostEventOutput/PostEven
 // Utils
 import {postData, updateData} from '../../utils/http/rest';
 
+// Constants
+import {alert} from '../../Constants/Alert';
+
 // PostEvent StyleSheet
 const PostEvent = ({navigation}) => {
 	const tcx = useContext(TrainerContext);
@@ -46,7 +49,11 @@ const PostEvent = ({navigation}) => {
 			// Frontend - update event on the trainers events list on the context
 			tcx.setEvents([...tcx.events, {_id: eventId, ...eventPayload}]);
 			// Navigate to the home page
-			navigation.navigate('Welcome');
+			alert(
+				'Event Posted Successfully',
+				"We're happy to tell you that your event has been posted successfully!",
+				() => navigation.navigate('Welcome')
+			);
 		} catch (err) {
 			console.log('Connection error', err);
 		}
