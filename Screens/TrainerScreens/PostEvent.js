@@ -28,6 +28,7 @@ const PostEvent = ({navigation}) => {
 			maxParticipants: +event.maxParticipants.value,
 			price: +event.price.value,
 			trainer: tcx.trainer._id,
+			participants: [],
 		};
 		try {
 			let response = await postData('api/events', eventPayload);
