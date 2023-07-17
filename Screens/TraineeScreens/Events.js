@@ -70,7 +70,6 @@ const Events = ({navigation, route}) => {
 			return;
 		}
 		const events = filterEventsByCity(relevantEvents, text);
-		console.log(text, events);
 		setEventsList(prev => events);
 	};
 
@@ -78,7 +77,7 @@ const Events = ({navigation, route}) => {
 		<View style={styles.container}>
 			<SearchInput
 				inputConfigurations={{
-					placeholder: 'Search events by city ...',
+					placeholder: 'Search by city name ...',
 					onChangeText: handleChangeText,
 				}}
 			/>
