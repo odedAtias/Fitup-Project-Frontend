@@ -31,7 +31,7 @@ const dropDownListData = CATEGORIES.map((category, index) => ({
 }));
 
 // ManageEventForm Component
-const ManageEventForm = ({event, navigation, onSubmit, onDelete}) => {
+const ManageEventForm = ({event, onSubmit, onDelete}) => {
 	const [inputs, setInputs] = useState({
 		category: {
 			value: event.category,
@@ -186,6 +186,14 @@ const ManageEventForm = ({event, navigation, onSubmit, onDelete}) => {
 		return result;
 	};
 
+	const handleSubmit = () => {
+		// validateInputs()
+		let isValidEvent = validateInputs();
+		if (isValidEvent) {
+			onSubmit(inputs);
+		}
+	};
+
 	return (
 		<View style={styles.container}>
 			<DropDownInput
@@ -281,9 +289,9 @@ const ManageEventForm = ({event, navigation, onSubmit, onDelete}) => {
 					<Button
 						style={styles.button}
 						textStyle={styles.buttonText}
-						onPress={onSubmit}
+						onPress={handleSubmit}
 					>
-						Submit
+						Update
 					</Button>
 				</View>
 				<View style={styles.buttonContainer}>

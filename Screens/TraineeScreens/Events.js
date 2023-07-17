@@ -29,7 +29,6 @@ const Events = ({navigation, route}) => {
 		e => e.category === categoryName
 	);
 
-	const [searchText, setSearchText] = useState('');
 	const [eventsList, setEventsList] = useState(relevantEvents);
 
 	// Loading dynamically the screen options

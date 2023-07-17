@@ -23,9 +23,9 @@ const ManageEvent = ({navigation, route}) => {
 
 	const [isLoading, setIsLoading] = useState(false);
 
-	const removeEventFromTrainee = async traineeId => {
-		await deleteData(`/api/trainees/${traineeId}/${event._id}`);
-	};
+	// const removeEventFromTrainee = async traineeId => {
+	// 	await deleteData(`/api/trainees/${traineeId}/${event._id}`);
+	// };
 
 	const handleDelete = async () => {
 		try {
@@ -54,7 +54,7 @@ const ManageEvent = ({navigation, route}) => {
 			};
 			await updateData(`/api/trainers/${tcx.trainer._id}`, trainerPayload);
 			// Backend - Delete the eventId from trainee registered events
-			event.participants.forEach(async p => await removeEventFromTrainee(p));
+			// event.participants.forEach(async p => await removeEventFromTrainee(p));
 			// Frontend - Update Events context
 			const relevantEvents = tcx.events.filter(e => e._id !== event._id);
 			// Match case
@@ -71,8 +71,40 @@ const ManageEvent = ({navigation, route}) => {
 		}
 	};
 
-	const handleSubmit = () => {
-		console.log('hi');
+	const handleSubmit = async input => {
+		// Backend - Update the event on the events collection
+		const eventPayload = {
+			address: input.address.value,
+			category: input.category.value,
+			city: input.city.value,
+			date: input.date.value,
+			description: input.description.value,
+			hour: input.hour.value,
+			maxParticipants: +input.maxParticipants.value,
+			price: +input.price.value,
+			trainer: tcx.trainer._id,
+			participants: event.participants.map(p => p._id),
+		};
+		try {
+			await updateData(`/api/events/${event._id}`, eventPayload);
+		} catch (err) {
+			console.log('connection error', err);
+		}
+		// Frontend - Update the event on the context
+		eventPayload.trainer = event.trainer;
+		eventPayload.participants = event.participants;
+		eventPayload._id = event._id;
+		eventPayload.__v = event.__v;
+		const events = [...tcx.events];
+		const index = events.indexOf(event);
+		events[index] = eventPayload;
+		tcx.setEvents(events);
+		// Navigate to the home page
+		alert(
+			'Event Updated Successfully',
+			"We're happy to tell you that your event has been upadted successfully!",
+			() => navigation.navigate('Welcome')
+		);
 	};
 
 	if (event) {
