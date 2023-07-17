@@ -56,6 +56,16 @@ const Welcome = ({navigation}) => {
 							title={itemData.item.title}
 							image={itemData.item.image}
 							onPress={() => navigation.navigate(`${itemData.item.link}`)}
+							contentStyle={{
+								fontSize: 24,
+								color: 'black',
+								fontFamily: 'rubik',
+								fontWeight: 'bold',
+								textAlign: 'center',
+							}}
+							containerStyle={{
+								opacity: 0.8,
+							}}
 						/>
 					)}
 				/>
@@ -89,7 +99,7 @@ const styles = StyleSheet.create({
 	},
 	headingText: {
 		fontFamily: 'rubik',
-		fontSize: 22,
+		fontSize: 24,
 		textAlign: 'left',
 		color: Colors.Texts.fifth,
 	},

@@ -2,11 +2,11 @@
 import {StyleSheet, Text, Pressable, ImageBackground} from 'react-native';
 
 // Card component
-const Card = ({title, image, onPress}) => {
+const Card = ({title, image, onPress, containerStyle, contentStyle}) => {
 	return (
-		<Pressable onPress={onPress} style={styles.container}>
+		<Pressable onPress={onPress} style={[styles.container, containerStyle]}>
 			<ImageBackground source={image} style={styles.image}>
-				<Text style={styles.title}>{title}</Text>
+				<Text style={[styles.title, contentStyle]}>{title}</Text>
 			</ImageBackground>
 		</Pressable>
 	);
